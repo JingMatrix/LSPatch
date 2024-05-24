@@ -1,18 +1,15 @@
 name: Android CI
 
 on:
-  workflow_dispatch:
   push:
     branches: [ master ]
   pull_request:
+  workflow_dispatch:
 
 jobs:
   build:
-    name: Build on ${{ matrix.os }}
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ ubuntu-latest ]
+    name: Build
+    runs-on: ubuntu-latest
     env:
       CCACHE_COMPILERCHECK: '%compiler% -dumpmachine; %compiler% -dumpversion'
       CCACHE_NOHASHDIR: 'true'
@@ -21,7 +18,7 @@ jobs:
 
     steps:
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         submodules: 'recursive'
         fetch-depth: 0
@@ -50,66 +47,70 @@ jobs:
         path: libxposed/service
 
     - name: Setup Java
-      uses: actions/setup-java@v3
+      uses: actions/setup-java@v4
       with:
         java-version: '21'
         distribution: 'temurin'
 
     - name: Setup Gradle
-      uses: gradle/gradle-build-action@v2
+      uses: gradle/gradle-build-action@v3
       with:
         gradle-home-cache-cleanup: true
 
-    - name: Set up ccache
+    - name: Setup ccache
       uses: hendrikmuhs/ccache-action@v1.2
       with:
         max-size: 2G
-        key: ${{ runner.os }}
-        restore-keys: ${{ runner.os }}
+        key: lsp
+        restore-keys: lsp
         save: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
 
-    - name: Build dependencies
+    - name: Build dependencies with Gradle
       working-directory: libxposed
       run: |
         cd api
         echo 'org.gradle.jvmargs=-Xmx2048m' >> gradle.properties
         ./gradlew :api:publishApiPublicationToMavenLocal
-        cd ..
-        cd service
+        cd ../service
         echo 'org.gradle.jvmargs=-Xmx2048m' >> gradle.properties
         ./gradlew :interface:publishInterfacePublicationToMavenLocal
 
-    - name: Build with Gradle
+    - name: Set short commit id
+      run: echo "commit=$(echo ${{ github.sha }} | cut -c-7)" > $GITHUB_ENV
+
+    - name: Build core with Gradle
       run: |
-        echo 'org.gradle.parallel=true' >> gradle.properties
-        echo 'org.gradle.jvmargs=-Xmx2048m' >> gradle.properties
-        echo 'android.native.buildOutput=verbose' >> gradle.properties
+        {
+          echo 'org.gradle.parallel=true'
+          echo 'org.gradle.jvmargs=-Xmx2048m'
+          echo 'android.native.buildOutput=verbose'
+        } >> gradle.properties
         ./gradlew buildAll
 
     - name: Upload Debug artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
-        name: lspatch-debug
+        name: lspatch-debug-${{ env.commit }}
         path: out/debug/*
 
     - name: Upload Release artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
-        name: lspatch-release
+        name: lspatch-release-${{ env.commit }}
         path: out/release/*
 
     - name: Upload mappings
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
-        name: mappings
+        name: mappings-${{ env.commit }}
         path: |
           patch-loader/build/outputs/mapping
           manager/build/outputs/mapping
 
     - name: Upload symbols
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
-        name: symbols
+        name: symbols-${{ env.commit }}
         path: |
           patch-loader/build/symbols
 
