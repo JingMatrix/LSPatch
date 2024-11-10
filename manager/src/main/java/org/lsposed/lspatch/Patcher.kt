@@ -15,6 +15,7 @@ import java.io.IOException
 object Patcher {
 
     class Options(
+        private val dexMod: Int,
         private val config: PatchConfig,
         private val apkPaths: List<String>,
         private val embeddedModules: List<String>?
@@ -31,6 +32,7 @@ object Patcher {
                 embeddedModules?.forEach {
                     add("-m"); add(it)
                 }
+                add("-dex"); add(dexMod.toString())
                 if (!MyKeyStore.useDefault) {
                     addAll(arrayOf("-k", MyKeyStore.file.path, Configs.keyStorePassword, Configs.keyStoreAlias, Configs.keyStoreAliasPassword))
                 }

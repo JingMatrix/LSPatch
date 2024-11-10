@@ -279,6 +279,13 @@ private fun sigBypassLvStr(level: Int) = when (level) {
 }
 
 @Composable
+private fun dexModLvStr(level: Int) = when (level) {
+    0 -> stringResource(R.string.patch_dex_modlv0)
+    1 -> stringResource(R.string.patch_dex_modlv1)
+    else -> throw IllegalArgumentException("Invalid dexModLv: $level")
+}
+
+@Composable
 private fun PatchOptionsBody(modifier: Modifier, onAddEmbed: () -> Unit) {
     val viewModel = viewModel<NewPatchViewModel>()
 
@@ -364,6 +371,37 @@ private fun PatchOptionsBody(modifier: Modifier, onAddEmbed: () -> Unit) {
                     }
                 )
             }
+        }
+        var dexModExpanded by remember { mutableStateOf(false) }
+        AnywhereDropdown(
+            expanded = dexModExpanded,
+            onDismissRequest = { dexModExpanded = false },
+            onClick = { dexModExpanded = true },
+            surface = {
+                SettingsItem(
+                    icon = Icons.Outlined.Code,
+                    title = stringResource(R.string.patch_dex_mod),
+                    desc = dexModLvStr(viewModel.dexMod)
+                )
+            }
+        ) {
+            repeat(2) {
+                DropdownMenuItem(
+                    text = {
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            RadioButton(
+                                selected = viewModel.dexMod == it,
+                                onClick = { viewModel.dexMod = it })
+                            Text(dexModLvStr(it))
+                        }
+                    },
+                    onClick = {
+                        viewModel.dexMod = it
+                        dexModExpanded = false
+                    }
+                )
+            }
+
         }
     }
 }

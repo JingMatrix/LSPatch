@@ -117,7 +117,7 @@ class AppManageViewModel : ViewModel() {
                         }
                     }
                 }
-                Patcher.patch(logger, Patcher.Options(config, patchPaths, embeddedModulePaths))
+                Patcher.patch(logger, Patcher.Options(0, config, patchPaths, embeddedModulePaths))
                 val (status, message) = LSPPackageManager.install()
                 if (status != PackageInstaller.STATUS_SUCCESS) throw RuntimeException(message)
             }

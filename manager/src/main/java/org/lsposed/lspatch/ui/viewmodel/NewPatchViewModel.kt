@@ -2,6 +2,7 @@ package org.lsposed.lspatch.ui.viewmodel
 
 import android.util.Log
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -38,6 +39,7 @@ class NewPatchViewModel : ViewModel() {
     var debuggable by mutableStateOf(false)
     var overrideVersionCode by mutableStateOf(false)
     var sigBypassLevel by mutableStateOf(2)
+    var dexMod by mutableIntStateOf(0)
     var embeddedModules = emptyList<AppInfo>()
 
     lateinit var patchApp: AppInfo
@@ -90,6 +92,7 @@ class NewPatchViewModel : ViewModel() {
         Log.d(TAG, "Submit patch")
         if (useManager) embeddedModules = emptyList()
         patchOptions = Patcher.Options(
+            dexMod = dexMod,
             config = PatchConfig(useManager, debuggable, overrideVersionCode, sigBypassLevel, null, null),
             apkPaths = listOf(patchApp.app.sourceDir) + (patchApp.app.splitSourceDirs ?: emptyArray()),
             embeddedModules = embeddedModules.flatMap { listOf(it.app.sourceDir) + (it.app.splitSourceDirs ?: emptyArray()) }

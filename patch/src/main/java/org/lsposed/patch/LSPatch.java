@@ -46,7 +46,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 public class LSPatch {
@@ -78,6 +77,9 @@ public class LSPatch {
 
     @Parameter(names = {"-l", "--sigbypasslv"}, description = "Signature bypass level. 0 (disable), 1 (pm), 2 (pm+openat). default 0")
     private int sigbypassLevel = 0;
+
+    @Parameter(names = {"-dex", "--dexmod"}, description = "Use dex mode. 0(clear-dex), 1(append-dex), default 0")
+    private int dexMode = 0;
 
     @Parameter(names = {"-k", "--keystore"}, arity = 4, description = "Set custom signature keystore. Followed by 4 arguments: keystore path, keystore password, keystore alias, keystore alias password")
     private List<String> keystoreArgs = Arrays.asList(null, "123456", "key0", "123456");
@@ -208,7 +210,7 @@ public class LSPatch {
 
             String originalSignature = null;
             if (sigbypassLevel > 0) {
-                originalSignature  = ApkSignatureHelper.getApkSignInfo(srcApkFile.getAbsolutePath());
+                originalSignature = ApkSignatureHelper.getApkSignInfo(srcApkFile.getAbsolutePath());
                 if (originalSignature == null || originalSignature.isEmpty()) {
                     throw new PatchError("get original signature failed");
                 }
@@ -266,11 +268,15 @@ public class LSPatch {
 
             logger.i("Adding metaloader dex...");
             try (var is = getClass().getClassLoader().getResourceAsStream(Constants.META_LOADER_DEX_ASSET_PATH)) {
-                var dexCount = srcZFile.entries().stream().filter(entry -> {
-                    var name = entry.getCentralDirectoryHeader().getName();
-                    return name.startsWith("classes") && name.endsWith(".dex");
-                }).collect(Collectors.toList()).size() + 1;
-                dstZFile.add("classes" + dexCount + ".dex", is);
+                if (dexMode == 0) {
+                    dstZFile.add("classes.dex", is);
+                } else {
+                    var dexCount = srcZFile.entries().stream().filter(entry -> {
+                        var name = entry.getCentralDirectoryHeader().getName();
+                        return name.startsWith("classes") && name.endsWith(".dex");
+                    }).collect(Collectors.toList()).size() + 1;
+                    dstZFile.add("classes" + dexCount + ".dex", is);
+                }
             } catch (Throwable e) {
                 throw new PatchError("Error when adding dex", e);
             }
@@ -307,6 +313,7 @@ public class LSPatch {
             for (StoredEntry entry : srcZFile.entries()) {
                 String name = entry.getCentralDirectoryHeader().getName();
                 if (dstZFile.get(name) != null) continue;
+                if (dexMode == 0 && name.startsWith("classes") && name.endsWith(".dex")) continue;
                 if (name.equals("AndroidManifest.xml")) continue;
                 if (name.startsWith("META-INF") && (name.endsWith(".SF") || name.endsWith(".MF") || name.endsWith(".RSA"))) continue;
                 srcZFile.addFileLink(name, name);

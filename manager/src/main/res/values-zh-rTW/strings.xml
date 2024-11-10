@@ -86,4 +86,7 @@
     <string name="settings_keystore_wrong_alias">別名錯誤</string>
     <string name="settings_keystore_wrong_alias_password">別名密碼錯誤</string>
     <string name="settings_detail_patch_logs">詳細打包日誌</string>
+    <string name="patch_dex_mod">Dex 模式</string>
+    <string name="patch_dex_modlv0">模式0: 清除 DEX</string>
+    <string name="patch_dex_modlv1">模式1: 附加 DEX</string>
 </resources>
