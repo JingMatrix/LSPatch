@@ -25,7 +25,7 @@
     <string name="home_info_copied">تم النسخ إلى الحافظة</string>
     <string name="home_support">الدعـم</string>
     <string name="home_description">LSPatch هو إطار عمل Non-Root Xposed مجاني يعتمد على LSPosed core.</string>
-    <string name="home_view_source_code"><![CDATA[عرض كود المصدر على %1$s<br/>انضم إلى قناتنا %2$s]]></string>
+    <string name="home_view_source_code">عرض كود المصدر على %1$s<br/>انضم إلى قناتنا %2$s</string>
     <!-- Manage Screen -->
     <string name="screen_manage">إدارة</string>
     <string name="manage_loading">جارٍ التحميل</string>
