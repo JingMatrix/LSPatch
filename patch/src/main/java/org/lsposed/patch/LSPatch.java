@@ -78,7 +78,7 @@ public class LSPatch {
     @Parameter(names = {"-l", "--sigbypasslv"}, description = "Signature bypass level. 0 (disable), 1 (pm), 2 (pm+openat). default 0")
     private int sigbypassLevel = 0;
 
-    @Parameter(names = {"-dex", "--dexmod"}, description = "Use dex mode. 0(clear-dex), 1(append-dex), default 0")
+    @Parameter(names = {"-dex", "--dexmod"}, description = "Inject directly the loder dex file into the original application package, default 0")
     private int dexMode = 0;
 
     @Parameter(names = {"-k", "--keystore"}, arity = 4, description = "Set custom signature keystore. Followed by 4 arguments: keystore path, keystore password, keystore alias, keystore alias password")
