@@ -92,7 +92,7 @@ class NewPatchViewModel : ViewModel() {
         Log.d(TAG, "Submit patch")
         if (useManager) embeddedModules = emptyList()
         patchOptions = Patcher.Options(
-            dexMod = if (dexMod) 1 else 0,
+            dexMod = dexMod,
             config = PatchConfig(useManager, debuggable, overrideVersionCode, sigBypassLevel, null, null),
             apkPaths = listOf(patchApp.app.sourceDir) + (patchApp.app.splitSourceDirs ?: emptyArray()),
             embeddedModules = embeddedModules.flatMap { listOf(it.app.sourceDir) + (it.app.splitSourceDirs ?: emptyArray()) }

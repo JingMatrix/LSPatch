@@ -78,8 +78,8 @@ public class LSPatch {
     @Parameter(names = {"-l", "--sigbypasslv"}, description = "Signature bypass level. 0 (disable), 1 (pm), 2 (pm+openat). default 0")
     private int sigbypassLevel = 0;
 
-    @Parameter(names = {"-dex", "--dexmod"}, description = "Inject directly the loder dex file into the original application package, default 0")
-    private int dexMode = 0;
+    @Parameter(names = {"-dex", "--dexmod"}, description = "Inject directly the loder dex file into the original application package")
+    private boolean dexMode = false;
 
     @Parameter(names = {"-k", "--keystore"}, arity = 4, description = "Set custom signature keystore. Followed by 4 arguments: keystore path, keystore password, keystore alias, keystore alias password")
     private List<String> keystoreArgs = Arrays.asList(null, "123456", "key0", "123456");
@@ -241,7 +241,8 @@ public class LSPatch {
                 for (StoredEntry entry : srcZFile.entries()) {
                     String name = entry.getCentralDirectoryHeader().getName();
                     if (dstZFile.get(name) != null) continue;
-                    if (name.startsWith("META-INF") && (name.endsWith(".SF") || name.endsWith(".MF") || name.endsWith(".RSA"))) continue;
+                    if (name.startsWith("META-INF") && (name.endsWith(".SF") || name.endsWith(".MF") || name.endsWith(".RSA")))
+                        continue;
                     srcZFile.addFileLink(name, name);
                 }
                 return;
@@ -268,7 +269,7 @@ public class LSPatch {
 
             logger.i("Adding metaloader dex...");
             try (var is = getClass().getClassLoader().getResourceAsStream(Constants.META_LOADER_DEX_ASSET_PATH)) {
-                if (dexMode == 0) {
+                if (!dexMode) {
                     dstZFile.add("classes.dex", is);
                 } else {
                     var dexCount = srcZFile.entries().stream().filter(entry -> {
@@ -313,9 +314,10 @@ public class LSPatch {
             for (StoredEntry entry : srcZFile.entries()) {
                 String name = entry.getCentralDirectoryHeader().getName();
                 if (dstZFile.get(name) != null) continue;
-                if (dexMode == 0 && name.startsWith("classes") && name.endsWith(".dex")) continue;
+                if (!dexMode && name.startsWith("classes") && name.endsWith(".dex")) continue;
                 if (name.equals("AndroidManifest.xml")) continue;
-                if (name.startsWith("META-INF") && (name.endsWith(".SF") || name.endsWith(".MF") || name.endsWith(".RSA"))) continue;
+                if (name.startsWith("META-INF") && (name.endsWith(".SF") || name.endsWith(".MF") || name.endsWith(".RSA")))
+                    continue;
                 srcZFile.addFileLink(name, name);
             }
 
