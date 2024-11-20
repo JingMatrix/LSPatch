@@ -16,7 +16,7 @@ import java.util.Collections.addAll
 object Patcher {
 
     class Options(
-        private val dexMod: Boolean,
+        private val injectDex: Boolean,
         private val config: PatchConfig,
         private val apkPaths: List<String>,
         private val embeddedModules: List<String>?
@@ -33,7 +33,7 @@ object Patcher {
                 embeddedModules?.forEach {
                     add("-m"); add(it)
                 }
-                if(dexMod) add("-dex")
+                if(injectDex) add("--injectdex")
                 if (!MyKeyStore.useDefault) {
                     addAll(arrayOf("-k", MyKeyStore.file.path, Configs.keyStorePassword, Configs.keyStoreAlias, Configs.keyStoreAliasPassword))
                 }

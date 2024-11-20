@@ -339,11 +339,11 @@ private fun PatchOptionsBody(modifier: Modifier, onAddEmbed: () -> Unit) {
         )
 
         SettingsCheckBox(
-            modifier = Modifier.clickable { viewModel.dexMod = !viewModel.dexMod },
-            checked = viewModel.dexMod,
+            modifier = Modifier.clickable { viewModel.injectDex = !viewModel.injectDex },
+            checked = viewModel.injectDex,
             icon = Icons.Outlined.Code,
-            title = stringResource(R.string.patch_dex_mod),
-            desc = stringResource(R.string.patch_dex_desc)
+            title = stringResource(R.string.patch_inject_dex),
+            desc = stringResource(R.string.patch_inject_dex_desc)
         )
 
         var bypassExpanded by remember { mutableStateOf(false) }
