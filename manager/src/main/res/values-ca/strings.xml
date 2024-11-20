@@ -86,4 +86,6 @@
     <string name="settings_keystore_wrong_alias">Nom d\'àlies incorrecte</string>
     <string name="settings_keystore_wrong_alias_password">Contrasenya d\'àlies incorrecta</string>
     <string name="settings_detail_patch_logs">Registres de pedaços detallats</string>
+    <string name="patch_inject_dex">Injectar carregador dex</string>
+    <string name="patch_inject_dex_desc">Per a aplicacions amb serveis aïllats, com ara els motors de renderització dels navegadors, activeu aquesta opció per assegurar-vos que funcionin correctament.</string>
 </resources>
