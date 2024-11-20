@@ -86,4 +86,6 @@
     <string name="settings_keystore_wrong_alias">Väärä alias-nimi</string>
     <string name="settings_keystore_wrong_alias_password">Väärä alias-salasana</string>
     <string name="settings_detail_patch_logs">Yksityiskohtaiset korjauslokit</string>
+    <string name="patch_inject_dex">Inject loadader dex</string>
+    <string name="patch_inject_dex_desc">Jos sovelluksissa on erillisiä palveluja, kuten selainten render moottorit, ota tämä vaihtoehto käyttöön varmistaaksesi, että ne toimivat oikein.</string>
 </resources>
