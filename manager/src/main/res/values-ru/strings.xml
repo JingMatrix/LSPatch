@@ -25,7 +25,7 @@
     <string name="home_info_copied">Скопировано в буфер обмена</string>
     <string name="home_support">Поддержка</string>
     <string name="home_description">LSPatch — это бесплатный без-рута-фреймворк Xposed, основанный на ядре LSPosed.</string>
-    <string name="home_view_source_code">Посмотрите исходный код на %1$s<br/><br/>Заходите на наш %2$s-канал</string>
+    <string name="home_view_source_code"><![CDATA[Посмотрите исходный код на %1$s<br/><br/>Заходите на наш %2$s-канал]]></string>
     <!-- Manage Screen -->
     <string name="screen_manage">Управление</string>
     <string name="manage_loading">Загрузка</string>
@@ -86,4 +86,6 @@
     <string name="settings_keystore_wrong_alias">Неправильное имя alias</string>
     <string name="settings_keystore_wrong_alias_password">Неправильный alias-пароль</string>
     <string name="settings_detail_patch_logs">Подробности журнала патча</string>
+    <string name="patch_inject_dex">Inject loader dex</string>
+    <string name="patch_inject_dex_desc">Для приложений с изолированными сервисами, такими как рендеринг браузеров, пожалуйста, включите эту опцию, чтобы убедиться, что они работают должным образом.</string>
 </resources>
