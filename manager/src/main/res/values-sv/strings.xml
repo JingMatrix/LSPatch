@@ -86,4 +86,6 @@
     <string name="settings_keystore_wrong_alias">Fel aliasnamn</string>
     <string name="settings_keystore_wrong_alias_password">Fel lösenord för alias</string>
     <string name="settings_detail_patch_logs">Detaljerade patchloggar</string>
+    <string name="patch_inject_dex">Inject loader dex</string>
+    <string name="patch_inject_dex_desc">För applikationer med isolerade tjänster, såsom render motorer av webbläsare, aktivera detta alternativ för att se till att de fungerar korrekt.</string>
 </resources>
