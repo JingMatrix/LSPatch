@@ -86,4 +86,6 @@
     <string name="settings_keystore_wrong_alias">Λάθος όνομα ψευδώνυμου</string>
     <string name="settings_keystore_wrong_alias_password">Λάθος κωδικός πρόσβασης ψευδώνυμου</string>
     <string name="settings_detail_patch_logs">Λεπτομερή αρχεία καταγραφής επιδιορθώσεων</string>
+    <string name="patch_inject_dex">Έγχυση dex φορτωτή</string>
+    <string name="patch_inject_dex_desc">Για εφαρμογές με απομονωμένες υπηρεσίες, όπως οι μηχανές αναπαραγωγής των προγραμμάτων περιήγησης, παρακαλούμε ενεργοποιήστε αυτήν την επιλογή για να βεβαιωθείτε ότι λειτουργούν σωστά.</string>
 </resources>
