@@ -86,4 +86,6 @@
     <string name="settings_keystore_wrong_alias">Tên bí danh sai</string>
     <string name="settings_keystore_wrong_alias_password">Mật khẩu bí danh sai</string>
     <string name="settings_detail_patch_logs">Nhật ký vá chi tiết</string>
+    <string name="patch_inject_dex">Tiêm bộ nạp dex</string>
+    <string name="patch_inject_dex_desc">Đối với các ứng dụng có dịch vụ riêng biệt, chẳng hạn như công cụ kết xuất của trình duyệt, vui lòng bật tùy chọn này để đảm bảo chúng hoạt động bình thường.</string>
 </resources>
