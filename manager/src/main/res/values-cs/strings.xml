@@ -86,4 +86,6 @@
     <string name="settings_keystore_wrong_alias">Špatný název aliasu</string>
     <string name="settings_keystore_wrong_alias_password">Špatné heslo aliasu</string>
     <string name="settings_detail_patch_logs">Podrobné protokoly oprav</string>
+    <string name="patch_inject_dex">Injektovat dex zavaděče</string>
+    <string name="patch_inject_dex_desc">Pro aplikace s izolovanými službami, jako jsou vykreslování prohlížečů, zapněte tuto možnost, abyste zajistili, že fungují správně.</string>
 </resources>
