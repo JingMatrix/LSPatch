@@ -86,4 +86,6 @@
     <string name="settings_keystore_wrong_alias">Nome falso</string>
     <string name="settings_keystore_wrong_alias_password">Palavra-passe de outrora incorrecta</string>
     <string name="settings_detail_patch_logs">Registos de remendos detalhados</string>
+    <string name="patch_inject_dex">Desvio dex do carregador</string>
+    <string name="patch_inject_dex_desc">Para aplicativos com serviços isolados, como motores de renderização de navegadores, por favor, ative esta opção para garantir que eles funcionem corretamente.</string>
 </resources>
