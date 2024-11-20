@@ -86,4 +86,6 @@
     <string name="settings_keystore_wrong_alias">Nume alias greșit</string>
     <string name="settings_keystore_wrong_alias_password">Parolă alias greșită</string>
     <string name="settings_detail_patch_logs">Detaliile jurnalelor de patch-uri</string>
+    <string name="patch_inject_dex">Injectare loader dex</string>
+    <string name="patch_inject_dex_desc">Pentru aplicațiile cu servicii izolate, cum ar fi motoarele de randare a browserelor, vă rugăm să porniți această opțiune pentru a vă asigura că acestea funcționează corect.</string>
 </resources>
