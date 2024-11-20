@@ -86,4 +86,6 @@
     <string name="settings_keystore_wrong_alias">Forkert aliasnavn</string>
     <string name="settings_keystore_wrong_alias_password">Forkert adgangskode til alias</string>
     <string name="settings_detail_patch_logs">Detaljerede patch-logfiler</string>
+    <string name="patch_inject_dex">Injicer loader dex</string>
+    <string name="patch_inject_dex_desc">For applikationer med isolerede tjenester, såsom render motorer af browsere, skal du aktivere denne mulighed for at sikre, at de fungerer korrekt.</string>
 </resources>
