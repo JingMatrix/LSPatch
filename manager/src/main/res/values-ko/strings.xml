@@ -86,4 +86,6 @@
     <string name="settings_keystore_wrong_alias">잘못된 별칭 이름</string>
     <string name="settings_keystore_wrong_alias_password">잘못된 별칭 암호</string>
     <string name="settings_detail_patch_logs">세부 패치 로그</string>
+    <string name="patch_inject_dex">로더 덱스 주입</string>
+    <string name="patch_inject_dex_desc">브라우저의 렌더 엔진과 같이 격리된 서비스를 갖춘 애플리케이션의 경우, 이 옵션을 켜서 제대로 작동하는지 확인하세요.</string>
 </resources>
