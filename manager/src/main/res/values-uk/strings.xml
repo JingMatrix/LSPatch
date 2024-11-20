@@ -86,4 +86,6 @@
     <string name="settings_keystore_wrong_alias">Неправильний псевдонім</string>
     <string name="settings_keystore_wrong_alias_password">Неправильний пароль псевдоніма</string>
     <string name="settings_detail_patch_logs">Детальні журнали патчів</string>
+    <string name="patch_inject_dex">Ввести dex завантажувач</string>
+    <string name="patch_inject_dex_desc">Для додатків з ізольованими послугами, такими як системи візуалізації, увімкніть цю опцію, щоб вони працювали належним чином.</string>
 </resources>
