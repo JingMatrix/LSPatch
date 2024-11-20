@@ -86,4 +86,6 @@
     <string name="settings_keystore_wrong_alias">Nombre de alias incorrecto</string>
     <string name="settings_keystore_wrong_alias_password">Contraseña de alias incorrecta</string>
     <string name="settings_detail_patch_logs">Registros de parches detallados</string>
+    <string name="patch_inject_dex">Inyectar dex del cargador</string>
+    <string name="patch_inject_dex_desc">Para aplicaciones con servicios aislados, como los motores de renderizado de navegadores, por favor active esta opción para asegurarse de que funcionan correctamente.</string>
 </resources>
