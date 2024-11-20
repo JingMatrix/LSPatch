@@ -86,4 +86,6 @@
     <string name="settings_keystore_wrong_alias">Verkeerde aliasnaam</string>
     <string name="settings_keystore_wrong_alias_password">Verkeerd alias wachtwoord</string>
     <string name="settings_detail_patch_logs">Detail patch logs</string>
+    <string name="patch_inject_dex">Inject lader dex</string>
+    <string name="patch_inject_dex_desc">Voor toepassingen met geïsoleerde diensten, zoals de render motoren van browsers, schakel deze optie in om ervoor te zorgen dat ze goed werken.</string>
 </resources>
