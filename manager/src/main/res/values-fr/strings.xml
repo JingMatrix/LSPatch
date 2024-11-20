@@ -86,4 +86,6 @@
     <string name="settings_keystore_wrong_alias">Nom d\'alias erroné</string>
     <string name="settings_keystore_wrong_alias_password">Mot de passe d\'alias erroné</string>
     <string name="settings_detail_patch_logs">Détails des journaux du patch</string>
+    <string name="patch_inject_dex">Déx du chargeur d\'injection</string>
+    <string name="patch_inject_dex_desc">Pour les applications avec des services isolés, comme les moteurs de rendu des navigateurs, veuillez activer cette option pour s\'assurer qu\'ils fonctionnent correctement.</string>
 </resources>
