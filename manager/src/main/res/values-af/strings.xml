@@ -86,4 +86,6 @@
     <string name="settings_keystore_wrong_alias">Verkeerde alias naam</string>
     <string name="settings_keystore_wrong_alias_password">Verkeerde alias wagwoord</string>
     <string name="settings_detail_patch_logs">Detail pleister logs</string>
+    <string name="patch_inject_dex">Spuit loader dex</string>
+    <string name="patch_inject_dex_desc">Vir toepassings met geïsoleerde dienste, soos die weergawe-enjins van blaaiers, skakel asseblief hierdie opsie aan om te verseker dat hulle behoorlik werk.</string>
 </resources>
