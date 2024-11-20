@@ -86,4 +86,6 @@
     <string name="settings_keystore_wrong_alias">別名錯誤</string>
     <string name="settings_keystore_wrong_alias_password">別名密碼錯誤</string>
     <string name="settings_detail_patch_logs">詳細打包日誌</string>
+    <string name="patch_inject_dex">注入加載器 Dex</string>
+    <string name="patch_inject_dex_desc">對那些需要孤立服務進程的應用程序，譬如說瀏覽器的渲染引擎，請勾選此選項以確保他們正常運行</string>
 </resources>
