@@ -25,7 +25,7 @@
     <string name="home_info_copied">Copied to clipboard</string>
     <string name="home_support">Support</string>
     <string name="home_description">LSPatch is a free non-root Xposed framework based on LSPosed core.</string>
-    <string name="home_view_source_code">View source code at %1$s<br/>Join our %2$s channel</string>
+    <string name="home_view_source_code"><![CDATA[View source code at %1$s<br/>Join our %2$s channel]]></string>
     <!-- Manage Screen -->
     <string name="screen_manage">Manage</string>
     <string name="manage_loading">Loading</string>
@@ -86,4 +86,6 @@
     <string name="settings_keystore_wrong_alias">Wrong alias name</string>
     <string name="settings_keystore_wrong_alias_password">Wrong alias password</string>
     <string name="settings_detail_patch_logs">Detail patch logs</string>
+    <string name="patch_inject_dex">Inject loader dex</string>
+    <string name="patch_inject_dex_desc">For applications with isolated services, such as the render engines of browsers, please turn on this option to ensure that they work properly.</string>
 </resources>
