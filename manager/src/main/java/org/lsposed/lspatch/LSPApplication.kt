@@ -18,6 +18,7 @@ class LSPApplication : Application() {
 
     lateinit var prefs: SharedPreferences
     lateinit var tmpApkDir: File
+    lateinit var targetApkFile: File
 
     val globalScope = CoroutineScope(Dispatchers.Default)
 

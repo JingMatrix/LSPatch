@@ -10,8 +10,8 @@ import org.lsposed.lspatch.share.Constants
 import org.lsposed.lspatch.share.PatchConfig
 import org.lsposed.patch.LSPatch
 import org.lsposed.patch.util.Logger
+import java.io.File
 import java.io.IOException
-import java.util.Collections.addAll
 
 object Patcher {
 
@@ -59,6 +59,9 @@ object Patcher {
                         ?: throw IOException("Failed to create output file")
                     val output = lspApp.contentResolver.openOutputStream(file.uri)
                         ?: throw IOException("Failed to open output stream")
+                    val apkFile = File(lspApp.externalCacheDir, apk.name)
+                    apk.copyTo(apkFile, overwrite = true)
+                    lspApp.targetApkFile = apkFile
                     output.use {
                         apk.inputStream().use { input ->
                             input.copyTo(output)
