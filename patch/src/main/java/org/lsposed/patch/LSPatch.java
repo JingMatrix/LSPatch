@@ -283,29 +283,29 @@ public class LSPatch {
             }
 
             if (!useManager) {
-                logger.i("Adding loader dex...");
-                try (var is = getClass().getClassLoader().getResourceAsStream(LOADER_DEX_ASSET_PATH)) {
-                    dstZFile.add(LOADER_DEX_ASSET_PATH, is);
-                } catch (Throwable e) {
-                    throw new PatchError("Error when adding assets", e);
-                }
-
-                logger.i("Adding native lib...");
-                // copy so and dex files into the unzipped apk
-                // do not put liblspatch.so into apk!lib because x86 native bridge causes crash
-                for (String arch : ARCHES) {
-                    String entryName = "assets/lspatch/so/" + arch + "/liblspatch.so";
-                    try (var is = getClass().getClassLoader().getResourceAsStream(entryName)) {
-                        dstZFile.add(entryName, is, false); // no compress for so
-                    } catch (Throwable e) {
-                        // More exception info
-                        throw new PatchError("Error when adding native lib", e);
-                    }
-                    logger.d("added " + entryName);
-                }
-
                 logger.i("Embedding modules...");
                 embedModules(dstZFile);
+            }
+
+            logger.i("Adding loader dex...");
+            try (var is = getClass().getClassLoader().getResourceAsStream(LOADER_DEX_ASSET_PATH)) {
+                dstZFile.add(LOADER_DEX_ASSET_PATH, is);
+            } catch (Throwable e) {
+                throw new PatchError("Error when adding assets", e);
+            }
+
+            logger.i("Adding native lib...");
+            // copy so and dex files into the unzipped apk
+            // do not put liblspatch.so into apk!lib because x86 native bridge causes crash
+            for (String arch : ARCHES) {
+                String entryName = "assets/lspatch/so/" + arch + "/liblspatch.so";
+                try (var is = getClass().getClassLoader().getResourceAsStream(entryName)) {
+                    dstZFile.add(entryName, is, false); // no compress for so
+                } catch (Throwable e) {
+                    // More exception info
+                    throw new PatchError("Error when adding native lib", e);
+                }
+                logger.d("added " + entryName);
             }
 
             // create zip link
