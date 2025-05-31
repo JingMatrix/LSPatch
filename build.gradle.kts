@@ -81,7 +81,7 @@ fun Project.configureBaseExtension() {
         buildToolsVersion = androidBuildToolsVersion
 
         externalNativeBuild.cmake {
-            version = "3.28.1+"
+            version = "3.31.6"
             buildStagingDirectory = layout.buildDirectory.get().asFile
         }
 
