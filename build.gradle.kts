@@ -105,7 +105,7 @@ fun Project.configureBaseExtension() {
                 cmake {
                     arguments += "-DEXTERNAL_ROOT=${File(rootDir.absolutePath, "core/external")}"
                     arguments += "-DCORE_ROOT=${File(rootDir.absolutePath, "core/core/src/main/jni")}"
-                    abiFilters("arm64-v8a", "armeabi-v7a", "x86", "x86_64")
+                    abiFilters("arm64-v8a", "armeabi-v7a")
                     val flags = arrayOf(
                         "-Wall",
                         "-Qunused-arguments",
