@@ -93,6 +93,14 @@ public class LSPApplication {
         Log.i(TAG, "Modules initialized");
 
         switchAllClassLoader();
+        if (config.optBoolean("hideXposed")) {
+            Log.d(TAG, "Calling hideXposed from config");
+            org.lsposed.lspd.nativebridge.SigBypass.hideXposed();
+        }
+        if (config.optBoolean("initSeccomp")) {
+            Log.d(TAG, "Calling initSeccomp from config");
+            org.lsposed.lspd.nativebridge.SigBypass.initSeccomp();
+        }
         SigBypass.doSigBypass(context, config.optInt("sigBypassLevel"));
 
         Log.i(TAG, "LSPatch bootstrap completed");
