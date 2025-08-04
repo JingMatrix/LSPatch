@@ -1,5 +1,6 @@
 package org.lsposed.lspatch
 
+import android.util.Log
 import androidx.core.net.toUri
 import androidx.documentfile.provider.DocumentFile
 import kotlinx.coroutines.Dispatchers
@@ -17,7 +18,7 @@ object Patcher {
 
     class Options(
         private val injectDex: Boolean,
-        private val config: PatchConfig,
+        val config: PatchConfig,
         private val apkPaths: List<String>,
         private val embeddedModules: List<String>?
     ) {
@@ -52,6 +53,8 @@ object Patcher {
             root.listFiles().forEach {
                 if (it.name?.endsWith(Constants.PATCH_FILE_SUFFIX) == true) it.delete()
             }
+            lspApp.targetApkFiles?.clear()
+            val apkFileList = arrayListOf<File>()
             lspApp.tmpApkDir.walk()
                 .filter { it.name.endsWith(Constants.PATCH_FILE_SUFFIX) }
                 .forEach { apk ->
@@ -61,13 +64,15 @@ object Patcher {
                         ?: throw IOException("Failed to open output stream")
                     val apkFile = File(lspApp.externalCacheDir, apk.name)
                     apk.copyTo(apkFile, overwrite = true)
-                    lspApp.targetApkFile = apkFile
+                    apkFileList.add(apkFile)
+//                    Log.d("lspatch", "Patched file: ${apk.name} -> ${apkFile.absolutePath}")
                     output.use {
                         apk.inputStream().use { input ->
                             input.copyTo(output)
                         }
                     }
                 }
+            lspApp.targetApkFiles = apkFileList
             logger.i("Patched files are saved to ${root.uri.lastPathSegment}")
         }
     }

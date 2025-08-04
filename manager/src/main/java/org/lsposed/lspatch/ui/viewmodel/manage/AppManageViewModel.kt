@@ -18,6 +18,7 @@ import org.lsposed.lspatch.lspApp
 import org.lsposed.lspatch.share.Constants
 import org.lsposed.lspatch.share.PatchConfig
 import org.lsposed.lspatch.ui.util.installApk
+import org.lsposed.lspatch.ui.util.installApks
 import org.lsposed.lspatch.ui.viewstate.ProcessingState
 import org.lsposed.lspatch.util.LSPPackageManager
 import org.lsposed.lspatch.util.LSPPackageManager.AppInfo
@@ -123,7 +124,16 @@ class AppManageViewModel : ViewModel() {
                 }
                 Patcher.patch(logger, Patcher.Options(false, config, patchPaths, embeddedModulePaths))
                 if (!ShizukuApi.isPermissionGranted) {
-                    installApk(lspApp, lspApp.targetApkFile)
+                    val apkFiles = lspApp.targetApkFiles
+                    if (apkFiles.isNullOrEmpty()){
+                        Log.e(TAG, "No patched APK files found")
+                        throw RuntimeException("No patched APK files found")
+                    }
+                    if (apkFiles.size > 1) {
+                        val success = installApks(lspApp, apkFiles)
+                    } else  {
+                        installApk(lspApp, apkFiles.first())
+                    }
                 } else {
                     val (status, message) = LSPPackageManager.install()
                     if (status != PackageInstaller.STATUS_SUCCESS) throw RuntimeException(message)

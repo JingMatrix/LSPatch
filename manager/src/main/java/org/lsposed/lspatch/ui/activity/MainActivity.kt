@@ -1,5 +1,8 @@
 package org.lsposed.lspatch.ui.activity
 
+import android.annotation.SuppressLint
+import android.content.IntentFilter
+import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -8,6 +11,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
@@ -21,13 +25,22 @@ import org.lsposed.lspatch.ui.page.appCurrentDestinationAsState
 import org.lsposed.lspatch.ui.page.destinations.Destination
 import org.lsposed.lspatch.ui.page.startAppDestination
 import org.lsposed.lspatch.ui.theme.LSPTheme
+import org.lsposed.lspatch.ui.util.InstallResultReceiver
 import org.lsposed.lspatch.ui.util.LocalSnackbarHost
 
 class MainActivity : ComponentActivity() {
 
+    private val splitInstallReceiver by lazy { InstallResultReceiver() }
+
+    @SuppressLint("UnspecifiedRegisterReceiverFlag")
     @OptIn(ExperimentalAnimationApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            registerReceiver(splitInstallReceiver, IntentFilter(InstallResultReceiver.ACTION_INSTALL_STATUS), RECEIVER_NOT_EXPORTED)
+        } else {
+            registerReceiver(splitInstallReceiver, IntentFilter(InstallResultReceiver.ACTION_INSTALL_STATUS))
+        }
         setContent {
             val navController = rememberAnimatedNavController()
             LSPTheme {
@@ -46,6 +59,11 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        unregisterReceiver(splitInstallReceiver)
     }
 }
 
