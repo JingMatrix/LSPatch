@@ -6,20 +6,23 @@ import static org.lsposed.lspatch.share.Constants.ORIGINAL_APK_ASSET_PATH;
 import android.app.ActivityThread;
 import android.app.LoadedApk;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
 import android.content.res.CompatibilityInfo;
 import android.os.Build;
-import android.os.RemoteException;
 import android.system.Os;
 import android.util.Log;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.lsposed.lspatch.loader.util.FileUtils;
 import org.lsposed.lspatch.loader.util.XLog;
+import org.lsposed.lspatch.service.FixedLocalApplicationService;
 import org.lsposed.lspatch.service.LocalApplicationService;
 import org.lsposed.lspatch.service.RemoteApplicationService;
 import org.lsposed.lspd.core.Startup;
+import org.lsposed.lspd.models.Module;
 import org.lsposed.lspd.service.ILSPApplicationService;
-import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -35,6 +38,7 @@ import java.nio.file.Paths;
 import java.nio.file.attribute.PosixFilePermissions;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 import java.util.function.BiConsumer;
 import java.util.stream.Collectors;
@@ -63,7 +67,7 @@ public class LSPApplication {
         return (android.os.Process.myUid() % PER_USER_RANGE) >= FIRST_APP_ZYGOTE_ISOLATED_UID;
     }
 
-    public static void onLoad() throws RemoteException, IOException {
+    public static void onLoad() throws IOException {
         if (isIsolated()) {
             XLog.d(TAG, "Skip isolated process");
             return;
@@ -76,11 +80,38 @@ public class LSPApplication {
         }
 
         Log.d(TAG, "Initialize service client");
-        ILSPApplicationService service;
+        ILSPApplicationService service = null;
         if (config.optBoolean("useManager")) {
-            service = new RemoteApplicationService(context);
-        } else {
-            service = new LocalApplicationService(context);
+            try {
+                service = new RemoteApplicationService(context);
+                List<Module> m = service.getLegacyModulesList();
+                JSONArray modules = new JSONArray();
+                for (Module module : m) {
+                    JSONObject json = new JSONObject();
+                    json.put("packageName", module.packageName);
+                    json.put("apkPath", module.apkPath);
+                    modules.put(json);
+                }
+                Log.i(TAG, "Modules fetched from manager: " + modules.toString());
+                SharedPreferences prefs = context.getSharedPreferences("lspatch", Context.MODE_PRIVATE);
+                prefs.edit().putString("modules", modules.toString()).apply();
+                Log.i(TAG, "Modules saved to SharedPreferences");
+            } catch (Exception e) { // Catch RemoteException or others during remote service interaction
+                Log.e(TAG, "Failed to use RemoteApplicationService, fallback to fixed local service", e);
+                // Fallback service is created below if service is still null
+            }
+        }
+
+        if (service == null) {
+            if (config.optBoolean("useManager")) {
+                // If remote failed, use FixedLocalApplicationService
+                service = new FixedLocalApplicationService(context);
+                Log.i(TAG, "Using FixedLocalApplicationService as fallback.");
+            } else {
+                // If useManager was false, use LocalApplicationService
+                service = new LocalApplicationService(context);
+                Log.i(TAG, "Using LocalApplicationService.");
+            }
         }
 
         disableProfile(context);

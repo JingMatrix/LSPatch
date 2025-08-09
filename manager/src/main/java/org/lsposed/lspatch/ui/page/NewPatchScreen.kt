@@ -48,8 +48,12 @@ import org.lsposed.lspatch.ui.component.settings.SettingsCheckBox
 import org.lsposed.lspatch.ui.component.settings.SettingsItem
 import org.lsposed.lspatch.ui.page.destinations.SelectAppsScreenDestination
 import org.lsposed.lspatch.ui.util.LocalSnackbarHost
+import org.lsposed.lspatch.ui.util.checkIsApkFixedByLSP
+import org.lsposed.lspatch.ui.util.installApk
+import org.lsposed.lspatch.ui.util.installApks
 import org.lsposed.lspatch.ui.util.isScrolledToEnd
 import org.lsposed.lspatch.ui.util.lastItemIndex
+import org.lsposed.lspatch.ui.util.uninstallApkByPackageName
 import org.lsposed.lspatch.ui.viewmodel.NewPatchViewModel
 import org.lsposed.lspatch.ui.viewmodel.NewPatchViewModel.PatchState
 import org.lsposed.lspatch.ui.viewmodel.NewPatchViewModel.ViewAction
@@ -121,7 +125,10 @@ fun NewPatchScreen(
     when (viewModel.patchState) {
         PatchState.INIT -> {
             LaunchedEffect(Unit) {
-                LSPPackageManager.cleanTmpApkDir()
+                LSPPackageManager.apply {
+                    cleanTmpApkDir()
+                    cleanExternalTmpApkDir()
+                }
                 when (id) {
                     ACTION_STORAGE -> {
                         storageLauncher.launch(arrayOf("application/vnd.android.package-archive"))
@@ -435,10 +442,10 @@ private fun DoPatchBody(modifier: Modifier, navigator: DestinationsNavigator) {
                     val installSuccessfully = stringResource(R.string.patch_install_successfully)
                     val installFailed = stringResource(R.string.patch_install_failed)
                     val copyError = stringResource(R.string.copy_error)
-                    var installing by remember { mutableStateOf(false) }
-                    if (installing) InstallDialog(viewModel.patchApp) { status, message ->
+                    var installing by remember { mutableStateOf(0) }
+                    val onFinish: (Int, String?) -> Unit = { status, message ->
                         scope.launch {
-                            installing = false
+                            installing = 0
                             if (status == PackageInstaller.STATUS_SUCCESS) {
                                 lspApp.globalScope.launch { snackbarHost.showSnackbar(installSuccessfully) }
                                 navigator.navigateUp()
@@ -451,6 +458,7 @@ private fun DoPatchBody(modifier: Modifier, navigator: DestinationsNavigator) {
                             }
                         }
                     }
+                    if (installing == 1) InstallDialog(viewModel.patchApp, onFinish) else if (installing == 2) InstallDialog2(viewModel.patchApp, onFinish)
                     Row(Modifier.padding(top = 12.dp)) {
                         Button(
                             modifier = Modifier.weight(1f),
@@ -462,11 +470,9 @@ private fun DoPatchBody(modifier: Modifier, navigator: DestinationsNavigator) {
                             modifier = Modifier.weight(1f),
                             onClick = {
                                 if (!ShizukuApi.isPermissionGranted) {
-                                    scope.launch {
-                                        snackbarHost.showSnackbar(shizukuUnavailable)
-                                    }
+                                    installing = 2
                                 } else {
-                                    installing = true
+                                    installing = 1
                                 }
                             },
                             content = { Text(stringResource(R.string.install)) }
@@ -569,6 +575,95 @@ private fun InstallDialog(patchApp: AppInfo, onFinish: (Int, String?) -> Unit) {
                     textAlign = TextAlign.Center
                 )
             }
+        )
+    }
+}
+
+@Composable
+private fun InstallDialog2(patchApp: AppInfo, onFinish: (Int, String?) -> Unit) {
+    val scope = rememberCoroutineScope()
+    var uninstallFirst by remember {
+        mutableStateOf(
+            checkIsApkFixedByLSP(
+                lspApp,
+                patchApp.app.packageName
+            )
+        )
+    }
+
+    fun doInstall() {
+        val apkFiles = lspApp.targetApkFiles
+        if (apkFiles.isNullOrEmpty()){
+            onFinish(LSPPackageManager.STATUS_USER_CANCELLED, "No target APK files found for installation")
+            return
+        }
+        if (apkFiles.size > 1) {
+            scope.launch {
+                val success = installApks(lspApp, apkFiles)
+                if (success) {
+                    onFinish(
+                        LSPPackageManager.STATUS_USER_CANCELLED,
+                        "Split APKs installed successfully"
+                    )
+                } else {
+                    onFinish(
+                        LSPPackageManager.STATUS_USER_CANCELLED,
+                        "Failed to install split APKs"
+                    )
+                }
+            }
+        } else  {
+            installApk(lspApp, apkFiles.first())
+        }
+    }
+
+    LaunchedEffect(Unit) {
+        if (!uninstallFirst) {
+            onFinish(LSPPackageManager.STATUS_USER_CANCELLED, "User cancelled")
+            doInstall()
+        }
+    }
+
+    if (uninstallFirst) {
+        AlertDialog(
+            onDismissRequest = {
+                onFinish(
+                    LSPPackageManager.STATUS_USER_CANCELLED,
+                    "User cancelled"
+                )
+            },
+            confirmButton = {
+                TextButton(
+                    onClick = {
+                        onFinish(LSPPackageManager.STATUS_USER_CANCELLED, "Reset")
+                        scope.launch {
+                            Log.i(TAG, "Uninstalling app ${patchApp.app.packageName}")
+                            uninstallApkByPackageName(lspApp, patchApp.app.packageName)
+                            uninstallFirst = false
+                        }
+                    },
+                    content = { Text(stringResource(android.R.string.ok)) }
+                )
+            },
+            dismissButton = {
+                TextButton(
+                    onClick = {
+                        onFinish(
+                            LSPPackageManager.STATUS_USER_CANCELLED,
+                            "User cancelled"
+                        )
+                    },
+                    content = { Text(stringResource(android.R.string.cancel)) }
+                )
+            },
+            title = {
+                Text(
+                    modifier = Modifier.fillMaxWidth(),
+                    text = stringResource(R.string.uninstall),
+                    textAlign = TextAlign.Center
+                )
+            },
+            text = { Text(stringResource(R.string.patch_uninstall_text)) }
         )
     }
 }
