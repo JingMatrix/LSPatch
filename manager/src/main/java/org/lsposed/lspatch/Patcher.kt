@@ -65,7 +65,6 @@ object Patcher {
                     val apkFile = File(lspApp.externalCacheDir, apk.name)
                     apk.copyTo(apkFile, overwrite = true)
                     apkFileList.add(apkFile)
-//                    Log.d("lspatch", "Patched file: ${apk.name} -> ${apkFile.absolutePath}")
                     output.use {
                         apk.inputStream().use { input ->
                             input.copyTo(output)

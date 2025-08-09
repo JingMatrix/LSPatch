@@ -102,34 +102,19 @@ class InstallResultReceiver : BroadcastReceiver() {
                 if (confirmIntent != null) {
                     context.startActivity(confirmIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
                 }
-                Log.d("lspatch", "请求用户确认安装")
             }
 
             PackageInstaller.STATUS_SUCCESS -> {
-                // 安装成功
-                Log.d("lspatch", "安装完成")
             }
 
             else -> {
-                // 安装失败
-                Log.e("lspatch", "安装失败: $status, $message")
             }
         }
     }
 }
 
-/**
- * 安装分包 APK
- * @param context 上下文
- * @param apkFiles APK 文件列表 (包括 base.apk 和 split aab 的 apk)
- * @return 安装是否成功提交（注意：这不代表最终安装成功，只代表安装请求已发出）
- */
-
 suspend fun installApks(context: Context, apkFiles: List<File>): Boolean {
-    // 检查权限：应用是否被允许安装未知来源应用
     if (!context.packageManager.canRequestPackageInstalls()) {
-        Log.e("lspatch", "没有安装未知来源应用的权限")
-        // 引导用户去设置页面开启权限
         val intent = Intent(Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES).apply {
             data = "package:${context.packageName}".toUri()
             flags = Intent.FLAG_ACTIVITY_NEW_TASK
@@ -138,10 +123,8 @@ suspend fun installApks(context: Context, apkFiles: List<File>): Boolean {
         return false
     }
 
-    // 检查文件是否存在
     apkFiles.forEach {
         if (!it.exists()) {
-            Log.e("lspatch", "APK 文件不存在: ${it.absolutePath}")
             return false
         }
     }
@@ -150,15 +133,12 @@ suspend fun installApks(context: Context, apkFiles: List<File>): Boolean {
         val packageInstaller = context.packageManager.packageInstaller
         var session: PackageInstaller.Session? = null
         try {
-            // 1. 创建安装会话
             val params =
                 PackageInstaller.SessionParams(PackageInstaller.SessionParams.MODE_FULL_INSTALL)
             val sessionId = packageInstaller.createSession(params)
             session = packageInstaller.openSession(sessionId)
 
-            // 2. 循环将所有 APK 文件写入会话
             apkFiles.forEach { apkFile ->
-                Log.d("lspatch", "正在添加 APK 到会话: ${apkFile.name}")
                 session.openWrite(apkFile.name, 0, apkFile.length()).use { outputStream ->
                     apkFile.inputStream().use { inputStream ->
                         inputStream.copyTo(outputStream)
@@ -167,20 +147,14 @@ suspend fun installApks(context: Context, apkFiles: List<File>): Boolean {
                 }
             }
 
-            // 3. 创建 PendingIntent 用于接收安装结果
             val pendingIntent = InstallResultReceiver.createPendingIntent(context, sessionId)
 
-            // 4. 提交会话，开始安装
             session.commit(pendingIntent.intentSender)
-            Log.d("lspatch", "安装会话已提交，等待用户确认...")
             true
-        } catch (e: IOException) {
-            Log.e("lspatch", "安装失败 (IO异常)", e)
-            // 如果发生错误，放弃会话
+        } catch (_: IOException) {
             session?.abandon()
             false
-        } catch (e: Exception) {
-            Log.e("lspatch", "安装失败 (未知异常)", e)
+        } catch (_: Exception) {
             session?.abandon()
             false
         }

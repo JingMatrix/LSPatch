@@ -79,27 +79,22 @@ fun NewPatchScreen(
     val viewModel = viewModel<NewPatchViewModel>()
     val snackbarHost = LocalSnackbarHost.current
     val errorUnknown = stringResource(R.string.error_unknown)
-    val storageLauncher =
-        rememberLauncherForActivityResult(ActivityResultContracts.OpenMultipleDocuments()) { apks ->
-            if (apks.isEmpty()) {
-                navigator.navigateUp()
-                return@rememberLauncherForActivityResult
-            }
-            runBlocking {
-                LSPPackageManager.getAppInfoFromApks(apks)
-                    .onSuccess {
-                        viewModel.dispatch(ViewAction.ConfigurePatch(it.first()))
-                    }
-                    .onFailure {
-                        lspApp.globalScope.launch {
-                            snackbarHost.showSnackbar(
-                                it.message ?: errorUnknown
-                            )
-                        }
-                        navigator.navigateUp()
-                    }
-            }
+    val storageLauncher = rememberLauncherForActivityResult(ActivityResultContracts.OpenMultipleDocuments()) { apks ->
+        if (apks.isEmpty()) {
+            navigator.navigateUp()
+            return@rememberLauncherForActivityResult
         }
+        runBlocking {
+            LSPPackageManager.getAppInfoFromApks(apks)
+                .onSuccess {
+                    viewModel.dispatch(ViewAction.ConfigurePatch(it.first()))
+                }
+                .onFailure {
+                    lspApp.globalScope.launch { snackbarHost.showSnackbar(it.message ?: errorUnknown) }
+                    navigator.navigateUp()
+                }
+        }
+    }
 
     var showSelectModuleDialog by remember { mutableStateOf(false) }
     val noXposedModules = stringResource(R.string.patch_no_xposed_module)
@@ -164,7 +159,6 @@ fun NewPatchScreen(
                 }
             }
         }
-
         PatchState.SELECTING -> {
             resultRecipient.onNavResult {
                 Log.d(TAG, "onNavResult: $it")
@@ -177,7 +171,6 @@ fun NewPatchScreen(
                 }
             }
         }
-
         else -> {
             Scaffold(
                 topBar = {
@@ -186,7 +179,6 @@ fun NewPatchScreen(
                         PatchState.PATCHING,
                         PatchState.FINISHED,
                         PatchState.ERROR -> CenterAlignedTopAppBar(title = { Text(viewModel.patchApp.app.packageName) })
-
                         else -> Unit
                     }
                 },
@@ -212,12 +204,10 @@ fun NewPatchScreen(
             }
 
             if (showSelectModuleDialog) {
-                AlertDialog(
-                    onDismissRequest = { showSelectModuleDialog = false },
+                AlertDialog(onDismissRequest = { showSelectModuleDialog = false },
                     confirmButton = {},
                     dismissButton = {
-                        TextButton(
-                            content = { Text(stringResource(android.R.string.cancel)) },
+                        TextButton(content = { Text(stringResource(android.R.string.cancel)) },
                             onClick = { showSelectModuleDialog = false })
                     },
                     title = {
@@ -229,8 +219,7 @@ fun NewPatchScreen(
                     },
                     text = {
                         Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
-                            TextButton(
-                                modifier = Modifier.fillMaxWidth(),
+                            TextButton(modifier = Modifier.fillMaxWidth(),
                                 colors = ButtonDefaults.textButtonColors(contentColor = MaterialTheme.colorScheme.secondary),
                                 onClick = {
                                     storageModuleLauncher.launch(arrayOf("application/vnd.android.package-archive"))
@@ -242,13 +231,11 @@ fun NewPatchScreen(
                                     style = MaterialTheme.typography.bodyLarge
                                 )
                             }
-                            TextButton(
-                                modifier = Modifier.fillMaxWidth(),
+                            TextButton(modifier = Modifier.fillMaxWidth(),
                                 colors = ButtonDefaults.textButtonColors(contentColor = MaterialTheme.colorScheme.secondary),
                                 onClick = {
                                     navigator.navigate(
-                                        SelectAppsScreenDestination(
-                                            true,
+                                        SelectAppsScreenDestination(true,
                                             viewModel.embeddedModules.mapTo(ArrayList()) { it.app.packageName })
                                     )
                                     showSelectModuleDialog = false
@@ -337,12 +324,7 @@ private fun PatchOptionsBody(modifier: Modifier, onAddEmbed: () -> Unit) {
                 extraContent = {
                     TextButton(
                         onClick = onAddEmbed,
-                        content = {
-                            Text(
-                                text = stringResource(R.string.patch_embed_modules),
-                                style = MaterialTheme.typography.bodyLarge
-                            )
-                        }
+                        content = { Text(text = stringResource(R.string.patch_embed_modules), style = MaterialTheme.typography.bodyLarge) }
                     )
                 }
             )
@@ -356,9 +338,7 @@ private fun PatchOptionsBody(modifier: Modifier, onAddEmbed: () -> Unit) {
             title = stringResource(R.string.patch_debuggable)
         )
         SettingsCheckBox(
-            modifier = Modifier.clickable {
-                viewModel.overrideVersionCode = !viewModel.overrideVersionCode
-            },
+            modifier = Modifier.clickable { viewModel.overrideVersionCode = !viewModel.overrideVersionCode },
             checked = viewModel.overrideVersionCode,
             icon = Icons.Outlined.Layers,
             title = stringResource(R.string.patch_override_version_code),
@@ -390,9 +370,7 @@ private fun PatchOptionsBody(modifier: Modifier, onAddEmbed: () -> Unit) {
                 DropdownMenuItem(
                     text = {
                         Row(verticalAlignment = Alignment.CenterVertically) {
-                            RadioButton(
-                                selected = viewModel.sigBypassLevel == it,
-                                onClick = { viewModel.sigBypassLevel = it })
+                            RadioButton(selected = viewModel.sigBypassLevel == it, onClick = { viewModel.sigBypassLevel = it })
                             Text(sigBypassLvStr(it))
                         }
                     },
@@ -444,10 +422,7 @@ private fun DoPatchBody(modifier: Modifier, navigator: DestinationsNavigator) {
                             when (it.first) {
                                 Log.DEBUG -> Text(text = it.second)
                                 Log.INFO -> Text(text = it.second)
-                                Log.ERROR -> Text(
-                                    text = it.second,
-                                    color = MaterialTheme.colorScheme.error
-                                )
+                                Log.ERROR -> Text(text = it.second, color = MaterialTheme.colorScheme.error)
                             }
                         }
                     }
@@ -472,26 +447,18 @@ private fun DoPatchBody(modifier: Modifier, navigator: DestinationsNavigator) {
                         scope.launch {
                             installing = 0
                             if (status == PackageInstaller.STATUS_SUCCESS) {
-                                lspApp.globalScope.launch {
-                                    snackbarHost.showSnackbar(
-                                        installSuccessfully
-                                    )
-                                }
+                                lspApp.globalScope.launch { snackbarHost.showSnackbar(installSuccessfully) }
                                 navigator.navigateUp()
                             } else if (status != LSPPackageManager.STATUS_USER_CANCELLED) {
                                 val result = snackbarHost.showSnackbar(installFailed, copyError)
                                 if (result == SnackbarResult.ActionPerformed) {
-                                    val cm =
-                                        lspApp.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+                                    val cm = lspApp.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
                                     cm.setPrimaryClip(ClipData.newPlainText("LSPatch", message))
                                 }
                             }
                         }
                     }
-                    if (installing == 1) InstallDialog(
-                        viewModel.patchApp,
-                        onFinish
-                    ) else if (installing == 2) InstallDialog2(viewModel.patchApp, onFinish)
+                    if (installing == 1) InstallDialog(viewModel.patchApp, onFinish) else if (installing == 2) InstallDialog2(viewModel.patchApp, onFinish)
                     Row(Modifier.padding(top = 12.dp)) {
                         Button(
                             modifier = Modifier.weight(1f),
@@ -512,7 +479,6 @@ private fun DoPatchBody(modifier: Modifier, navigator: DestinationsNavigator) {
                         )
                     }
                 }
-
                 PatchState.ERROR -> {
                     Row(Modifier.padding(top = 12.dp)) {
                         Button(
@@ -524,19 +490,13 @@ private fun DoPatchBody(modifier: Modifier, navigator: DestinationsNavigator) {
                         Button(
                             modifier = Modifier.weight(1f),
                             onClick = {
-                                val cm =
-                                    lspApp.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-                                cm.setPrimaryClip(
-                                    ClipData.newPlainText(
-                                        "LSPatch",
-                                        viewModel.logs.joinToString { it.second + "\n" })
-                                )
+                                val cm = lspApp.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+                                cm.setPrimaryClip(ClipData.newPlainText("LSPatch", viewModel.logs.joinToString { it.second + "\n" }))
                             },
                             content = { Text(stringResource(R.string.copy_error)) }
                         )
                     }
                 }
-
                 else -> Unit
             }
         }
@@ -546,13 +506,7 @@ private fun DoPatchBody(modifier: Modifier, navigator: DestinationsNavigator) {
 @Composable
 private fun InstallDialog(patchApp: AppInfo, onFinish: (Int, String?) -> Unit) {
     val scope = rememberCoroutineScope()
-    var uninstallFirst by remember {
-        mutableStateOf(
-            ShizukuApi.isPackageInstalledWithoutPatch(
-                patchApp.app.packageName
-            )
-        )
-    }
+    var uninstallFirst by remember { mutableStateOf(ShizukuApi.isPackageInstalledWithoutPatch(patchApp.app.packageName)) }
     var installing by remember { mutableStateOf(0) }
     suspend fun doInstall() {
         Log.i(TAG, "Installing app ${patchApp.app.packageName}")
@@ -571,12 +525,7 @@ private fun InstallDialog(patchApp: AppInfo, onFinish: (Int, String?) -> Unit) {
 
     if (uninstallFirst) {
         AlertDialog(
-            onDismissRequest = {
-                onFinish(
-                    LSPPackageManager.STATUS_USER_CANCELLED,
-                    "User cancelled"
-                )
-            },
+            onDismissRequest = { onFinish(LSPPackageManager.STATUS_USER_CANCELLED, "User cancelled") },
             confirmButton = {
                 TextButton(
                     onClick = {
@@ -599,12 +548,7 @@ private fun InstallDialog(patchApp: AppInfo, onFinish: (Int, String?) -> Unit) {
             },
             dismissButton = {
                 TextButton(
-                    onClick = {
-                        onFinish(
-                            LSPPackageManager.STATUS_USER_CANCELLED,
-                            "User cancelled"
-                        )
-                    },
+                    onClick = { onFinish(LSPPackageManager.STATUS_USER_CANCELLED, "User cancelled") },
                     content = { Text(stringResource(android.R.string.cancel)) }
                 )
             },
@@ -648,10 +592,8 @@ private fun InstallDialog2(patchApp: AppInfo, onFinish: (Int, String?) -> Unit) 
     }
 
     fun doInstall() {
-        Log.i(TAG, "Installing app ${patchApp.app.packageName}")
         val apkFiles = lspApp.targetApkFiles
         if (apkFiles.isNullOrEmpty()){
-            Log.e(TAG, "No target APK files found for installation")
             onFinish(LSPPackageManager.STATUS_USER_CANCELLED, "No target APK files found for installation")
             return
         }
