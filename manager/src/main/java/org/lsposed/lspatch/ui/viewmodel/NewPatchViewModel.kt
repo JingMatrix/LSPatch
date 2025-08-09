@@ -24,6 +24,10 @@ class NewPatchViewModel : ViewModel() {
         INIT, SELECTING, CONFIGURING, PATCHING, FINISHED, ERROR
     }
 
+    enum class InstallMethod {
+        SYSTEM, SHIZUKU
+    }
+
     sealed class ViewAction {
         object DoneInit : ViewAction()
         data class ConfigurePatch(val app: AppInfo) : ViewAction()

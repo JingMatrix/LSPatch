@@ -18,7 +18,7 @@ class LSPApplication : Application() {
 
     lateinit var prefs: SharedPreferences
     lateinit var tmpApkDir: File
-
+    var targetApkFiles: ArrayList<File>? = null
     val globalScope = CoroutineScope(Dispatchers.Default)
 
     override fun onCreate() {

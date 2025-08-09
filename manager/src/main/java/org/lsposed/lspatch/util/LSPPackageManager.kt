@@ -79,6 +79,12 @@ object LSPPackageManager {
         }
     }
 
+    suspend fun cleanExternalTmpApkDir(){
+        withContext(Dispatchers.IO) {
+            lspApp.externalCacheDir?.listFiles()?.forEach(File::delete)
+        }
+    }
+
     suspend fun install(): Pair<Int, String?> {
         Log.i(TAG, "Perform install patched apks")
         var status = PackageInstaller.STATUS_FAILURE
