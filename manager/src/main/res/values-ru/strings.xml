@@ -86,6 +86,6 @@
     <string name="settings_keystore_wrong_alias">Неправильное имя alias</string>
     <string name="settings_keystore_wrong_alias_password">Неправильный alias-пароль</string>
     <string name="settings_detail_patch_logs">Подробности журнала патча</string>
-    <string name="patch_inject_dex">Inject loader dex</string>
+    <string name="patch_inject_dex">Внедрить загрузчик dex</string>
     <string name="patch_inject_dex_desc">Для приложений с изолированными сервисами, такими как рендеринг браузеров, пожалуйста, включите эту опцию, чтобы убедиться, что они работают должным образом.</string>
 </resources>
