@@ -17,6 +17,8 @@ import org.lsposed.lspatch.Patcher
 import org.lsposed.lspatch.lspApp
 import org.lsposed.lspatch.share.Constants
 import org.lsposed.lspatch.share.PatchConfig
+import org.lsposed.lspatch.ui.util.installApk
+import org.lsposed.lspatch.ui.util.installApks
 import org.lsposed.lspatch.ui.viewstate.ProcessingState
 import org.lsposed.lspatch.util.LSPPackageManager
 import org.lsposed.lspatch.util.LSPPackageManager.AppInfo
@@ -86,7 +88,10 @@ class AppManageViewModel : ViewModel() {
         updateLoaderState = ProcessingState.Processing
         val result = runCatching {
             withContext(Dispatchers.IO) {
-                LSPPackageManager.cleanTmpApkDir()
+                LSPPackageManager.apply {
+                    cleanTmpApkDir()
+                    cleanExternalTmpApkDir()
+                }
                 val apkPaths = listOf(appInfo.app.sourceDir) + (appInfo.app.splitSourceDirs ?: emptyArray())
                 val patchPaths = mutableListOf<String>()
                 val embeddedModulePaths = mutableListOf<String>()
@@ -118,8 +123,21 @@ class AppManageViewModel : ViewModel() {
                     }
                 }
                 Patcher.patch(logger, Patcher.Options(false, config, patchPaths, embeddedModulePaths))
-                val (status, message) = LSPPackageManager.install()
-                if (status != PackageInstaller.STATUS_SUCCESS) throw RuntimeException(message)
+                if (!ShizukuApi.isPermissionGranted) {
+                    val apkFiles = lspApp.targetApkFiles
+                    if (apkFiles.isNullOrEmpty()){
+                        Log.e(TAG, "No patched APK files found")
+                        throw RuntimeException("No patched APK files found")
+                    }
+                    if (apkFiles.size > 1) {
+                        val success = installApks(lspApp, apkFiles)
+                    } else  {
+                        installApk(lspApp, apkFiles.first())
+                    }
+                } else {
+                    val (status, message) = LSPPackageManager.install()
+                    if (status != PackageInstaller.STATUS_SUCCESS) throw RuntimeException(message)
+                }
             }
         }
         updateLoaderState = ProcessingState.Done(result)
