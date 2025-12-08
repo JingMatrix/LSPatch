@@ -99,7 +99,23 @@ public class LSPAppComponentFactoryStub extends AppComponentFactory {
                     transfer(is, os);
                     dex = os.toByteArray();
                 }
-                soPath = cl.getResource("assets/lspatch/so/" + libName + "/liblspatch.so").getPath().substring(5);
+                java.net.URL url = cl.getResource("assets/npatch/so/" + libName + "/libnpatch.so");
+                if (url == null) {
+                    throw new RuntimeException("Should not happen: libnpatch.so not found in assets");
+                }
+                String rawPath = url.getPath();
+                if (rawPath.startsWith("file:")) {
+                    soPath = rawPath.substring(5);
+                } else if (rawPath.startsWith("jar:file:")) {
+                    soPath = rawPath.substring(9);
+                } else {
+                    soPath = rawPath;
+                }
+                try {
+                    soPath = java.net.URLDecoder.decode(soPath, "UTF-8");
+                } catch (java.io.UnsupportedEncodingException e) {
+                }
+                Log.i(TAG, "Loading native lib from: " + soPath);
             }
 
             System.load(soPath);
