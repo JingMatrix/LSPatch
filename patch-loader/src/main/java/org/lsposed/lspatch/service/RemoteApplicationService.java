@@ -32,7 +32,7 @@ import java.util.concurrent.TimeoutException;
 public class RemoteApplicationService implements ILSPApplicationService {
 
     private static final String TAG = "LSPatch";
-    private static final String MODULE_SERVICE = Constants.MANAGER_PACKAGE_NAME + ".manager.ModuleService";
+    private static final String MODULE_SERVICE = "org.lsposed.lspatch.manager.ModuleService";
 
     private volatile ILSPApplicationService service;
 
