@@ -34,19 +34,6 @@ jobs:
           echo ${{ secrets.KEY_STORE }} | base64 --decode > key.jks
         fi
 
-    - name: Checkout libxposed/api
-      uses: actions/checkout@main
-      with:
-        repository: libxposed/api
-        path: libxposed/api
-        ref: 54582730315ba4a3d7cfaf9baf9d23c419e07006
-
-    - name: Checkout libxposed/service
-      uses: actions/checkout@main
-      with:
-        repository: libxposed/service
-        path: libxposed/service
-
     - name: Setup Java
       uses: actions/setup-java@v4
       with:
@@ -68,20 +55,10 @@ jobs:
       shell: bash
       run: rm -rf $ANDROID_HOME/cmake
 
-    - name: Build dependencies with Gradle
-      working-directory: libxposed
-      run: |
-        cd api
-        echo 'org.gradle.jvmargs=-Xmx2048m' >> gradle.properties
-        ./gradlew :api:publishApiPublicationToMavenLocal
-        cd ../service
-        echo 'org.gradle.jvmargs=-Xmx2048m' >> gradle.properties
-        ./gradlew :interface:publishInterfacePublicationToMavenLocal
-
     - name: Set short commit id
       run: echo "commit=$(echo ${{ github.sha }} | cut -c-7)" > $GITHUB_ENV
 
-    - name: Build core with Gradle
+    - name: Build with Gradle
       run: |
         {
           echo 'org.gradle.parallel=true'
