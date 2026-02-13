@@ -240,17 +240,3 @@ subprojects {
         configureBaseExtension()
     }
 }
-
-
-project(":core") {
-    afterEvaluate {
-        if (property("android") is LibraryExtension) {
-            val android = property("android") as LibraryExtension
-            android.run {
-                buildTypes {
-                    release { proguardFiles(rootProject.file("share/lspatch-rules.pro")) }
-                }
-            }
-        }
-    }
-}

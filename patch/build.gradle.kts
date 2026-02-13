@@ -17,8 +17,8 @@ java {
 }
 
 dependencies {
-    implementation(projects.axml)
     implementation(projects.apkzlib)
+    implementation("vector:axml")
     implementation(projects.share.java)
 
     implementation(lspatch.commons.io)
