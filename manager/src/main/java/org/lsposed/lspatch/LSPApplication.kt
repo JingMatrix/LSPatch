@@ -28,7 +28,7 @@ class LSPApplication : Application() {
         filesDir.mkdir()
         tmpApkDir = cacheDir.resolve("apk").also { it.mkdir() }
         prefs = lspApp.getSharedPreferences("settings", Context.MODE_PRIVATE)
-        ShizukuApi.init()
+        ShizukuApi.init(this)
         AppBroadcastReceiver.register(this)
         globalScope.launch { LSPPackageManager.fetchAppList() }
     }
