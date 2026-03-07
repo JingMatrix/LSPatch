@@ -192,11 +192,7 @@ fun AppManageBody(
                             onClick = {
                                 expanded = false
                                 scope.launch {
-                                    if (!ShizukuApi.isPermissionGranted) {
-                                        snackbarHost.showSnackbar(shizukuUnavailable)
-                                    } else {
-                                        viewModel.dispatch(AppManageViewModel.ViewAction.UpdateLoader(it.first, it.second))
-                                    }
+                                    viewModel.dispatch(AppManageViewModel.ViewAction.UpdateLoader(it.first, it.second))
                                 }
                             }
                         )

@@ -10,6 +10,7 @@ import org.lsposed.lspatch.share.Constants
 import org.lsposed.lspatch.share.PatchConfig
 import org.lsposed.patch.LSPatch
 import org.lsposed.patch.util.Logger
+import java.io.File
 import java.io.IOException
 import java.util.Collections.addAll
 
@@ -52,6 +53,8 @@ object Patcher {
             root.listFiles().forEach {
                 if (it.name?.endsWith(Constants.PATCH_FILE_SUFFIX) == true) it.delete()
             }
+            lspApp.targetApkFiles?.clear()
+            val apkFileList = arrayListOf<File>()
             lspApp.tmpApkDir.walk()
                 .filter { it.name.endsWith(Constants.PATCH_FILE_SUFFIX) }
                 .forEach { apk ->
@@ -59,12 +62,16 @@ object Patcher {
                         ?: throw IOException("Failed to create output file")
                     val output = lspApp.contentResolver.openOutputStream(file.uri)
                         ?: throw IOException("Failed to open output stream")
+                    val apkFile = File(lspApp.externalCacheDir, apk.name)
+                    apk.copyTo(apkFile, overwrite = true)
+                    apkFileList.add(apkFile)
                     output.use {
                         apk.inputStream().use { input ->
                             input.copyTo(output)
                         }
                     }
                 }
+            lspApp.targetApkFiles = apkFileList
             logger.i("Patched files are saved to ${root.uri.lastPathSegment}")
         }
     }
