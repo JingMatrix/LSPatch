@@ -99,7 +99,10 @@ public class LSPAppComponentFactoryStub extends AppComponentFactory {
                     transfer(is, os);
                     dex = os.toByteArray();
                 }
-                soPath = cl.getResource("assets/lspatch/so/" + libName + "/liblspatch.so").getPath().substring(5);
+                String resourcePath = cl.getResource("assets/lspatch/so/" + libName + "/liblspatch.so").getPath();
+                Log.d(TAG, "Resource path: " + resourcePath);
+                String[] pathParts = resourcePath.split("file:");
+                soPath = pathParts[pathParts.length - 1];
             }
 
             System.load(soPath);
