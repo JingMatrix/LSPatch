@@ -10,7 +10,7 @@
     <string name="modules">Modüller</string>
     <string name="shizuku_available">Shizuku servisi mevcut</string>
     <string name="shizuku_unavailable">Shizuku hizmeti bağlı değil</string>
-    <string name="screen_repo">Repo</string>
+    <string name="screen_repo">Depo</string>
     <string name="screen_logs">Günlükler</string>
     <string name="off">Kapalı</string>
     <string name="error_unknown">Bilinmeyen hata</string>
