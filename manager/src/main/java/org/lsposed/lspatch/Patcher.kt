@@ -34,6 +34,7 @@ object Patcher {
                     add("-m"); add(it)
                 }
                 if(injectDex) add("--injectdex")
+                if (config.useMicroG) add("--useMicroG")
                 if (!MyKeyStore.useDefault) {
                     addAll(arrayOf("-k", MyKeyStore.file.path, Configs.keyStorePassword, Configs.keyStoreAlias, Configs.keyStoreAliasPassword))
                 }

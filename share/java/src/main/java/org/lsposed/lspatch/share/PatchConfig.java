@@ -9,6 +9,7 @@ public class PatchConfig {
     public final String originalSignature;
     public final String appComponentFactory;
     public final LSPConfig lspConfig;
+    public final boolean useMicroG;
 
     public PatchConfig(
             boolean useManager,
@@ -16,7 +17,8 @@ public class PatchConfig {
             boolean overrideVersionCode,
             int sigBypassLevel,
             String originalSignature,
-            String appComponentFactory
+            String appComponentFactory,
+            boolean useMicroG
     ) {
         this.useManager = useManager;
         this.debuggable = debuggable;
@@ -25,5 +27,6 @@ public class PatchConfig {
         this.originalSignature = originalSignature;
         this.appComponentFactory = appComponentFactory;
         this.lspConfig = LSPConfig.instance;
+        this.useMicroG = useMicroG;
     }
 }

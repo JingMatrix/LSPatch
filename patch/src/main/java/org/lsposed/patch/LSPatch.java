@@ -96,6 +96,9 @@ public class LSPatch {
     @Parameter(names = {"-m", "--embed"}, description = "Embed provided modules to apk")
     private List<String> modules = new ArrayList<>();
 
+    @Parameter(names = {"--useMicroG"}, description = "Redirect GMS calls to community MicroG")
+    private boolean useMicroG = false;
+
     private static final String ANDROID_MANIFEST_XML = "AndroidManifest.xml";
     private static final HashSet<String> ARCHES = new HashSet<>(Arrays.asList(
             "armeabi-v7a",
@@ -250,10 +253,10 @@ public class LSPatch {
 
             logger.i("Patching apk...");
             // modify manifest
-            final var config = new PatchConfig(useManager, debuggableFlag, overrideVersionCode, sigbypassLevel, originalSignature, appComponentFactory);
+            final var config = new PatchConfig(useManager, debuggableFlag, overrideVersionCode, sigbypassLevel, originalSignature, appComponentFactory, useMicroG);
             final var configBytes = new Gson().toJson(config).getBytes(StandardCharsets.UTF_8);
             final var metadata = Base64.getEncoder().encodeToString(configBytes);
-            try (var is = new ByteArrayInputStream(modifyManifestFile(manifestEntry.open(), metadata, minSdkVersion))) {
+            try (var is = new ByteArrayInputStream(modifyManifestFile(manifestEntry.open(), metadata, minSdkVersion, originalSignature))) {
                 dstZFile.add(ANDROID_MANIFEST_XML, is);
             } catch (Throwable e) {
                 throw new PatchError("Error when modifying manifest", e);
@@ -344,7 +347,7 @@ public class LSPatch {
         }
     }
 
-    private byte[] modifyManifestFile(InputStream is, String metadata, int minSdkVersion) throws IOException {
+    private byte[] modifyManifestFile(InputStream is, String metadata, int minSdkVersion, String originalSignature) throws IOException {
         ModificationProperty property = new ModificationProperty();
 
         if (overrideVersionCode)
@@ -354,6 +357,23 @@ public class LSPatch {
         property.addApplicationAttribute(new AttributeItem(NodeValue.Application.DEBUGGABLE, debuggableFlag));
         property.addApplicationAttribute(new AttributeItem("appComponentFactory", PROXY_APP_COMPONENT_FACTORY));
         property.addMetaData(new ModificationProperty.MetaData("lspatch", metadata));
+
+        // 注入 MicroG 偽裝簽名與權限
+        if (useMicroG && originalSignature != null && !originalSignature.isEmpty()) {
+            try {
+                byte[] sigBytes = Base64.getDecoder().decode(originalSignature);
+                StringBuilder hex = new StringBuilder();
+                for (byte b : sigBytes) {
+                    hex.append(String.format("%02x", b));
+                }
+                property.addMetaData(new ModificationProperty.MetaData("fake-signature", hex.toString()));
+                property.addUsesPermission("android.permission.FAKE_PACKAGE_SIGNATURE");
+                logger.d("Added fake-signature metadata for MicroG compatibility");
+            } catch (Exception e) {
+                logger.e("Failed to add fake-signature: " + e.getMessage());
+            }
+        }
+
         // TODO: replace query_all with queries -> manager
         if (useManager)
             property.addUsesPermission("android.permission.QUERY_ALL_PACKAGES");

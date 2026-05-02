@@ -95,6 +95,11 @@ public class LSPApplication {
         switchAllClassLoader();
         SigBypass.doSigBypass(context, config.optInt("sigBypassLevel"));
 
+        if (config.optBoolean("useMicroG")) {
+            String originalSignature = config.optString("originalSignature");
+            GmsRedirector.activate(context, originalSignature);
+        }
+
         Log.i(TAG, "LSPatch bootstrap completed");
     }
 

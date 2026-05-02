@@ -346,6 +346,14 @@ private fun PatchOptionsBody(modifier: Modifier, onAddEmbed: () -> Unit) {
             desc = stringResource(R.string.patch_inject_dex_desc)
         )
 
+        SettingsCheckBox(
+            modifier = Modifier.clickable { viewModel.useMicroG = !viewModel.useMicroG },
+            checked = viewModel.useMicroG,
+            icon = Icons.Outlined.CloudSync,
+            title = stringResource(R.string.patch_use_microg),
+            desc = stringResource(R.string.patch_use_microg_desc)
+        )
+
         var bypassExpanded by remember { mutableStateOf(false) }
         AnywhereDropdown(
             expanded = bypassExpanded,

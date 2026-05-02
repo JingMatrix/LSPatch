@@ -62,6 +62,10 @@
     <string name="patch_sigbypasslv2">lv2: 繞過 PM + openat (libc)</string>
     <string name="patch_override_version_code">覆蓋版本編號</string>
     <string name="patch_override_version_code_desc">將打包應用程式的版本編號改成 1\n允許以後降級安裝，一般來說，這不會影響應用程式實際感知的版本編號。</string>
+    <string name="patch_inject_dex">注入載入器 Dex</string>
+    <string name="patch_inject_dex_desc">對那些需要孤立服務程序的應用程式，譬如說瀏覽器的渲染引擎，請勾選此選項以確保他們正常執行</string>
+    <string name="patch_use_microg">強制啟用 MicroG 支援</string>
+    <string name="patch_use_microg_desc">重新導向 GMS 請求至社群版 MicroG。適用於 YouTube 等 Google 應用程式，需自行安裝對應的 MicroG 服務。</string>
     <string name="patch_start">開始打包</string>
     <string name="patch_return">返回</string>
     <string name="patch_uninstall_text">由於簽名不同，安裝前需要先解除安裝原程式。\n確保您已備份好個人資料。</string>
@@ -86,6 +90,4 @@
     <string name="settings_keystore_wrong_alias">別名錯誤</string>
     <string name="settings_keystore_wrong_alias_password">別名密碼錯誤</string>
     <string name="settings_detail_patch_logs">詳細打包日誌</string>
-    <string name="patch_inject_dex">注入加載器 Dex</string>
-    <string name="patch_inject_dex_desc">對那些需要孤立服務進程的應用程序，譬如說瀏覽器的渲染引擎，請勾選此選項以確保他們正常運行</string>
 </resources>
