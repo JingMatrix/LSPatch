@@ -28,8 +28,8 @@ Note: debug builds are only available in Github Actions
 1. Follow the instructions of the manager app
 
 + Adding a meta-data field with the com.google.android.geo.API_KEY parameter
-To be able to add a _meta-data_ field to the _AndroidManifest.xml_ file with the com.google.android.geo.API_KEY parameter and its correct value, you must specify it in the _share/java/src/main/java/org/lsposed/lspatch/share/Constants.java_ file before compiling LSPatch.
-After that, in the manager you can use the item "Set GeoAPIKey", and in lspatch.jar - the parameter "-g" or "--geoapi".
+1. To be able to add a _meta-data_ field to the _AndroidManifest.xml_ file with the com.google.android.geo.API_KEY parameter and its correct value, you must specify it in the _share/java/src/main/java/org/lsposed/lspatch/share/Constants.java_ file before compiling LSPatch.
+1. After that, in the manager you can use the item "Set GeoAPIKey", and in lspatch.jar - the parameter "-g" or "--geoapi".
   
 
 
