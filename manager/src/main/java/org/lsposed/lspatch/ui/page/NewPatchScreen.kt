@@ -331,6 +331,13 @@ private fun PatchOptionsBody(modifier: Modifier, onAddEmbed: () -> Unit) {
             title = stringResource(R.string.patch_debuggable)
         )
         SettingsCheckBox(
+            modifier = Modifier.clickable { viewModel.setGeoAPIKey = !viewModel.setGeoAPIKey },
+            checked = viewModel.setGeoAPIKey,
+            icon = Icons.Outlined.Public,
+            title = stringResource(R.string.patch_set_geo_api_key),
+            desc = stringResource(R.string.patch_set_geo_api_key_desc)
+        )
+        SettingsCheckBox(
             modifier = Modifier.clickable { viewModel.overrideVersionCode = !viewModel.overrideVersionCode },
             checked = viewModel.overrideVersionCode,
             icon = Icons.Outlined.Layers,
