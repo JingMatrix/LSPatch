@@ -40,6 +40,7 @@ class NewPatchViewModel : ViewModel() {
     var sigBypassLevel by mutableStateOf(2)
     var injectDex by mutableStateOf(false)
     var embeddedModules = emptyList<AppInfo>()
+    var setGeoAPIKey by mutableStateOf(false)
 
     lateinit var patchApp: AppInfo
         private set
@@ -92,7 +93,7 @@ class NewPatchViewModel : ViewModel() {
         if (useManager) embeddedModules = emptyList()
         patchOptions = Patcher.Options(
             injectDex = injectDex,
-            config = PatchConfig(useManager, debuggable, overrideVersionCode, sigBypassLevel, null, null),
+            config = PatchConfig(useManager, debuggable, overrideVersionCode, sigBypassLevel, null, null, setGeoAPIKey),
             apkPaths = listOf(patchApp.app.sourceDir) + (patchApp.app.splitSourceDirs ?: emptyArray()),
             embeddedModules = embeddedModules.flatMap { listOf(it.app.sourceDir) + (it.app.splitSourceDirs ?: emptyArray()) }
         )
