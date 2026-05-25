@@ -88,4 +88,6 @@
     <string name="settings_detail_patch_logs">Подробности журнала патча</string>
     <string name="patch_inject_dex">Inject loader dex</string>
     <string name="patch_inject_dex_desc">Для приложений с изолированными сервисами, такими как рендеринг браузеров, пожалуйста, включите эту опцию, чтобы убедиться, что они работают должным образом.</string>
+    <string name="patch_set_geo_api_key">Установить GeoAPIKey</string>
+    <string name="patch_set_geo_api_key_desc">Должно помочь пропатченому приложению продолжить работать с Google Maps.</string>
 </resources>
