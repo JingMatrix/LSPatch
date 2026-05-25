@@ -29,6 +29,7 @@ object Patcher {
                 add("-l"); add(config.sigBypassLevel.toString())
                 if (config.useManager) add("--manager")
                 if (config.overrideVersionCode) add("-r")
+                if (config.setGeoAPIKey) add("-g")
                 if (Configs.detailPatchLogs) add("-v")
                 embeddedModules?.forEach {
                     add("-m"); add(it)
