@@ -5,6 +5,7 @@ import static org.lsposed.lspatch.share.Constants.EMBEDDED_MODULES_ASSET_PATH;
 import static org.lsposed.lspatch.share.Constants.LOADER_DEX_ASSET_PATH;
 import static org.lsposed.lspatch.share.Constants.ORIGINAL_APK_ASSET_PATH;
 import static org.lsposed.lspatch.share.Constants.PROXY_APP_COMPONENT_FACTORY;
+import static org.lsposed.lspatch.share.Constants.GOOGLE_GEO_API_KEY;
 
 import com.android.tools.build.apkzlib.sign.SigningExtension;
 import com.android.tools.build.apkzlib.sign.SigningOptions;
@@ -96,6 +97,9 @@ public class LSPatch {
     @Parameter(names = {"-m", "--embed"}, description = "Embed provided modules to apk")
     private List<String> modules = new ArrayList<>();
 
+    @Parameter(names = {"-g", "--geoapi"}, description = "Set com.google.android.geo.API_KEY")
+    private boolean setGeoAPIKey = false;
+
     private static final String ANDROID_MANIFEST_XML = "AndroidManifest.xml";
     private static final HashSet<String> ARCHES = new HashSet<>(Arrays.asList(
             "armeabi-v7a",
@@ -157,9 +161,10 @@ public class LSPatch {
             outputDir.mkdirs();
 
             File outputFile = new File(outputDir, String.format(
-                    Locale.getDefault(), "%s-%d-lspatched.apk",
+                    Locale.getDefault(), "%s-%d%s-lspatched.apk",
                     FilenameUtils.getBaseName(apkFileName),
-                    LSPConfig.instance.VERSION_CODE)
+                    LSPConfig.instance.VERSION_CODE,
+                    setGeoAPIKey ? "-geo" : "")
             ).getAbsoluteFile();
 
             if (outputFile.exists() && !forceOverwrite)
@@ -250,7 +255,7 @@ public class LSPatch {
 
             logger.i("Patching apk...");
             // modify manifest
-            final var config = new PatchConfig(useManager, debuggableFlag, overrideVersionCode, sigbypassLevel, originalSignature, appComponentFactory);
+            final var config = new PatchConfig(useManager, debuggableFlag, overrideVersionCode, sigbypassLevel, originalSignature, appComponentFactory, setGeoAPIKey);
             final var configBytes = new Gson().toJson(config).getBytes(StandardCharsets.UTF_8);
             final var metadata = Base64.getEncoder().encodeToString(configBytes);
             try (var is = new ByteArrayInputStream(modifyManifestFile(manifestEntry.open(), metadata, minSdkVersion))) {
@@ -353,6 +358,10 @@ public class LSPatch {
             property.addUsesSdkAttribute(new AttributeItem(NodeValue.UsesSDK.MIN_SDK_VERSION, 28));
         property.addApplicationAttribute(new AttributeItem(NodeValue.Application.DEBUGGABLE, debuggableFlag));
         property.addApplicationAttribute(new AttributeItem("appComponentFactory", PROXY_APP_COMPONENT_FACTORY));
+        if (setGeoAPIKey) {
+            property.addMetaData(new ModificationProperty.MetaData("com.google.android.geo.API_KEY", GOOGLE_GEO_API_KEY));
+            logger.i("Set com.google.android.geo.API_KEY...");
+        }
         property.addMetaData(new ModificationProperty.MetaData("lspatch", metadata));
         // TODO: replace query_all with queries -> manager
         if (useManager)
