@@ -186,7 +186,8 @@ public final class ApkPatcher {
                     manifest.appComponentFactory,
                     spec.injectDex(),
                     spec.manifestOverrides().addedPermissions.toArray(new String[0]),
-                    spec.manifestOverrides().injectDocumentsProvider);
+                    spec.manifestOverrides().injectDocumentsProvider,
+                    spec.useManager() ? spec.managerPackageName() : null);
             byte[] configBytes = new Gson().toJson(config).getBytes(StandardCharsets.UTF_8);
 
             rewriteManifest(srcZFile, dstZFile, configBytes, manifest.packageName, manifest.minSdkVersion, index, total);

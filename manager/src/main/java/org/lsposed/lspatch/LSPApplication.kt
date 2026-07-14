@@ -13,6 +13,7 @@ import org.lsposed.lspatch.data.repository.PatchRequestStore
 import org.lsposed.lspatch.manager.AppBroadcastReceiver
 import org.lsposed.lspatch.service.LogCollectorService
 import org.lsposed.lspatch.util.LSPPackageManager
+import org.lsposed.lspatch.util.ManagerMigrate
 import org.lsposed.lspatch.util.ShizukuApi
 import java.io.File
 
@@ -40,6 +41,8 @@ class LSPApplication : Application() {
         HiddenApiBypass.addHiddenApiExemptions("")
         lspApp = this
         filesDir.mkdir()
+        // Restore settings/db/keystore from a cloaked APK before opening prefs or Room.
+        ManagerMigrate.importIfNeeded(this)
         tmpApkDir = cacheDir.resolve("apk").also { it.mkdir() }
         patchedDir = noBackupFilesDir.resolve("patched").also { it.mkdirs() }
         prefs = lspApp.getSharedPreferences("settings", Context.MODE_PRIVATE)

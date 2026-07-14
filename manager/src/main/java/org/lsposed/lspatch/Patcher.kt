@@ -35,6 +35,9 @@ object Patcher {
             .forceOverwrite(true)
             .verbose(Configs.detailPatchLogs)
             .modules(effectiveModules.map { File(it.apkPath) })
+            // Record the manager's own current package so a manager-mode app keeps reaching it after
+            // the manager is reinstalled under a cloaked package name; integrated apps bind nothing.
+            .managerPackageName(if (mode.useManager) lspApp.packageName else null)
             .manifestOverrides(
                 ManifestOverrides.builder()
                     .versionCode(versionCodeOverride)

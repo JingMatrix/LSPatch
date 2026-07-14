@@ -37,15 +37,17 @@ import java.util.concurrent.TimeoutException;
 public class RemoteApplicationService implements IFrameworkService {
 
     private static final String TAG = "LSPatch";
-    private static final String MODULE_SERVICE = Constants.MANAGER_PACKAGE_NAME + ".manager.ModuleService";
 
     private volatile IFrameworkService service;
 
     @SuppressLint("DiscouragedPrivateApi")
-    public RemoteApplicationService(Context context) throws RemoteException {
+    public RemoteApplicationService(Context context, String managerPackageName) throws RemoteException {
+        var packageName = (managerPackageName == null || managerPackageName.isEmpty())
+                ? Constants.MANAGER_PACKAGE_NAME
+                : managerPackageName;
         try {
             var intent = new Intent()
-                    .setComponent(new ComponentName(Constants.MANAGER_PACKAGE_NAME, MODULE_SERVICE))
+                    .setComponent(new ComponentName(packageName, Constants.MANAGER_SERVICE_NAME))
                     .putExtra("packageName", context.getPackageName());
             // TODO: Authentication
             var latch = new CountDownLatch(1);

@@ -44,9 +44,13 @@ import androidx.compose.material.icons.rounded.Extension
 import androidx.compose.material.icons.rounded.Layers
 import androidx.compose.material.icons.rounded.Memory
 import androidx.compose.material.icons.rounded.Smartphone
+import androidx.compose.material.icons.rounded.Badge
 import androidx.compose.material.icons.rounded.Terminal
 import androidx.compose.material.icons.rounded.Warning
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -106,7 +110,10 @@ import org.matrix.vector.ui.RepoStatsRow
 import org.matrix.vector.ui.theme.Mono
 import org.lsposed.lspatch.ui.util.LocalSnackbarHost
 import org.lsposed.lspatch.ui.viewmodel.HomeViewModel
+import org.lsposed.lspatch.share.Constants
 import org.lsposed.lspatch.util.LSPPackageManager
+import org.lsposed.lspatch.util.ManagerCloakFlow
+import org.lsposed.lspatch.util.PackageNameValidator
 import org.lsposed.lspatch.util.ShizukuApi
 import org.lsposed.lspatch.util.findActivity
 import org.matrix.vector.ui.StatusHeader
@@ -414,6 +421,16 @@ private fun SystemPropertiesCard(navigator: DestinationsNavigator) {
         apps.filter { it.isModule }
             .mapNotNull { runCatching { LSPPackageManager.getIcon(it) }.getOrNull() }
 
+    // The manager's own installed package. Surfaced here, next to the environment facts, because it
+    // is the one identity a detector enumerates the device for -- and because that is the guiding
+    // place to offer changing it. Tapping opens the cloak flow (or the revert, once cloaked).
+    var showPackageDialog by remember { mutableStateOf(false) }
+    val packageProp = SystemProperty(
+        Icons.Rounded.Badge,
+        stringResource(R.string.home_package),
+        lspApp.packageName,
+    ) { showPackageDialog = true }
+
     val shizukuProp = SystemProperty(Icons.Rounded.Terminal, "Shizuku", shizukuValue, openShizuku)
     val androidProp = SystemProperty(Icons.Rounded.Android, "Android", androidAndAbi)
     val deviceProp = SystemProperty(Icons.Rounded.Smartphone, stringResource(R.string.home_device), deviceName)
@@ -499,12 +516,130 @@ private fun SystemPropertiesCard(navigator: DestinationsNavigator) {
                 Modifier.padding(horizontal = 16.dp, vertical = 4.dp),
                 color = MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.4f),
             )
+            PropertyRow(packageProp)
             PropertyRow(shizukuProp)
             PropertyRow(vectorProp)
             PropertyRow(androidProp)
             PropertyRow(deviceProp)
         }
     }
+
+    if (showPackageDialog) {
+        ManagerPackageDialog(onDismiss = { showPackageDialog = false })
+    }
+}
+
+/**
+ * Configures the manager's own package name.
+ *
+ * On the stock package it offers to cloak: reinstall under a custom or random id so a detector
+ * enumerating for `org.lsposed.lspatch` finds nothing. Once cloaked it offers the reverse. Both are
+ * driven by [ManagerCloakFlow], which reports progress as it installs, retargets manager-mode apps,
+ * and removes the old package -- so the dialog stays open, showing that progress, until it finishes.
+ *
+ * This only defeats known-package-name checks; the signing certificate, app label and exported
+ * components are unchanged, and it does nothing for Play Integrity. Manager mode only -- integrated
+ * patches bind no manager and are unaffected.
+ */
+@Composable
+private fun ManagerPackageDialog(onDismiss: () -> Unit) {
+    val scope = rememberCoroutineScope()
+    val isCloaked = lspApp.packageName != Constants.MANAGER_PACKAGE_NAME
+    val granted = ShizukuApi.isPermissionGranted
+
+    var running by remember { mutableStateOf(false) }
+    var status by remember { mutableStateOf<String?>(null) }
+    var newName by remember { mutableStateOf(PackageNameValidator.randomPackageName()) }
+    var invalid by remember { mutableStateOf(false) }
+
+    AlertDialog(
+        onDismissRequest = { if (!running) onDismiss() },
+        title = {
+            Text(stringResource(
+                if (isCloaked) R.string.settings_revert_dialog_title
+                else R.string.settings_cloak_dialog_title
+            ))
+        },
+        text = {
+            Column {
+                Text(stringResource(
+                    if (isCloaked) R.string.settings_revert_warning
+                    else R.string.settings_cloak_warning
+                ))
+                if (!isCloaked) {
+                    Spacer(Modifier.height(12.dp))
+                    OutlinedTextField(
+                        value = newName,
+                        onValueChange = { newName = it; invalid = false },
+                        singleLine = true,
+                        isError = invalid,
+                        enabled = !running,
+                        label = { Text(stringResource(R.string.settings_cloak_package)) },
+                        trailingIcon = {
+                            TextButton(
+                                enabled = !running,
+                                onClick = { newName = PackageNameValidator.randomPackageName(); invalid = false },
+                            ) { Text(stringResource(R.string.settings_cloak_randomize)) }
+                        },
+                    )
+                    if (invalid) Text(
+                        stringResource(R.string.settings_cloak_invalid),
+                        color = MaterialTheme.colorScheme.error,
+                    )
+                }
+                if (!granted) Text(
+                    stringResource(R.string.settings_cloak_need_shizuku),
+                    color = MaterialTheme.colorScheme.error,
+                )
+                status?.let {
+                    Spacer(Modifier.height(12.dp))
+                    Text(it)
+                }
+            }
+        },
+        confirmButton = {
+            TextButton(
+                enabled = !running && granted,
+                onClick = {
+                    if (!isCloaked && !PackageNameValidator.isValid(newName)) {
+                        invalid = true
+                        return@TextButton
+                    }
+                    running = true
+                    status = null
+                    val onProgress: (ManagerCloakFlow.Progress) -> Unit = { p ->
+                        when (p) {
+                            is ManagerCloakFlow.Progress.Message -> status = p.text
+                            is ManagerCloakFlow.Progress.Error -> {
+                                status = p.message
+                                running = false
+                            }
+                            // On success the flow launches the new package and this process is about
+                            // to be uninstalled; close the dialog so nothing lingers behind it.
+                            is ManagerCloakFlow.Progress.Success -> {
+                                running = false
+                                onDismiss()
+                            }
+                        }
+                    }
+                    scope.launch {
+                        if (isCloaked) ManagerCloakFlow.revertToOriginal(onProgress)
+                        else ManagerCloakFlow.run(newName, onProgress)
+                    }
+                },
+            ) {
+                Text(stringResource(
+                    if (isCloaked) R.string.settings_revert_confirm
+                    else R.string.settings_cloak_confirm
+                ))
+            }
+        },
+        dismissButton = {
+            TextButton(enabled = !running, onClick = onDismiss) {
+                Text(stringResource(android.R.string.cancel))
+            }
+        },
+    )
 }
 
 private data class SystemProperty(

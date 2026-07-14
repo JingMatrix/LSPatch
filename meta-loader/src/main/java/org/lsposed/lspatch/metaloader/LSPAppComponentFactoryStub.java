@@ -60,6 +60,7 @@ public class LSPAppComponentFactoryStub extends AppComponentFactory {
             String libName = archToLib.get(arch);
 
             boolean useManager = false;
+            String managerPackageName = Constants.MANAGER_PACKAGE_NAME;
             String soPath;
 
             try (var is = cl.getResourceAsStream(Constants.CONFIG_ASSET_PATH);
@@ -69,7 +70,11 @@ public class LSPAppComponentFactoryStub extends AppComponentFactory {
                     var name = reader.nextName();
                     if (name.equals("useManager")) {
                         useManager = reader.nextBoolean();
-                        break;
+                    } else if (name.equals("managerPackageName")) {
+                        var value = reader.nextString();
+                        if (value != null && !value.isEmpty()) {
+                            managerPackageName = value;
+                        }
                     } else {
                         reader.skipValue();
                     }
@@ -77,13 +82,13 @@ public class LSPAppComponentFactoryStub extends AppComponentFactory {
             }
 
             if (useManager) {
-                Log.i(TAG, "Bootstrap loader from manager");
+                Log.i(TAG, "Bootstrap loader from manager: " + managerPackageName);
                 var ipm = IPackageManager.Stub.asInterface(ServiceManager.getService("package"));
                 ApplicationInfo manager;
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                    manager = (ApplicationInfo) HiddenApiBypass.invoke(IPackageManager.class, ipm, "getApplicationInfo", Constants.MANAGER_PACKAGE_NAME, 0L, Process.myUid() / 100000);
+                    manager = (ApplicationInfo) HiddenApiBypass.invoke(IPackageManager.class, ipm, "getApplicationInfo", managerPackageName, 0L, Process.myUid() / 100000);
                 } else {
-                    manager = ipm.getApplicationInfo(Constants.MANAGER_PACKAGE_NAME, 0, Process.myUid() / 100000);
+                    manager = ipm.getApplicationInfo(managerPackageName, 0, Process.myUid() / 100000);
                 }
                 try (var zip = new ZipFile(new File(manager.sourceDir));
                      var is = zip.getInputStream(zip.getEntry(Constants.LOADER_DEX_ASSET_PATH));

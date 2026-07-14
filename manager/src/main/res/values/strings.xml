@@ -14,6 +14,7 @@
     <string name="home_info_copied">Copied to clipboard</string>
     <string name="home_device">Device</string>
     <string name="home_system">System</string>
+    <string name="home_package">Package</string>
 
     <!-- Manage Screen -->
     <string name="screen_manage">Manage</string>
@@ -220,6 +221,26 @@
     <string name="settings_keystore_wrong_alias">Wrong alias name</string>
     <string name="settings_keystore_wrong_alias_password">Wrong alias password</string>
     <string name="settings_detail_patch_logs">Detail patch logs</string>
+    <string name="settings_cloak">Hide package name</string>
+    <string name="settings_cloak_desc">Current: %1$s\nChange the installed package id so detectors looking for org.lsposed.lspatch fail. Requires Shizuku. Local patched apps will be updated.</string>
+    <string name="settings_cloak_dialog_title">Change package name</string>
+    <string name="settings_cloak_package">New package name</string>
+    <string name="settings_cloak_randomize">Randomize</string>
+    <string name="settings_cloak_warning">This installs a new copy of LSPatch Manager under a different package name, updates Local-mode apps, then uninstalls the current one. Integrated patches are unaffected. Shizuku must stay available. Grant Shizuku to the new package after install.</string>
+    <string name="settings_cloak_invalid">Enter a valid package name (e.g. org.example.app)</string>
+    <string name="settings_cloak_same">Package name is the same as the current one</string>
+    <string name="settings_cloak_need_shizuku">Shizuku is required to change the package name</string>
+    <string name="settings_cloak_need_storage">Configure storage directory first (used when re-patching Local apps)</string>
+    <string name="settings_cloak_running">Working…</string>
+    <string name="settings_cloak_success">Installed as %1$s. Open the new manager and grant Shizuku if prompted.</string>
+    <string name="settings_cloak_failed">Failed: %1$s</string>
+    <string name="settings_cloak_confirm">Continue</string>
+    <string name="settings_revert">Revert to original</string>
+    <string name="settings_revert_desc">Current: %1$s\nDownload the latest official manager from GitHub (org.lsposed.lspatch) and remove this cloaked install.</string>
+    <string name="settings_revert_dialog_title">Revert to original package</string>
+    <string name="settings_revert_warning">Downloads the latest manager.apk from JingMatrix/LSPatch releases, installs it as org.lsposed.lspatch (settings and Local app links are restored), then uninstalls this app. Requires Shizuku and network.</string>
+    <string name="settings_revert_confirm">Revert</string>
+    <string name="settings_revert_success">Restored org.lsposed.lspatch. Grant Shizuku to it if prompted.</string>
     <string name="patch_inject_dex">Inject loader dex</string>
     <string name="patch_inject_dex_desc">Injects the loader dex directly into the app. Turn this on for apps with isolated processes, such as a browser\'s rendering engine, so their hooks still load.</string>
 

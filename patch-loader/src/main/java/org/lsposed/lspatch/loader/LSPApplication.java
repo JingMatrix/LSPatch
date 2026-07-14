@@ -19,6 +19,7 @@ import org.lsposed.lspatch.loader.util.XLog;
 import org.lsposed.lspatch.service.EmbeddedRemoteServices;
 import org.lsposed.lspatch.service.LocalApplicationService;
 import org.lsposed.lspatch.service.RemoteApplicationService;
+import org.lsposed.lspatch.share.Constants;
 import org.lsposed.lspatch.share.LSPConfig;
 import org.lsposed.lspatch.share.remote.FrameworkInfo;
 import org.lsposed.lspatch.share.remote.LSPatchXposedService;
@@ -92,7 +93,10 @@ public class LSPApplication {
         Log.d(TAG, "Initialize service client");
         IFrameworkService service;
         if (config.optBoolean("useManager")) {
-            service = new RemoteApplicationService(context);
+            var managerPackage = config.optString("managerPackageName", Constants.MANAGER_PACKAGE_NAME);
+            if (managerPackage.isEmpty()) managerPackage = Constants.MANAGER_PACKAGE_NAME;
+            Log.i(TAG, "Manager package: " + managerPackage);
+            service = new RemoteApplicationService(context, managerPackage);
         } else {
             service = new LocalApplicationService(context);
         }

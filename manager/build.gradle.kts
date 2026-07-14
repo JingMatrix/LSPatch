@@ -83,6 +83,8 @@ afterEvaluate {
 
 dependencies {
     implementation(projects.patch)
+    implementation(projects.apkzlib)
+    implementation("vector:axml")
     implementation("vector:daemon-service")
     implementation("vector:manager-ui")
     implementation(projects.share.android)

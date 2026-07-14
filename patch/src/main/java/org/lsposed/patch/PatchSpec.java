@@ -32,6 +32,7 @@ public final class PatchSpec {
     private final List<File> modules;
     private final KeystoreSpec keystore;
     private final ManifestOverrides manifestOverrides;
+    private final String managerPackageName;
 
     private PatchSpec(Builder b) {
         this.apks = Collections.unmodifiableList(new ArrayList<>(b.apks));
@@ -45,6 +46,7 @@ public final class PatchSpec {
         this.modules = Collections.unmodifiableList(new ArrayList<>(b.modules));
         this.keystore = b.keystore == null ? KeystoreSpec.builtIn() : b.keystore;
         this.manifestOverrides = b.manifestOverrides == null ? ManifestOverrides.none() : b.manifestOverrides;
+        this.managerPackageName = b.managerPackageName;
     }
 
     public List<File> apks() {
@@ -99,6 +101,15 @@ public final class PatchSpec {
         return manifestOverrides;
     }
 
+    /**
+     * The manager package a manager-mode app should bind to at runtime, or null to accept the
+     * built-in default. Lets the manager record its own -- possibly cloaked -- package name so an
+     * app patched now keeps reaching the manager after it is reinstalled under a different id.
+     */
+    public String managerPackageName() {
+        return managerPackageName;
+    }
+
     public static Builder builder() {
         return new Builder();
     }
@@ -116,6 +127,7 @@ public final class PatchSpec {
         private boolean verbose;
         private KeystoreSpec keystore;
         private ManifestOverrides manifestOverrides;
+        private String managerPackageName;
 
         public Builder apk(File apk) {
             this.apks.add(apk);
@@ -179,6 +191,12 @@ public final class PatchSpec {
 
         public Builder manifestOverrides(ManifestOverrides manifestOverrides) {
             this.manifestOverrides = manifestOverrides;
+            return this;
+        }
+
+        /** The manager package a manager-mode app binds to; null accepts the built-in default. */
+        public Builder managerPackageName(String managerPackageName) {
+            this.managerPackageName = managerPackageName;
             return this;
         }
 

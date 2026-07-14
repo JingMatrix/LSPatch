@@ -32,6 +32,15 @@ public class PatchConfig {
      * never carried it, so without this the option would silently turn itself off on a loader update.
      */
     public final boolean injectDocumentsProvider;
+
+    /**
+     * The manager package a manager-mode app should bind to for module loading, or null for an
+     * apk patched before this was recorded (and for integrated apps, which never bind a manager).
+     * Recorded so the manager can be reinstalled under a different package name without orphaning
+     * already-patched apps: a loader update rewrites this field, and older apks fall back to the
+     * built-in {@link Constants#MANAGER_PACKAGE_NAME} via {@link #resolveManagerPackageName()}.
+     */
+    public final String managerPackageName;
     public final LSPConfig lspConfig;
 
     public PatchConfig(
@@ -43,7 +52,8 @@ public class PatchConfig {
             String appComponentFactory,
             boolean injectDex,
             String[] addedPermissions,
-            boolean injectDocumentsProvider
+            boolean injectDocumentsProvider,
+            String managerPackageName
     ) {
         this.useManager = useManager;
         this.debuggable = debuggable;
@@ -54,6 +64,21 @@ public class PatchConfig {
         this.injectDex = injectDex;
         this.addedPermissions = addedPermissions;
         this.injectDocumentsProvider = injectDocumentsProvider;
+        if (useManager) {
+            this.managerPackageName = (managerPackageName != null && !managerPackageName.isEmpty())
+                    ? managerPackageName
+                    : Constants.MANAGER_PACKAGE_NAME;
+        } else {
+            this.managerPackageName = null;
+        }
         this.lspConfig = LSPConfig.instance;
+    }
+
+    /** Resolved manager package for a manager-mode app; falls back for configs created before this field existed. */
+    public String resolveManagerPackageName() {
+        if (managerPackageName != null && !managerPackageName.isEmpty()) {
+            return managerPackageName;
+        }
+        return Constants.MANAGER_PACKAGE_NAME;
     }
 }

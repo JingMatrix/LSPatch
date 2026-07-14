@@ -53,6 +53,9 @@ public class LSPatch {
     @Parameter(names = {"--manager"}, description = "Use manager (Cannot work with embedding modules)")
     private boolean useManager = false;
 
+    @Parameter(names = {"--manager-package"}, description = "The manager package a manager-mode app binds to at runtime (defaults to the built-in manager). Set this to match a manager reinstalled under a custom package name.")
+    private String managerPackageName = null;
+
     @Parameter(names = {"--version-code"}, description = "Set the patched app's versionCode to this value (e.g. 1, so a later build can be installed over it)")
     private Integer versionCodeOverride = null;
 
@@ -148,6 +151,7 @@ public class LSPatch {
                 .modules(modules.stream().map(File::new).collect(Collectors.toList()))
                 .keystore(keystore)
                 .manifestOverrides(overrides)
+                .managerPackageName(managerPackageName)
                 .build();
     }
 }
