@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="log_service_channel">Protokollüberwachung</string>
+    <string name="log_service_title">LSPatch überwacht Protokolle</string>
+    <string name="log_service_text">Sammle Framework und gepatched-app Logs</string>
+</resources>
