@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="log_service_channel">Log overvågning</string>
+    <string name="log_service_title">LSPatch er overvågning logs</string>
+    <string name="log_service_text">Indsamling af rammer og programlogs</string>
+</resources>
