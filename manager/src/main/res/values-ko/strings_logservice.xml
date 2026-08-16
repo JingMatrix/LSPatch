@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="log_service_channel">로그 모니터링</string>
+    <string name="log_service_title">LSPatch는 로그를 모니터링하고 있습니다.</string>
+    <string name="log_service_text">프레임워크 및 패치된 앱 로그 수집</string>
+</resources>
