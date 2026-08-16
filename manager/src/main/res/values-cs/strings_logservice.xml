@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="log_service_channel">Monitorování protokolu</string>
+    <string name="log_service_title">LSPatch je monitorovací protokoly</string>
+    <string name="log_service_text">Shromažďování frameworku a upravovaných protokolů aplikací</string>
+</resources>
