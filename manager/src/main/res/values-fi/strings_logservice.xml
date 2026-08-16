@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="log_service_channel">Lokin seuranta</string>
+    <string name="log_service_title">LSPatch on seurantalokeja</string>
+    <string name="log_service_text">Kehyksen ja paikallaan olevien sovellusten lokien kerääminen</string>
+</resources>
