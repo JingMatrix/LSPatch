@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="log_service_channel">Моніторинг журналів</string>
+    <string name="log_service_title">LSPatch журнал моніторингу</string>
+    <string name="log_service_text">Збираємо фреймворки та журнали пропатчених додатків</string>
+</resources>
