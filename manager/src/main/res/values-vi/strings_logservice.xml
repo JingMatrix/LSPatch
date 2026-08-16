@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="log_service_channel">Giám sát nhật ký</string>
+    <string name="log_service_title">LSPatch đang giám sát nhật ký.</string>
+    <string name="log_service_text">Thu thập nhật ký của framework và ứng dụng đã được vá lỗi.</string>
+</resources>
