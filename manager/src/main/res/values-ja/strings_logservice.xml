@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="log_service_channel">ログの監視</string>
+    <string name="log_service_title">LSPatch is monitoring logs</string>
+    <string name="log_service_text">フレームワークとアプリのログを収集する</string>
+</resources>
