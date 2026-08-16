@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="log_service_channel">Günlük izleme</string>
+    <string name="log_service_title">LSPatch günlükleri izliyor.</string>
+    <string name="log_service_text">Çerçeve ve yamalanmış uygulama günlüklerinin toplanması</string>
+</resources>
