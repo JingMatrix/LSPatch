@@ -88,6 +88,12 @@
     <string name="patch_manifest_extract_libs_desc">强制安装器解压应用的原生库。当模块需要应用的原生代码位于磁盘上时有用。</string>
     <string name="patch_manifest_cleartext">允许明文流量</string>
     <string name="patch_manifest_cleartext_desc">允许应用发起原本会被拒绝的明文 HTTP 连接。用于抓包类模块。</string>
+    <string name="patch_manifest_permissions">添加权限</string>
+    <string name="patch_manifest_permissions_hint">例如 INTERNET</string>
+    <string name="patch_manifest_permissions_desc">声明应用缺少的权限，供模块使用。短名称会补全为 android.permission.NAME；应用已有的权限会被忽略。</string>
+    <string name="patch_manifest_permissions_add">添加</string>
+    <string name="patch_manifest_permissions_remove">移除</string>
+    <string name="patch_manifest_permissions_count">已添加 %1$d 个</string>
     <string name="patch_status_patching">正在修补…</string>
     <string name="patch_status_error">修补失败</string>
     <string name="patch_status_error_desc">出现问题。复制日志以查看详情。</string>
