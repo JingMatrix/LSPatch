@@ -72,8 +72,6 @@
     <string name="patch_sigbypasslv0">lv0: Ki</string>
     <string name="patch_sigbypasslv1">1. szint: PM megkerülése</string>
     <string name="patch_sigbypasslv2">lv2: PM megkerülése + openat (libc)</string>
-    <string name="patch_override_version_code">Verziókód felülírása</string>
-    <string name="patch_override_version_code_desc">A javított APK verziókódját 1-re állítja, így egy későbbi build telepíthető fölé. Maga az alkalmazás általában továbbra is a valódi verzióját olvassa.</string>
     <string name="patch_return">Visszatérés</string>
     <string name="patch_uninstall_text">A telepített alkalmazás másképp van aláírva, ezért először el kell távolítani. Az adatai elvesznek – a folytatás előtt készítsen biztonsági másolatot mindenről, amire szüksége van.</string>
     <string name="patch_install_successfully">Telepítve</string>
@@ -82,6 +80,8 @@
     <string name="patch_section_options">Opciók</string>
     <string name="patch_section_signing">Aláírás &amp; naplózás</string>
     <string name="patch_section_manifest">Nyilvánvaló</string>
+    <string name="patch_manifest_version_code">Verziókód</string>
+    <string name="patch_manifest_version_code_hint">Hagyja üresen az eredeti megtartásához</string>
     <string name="patch_manifest_label">Alkalmazás neve</string>
     <string name="patch_manifest_label_hint">Hagyja üresen az eredeti megtartásához</string>
     <string name="patch_manifest_extract_libs">Natív könyvtárak kibontása</string>
