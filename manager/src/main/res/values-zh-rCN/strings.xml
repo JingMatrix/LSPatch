@@ -72,8 +72,6 @@
     <string name="patch_sigbypasslv0">lv0：关闭</string>
     <string name="patch_sigbypasslv1">lv1：绕过 PM</string>
     <string name="patch_sigbypasslv2">lv2：绕过 PM + openat (libc)</string>
-    <string name="patch_override_version_code">覆盖版本号</string>
-    <string name="patch_override_version_code_desc">将修补后 APK 的版本号设为 1，以便日后可覆盖安装更新的构建。应用本身通常仍读取其真实版本号。</string>
     <string name="patch_return">返回</string>
     <string name="patch_uninstall_text">已安装的应用签名不同，必须先卸载。其数据将丢失 — 继续前请备份需要保留的内容。</string>
     <string name="patch_install_successfully">已安装</string>
@@ -82,6 +80,8 @@
     <string name="patch_section_options">选项</string>
     <string name="patch_section_signing">签名与日志</string>
     <string name="patch_section_manifest">清单</string>
+    <string name="patch_manifest_version_code">版本号</string>
+    <string name="patch_manifest_version_code_hint">留空则保持原值</string>
     <string name="patch_manifest_label">应用名称</string>
     <string name="patch_manifest_label_hint">留空则保持原名</string>
     <string name="patch_manifest_extract_libs">解压原生库</string>
