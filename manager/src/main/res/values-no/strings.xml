@@ -88,6 +88,12 @@
     <string name="patch_manifest_extract_libs_desc">Tving installasjonsprogrammet til å pakke ut programmets innebygde biblioteker. Hjelpe en modul som trenger programmets egen innebygde kode på skiven.</string>
     <string name="patch_manifest_cleartext">Tillat cleartext trafikk</string>
     <string name="patch_manifest_cleartext_desc">La appen gjøre gratis HTTP-tilkoblinger den ellers nekte. Nyttig for en trafikkbasert modul.</string>
+    <string name="patch_manifest_permissions">Legg til tillatelse</string>
+    <string name="patch_manifest_permissions_hint">f.eks INTERNET</string>
+    <string name="patch_manifest_permissions_desc">Deklare en tillatelse som appen mangler slik at en modul kan bruke den. Et kort navn blir android.permission.NAME; en appen som allerede har blitt ignorert.</string>
+    <string name="patch_manifest_permissions_add">Legg til</string>
+    <string name="patch_manifest_permissions_remove">Fjern</string>
+    <string name="patch_manifest_permissions_count">%1$d lagt til</string>
     <string name="patch_status_patching">Patcher…</string>
     <string name="patch_status_error">Oppdateringen mislyktes</string>
     <string name="patch_status_error_desc">Noe gikk galt. Kopier loggen for å se detaljene.</string>
