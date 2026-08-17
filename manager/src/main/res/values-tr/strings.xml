@@ -72,8 +72,6 @@
     <string name="patch_sigbypasslv0">lv0: Kapalı</string>
     <string name="patch_sigbypasslv1">lv1: PM atlatma</string>
     <string name="patch_sigbypasslv2">lv2: PM + openat (libc) atlatma</string>
-    <string name="patch_override_version_code">Sürüm kodunu geçersiz kıl</string>
-    <string name="patch_override_version_code_desc">Yamalı uygulamanın sürüm kodunu 1 olarak geçersiz kıl\nBu, gelecekte eski sürüme geçerek yüklemeye izin verir ve genellikle uygulamanın gerçekte algıladığı sürüm kodunu etkilemez</string>
     <string name="patch_return">Geri dön</string>
     <string name="patch_uninstall_text">Farklı imzalar nedeniyle, yamalıyı yüklemeden önce orijinal uygulamayı kaldırmanız gerekir.\nKişisel verilerinizi yedeklediğinizden emin olun.</string>
     <string name="patch_install_successfully">Yüklendi</string>
@@ -82,6 +80,8 @@
     <string name="patch_section_options">Seçenekler</string>
     <string name="patch_section_signing">İmzalama ve günlükleme</string>
     <string name="patch_section_manifest">Manifest</string>
+    <string name="patch_manifest_version_code">Sürüm kodu</string>
+    <string name="patch_manifest_version_code_hint">Özgün değeri korumak için boş bırakın</string>
     <string name="patch_manifest_label">Uygulama adı</string>
     <string name="patch_manifest_label_hint">Orijinali korumak için boş bırakın</string>
     <string name="patch_manifest_extract_libs">Yerel kütüphaneleri çıkar</string>
