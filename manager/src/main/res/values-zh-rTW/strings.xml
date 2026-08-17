@@ -88,6 +88,12 @@
     <string name="patch_manifest_extract_libs_desc">強制安裝程式解壓縮應用程式的原生函式庫。當模組需要應用程式自身的原生程式碼存在於磁碟上時有幫助。</string>
     <string name="patch_manifest_cleartext">允許明文流量</string>
     <string name="patch_manifest_cleartext_desc">允許應用程式建立原本會被拒絕的純 HTTP 連線。適用於流量檢查類的模組。</string>
+    <string name="patch_manifest_permissions">新增權限</string>
+    <string name="patch_manifest_permissions_hint">例如 INTERNET</string>
+    <string name="patch_manifest_permissions_desc">宣告應用程式缺少的權限，供模組使用。簡短名稱會補全為 android.permission.NAME；應用程式已有的權限會被忽略。</string>
+    <string name="patch_manifest_permissions_add">新增</string>
+    <string name="patch_manifest_permissions_remove">移除</string>
+    <string name="patch_manifest_permissions_count">已新增 %1$d 個</string>
     <string name="patch_status_patching">正在修補…</string>
     <string name="patch_status_error">修補失敗</string>
     <string name="patch_status_error_desc">發生問題。複製記錄以檢視詳細資訊。</string>
