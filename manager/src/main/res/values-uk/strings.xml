@@ -72,8 +72,6 @@
     <string name="patch_sigbypasslv0">lv0: Вимк</string>
     <string name="patch_sigbypasslv1">lv1: Обхід PM</string>
     <string name="patch_sigbypasslv2">lv2: Обхід PM + openat (libc)</string>
-    <string name="patch_override_version_code">Перевизначити код версії</string>
-    <string name="patch_override_version_code_desc">Перевизначити код версії пропатченого застосунку на 1\nЦе дозволить у майбутньому встановлювати старішу версію та зазвичай не впливає на код версії, який фактично сприймає застосунок</string>
     <string name="patch_return">Назад</string>
     <string name="patch_uninstall_text">Через різні підписи потрібно видалити оригінальний застосунок перед встановленням пропатченого.\nПереконайтеся, що ви зробили резервну копію особистих даних.</string>
     <string name="patch_install_successfully">Встановлено</string>
@@ -82,6 +80,8 @@
     <string name="patch_section_options">Параметри</string>
     <string name="patch_section_signing">Підпис і журнали</string>
     <string name="patch_section_manifest">Маніфест</string>
+    <string name="patch_manifest_version_code">Код версії</string>
+    <string name="patch_manifest_version_code_hint">Залиште порожнім, щоб зберегти вихідний</string>
     <string name="patch_manifest_label">Назва застосунку</string>
     <string name="patch_manifest_label_hint">Залиште порожнім, щоб зберегти оригінальну</string>
     <string name="patch_manifest_extract_libs">Розпакувати нативні бібліотеки</string>
