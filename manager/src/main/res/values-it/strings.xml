@@ -88,6 +88,12 @@
     <string name="patch_manifest_extract_libs_desc">Obbliga l\'installer a estrarre le librerie native dell\'app. Utile per un modulo che ha bisogno del codice nativo dell\'app su disco.</string>
     <string name="patch_manifest_cleartext">Consenti il traffico in chiaro</string>
     <string name="patch_manifest_cleartext_desc">Consente all\'app di aprire connessioni HTTP in chiaro che altrimenti rifiuterebbe. Utile per un modulo che ispeziona il traffico.</string>
+    <string name="patch_manifest_permissions">Aggiungi autorizzazione</string>
+    <string name="patch_manifest_permissions_hint">es. INTERNET</string>
+    <string name="patch_manifest_permissions_desc">Dichiara un\'autorizzazione che l\'app non ha così un modulo può usarla. Un nome breve diventa android.permission.NAME; una già presente viene ignorata.</string>
+    <string name="patch_manifest_permissions_add">Aggiungi</string>
+    <string name="patch_manifest_permissions_remove">Rimuovi</string>
+    <string name="patch_manifest_permissions_count">%1$d aggiunte</string>
     <string name="patch_status_patching">Applicazione patch…</string>
     <string name="patch_status_error">Patch non riuscita</string>
     <string name="patch_status_error_desc">Qualcosa è andato storto. Copia il log per vedere i dettagli.</string>
