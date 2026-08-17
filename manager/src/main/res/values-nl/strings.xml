@@ -94,6 +94,8 @@
     <string name="patch_manifest_permissions_add">Toevoegen</string>
     <string name="patch_manifest_permissions_remove">Verwijderen</string>
     <string name="patch_manifest_permissions_count">%1$d toegevoegd</string>
+    <string name="patch_manifest_documents_provider">Privégegevens onthullen</string>
+    <string name="patch_manifest_documents_provider_desc">Voeg een provider toe zodat een bestandsbeheerder door de persoonlijke gegevensmap van de app kan bladeren, geen root nodig. Breid uit wat de data van de app kan bereiken - laat het af tenzij je het nodig hebt.</string>
     <string name="patch_status_patching">Patchen…</string>
     <string name="patch_status_error">Patch mislukt</string>
     <string name="patch_status_error_desc">Er ging iets mis. Kopieer de log om de details te bekijken.</string>
