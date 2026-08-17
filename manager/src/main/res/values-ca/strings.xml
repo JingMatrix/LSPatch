@@ -72,8 +72,6 @@
     <string name="patch_sigbypasslv0">lv0: apagat</string>
     <string name="patch_sigbypasslv1">lv1: anul·lar PM</string>
     <string name="patch_sigbypasslv2">lv2: ometre PM + openat (libc)</string>
-    <string name="patch_override_version_code">Anul·la el codi de versió</string>
-    <string name="patch_override_version_code_desc">Estableix el codi de versió de l\'APK actualitzat a 1, de manera que es pugui instal·lar una compilació posterior. Normalment, l\'aplicació en si encara llegeix la seva versió real.</string>
     <string name="patch_return">Tornar</string>
     <string name="patch_uninstall_text">L\'aplicació instal·lada té una signatura diferent, per la qual cosa primer s\'ha de desinstal·lar. Les seves dades es perdran; fes una còpia de seguretat de tot el que necessitis abans de continuar.</string>
     <string name="patch_install_successfully">Instal·lat</string>
@@ -82,6 +80,8 @@
     <string name="patch_section_options">Opcions</string>
     <string name="patch_section_signing">Signant el registre &amp;</string>
     <string name="patch_section_manifest">Manifest</string>
+    <string name="patch_manifest_version_code">Codi de versió</string>
+    <string name="patch_manifest_version_code_hint">Deixeu-ho en blanc per conservar l\'original</string>
     <string name="patch_manifest_label">Nom de l\'aplicació</string>
     <string name="patch_manifest_label_hint">Deixeu-ho en blanc per conservar l\'original</string>
     <string name="patch_manifest_extract_libs">Extreure biblioteques natives</string>
