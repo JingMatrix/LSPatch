@@ -88,6 +88,12 @@
     <string name="patch_manifest_extract_libs_desc">Dwing die installeerder om die toepassing se oorspronklike biblioteke uit te pak. Help \'n module wat die toepassing se eie oorspronklike kode op skyf benodig.</string>
     <string name="patch_manifest_cleartext">Laat duidelike teksverkeer toe</string>
     <string name="patch_manifest_cleartext_desc">Laat die toepassing gewone HTTP-verbindings maak wat dit andersins sou weier. Nuttig vir \'n verkeerinspeksiemodule.</string>
+    <string name="patch_manifest_permissions">Voeg toestemming by</string>
+    <string name="patch_manifest_permissions_hint">bv. INTERNET</string>
+    <string name="patch_manifest_permissions_desc">Verklaar \'n toestemming wat die toepassing kort sodat \'n module dit kan gebruik. \'n Kort naam word android.permission.NAME; een wat die toepassing reeds het, word geïgnoreer.</string>
+    <string name="patch_manifest_permissions_add">Voeg by</string>
+    <string name="patch_manifest_permissions_remove">Verwyder</string>
+    <string name="patch_manifest_permissions_count">%1$d bygevoeg</string>
     <string name="patch_status_patching">Lap…</string>
     <string name="patch_status_error">Laai het misluk</string>
     <string name="patch_status_error_desc">Iets het verkeerd geloop. Kopieer die logboek om die besonderhede te sien.</string>
