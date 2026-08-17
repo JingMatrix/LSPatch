@@ -94,6 +94,8 @@
     <string name="patch_manifest_permissions_add">Afegeix</string>
     <string name="patch_manifest_permissions_remove">Elimina</string>
     <string name="patch_manifest_permissions_count">%1$d afegit</string>
+    <string name="patch_manifest_documents_provider">Exposar dades privades</string>
+    <string name="patch_manifest_documents_provider_desc">Afegeix un proveïdor perquè un gestor de fitxers pugui navegar per la carpeta de dades privades de l\'aplicació a través del selector de fitxers del sistema, sense necessitat de ser root. Amplia el que pot arribar a les dades de l\'aplicació; deixa\'l desactivat si no el necessites.</string>
     <string name="patch_status_patching">Aplicació de pegats…</string>
     <string name="patch_status_error">El pegat ha fallat</string>
     <string name="patch_status_error_desc">S\'ha produït un error. Copia el registre per veure\'n els detalls.</string>
