@@ -97,6 +97,8 @@
     <string name="patch_manifest_permissions_add">Add</string>
     <string name="patch_manifest_permissions_remove">Remove</string>
     <string name="patch_manifest_permissions_count">%1$d added</string>
+    <string name="patch_manifest_documents_provider">Expose private data</string>
+    <string name="patch_manifest_documents_provider_desc">Add a provider so a file manager can browse the app\'s private data folder through the system file picker, no root needed. Widens what can reach the app\'s data — leave off unless you need it.</string>
     <string name="patch_status_patching">Patching…</string>
     <string name="patch_status_error">Patch failed</string>
     <string name="patch_status_error_desc">Something went wrong. Copy the log to see the details.</string>
