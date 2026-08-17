@@ -94,6 +94,8 @@
     <string name="patch_manifest_permissions_add">إضافة</string>
     <string name="patch_manifest_permissions_remove">إزالة</string>
     <string name="patch_manifest_permissions_count">أُضيف %1$d</string>
+    <string name="patch_manifest_documents_provider">إتاحة البيانات الخاصة</string>
+    <string name="patch_manifest_documents_provider_desc">أضف موفّرًا يتيح لمدير الملفات تصفح مجلد البيانات الخاصة بالتطبيق عبر منتقي ملفات النظام، دون الحاجة إلى روت. يوسّع ما يمكنه الوصول إلى بيانات التطبيق — اتركه معطّلًا ما لم تحتَجه.</string>
     <string name="patch_status_patching">جارٍ الترقيع…</string>
     <string name="patch_status_error">فشل الترقيع</string>
     <string name="patch_status_error_desc">حدث خطأ ما. انسخ السجل لعرض التفاصيل.</string>
