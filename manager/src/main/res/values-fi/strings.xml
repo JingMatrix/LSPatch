@@ -94,6 +94,8 @@
     <string name="patch_manifest_permissions_add">Lisää</string>
     <string name="patch_manifest_permissions_remove">Poista</string>
     <string name="patch_manifest_permissions_count">%1$d lisätty</string>
+    <string name="patch_manifest_documents_provider">Anna yksityiset tiedot</string>
+    <string name="patch_manifest_documents_provider_desc">Lisää palveluntarjoaja, jotta tiedostonhallinta voi selata sovelluksen yksityistä datakansiota järjestelmätiedostojen poimijan kautta, eikä roottia tarvita. Laajentaa sitä, mikä voi tavoittaa sovelluksen tiedot — jättää pois, jos et sitä tarvitse.</string>
     <string name="patch_status_patching">Paikataan…</string>
     <string name="patch_status_error">Paikkaus epäonnistui</string>
     <string name="patch_status_error_desc">Jokin meni pieleen. Kopioi loki nähdäksesi tiedot.</string>
