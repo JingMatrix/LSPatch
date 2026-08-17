@@ -72,8 +72,6 @@
     <string name="patch_sigbypasslv0">lv0: Desactivado</string>
     <string name="patch_sigbypasslv1">lv1: Omitir PM</string>
     <string name="patch_sigbypasslv2">lv2: Omitir PM + openat (libc)</string>
-    <string name="patch_override_version_code">Sobrescribir código de versión</string>
-    <string name="patch_override_version_code_desc">Sobrescribe el código de versión de la aplicación parcheada a 1\nEsto permite la instalación de versiones anteriores en el futuro y, por lo general, no afecta al código de versión que percibe realmente la aplicación</string>
     <string name="patch_return">Volver</string>
     <string name="patch_uninstall_text">Debido a las diferencias de firma, debes desinstalar la aplicación original antes de instalar la parcheada.\nAsegúrate de haber hecho una copia de seguridad de tus datos personales.</string>
     <string name="patch_install_successfully">Instalada</string>
@@ -82,6 +80,8 @@
     <string name="patch_section_options">Opciones</string>
     <string name="patch_section_signing">Firma y registro</string>
     <string name="patch_section_manifest">Manifiesto</string>
+    <string name="patch_manifest_version_code">Código de versión</string>
+    <string name="patch_manifest_version_code_hint">Déjalo en blanco para conservar el original</string>
     <string name="patch_manifest_label">Nombre de la aplicación</string>
     <string name="patch_manifest_label_hint">Déjalo en blanco para conservar el original</string>
     <string name="patch_manifest_extract_libs">Extraer librerías nativas</string>
