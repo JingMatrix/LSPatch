@@ -88,6 +88,12 @@
     <string name="patch_manifest_extract_libs_desc">Tving installationsprogrammet til at pakke appens lokale biblioteker ud. Hjælper et modul, der har brug for appens egen lokale kode på disken.</string>
     <string name="patch_manifest_cleartext">Tillad klartekst trafik</string>
     <string name="patch_manifest_cleartext_desc">Lad appen lave almindelige HTTP-forbindelser, som den ellers ville afvise. Nyttigt til et trafikinspicerende modul.</string>
+    <string name="patch_manifest_permissions">Tilføj tilladelse</string>
+    <string name="patch_manifest_permissions_hint">f.eks. INTERNET</string>
+    <string name="patch_manifest_permissions_desc">Erklære en tilladelse app\'en mangler, så et modul kan bruge den. Et kort navn bliver android.permission.NAME; en app allerede er ignoreret.</string>
+    <string name="patch_manifest_permissions_add">Tilføj</string>
+    <string name="patch_manifest_permissions_remove">Fjern</string>
+    <string name="patch_manifest_permissions_count">%1$d tilføjet</string>
     <string name="patch_status_patching">Patcher…</string>
     <string name="patch_status_error">Fejlrettelse mislykkedes</string>
     <string name="patch_status_error_desc">Noget gik galt. Kopiér loggen for at se detaljerne.</string>
