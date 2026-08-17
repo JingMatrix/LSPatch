@@ -94,6 +94,8 @@
     <string name="patch_manifest_permissions_add">Lägg till</string>
     <string name="patch_manifest_permissions_remove">Radera</string>
     <string name="patch_manifest_permissions_count">%1$d tillagd</string>
+    <string name="patch_manifest_documents_provider">Exponera privat data</string>
+    <string name="patch_manifest_documents_provider_desc">Lägg till en leverantör så att en filhanterare kan bläddra i appens privata datamapp genom systemfilväljaren, ingen rot behövs. Breddar vad som kan nå appens data — lämna av om du inte behöver det.</string>
     <string name="patch_status_patching">Patenterar…</string>
     <string name="patch_status_error">Patchen misslyckades</string>
     <string name="patch_status_error_desc">Något gick fel. Kopiera loggen för att se detaljerna.</string>
