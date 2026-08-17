@@ -72,8 +72,6 @@
     <string name="patch_sigbypasslv0">lv0: معطّل</string>
     <string name="patch_sigbypasslv1">lv1: تجاوز PM</string>
     <string name="patch_sigbypasslv2">lv2: تجاوز PM + openat (libc)</string>
-    <string name="patch_override_version_code">تجاوز رمز الإصدار</string>
-    <string name="patch_override_version_code_desc">تجاوز رمز إصدار التطبيق المُرقّع إلى 1\nيتيح هذا التثبيت بإصدار أقدم مستقبلًا، وعمومًا لن يؤثر ذلك على رمز الإصدار الذي يدركه التطبيق فعليًا</string>
     <string name="patch_return">رجوع</string>
     <string name="patch_uninstall_text">بسبب اختلاف التواقيع، عليك إلغاء تثبيت التطبيق الأصلي قبل تثبيت التطبيق المُرقّع.\nتأكد من عمل نسخة احتياطية لبياناتك الشخصية.</string>
     <string name="patch_install_successfully">تم التثبيت</string>
@@ -82,6 +80,8 @@
     <string name="patch_section_options">الخيارات</string>
     <string name="patch_section_signing">التوقيع والتسجيل</string>
     <string name="patch_section_manifest">البيان</string>
+    <string name="patch_manifest_version_code">رمز الإصدار</string>
+    <string name="patch_manifest_version_code_hint">اتركه فارغًا للإبقاء على الأصلي</string>
     <string name="patch_manifest_label">اسم التطبيق</string>
     <string name="patch_manifest_label_hint">اتركه فارغًا للإبقاء على الاسم الأصلي</string>
     <string name="patch_manifest_extract_libs">استخراج المكتبات الأصلية</string>
