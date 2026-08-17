@@ -88,6 +88,12 @@
     <string name="patch_manifest_extract_libs_desc">Εξαναγκάστε τον εγκαταστάτη να αποσυμπιέσει τις εγγενείς βιβλιοθήκες της εφαρμογής. Βοηθά ένα πρόσθετο που χρειάζεται τον δικό του τοπικό κώδικα της εφαρμογής στο δίσκο.</string>
     <string name="patch_manifest_cleartext">Να επιτρέπεται η κυκλοφορία εκκαθάρισης κειμένου</string>
     <string name="patch_manifest_cleartext_desc">Αφήστε την εφαρμογή να κάνει απλές συνδέσεις HTTP, διαφορετικά θα αρνηθεί. Χρήσιμο για μια μονάδα επιθεώρησης κίνησης.</string>
+    <string name="patch_manifest_permissions">Προσθήκη δικαιωμάτων</string>
+    <string name="patch_manifest_permissions_hint">π.χ. INTERNET</string>
+    <string name="patch_manifest_permissions_desc">Αποφασίστε μια άδεια για την εφαρμογή λείπει, ώστε ένα πρόσθετο να μπορεί να το χρησιμοποιήσει. Ένα σύντομο όνομα γίνεται android.permission.NAME; μια εφαρμογή έχει ήδη αγνοηθεί.</string>
+    <string name="patch_manifest_permissions_add">Προσθήκη</string>
+    <string name="patch_manifest_permissions_remove">Αφαίρεση</string>
+    <string name="patch_manifest_permissions_count">%1$d προστέθηκε</string>
     <string name="patch_status_patching">Διόρθωση…</string>
     <string name="patch_status_error">Αποτυχία ενημέρωσης</string>
     <string name="patch_status_error_desc">Κάτι πήγε στραβά. Αντιγράψτε το αρχείο καταγραφής για να δείτε τις λεπτομέρειες.</string>
