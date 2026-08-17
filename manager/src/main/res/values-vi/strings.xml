@@ -72,8 +72,6 @@
     <string name="patch_sigbypasslv0">lv0: Tắt</string>
     <string name="patch_sigbypasslv1">lv1: Bỏ qua PM</string>
     <string name="patch_sigbypasslv2">lv2: Bỏ qua PM + openat (libc)</string>
-    <string name="patch_override_version_code">Ghi đè mã phiên bản</string>
-    <string name="patch_override_version_code_desc">Ghi đè mã phiên bản của ứng dụng đã vá về 1\nĐiều này cho phép cài đặt hạ cấp về sau, và thường sẽ không ảnh hưởng đến mã phiên bản mà ứng dụng thực sự nhận biết</string>
     <string name="patch_return">Quay lại</string>
     <string name="patch_uninstall_text">Do chữ ký khác nhau, bạn cần gỡ ứng dụng gốc trước khi cài bản đã vá.\nHãy đảm bảo bạn đã sao lưu dữ liệu cá nhân.</string>
     <string name="patch_install_successfully">Đã cài đặt</string>
@@ -82,6 +80,8 @@
     <string name="patch_section_options">Tùy chọn</string>
     <string name="patch_section_signing">Ký &amp; ghi nhật ký</string>
     <string name="patch_section_manifest">Biểu hiện</string>
+    <string name="patch_manifest_version_code">Mã phiên bản</string>
+    <string name="patch_manifest_version_code_hint">Để trống để giữ nguyên bản gốc</string>
     <string name="patch_manifest_label">Tên ứng dụng</string>
     <string name="patch_manifest_label_hint">Để trống để giữ tên gốc</string>
     <string name="patch_manifest_extract_libs">Giải nén thư viện native</string>
