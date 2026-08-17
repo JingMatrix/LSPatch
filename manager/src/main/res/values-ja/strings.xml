@@ -88,6 +88,12 @@
     <string name="patch_manifest_extract_libs_desc">アプリのネイティブライブラリをインストーラーに強制的に展開させます。アプリ自身のネイティブコードがディスク上に必要なモジュールに役立ちます。</string>
     <string name="patch_manifest_cleartext">平文通信を許可</string>
     <string name="patch_manifest_cleartext_desc">通常は拒否される平文 HTTP 接続をアプリに許可します。通信を解析するモジュールに便利です。</string>
+    <string name="patch_manifest_permissions">権限を追加</string>
+    <string name="patch_manifest_permissions_hint">例: INTERNET</string>
+    <string name="patch_manifest_permissions_desc">アプリにない権限を宣言して、モジュールが使えるようにします。短い名前は android.permission.NAME になり、アプリが既に持つ権限は無視されます。</string>
+    <string name="patch_manifest_permissions_add">追加</string>
+    <string name="patch_manifest_permissions_remove">削除</string>
+    <string name="patch_manifest_permissions_count">%1$d 件追加</string>
     <string name="patch_status_patching">パッチ適用中…</string>
     <string name="patch_status_error">パッチに失敗しました</string>
     <string name="patch_status_error_desc">問題が発生しました。ログをコピーして詳細を確認してください。</string>
