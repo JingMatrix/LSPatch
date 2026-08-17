@@ -94,6 +94,8 @@
     <string name="patch_manifest_permissions_add">Voeg by</string>
     <string name="patch_manifest_permissions_remove">Verwyder</string>
     <string name="patch_manifest_permissions_count">%1$d bygevoeg</string>
+    <string name="patch_manifest_documents_provider">Stel privaat data bloot</string>
+    <string name="patch_manifest_documents_provider_desc">Voeg \'n verskaffer by sodat \'n lêerbestuurder die toepassing se private data-vouer deur die stelsellêerkieser kan blaai, geen wortel nodig nie. Verbreed wat die toepassing se data kan bereik — los af tensy jy dit nodig het.</string>
     <string name="patch_status_patching">Lap…</string>
     <string name="patch_status_error">Laai het misluk</string>
     <string name="patch_status_error_desc">Iets het verkeerd geloop. Kopieer die logboek om die besonderhede te sien.</string>
