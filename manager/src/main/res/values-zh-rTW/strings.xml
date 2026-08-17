@@ -72,8 +72,6 @@
     <string name="patch_sigbypasslv0">lv0：關閉</string>
     <string name="patch_sigbypasslv1">lv1：繞過 PM</string>
     <string name="patch_sigbypasslv2">lv2：繞過 PM + openat (libc)</string>
-    <string name="patch_override_version_code">覆寫版本號</string>
-    <string name="patch_override_version_code_desc">將修補後應用程式的版本號覆寫為 1\n這樣日後可以降級安裝，且通常不會影響應用程式實際感知到的版本號</string>
     <string name="patch_return">返回</string>
     <string name="patch_uninstall_text">由於簽章不同，在安裝修補後的應用程式之前需要先解除安裝原應用程式。\n請確保已備份個人資料。</string>
     <string name="patch_install_successfully">已安裝</string>
@@ -82,6 +80,8 @@
     <string name="patch_section_options">選項</string>
     <string name="patch_section_signing">簽章與記錄</string>
     <string name="patch_section_manifest">資訊清單</string>
+    <string name="patch_manifest_version_code">版本號</string>
+    <string name="patch_manifest_version_code_hint">留空則保持原值</string>
     <string name="patch_manifest_label">應用程式名稱</string>
     <string name="patch_manifest_label_hint">留空則保持原名</string>
     <string name="patch_manifest_extract_libs">解壓縮原生函式庫</string>
