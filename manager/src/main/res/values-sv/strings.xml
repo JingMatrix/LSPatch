@@ -72,8 +72,6 @@
     <string name="patch_sigbypasslv0">lv0: Av</string>
     <string name="patch_sigbypasslv1">lv1: Åtsidosätt pakethanteraren</string>
     <string name="patch_sigbypasslv2">lv2: Åtsidosätt pakethanteraren + openat (libc)</string>
-    <string name="patch_override_version_code">Åsidosätt versionskoden</string>
-    <string name="patch_override_version_code_desc">Ställer in den lappade APK:s versionskod till 1, så att en senare version kan installeras över den. Själva appen läser oftast fortfarande sin verkliga version.</string>
     <string name="patch_return">Återgå</string>
     <string name="patch_uninstall_text">Den installerade appen är signerad annorlunda, så den måste avinstalleras först. Dess data kommer att förloras — säkerhetskopiera allt du behöver innan du fortsätter.</string>
     <string name="patch_install_successfully">Installerad</string>
@@ -82,6 +80,8 @@
     <string name="patch_section_options">Alternativ</string>
     <string name="patch_section_signing">Signerar &amp; loggning</string>
     <string name="patch_section_manifest">Manifest</string>
+    <string name="patch_manifest_version_code">Versionskod</string>
+    <string name="patch_manifest_version_code_hint">Lämna tomt för att behålla originalet</string>
     <string name="patch_manifest_label">Appens namn</string>
     <string name="patch_manifest_label_hint">Lämna tomt för att behålla originalet</string>
     <string name="patch_manifest_extract_libs">Extrahera inhemska bibliotek</string>
