@@ -88,6 +88,12 @@
     <string name="patch_manifest_extract_libs_desc">Forceer het installatieprogramma om de app zijn eigen bibliotheken uit te pakken. Helpt een module die zijn eigen code op schijf nodig heeft.</string>
     <string name="patch_manifest_cleartext">Leeg verkeer toestaan</string>
     <string name="patch_manifest_cleartext_desc">Laat de app platte-HTTP-verbindingen maken die het anders zou weigeren. Handig voor een traffic-inspectie module.</string>
+    <string name="patch_manifest_permissions">Machtiging toevoegen</string>
+    <string name="patch_manifest_permissions_hint">bijv. INTERNET</string>
+    <string name="patch_manifest_permissions_desc">Vermeld een machtiging die de app mist zodat een module kan gebruiken. Een korte naam wordt android.permission.NAME; één die de app al heeft genegeerd.</string>
+    <string name="patch_manifest_permissions_add">Toevoegen</string>
+    <string name="patch_manifest_permissions_remove">Verwijderen</string>
+    <string name="patch_manifest_permissions_count">%1$d toegevoegd</string>
     <string name="patch_status_patching">Patchen…</string>
     <string name="patch_status_error">Patch mislukt</string>
     <string name="patch_status_error_desc">Er ging iets mis. Kopieer de log om de details te bekijken.</string>
