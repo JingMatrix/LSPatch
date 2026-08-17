@@ -72,8 +72,6 @@
     <string name="patch_sigbypasslv0">lv0: Pois</string>
     <string name="patch_sigbypasslv1">lv1: Ohita PM</string>
     <string name="patch_sigbypasslv2">lv2: Ohita PM + openat (libc)</string>
-    <string name="patch_override_version_code">Ohita versiokoodi</string>
-    <string name="patch_override_version_code_desc">Asettaa korjatun APK:n versiokoodin 1, joten myöhempää versiota voidaan asentaa sen päälle. Sovellus itse lukee yleensä edelleen sen oikean version.</string>
     <string name="patch_return">Palata</string>
     <string name="patch_uninstall_text">Asennettu sovellus on allekirjoitettu eri tavalla, joten se täytyy poistaa ensin. Sen tiedot katoavat – varmuuskopioi kaikki mitä tarvitset ennen jatkamista.</string>
     <string name="patch_install_successfully">Asennettu</string>
@@ -82,6 +80,8 @@
     <string name="patch_section_options">Valinnat</string>
     <string name="patch_section_signing">Allekirjoitusloki &amp;</string>
     <string name="patch_section_manifest">Manifest</string>
+    <string name="patch_manifest_version_code">Version koodi</string>
+    <string name="patch_manifest_version_code_hint">Jätä tyhjäksi säilyttääksesi alkuperäisen</string>
     <string name="patch_manifest_label">Sovelluksen nimi</string>
     <string name="patch_manifest_label_hint">Jätä tyhjäksi säilyttääksesi alkuperäisen</string>
     <string name="patch_manifest_extract_libs">Pura alkuperäiset kirjastot</string>
