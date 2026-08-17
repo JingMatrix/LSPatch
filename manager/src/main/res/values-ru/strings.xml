@@ -72,8 +72,6 @@
     <string name="patch_sigbypasslv0">lv0: Выкл</string>
     <string name="patch_sigbypasslv1">lv1: Обход PM</string>
     <string name="patch_sigbypasslv2">lv2: Обход PM + openat (libc)</string>
-    <string name="patch_override_version_code">Переопределить код версии</string>
-    <string name="patch_override_version_code_desc">Переопределить код версии пропатченного приложения на 1\nЭто позволит в дальнейшем устанавливать более раннюю версию и обычно не влияет на код версии, фактически воспринимаемый приложением</string>
     <string name="patch_return">Назад</string>
     <string name="patch_uninstall_text">Из-за разных подписей необходимо удалить оригинальное приложение перед установкой пропатченного.\nУбедитесь, что вы сохранили личные данные.</string>
     <string name="patch_install_successfully">Установлено</string>
@@ -82,6 +80,8 @@
     <string name="patch_section_options">Параметры</string>
     <string name="patch_section_signing">Подпись и журналы</string>
     <string name="patch_section_manifest">Манифест</string>
+    <string name="patch_manifest_version_code">Код версии</string>
+    <string name="patch_manifest_version_code_hint">Оставьте пустым, чтобы сохранить исходный</string>
     <string name="patch_manifest_label">Название приложения</string>
     <string name="patch_manifest_label_hint">Оставьте пустым, чтобы сохранить исходное</string>
     <string name="patch_manifest_extract_libs">Распаковывать нативные библиотеки</string>
