@@ -94,6 +94,8 @@
     <string name="patch_manifest_permissions_add">Legg til</string>
     <string name="patch_manifest_permissions_remove">Fjern</string>
     <string name="patch_manifest_permissions_count">%1$d lagt til</string>
+    <string name="patch_manifest_documents_provider">Eksponere private data</string>
+    <string name="patch_manifest_documents_provider_desc">Legg til leverandør, slik at en filbehandler kan bla gjennom appens private datamappe gjennom systemfilvelgeren og det kreves ingen rot. Widgeter som kan nå appens data - la være hvis du ikke trenger det.</string>
     <string name="patch_status_patching">Patcher…</string>
     <string name="patch_status_error">Oppdateringen mislyktes</string>
     <string name="patch_status_error_desc">Noe gikk galt. Kopier loggen for å se detaljene.</string>
