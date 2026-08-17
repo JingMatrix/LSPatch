@@ -94,6 +94,8 @@
     <string name="patch_manifest_permissions_add">Hinzufügen</string>
     <string name="patch_manifest_permissions_remove">Entfernen</string>
     <string name="patch_manifest_permissions_count">%1$d hinzugefügt</string>
+    <string name="patch_manifest_documents_provider">Private Daten freigeben</string>
+    <string name="patch_manifest_documents_provider_desc">Fügt einen Provider hinzu, damit ein Dateimanager den privaten Datenordner der App über die System-Dateiauswahl durchsuchen kann – ohne Root. Erweitert, wer an die App-Daten gelangt – lass es aus, wenn du es nicht brauchst.</string>
     <string name="patch_status_patching">Wird gepatcht…</string>
     <string name="patch_status_error">Patch fehlgeschlagen</string>
     <string name="patch_status_error_desc">Etwas ist schiefgelaufen. Kopiere das Protokoll, um die Details zu sehen.</string>
