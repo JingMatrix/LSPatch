@@ -88,6 +88,12 @@
     <string name="patch_manifest_extract_libs_desc">إجبار المُثبِّت على فكّ ضغط المكتبات الأصلية للتطبيق. يفيد وحدةً تحتاج إلى وجود الشيفرة الأصلية للتطبيق على القرص.</string>
     <string name="patch_manifest_cleartext">السماح بحركة المرور غير المشفَّرة</string>
     <string name="patch_manifest_cleartext_desc">السماح للتطبيق بإجراء اتصالات HTTP الصريحة التي كان سيرفضها لولا ذلك. مفيد لوحدة تفحص حركة المرور.</string>
+    <string name="patch_manifest_permissions">إضافة إذن</string>
+    <string name="patch_manifest_permissions_hint">مثال: INTERNET</string>
+    <string name="patch_manifest_permissions_desc">أعلن عن إذن تفتقده التطبيق ليتمكن وحدة من استخدامه. الاسم المختصر يصبح android.permission.NAME؛ ويُتجاهَل إذن يمتلكه التطبيق مسبقًا.</string>
+    <string name="patch_manifest_permissions_add">إضافة</string>
+    <string name="patch_manifest_permissions_remove">إزالة</string>
+    <string name="patch_manifest_permissions_count">أُضيف %1$d</string>
     <string name="patch_status_patching">جارٍ الترقيع…</string>
     <string name="patch_status_error">فشل الترقيع</string>
     <string name="patch_status_error_desc">حدث خطأ ما. انسخ السجل لعرض التفاصيل.</string>
