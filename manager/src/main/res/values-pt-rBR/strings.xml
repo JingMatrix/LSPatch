@@ -72,8 +72,6 @@
     <string name="patch_sigbypasslv0">lv0: Desligado</string>
     <string name="patch_sigbypasslv1">lv1: Ignorar PM</string>
     <string name="patch_sigbypasslv2">lv2: Ignorar PM + openat (libc)</string>
-    <string name="patch_override_version_code">Substituir código de versão</string>
-    <string name="patch_override_version_code_desc">Substitui o código de versão do app aplicado por 1\nIsso permite a instalação de versões anteriores no futuro e, geralmente, não afeta o código de versão realmente percebido pelo aplicativo</string>
     <string name="patch_return">Voltar</string>
     <string name="patch_uninstall_text">Devido às assinaturas diferentes, você precisa desinstalar o app original antes de instalar o aplicado.\nCertifique-se de ter feito backup dos dados pessoais.</string>
     <string name="patch_install_successfully">Instalado</string>
@@ -82,6 +80,8 @@
     <string name="patch_section_options">Opções</string>
     <string name="patch_section_signing">Assinatura e registro</string>
     <string name="patch_section_manifest">Manifesto</string>
+    <string name="patch_manifest_version_code">Código de versão</string>
+    <string name="patch_manifest_version_code_hint">Deixe em branco para manter o original</string>
     <string name="patch_manifest_label">Nome do app</string>
     <string name="patch_manifest_label_hint">Deixe em branco para manter o original</string>
     <string name="patch_manifest_extract_libs">Extrair bibliotecas nativas</string>
