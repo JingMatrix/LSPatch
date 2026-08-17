@@ -72,8 +72,6 @@
     <string name="patch_sigbypasslv0">lv0: 끔</string>
     <string name="patch_sigbypasslv1">lv1: PM 우회</string>
     <string name="patch_sigbypasslv2">lv2: PM + openat (libc) 우회</string>
-    <string name="patch_override_version_code">버전 코드 재정의</string>
-    <string name="patch_override_version_code_desc">패치된 앱의 버전 코드를 1로 재정의합니다\n이렇게 하면 나중에 다운그레이드 설치가 가능하며, 일반적으로 앱이 실제로 인식하는 버전 코드에는 영향을 주지 않습니다</string>
     <string name="patch_return">돌아가기</string>
     <string name="patch_uninstall_text">서명이 다르기 때문에 패치된 앱을 설치하기 전에 원본 앱을 제거해야 합니다.\n개인 데이터를 백업했는지 확인하세요.</string>
     <string name="patch_install_successfully">설치됨</string>
@@ -82,6 +80,8 @@
     <string name="patch_section_options">옵션</string>
     <string name="patch_section_signing">서명 및 로깅</string>
     <string name="patch_section_manifest">매니페스트</string>
+    <string name="patch_manifest_version_code">버전 코드</string>
+    <string name="patch_manifest_version_code_hint">비워 두면 원래 값을 유지합니다</string>
     <string name="patch_manifest_label">앱 이름</string>
     <string name="patch_manifest_label_hint">원래 이름을 유지하려면 비워 두세요</string>
     <string name="patch_manifest_extract_libs">네이티브 라이브러리 추출</string>
