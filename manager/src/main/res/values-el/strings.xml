@@ -94,6 +94,8 @@
     <string name="patch_manifest_permissions_add">Προσθήκη</string>
     <string name="patch_manifest_permissions_remove">Αφαίρεση</string>
     <string name="patch_manifest_permissions_count">%1$d προστέθηκε</string>
+    <string name="patch_manifest_documents_provider">Expose private data</string>
+    <string name="patch_manifest_documents_provider_desc">Προσθέστε έναν πάροχο, ώστε ένας διαχειριστής αρχείων να μπορεί να περιηγηθεί στον ιδιωτικό φάκελο δεδομένων της εφαρμογής μέσω του επιλογέα αρχείων συστήματος, δεν απαιτείται ρίζα. Διευρύνει τι μπορεί να φτάσει τα δεδομένα της εφαρμογής - αφήστε το εκτός αν το χρειαστείτε.</string>
     <string name="patch_status_patching">Διόρθωση…</string>
     <string name="patch_status_error">Αποτυχία ενημέρωσης</string>
     <string name="patch_status_error_desc">Κάτι πήγε στραβά. Αντιγράψτε το αρχείο καταγραφής για να δείτε τις λεπτομέρειες.</string>
