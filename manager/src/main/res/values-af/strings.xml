@@ -72,8 +72,6 @@
     <string name="patch_sigbypasslv0">lv0: af</string>
     <string name="patch_sigbypasslv1">lv1: Omseil PM</string>
     <string name="patch_sigbypasslv2">lv2: Omseil PM + openat (libc)</string>
-    <string name="patch_override_version_code">Ignoreer weergawekode</string>
-    <string name="patch_override_version_code_desc">Stel die opgedateerde APK se weergawekode op 1, sodat \'n latere weergawe daaroor geïnstalleer kan word. Die toepassing self lees gewoonlik steeds sy regte weergawe.</string>
     <string name="patch_return">Keer terug</string>
     <string name="patch_uninstall_text">Die geïnstalleerde toepassing is anders geteken, so dit moet eers gedeïnstalleer word. Die data daarvan sal verlore gaan – rugsteun enigiets wat jy nodig het voordat jy voortgaan.</string>
     <string name="patch_install_successfully">Geïnstalleer</string>
@@ -82,6 +80,8 @@
     <string name="patch_section_options">Opsies</string>
     <string name="patch_section_signing">Ondertekening van &amp; logging</string>
     <string name="patch_section_manifest">Manifest</string>
+    <string name="patch_manifest_version_code">Weergawekode</string>
+    <string name="patch_manifest_version_code_hint">Los leeg om die oorspronklike te behou</string>
     <string name="patch_manifest_label">Programnaam</string>
     <string name="patch_manifest_label_hint">Los leeg om die oorspronklike te behou</string>
     <string name="patch_manifest_extract_libs">Onttrek inheemse biblioteke</string>
