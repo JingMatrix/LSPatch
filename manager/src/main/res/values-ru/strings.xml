@@ -94,6 +94,8 @@
     <string name="patch_manifest_permissions_add">Добавить</string>
     <string name="patch_manifest_permissions_remove">Удалить</string>
     <string name="patch_manifest_permissions_count">Добавлено: %1$d</string>
+    <string name="patch_manifest_documents_provider">Открыть личные данные</string>
+    <string name="patch_manifest_documents_provider_desc">Добавляет провайдера, чтобы файловый менеджер мог просматривать папку личных данных приложения через системный выбор файлов, без root. Расширяет круг того, что может добраться до данных приложения — оставьте выключенным, если не нужно.</string>
     <string name="patch_status_patching">Патчинг…</string>
     <string name="patch_status_error">Патч не удался</string>
     <string name="patch_status_error_desc">Что-то пошло не так. Скопируйте журнал, чтобы увидеть подробности.</string>
