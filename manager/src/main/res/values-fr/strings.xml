@@ -72,8 +72,6 @@
     <string name="patch_sigbypasslv0">lv0 : Désactivé</string>
     <string name="patch_sigbypasslv1">lv1 : Contourner PM</string>
     <string name="patch_sigbypasslv2">lv2 : Contourner PM + openat (libc)</string>
-    <string name="patch_override_version_code">Remplacer le code de version</string>
-    <string name="patch_override_version_code_desc">Remplace le code de version de l\'application patchée par 1\nCela permet une installation en downgrade à l\'avenir, et en général cela n\'affecte pas le code de version réellement perçu par l\'application</string>
     <string name="patch_return">Retour</string>
     <string name="patch_uninstall_text">En raison de signatures différentes, vous devez désinstaller l\'application d\'origine avant d\'installer la version patchée.\nAssurez-vous d\'avoir sauvegardé vos données personnelles.</string>
     <string name="patch_install_successfully">Installée</string>
@@ -82,6 +80,8 @@
     <string name="patch_section_options">Options</string>
     <string name="patch_section_signing">Signature &amp; journalisation</string>
     <string name="patch_section_manifest">Manifeste</string>
+    <string name="patch_manifest_version_code">Code de version</string>
+    <string name="patch_manifest_version_code_hint">Laisser vide pour conserver l\'original</string>
     <string name="patch_manifest_label">Nom de l\'application</string>
     <string name="patch_manifest_label_hint">Laisser vide pour conserver l\'original</string>
     <string name="patch_manifest_extract_libs">Extraire les bibliothèques natives</string>
