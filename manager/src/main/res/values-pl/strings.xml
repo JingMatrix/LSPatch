@@ -94,6 +94,8 @@
     <string name="patch_manifest_permissions_add">Dodaj</string>
     <string name="patch_manifest_permissions_remove">Usuń</string>
     <string name="patch_manifest_permissions_count">Dodano %1$d</string>
+    <string name="patch_manifest_documents_provider">Udostępnij dane prywatne</string>
+    <string name="patch_manifest_documents_provider_desc">Dodaje dostawcę, aby menedżer plików mógł przeglądać folder prywatnych danych aplikacji przez systemowy wybór plików, bez roota. Poszerza to, co może sięgnąć do danych aplikacji — zostaw wyłączone, jeśli nie potrzebujesz.</string>
     <string name="patch_status_patching">Patchowanie…</string>
     <string name="patch_status_error">Patchowanie nie powiodło się</string>
     <string name="patch_status_error_desc">Coś poszło nie tak. Skopiuj log, aby zobaczyć szczegóły.</string>
