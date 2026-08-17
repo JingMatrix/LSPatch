@@ -88,6 +88,12 @@
     <string name="patch_manifest_extract_libs_desc">Pakota asentaja purkamaan sovelluksen alkuperäiset kirjastot. Auttaa moduulia, joka tarvitsee sovelluksen omaa natiivi koodia levyltä.</string>
     <string name="patch_manifest_cleartext">Salli selkeä liikenne</string>
     <string name="patch_manifest_cleartext_desc">Anna sovelluksen tehdä tavallisia HTTP-yhteyksiä, joita se muuten kieltää. Hyödyllinen liikenteen tarkastamiseen moduulille.</string>
+    <string name="patch_manifest_permissions">Lisää käyttöoikeus</string>
+    <string name="patch_manifest_permissions_hint">esim. INTERNET</string>
+    <string name="patch_manifest_permissions_desc">Declare a permission to app no so a module can use it. Lyhyt nimi tulee android.permission.NAME; yksi sovellus on jo ohitettu.</string>
+    <string name="patch_manifest_permissions_add">Lisää</string>
+    <string name="patch_manifest_permissions_remove">Poista</string>
+    <string name="patch_manifest_permissions_count">%1$d lisätty</string>
     <string name="patch_status_patching">Paikataan…</string>
     <string name="patch_status_error">Paikkaus epäonnistui</string>
     <string name="patch_status_error_desc">Jokin meni pieleen. Kopioi loki nähdäksesi tiedot.</string>
