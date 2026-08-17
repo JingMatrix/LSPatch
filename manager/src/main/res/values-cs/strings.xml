@@ -88,6 +88,12 @@
     <string name="patch_manifest_extract_libs_desc">Vynutit, aby instalační program rozbalil nativní knihovny aplikace. Pomáhá modulu, který potřebuje vlastní nativní kód aplikace na disku.</string>
     <string name="patch_manifest_cleartext">Povolit volný textový provoz</string>
     <string name="patch_manifest_cleartext_desc">Nechte aplikaci, aby vytvořila jednoduchá HTTP spojení, která by jinak odmítla. Užitečné pro modul kontroly provozu.</string>
+    <string name="patch_manifest_permissions">Přidat oprávnění</string>
+    <string name="patch_manifest_permissions_hint">např. INTERNET</string>
+    <string name="patch_manifest_permissions_desc">Oprávnění, které aplikace postrádá, aby ji modul mohl používat. Krátký název se stává android.permission.NAME; aplikace, kterou již máte, je ignorována.</string>
+    <string name="patch_manifest_permissions_add">Přidat</string>
+    <string name="patch_manifest_permissions_remove">Odebrat</string>
+    <string name="patch_manifest_permissions_count">%1$d přidáno</string>
     <string name="patch_status_patching">Úprava…</string>
     <string name="patch_status_error">Patch selhal</string>
     <string name="patch_status_error_desc">Něco se pokazilo. Zkopírujte protokol pro zobrazení podrobností.</string>
