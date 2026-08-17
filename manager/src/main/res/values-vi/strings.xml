@@ -88,6 +88,12 @@
     <string name="patch_manifest_extract_libs_desc">Buộc trình cài đặt giải nén các thư viện native của ứng dụng. Hữu ích cho mô-đun cần mã native của chính ứng dụng nằm trên đĩa.</string>
     <string name="patch_manifest_cleartext">Cho phép lưu lượng không mã hoá</string>
     <string name="patch_manifest_cleartext_desc">Cho phép ứng dụng tạo kết nối HTTP thuần mà bình thường nó sẽ từ chối. Hữu ích cho mô-đun kiểm tra lưu lượng.</string>
+    <string name="patch_manifest_permissions">Thêm quyền</string>
+    <string name="patch_manifest_permissions_hint">vd. INTERNET</string>
+    <string name="patch_manifest_permissions_desc">Khai báo một quyền mà ứng dụng thiếu để mô-đun có thể dùng. Tên ngắn sẽ thành android.permission.NAME; quyền ứng dụng đã có sẽ bị bỏ qua.</string>
+    <string name="patch_manifest_permissions_add">Thêm</string>
+    <string name="patch_manifest_permissions_remove">Xóa</string>
+    <string name="patch_manifest_permissions_count">Đã thêm %1$d</string>
     <string name="patch_status_patching">Đang vá…</string>
     <string name="patch_status_error">Vá thất bại</string>
     <string name="patch_status_error_desc">Đã xảy ra lỗi. Sao chép nhật ký để xem chi tiết.</string>
