@@ -94,6 +94,8 @@
     <string name="patch_manifest_permissions_add">Adăugare</string>
     <string name="patch_manifest_permissions_remove">Elimină</string>
     <string name="patch_manifest_permissions_count">%1$d adăugat</string>
+    <string name="patch_manifest_documents_provider">Expune date private</string>
+    <string name="patch_manifest_documents_provider_desc">Adăugați un furnizor astfel încât un manager de fișiere să poată naviga folderul privat de date al aplicației prin selectorul de fișiere de sistem, nu este nevoie de root. Extinde ce poate ajunge la datele aplicației - părăsește aplicația dacă nu ai nevoie de ea.</string>
     <string name="patch_status_patching">Se redirecționează…</string>
     <string name="patch_status_error">Patch eșuat</string>
     <string name="patch_status_error_desc">Ceva nu a funcționat. Copiați jurnalul pentru a vedea detaliile.</string>
