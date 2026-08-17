@@ -88,6 +88,12 @@
     <string name="patch_manifest_extract_libs_desc">Змусити встановлювач розпакувати нативні бібліотеки застосунку. Допомагає модулю, якому потрібен власний нативний код застосунку на диску.</string>
     <string name="patch_manifest_cleartext">Дозволити незашифрований трафік</string>
     <string name="patch_manifest_cleartext_desc">Дозволити застосунку встановлювати звичайні HTTP-з\'єднання, які він інакше відхилив би. Корисно для модуля, що перевіряє трафік.</string>
+    <string name="patch_manifest_permissions">Додати дозвіл</string>
+    <string name="patch_manifest_permissions_hint">напр. INTERNET</string>
+    <string name="patch_manifest_permissions_desc">Оголосіть дозвіл, якого бракує застосунку, щоб модуль міг ним скористатися. Коротка назва стає android.permission.NAME; наявний у застосунку дозвіл ігнорується.</string>
+    <string name="patch_manifest_permissions_add">Додати</string>
+    <string name="patch_manifest_permissions_remove">Вилучити</string>
+    <string name="patch_manifest_permissions_count">Додано: %1$d</string>
     <string name="patch_status_patching">Патчинг…</string>
     <string name="patch_status_error">Патч не вдався</string>
     <string name="patch_status_error_desc">Щось пішло не так. Скопіюйте журнал, щоб побачити подробиці.</string>
