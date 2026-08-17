@@ -72,8 +72,6 @@
     <string name="patch_sigbypasslv0">lv0: Aus</string>
     <string name="patch_sigbypasslv1">lv1: PM umgehen</string>
     <string name="patch_sigbypasslv2">lv2: PM + openat (libc) umgehen</string>
-    <string name="patch_override_version_code">Versionscode überschreiben</string>
-    <string name="patch_override_version_code_desc">Überschreibt den Versionscode der gepatchten App auf 1\nDies ermöglicht später eine Downgrade-Installation und wirkt sich in der Regel nicht auf den tatsächlich von der App wahrgenommenen Versionscode aus</string>
     <string name="patch_return">Zurück</string>
     <string name="patch_uninstall_text">Aufgrund unterschiedlicher Signaturen musst du die Original-App deinstallieren, bevor du die gepatchte installierst.\nStelle sicher, dass du persönliche Daten gesichert hast.</string>
     <string name="patch_install_successfully">Installiert</string>
@@ -82,6 +80,8 @@
     <string name="patch_section_options">Optionen</string>
     <string name="patch_section_signing">Signierung &amp; Protokollierung</string>
     <string name="patch_section_manifest">Manifest</string>
+    <string name="patch_manifest_version_code">Versionscode</string>
+    <string name="patch_manifest_version_code_hint">Leer lassen, um den ursprünglichen zu behalten</string>
     <string name="patch_manifest_label">App-Name</string>
     <string name="patch_manifest_label_hint">Leer lassen, um den Originalnamen zu behalten</string>
     <string name="patch_manifest_extract_libs">Native Bibliotheken entpacken</string>
