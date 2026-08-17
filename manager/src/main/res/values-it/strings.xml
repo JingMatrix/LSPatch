@@ -72,8 +72,6 @@
     <string name="patch_sigbypasslv0">lv0: Disattivato</string>
     <string name="patch_sigbypasslv1">lv1: Bypass PM</string>
     <string name="patch_sigbypasslv2">lv2: Bypass PM + openat (libc)</string>
-    <string name="patch_override_version_code">Sostituisci codice versione</string>
-    <string name="patch_override_version_code_desc">Sostituisce il codice versione dell\'app con patch con 1\nQuesto consente il downgrade in futuro e in genere non influisce sul codice versione effettivamente percepito dall\'applicazione</string>
     <string name="patch_return">Torna</string>
     <string name="patch_uninstall_text">A causa delle firme diverse, devi disinstallare l\'app originale prima di installare quella con patch.\nAssicurati di aver eseguito il backup dei dati personali.</string>
     <string name="patch_install_successfully">Installato</string>
@@ -82,6 +80,8 @@
     <string name="patch_section_options">Opzioni</string>
     <string name="patch_section_signing">Firma e log</string>
     <string name="patch_section_manifest">Manifesto</string>
+    <string name="patch_manifest_version_code">Codice versione</string>
+    <string name="patch_manifest_version_code_hint">Lascia vuoto per mantenere l\'originale</string>
     <string name="patch_manifest_label">Nome dell\'app</string>
     <string name="patch_manifest_label_hint">Lascia vuoto per mantenere l\'originale</string>
     <string name="patch_manifest_extract_libs">Estrai le librerie native</string>
