@@ -72,8 +72,6 @@
     <string name="patch_sigbypasslv0">lv0: Av</string>
     <string name="patch_sigbypasslv1">lv1: Omgå PM</string>
     <string name="patch_sigbypasslv2">lv2: Bypass PM + openat (libc)</string>
-    <string name="patch_override_version_code">Overstyr versjonskoden</string>
-    <string name="patch_override_version_code_desc">Setter den patchede APK\'s versjonskode til 1, så en senere versjon kan installeres over den. Selve appen leser vanligvis fortsatt sin egentlige versjon.</string>
     <string name="patch_return">Komme tilbake</string>
     <string name="patch_uninstall_text">Den installerte appen er signert annerledes, så den må avinstalleres først. Dataene vil gå tapt - sikkerhetskopiering alt du trenger før du fortsetter.</string>
     <string name="patch_install_successfully">Installert</string>
@@ -82,6 +80,8 @@
     <string name="patch_section_options">Alternativer</string>
     <string name="patch_section_signing">Signer &amp; logging</string>
     <string name="patch_section_manifest">Manifest</string>
+    <string name="patch_manifest_version_code">Versjonskode</string>
+    <string name="patch_manifest_version_code_hint">La være blank for å beholde originalen</string>
     <string name="patch_manifest_label">Navn på app</string>
     <string name="patch_manifest_label_hint">La være blank for å beholde originalen</string>
     <string name="patch_manifest_extract_libs">Hent innebygde biblioteker</string>
