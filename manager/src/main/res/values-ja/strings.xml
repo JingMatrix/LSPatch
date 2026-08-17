@@ -94,6 +94,8 @@
     <string name="patch_manifest_permissions_add">追加</string>
     <string name="patch_manifest_permissions_remove">削除</string>
     <string name="patch_manifest_permissions_count">%1$d 件追加</string>
+    <string name="patch_manifest_documents_provider">非公開データを公開</string>
+    <string name="patch_manifest_documents_provider_desc">プロバイダーを追加し、ルート権限なしでシステムのファイル選択画面からアプリの非公開データフォルダーをファイルマネージャーで閲覧できるようにします。アプリのデータにアクセスできる範囲が広がるため、必要でなければオフのままにしてください。</string>
     <string name="patch_status_patching">パッチ適用中…</string>
     <string name="patch_status_error">パッチに失敗しました</string>
     <string name="patch_status_error_desc">問題が発生しました。ログをコピーして詳細を確認してください。</string>
