@@ -94,6 +94,8 @@
     <string name="patch_manifest_permissions_add">Hozzáadás</string>
     <string name="patch_manifest_permissions_remove">Eltávolítás</string>
     <string name="patch_manifest_permissions_count">%1$d hozzáadva</string>
+    <string name="patch_manifest_documents_provider">Személyes adatok nyilvánosságra hozatala</string>
+    <string name="patch_manifest_documents_provider_desc">Adj hozzá egy szolgáltatót, hogy a fájlkezelő a rendszerfájl-választón keresztül böngészhessen az alkalmazás privát adatmappájában, root hozzáférés nélkül. Bővíti az alkalmazás adataihoz való hozzáférést – hagyd ki, hacsak nincs rá szükséged.</string>
     <string name="patch_status_patching">Javítás…</string>
     <string name="patch_status_error">Javítás sikertelen</string>
     <string name="patch_status_error_desc">Valami hiba történt. Másolja a naplót a részletek megtekintéséhez.</string>
