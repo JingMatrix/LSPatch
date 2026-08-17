@@ -72,8 +72,6 @@
     <string name="patch_sigbypasslv0">lv0: oprit</string>
     <string name="patch_sigbypasslv1">lv1: Ocoli PM</string>
     <string name="patch_sigbypasslv2">lv2: Bypass PM + openat (libc)</string>
-    <string name="patch_override_version_code">Ignorați codul versiunii</string>
-    <string name="patch_override_version_code_desc">Setează codul versiunii APK modificat la 1, astfel încât o versiune ulterioară să poată fi instalată peste ea. De obicei, aplicația în sine încă își citește versiunea reală.</string>
     <string name="patch_return">Întoarcere</string>
     <string name="patch_uninstall_text">Aplicația instalată este semnată diferit, deci trebuie dezinstalată prima. Datele sale vor fi pierdute - faceți un backup pentru orice aveți nevoie înainte de a continua.</string>
     <string name="patch_install_successfully">Instalat</string>
@@ -82,6 +80,8 @@
     <string name="patch_section_options">Opţiuni</string>
     <string name="patch_section_signing">Semnare &amp; logare</string>
     <string name="patch_section_manifest">Manifestare</string>
+    <string name="patch_manifest_version_code">Cod versiune</string>
+    <string name="patch_manifest_version_code_hint">Lăsați gol pentru a păstra originalul</string>
     <string name="patch_manifest_label">Numele aplicației</string>
     <string name="patch_manifest_label_hint">Lăsați gol pentru a păstra originalul</string>
     <string name="patch_manifest_extract_libs">Extrage bibliotecile native</string>
