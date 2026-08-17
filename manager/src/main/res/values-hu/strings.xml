@@ -88,6 +88,12 @@
     <string name="patch_manifest_extract_libs_desc">Kényszeríti a telepítőt az alkalmazás natív könyvtárainak kicsomagolására. Segíti a modult, amelynek szüksége van az alkalmazás saját natív kódjára a lemezen.</string>
     <string name="patch_manifest_cleartext">Engedélyezze a titkosítatlan szöveges forgalmat</string>
     <string name="patch_manifest_cleartext_desc">Hagyja, hogy az alkalmazás sima HTTP-kapcsolatokat hozzon létre, amelyeket egyébként elutasítana. Hasznos egy forgalomfigyelő modulhoz.</string>
+    <string name="patch_manifest_permissions">Engedély hozzáadása</string>
+    <string name="patch_manifest_permissions_hint">pl. INTERNET</string>
+    <string name="patch_manifest_permissions_desc">Deklaráljon egy jogosultságot, amivel az alkalmazás nem rendelkezik, hogy egy modul használhassa. A rövid név android.permission.NAME lesz; a már meglévőket figyelmen kívül hagyja.</string>
+    <string name="patch_manifest_permissions_add">Hozzáadás</string>
+    <string name="patch_manifest_permissions_remove">Eltávolítás</string>
+    <string name="patch_manifest_permissions_count">%1$d hozzáadva</string>
     <string name="patch_status_patching">Javítás…</string>
     <string name="patch_status_error">Javítás sikertelen</string>
     <string name="patch_status_error_desc">Valami hiba történt. Másolja a naplót a részletek megtekintéséhez.</string>
