@@ -94,6 +94,8 @@
     <string name="patch_manifest_permissions_add">Aggiungi</string>
     <string name="patch_manifest_permissions_remove">Rimuovi</string>
     <string name="patch_manifest_permissions_count">%1$d aggiunte</string>
+    <string name="patch_manifest_documents_provider">Esponi i dati privati</string>
+    <string name="patch_manifest_documents_provider_desc">Aggiunge un provider così un file manager può sfogliare la cartella dei dati privati dell\'app dal selettore file di sistema, senza root. Amplia ciò che può raggiungere i dati dell\'app: lascialo disattivato se non ti serve.</string>
     <string name="patch_status_patching">Applicazione patch…</string>
     <string name="patch_status_error">Patch non riuscita</string>
     <string name="patch_status_error_desc">Qualcosa è andato storto. Copia il log per vedere i dettagli.</string>
