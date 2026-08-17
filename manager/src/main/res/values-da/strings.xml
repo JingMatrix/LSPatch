@@ -94,6 +94,8 @@
     <string name="patch_manifest_permissions_add">Tilføj</string>
     <string name="patch_manifest_permissions_remove">Fjern</string>
     <string name="patch_manifest_permissions_count">%1$d tilføjet</string>
+    <string name="patch_manifest_documents_provider">Udsæt private data</string>
+    <string name="patch_manifest_documents_provider_desc">Tilføj en udbyder, så en filhåndtering kan gennemse appens private datamappe gennem systemfilvælgeren, ingen root nødvendig. Udvider, hvad der kan nå appens data - sluk, medmindre du har brug for det.</string>
     <string name="patch_status_patching">Patcher…</string>
     <string name="patch_status_error">Fejlrettelse mislykkedes</string>
     <string name="patch_status_error_desc">Noget gik galt. Kopiér loggen for at se detaljerne.</string>
