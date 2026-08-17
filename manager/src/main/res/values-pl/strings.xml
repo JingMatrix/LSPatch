@@ -88,6 +88,12 @@
     <string name="patch_manifest_extract_libs_desc">Wymuś na instalatorze wypakowanie bibliotek natywnych aplikacji. Pomaga modułowi, który potrzebuje własnego kodu natywnego aplikacji na dysku.</string>
     <string name="patch_manifest_cleartext">Zezwól na ruch w postaci zwykłego tekstu</string>
     <string name="patch_manifest_cleartext_desc">Pozwól aplikacji nawiązywać połączenia zwykłym HTTP, które w innym wypadku by odrzuciła. Przydatne dla modułu analizującego ruch.</string>
+    <string name="patch_manifest_permissions">Dodaj uprawnienie</string>
+    <string name="patch_manifest_permissions_hint">np. INTERNET</string>
+    <string name="patch_manifest_permissions_desc">Zadeklaruj uprawnienie, którego brakuje aplikacji, aby moduł mógł go użyć. Krótka nazwa staje się android.permission.NAME; uprawnienie, które aplikacja już ma, jest pomijane.</string>
+    <string name="patch_manifest_permissions_add">Dodaj</string>
+    <string name="patch_manifest_permissions_remove">Usuń</string>
+    <string name="patch_manifest_permissions_count">Dodano %1$d</string>
     <string name="patch_status_patching">Patchowanie…</string>
     <string name="patch_status_error">Patchowanie nie powiodło się</string>
     <string name="patch_status_error_desc">Coś poszło nie tak. Skopiuj log, aby zobaczyć szczegóły.</string>
