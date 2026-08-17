@@ -75,8 +75,6 @@
     <string name="patch_sigbypasslv0">lv0: Off</string>
     <string name="patch_sigbypasslv1">lv1: Bypass PM</string>
     <string name="patch_sigbypasslv2">lv2: Bypass PM + openat (libc)</string>
-    <string name="patch_override_version_code">Override version code</string>
-    <string name="patch_override_version_code_desc">Sets the patched APK\'s version code to 1, so a later build can be installed over it. The app itself usually still reads its real version.</string>
     <string name="patch_return">Return</string>
     <string name="patch_uninstall_text">The installed app is signed differently, so it must be uninstalled first. Its data will be lost — back up anything you need before continuing.</string>
     <string name="patch_install_successfully">Installed</string>
@@ -85,6 +83,8 @@
     <string name="patch_section_options">Options</string>
     <string name="patch_section_signing">Signing &amp; logging</string>
     <string name="patch_section_manifest">Manifest</string>
+    <string name="patch_manifest_version_code">Version code</string>
+    <string name="patch_manifest_version_code_hint">Leave blank to keep the original</string>
     <string name="patch_manifest_label">App name</string>
     <string name="patch_manifest_label_hint">Leave blank to keep the original</string>
     <string name="patch_manifest_extract_libs">Extract native libraries</string>
