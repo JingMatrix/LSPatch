@@ -72,8 +72,6 @@
     <string name="patch_sigbypasslv0">lv0: Desligado</string>
     <string name="patch_sigbypasslv1">lv1: Ignorar PM</string>
     <string name="patch_sigbypasslv2">lv2: Ignorar PM + openat (libc)</string>
-    <string name="patch_override_version_code">Substituir o código da versão</string>
-    <string name="patch_override_version_code_desc">Define o código da versão alterada do APK para 1, para que uma versão posterior possa ser instalada sobre ele. O aplicativo em si ainda geralmente lê sua versão real.</string>
     <string name="patch_return">Retornar</string>
     <string name="patch_uninstall_text">O aplicativo instalado está assinado de forma diferente, por isso ele deve ser desinstalado primeiro. Seus dados serão perdidos — faça backup de qualquer coisa que você precisar antes de continuar.</string>
     <string name="patch_install_successfully">Instalado</string>
@@ -82,6 +80,8 @@
     <string name="patch_section_options">Opções</string>
     <string name="patch_section_signing">Assinando &amp; registro</string>
     <string name="patch_section_manifest">Manifesto</string>
+    <string name="patch_manifest_version_code">Código da versão</string>
+    <string name="patch_manifest_version_code_hint">Deixe em branco para manter o original</string>
     <string name="patch_manifest_label">Nome do aplicativo</string>
     <string name="patch_manifest_label_hint">Deixe em branco para manter o original</string>
     <string name="patch_manifest_extract_libs">Extrair bibliotecas nativas</string>
