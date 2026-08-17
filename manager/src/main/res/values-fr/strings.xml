@@ -94,6 +94,8 @@
     <string name="patch_manifest_permissions_add">Ajouter</string>
     <string name="patch_manifest_permissions_remove">Retirer</string>
     <string name="patch_manifest_permissions_count">%1$d ajoutée(s)</string>
+    <string name="patch_manifest_documents_provider">Exposer les données privées</string>
+    <string name="patch_manifest_documents_provider_desc">Ajoute un fournisseur pour qu\'un gestionnaire de fichiers puisse parcourir le dossier de données privées de l\'application via le sélecteur de fichiers du système, sans root. Élargit ce qui peut accéder aux données de l\'application — à laisser désactivé sauf besoin.</string>
     <string name="patch_status_patching">Patch en cours…</string>
     <string name="patch_status_error">Échec du patch</string>
     <string name="patch_status_error_desc">Une erreur s\'est produite. Copiez le journal pour voir les détails.</string>
