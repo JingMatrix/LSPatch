@@ -72,8 +72,6 @@
     <string name="patch_sigbypasslv0">lv0: Vypnuto</string>
     <string name="patch_sigbypasslv1">lv1: Obejít PM</string>
     <string name="patch_sigbypasslv2">lv2: Bypass PM + openat (libc)</string>
-    <string name="patch_override_version_code">Přepsat kód verze</string>
-    <string name="patch_override_version_code_desc">Nastaví kód verze upraveného APK na 1, takže pozdější sestavení může být nainstalováno. Aplikace sama obvykle stále čte svou skutečnou verzi.</string>
     <string name="patch_return">Vrátit se</string>
     <string name="patch_uninstall_text">Nainstalovaná aplikace je podepsána odlišně, takže musí být nejprve odinstalována. Její data budou ztracena — před pokračováním si zálohujete, co potřebujete.</string>
     <string name="patch_install_successfully">Nainstalováno</string>
@@ -82,6 +80,8 @@
     <string name="patch_section_options">Možnosti</string>
     <string name="patch_section_signing">Přihlašování &amp; logování</string>
     <string name="patch_section_manifest">Manifest</string>
+    <string name="patch_manifest_version_code">Kód verze</string>
+    <string name="patch_manifest_version_code_hint">Ponechte prázdné pro zachování originálu</string>
     <string name="patch_manifest_label">Název aplikace</string>
     <string name="patch_manifest_label_hint">Ponechte prázdné pro zachování originálu</string>
     <string name="patch_manifest_extract_libs">Extrahovat nativní knihovny</string>
