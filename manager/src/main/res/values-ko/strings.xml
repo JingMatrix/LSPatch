@@ -88,6 +88,12 @@
     <string name="patch_manifest_extract_libs_desc">설치 관리자가 앱의 네이티브 라이브러리를 풀도록 강제합니다. 앱 자체의 네이티브 코드가 디스크에 있어야 하는 모듈에 도움이 됩니다.</string>
     <string name="patch_manifest_cleartext">평문 트래픽 허용</string>
     <string name="patch_manifest_cleartext_desc">앱이 원래라면 거부했을 평문 HTTP 연결을 하도록 허용합니다. 트래픽을 살펴보는 모듈에 유용합니다.</string>
+    <string name="patch_manifest_permissions">권한 추가</string>
+    <string name="patch_manifest_permissions_hint">예: INTERNET</string>
+    <string name="patch_manifest_permissions_desc">앱에 없는 권한을 선언해 모듈이 사용할 수 있게 합니다. 짧은 이름은 android.permission.NAME이 되며, 앱이 이미 가진 권한은 무시됩니다.</string>
+    <string name="patch_manifest_permissions_add">추가</string>
+    <string name="patch_manifest_permissions_remove">제거</string>
+    <string name="patch_manifest_permissions_count">%1$d개 추가됨</string>
     <string name="patch_status_patching">패치 중…</string>
     <string name="patch_status_error">패치 실패</string>
     <string name="patch_status_error_desc">문제가 발생했습니다. 로그를 복사하여 자세한 내용을 확인하세요.</string>
