@@ -94,6 +94,8 @@
     <string name="patch_manifest_permissions_add">Додати</string>
     <string name="patch_manifest_permissions_remove">Вилучити</string>
     <string name="patch_manifest_permissions_count">Додано: %1$d</string>
+    <string name="patch_manifest_documents_provider">Відкрити приватні дані</string>
+    <string name="patch_manifest_documents_provider_desc">Додає постачальника, щоб файловий менеджер міг переглядати теку приватних даних застосунку через системний вибір файлів, без root. Розширює те, що може дістатися до даних застосунку — лишіть вимкненим, якщо не потрібно.</string>
     <string name="patch_status_patching">Патчинг…</string>
     <string name="patch_status_error">Патч не вдався</string>
     <string name="patch_status_error_desc">Щось пішло не так. Скопіюйте журнал, щоб побачити подробиці.</string>
