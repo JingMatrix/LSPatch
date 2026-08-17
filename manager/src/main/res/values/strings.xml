@@ -91,6 +91,12 @@
     <string name="patch_manifest_extract_libs_desc">Force the installer to unpack the app\'s native libraries. Helps a module that needs the app\'s own native code on disk.</string>
     <string name="patch_manifest_cleartext">Allow cleartext traffic</string>
     <string name="patch_manifest_cleartext_desc">Let the app make plain-HTTP connections it would otherwise refuse. Useful for a traffic-inspecting module.</string>
+    <string name="patch_manifest_permissions">Add permission</string>
+    <string name="patch_manifest_permissions_hint">e.g. INTERNET</string>
+    <string name="patch_manifest_permissions_desc">Declare a permission the app lacks so a module can use it. A short name becomes android.permission.NAME; one the app already has is ignored.</string>
+    <string name="patch_manifest_permissions_add">Add</string>
+    <string name="patch_manifest_permissions_remove">Remove</string>
+    <string name="patch_manifest_permissions_count">%1$d added</string>
     <string name="patch_status_patching">Patching…</string>
     <string name="patch_status_error">Patch failed</string>
     <string name="patch_status_error_desc">Something went wrong. Copy the log to see the details.</string>
