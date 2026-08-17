@@ -94,6 +94,8 @@
     <string name="patch_manifest_permissions_add">Adicionar</string>
     <string name="patch_manifest_permissions_remove">Excluir</string>
     <string name="patch_manifest_permissions_count">%1$d adicionado</string>
+    <string name="patch_manifest_documents_provider">Expor dados privados</string>
+    <string name="patch_manifest_documents_provider_desc">Adicione um provedor para que um gerenciador de arquivos possa navegar pela pasta de dados privados do aplicativo através do selecionador de arquivos do sistema, nenhuma raiz necessária. Gera o que pode alcançar os dados do app — desconecte-se a menos que você precise dele.</string>
     <string name="patch_status_patching">Atualizando…</string>
     <string name="patch_status_error">Falha na atualização</string>
     <string name="patch_status_error_desc">Algo deu errado. Copie o log para ver os detalhes.</string>
