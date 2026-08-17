@@ -88,6 +88,12 @@
     <string name="patch_manifest_extract_libs_desc">Zwingt den Installer, die nativen Bibliotheken der App zu entpacken. Hilft einem Modul, das den nativen Code der App auf dem Speicher braucht.</string>
     <string name="patch_manifest_cleartext">Klartext-Datenverkehr erlauben</string>
     <string name="patch_manifest_cleartext_desc">Lässt die App Klartext-HTTP-Verbindungen herstellen, die sie sonst verweigern würde. Nützlich für ein Modul, das den Datenverkehr untersucht.</string>
+    <string name="patch_manifest_permissions">Berechtigung hinzufügen</string>
+    <string name="patch_manifest_permissions_hint">z. B. INTERNET</string>
+    <string name="patch_manifest_permissions_desc">Eine Berechtigung deklarieren, die der App fehlt, damit ein Modul sie nutzen kann. Ein Kurzname wird zu android.permission.NAME; eine bereits vorhandene wird ignoriert.</string>
+    <string name="patch_manifest_permissions_add">Hinzufügen</string>
+    <string name="patch_manifest_permissions_remove">Entfernen</string>
+    <string name="patch_manifest_permissions_count">%1$d hinzugefügt</string>
     <string name="patch_status_patching">Wird gepatcht…</string>
     <string name="patch_status_error">Patch fehlgeschlagen</string>
     <string name="patch_status_error_desc">Etwas ist schiefgelaufen. Kopiere das Protokoll, um die Details zu sehen.</string>
