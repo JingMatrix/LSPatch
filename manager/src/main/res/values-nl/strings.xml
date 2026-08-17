@@ -72,8 +72,6 @@
     <string name="patch_sigbypasslv0">lv0: Uit</string>
     <string name="patch_sigbypasslv1">lv1: PM overslaan</string>
     <string name="patch_sigbypasslv2">lv2: Bypass PM + openat (libc)</string>
-    <string name="patch_override_version_code">Versiecode overschrijven</string>
-    <string name="patch_override_version_code_desc">Stelt de versiecode van de gepatched API in op 1, zodat er later een build over kan worden geïnstalleerd. De app zelf leest meestal nog steeds de echte versie.</string>
     <string name="patch_return">Opbrengst</string>
     <string name="patch_uninstall_text">De geïnstalleerde app is anders aangemeld, dus deze moet eerst worden verwijderd. Zijn gegevens gaan verloren - maak een backup van alles wat je nodig hebt om verder te gaan.</string>
     <string name="patch_install_successfully">Geinstalleerd</string>
@@ -82,6 +80,8 @@
     <string name="patch_section_options">Instellingen</string>
     <string name="patch_section_signing">Ondertekening &amp; logging</string>
     <string name="patch_section_manifest">manifesteren</string>
+    <string name="patch_manifest_version_code">Versie code</string>
+    <string name="patch_manifest_version_code_hint">Laat leeg om het origineel te houden</string>
     <string name="patch_manifest_label">App naam</string>
     <string name="patch_manifest_label_hint">Laat leeg om het origineel te houden</string>
     <string name="patch_manifest_extract_libs">Uitpakken van inheemse bibliotheken</string>
