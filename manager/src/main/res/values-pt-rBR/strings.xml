@@ -88,6 +88,12 @@
     <string name="patch_manifest_extract_libs_desc">Força o instalador a descompactar as bibliotecas nativas do app. Ajuda um módulo que precisa do código nativo do próprio app no disco.</string>
     <string name="patch_manifest_cleartext">Permitir tráfego não criptografado</string>
     <string name="patch_manifest_cleartext_desc">Permite que o app faça conexões HTTP simples que de outra forma recusaria. Útil para um módulo que inspeciona o tráfego.</string>
+    <string name="patch_manifest_permissions">Adicionar permissão</string>
+    <string name="patch_manifest_permissions_hint">ex.: INTERNET</string>
+    <string name="patch_manifest_permissions_desc">Declare uma permissão que o app não tem para que um módulo possa usá-la. Um nome curto vira android.permission.NAME; uma que o app já tem é ignorada.</string>
+    <string name="patch_manifest_permissions_add">Adicionar</string>
+    <string name="patch_manifest_permissions_remove">Remover</string>
+    <string name="patch_manifest_permissions_count">%1$d adicionadas</string>
     <string name="patch_status_patching">Aplicando patch…</string>
     <string name="patch_status_error">Falha no patch</string>
     <string name="patch_status_error_desc">Algo deu errado. Copie o log para ver os detalhes.</string>
