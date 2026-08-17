@@ -88,6 +88,12 @@
     <string name="patch_manifest_extract_libs_desc">Yükleyiciyi, uygulamanın yerel kütüphanelerini paketten çıkarmaya zorlar. Uygulamanın kendi yerel kodunun diskte olmasına ihtiyaç duyan bir modüle yardımcı olur.</string>
     <string name="patch_manifest_cleartext">Düz metin trafiğine izin ver</string>
     <string name="patch_manifest_cleartext_desc">Uygulamanın normalde reddedeceği düz HTTP bağlantıları kurmasına izin verir. Trafiği inceleyen bir modül için kullanışlıdır.</string>
+    <string name="patch_manifest_permissions">İzin ekle</string>
+    <string name="patch_manifest_permissions_hint">örn. INTERNET</string>
+    <string name="patch_manifest_permissions_desc">Bir modülün kullanabilmesi için uygulamada olmayan bir izni bildirin. Kısa ad android.permission.NAME olur; uygulamanın zaten sahip olduğu bir izin yok sayılır.</string>
+    <string name="patch_manifest_permissions_add">Ekle</string>
+    <string name="patch_manifest_permissions_remove">Kaldır</string>
+    <string name="patch_manifest_permissions_count">%1$d eklendi</string>
     <string name="patch_status_patching">Yamalanıyor…</string>
     <string name="patch_status_error">Yama başarısız</string>
     <string name="patch_status_error_desc">Bir şeyler ters gitti. Ayrıntıları görmek için günlüğü kopyalayın.</string>
