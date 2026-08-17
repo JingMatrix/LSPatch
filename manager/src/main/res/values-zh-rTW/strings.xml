@@ -247,4 +247,15 @@
     <string name="settings_keystore_custom_desc">使用你自己的金鑰庫（BKS）簽署。</string>
     <string name="update_reinstall">重新安裝此版本</string>
     <string name="update_check_failed">無法檢查更新</string>
+    <string name="home_package">套件名稱</string>
+    <string name="settings_cloak_dialog_title">變更套件名稱</string>
+    <string name="settings_cloak_package">新套件名稱</string>
+    <string name="settings_cloak_randomize">隨機產生</string>
+    <string name="settings_cloak_invalid">請輸入有效的套件名稱（例如 org.example.app）</string>
+    <string name="settings_cloak_need_shizuku">變更套件名稱需要 Shizuku</string>
+    <string name="settings_cloak_confirm">繼續</string>
+    <string name="settings_cloak_warning">這會以不同的套件名稱安裝一份新的 LSPatch Manager，更新本機模式應用程式，然後解除安裝目前的版本。整合模式的修補不受影響。Shizuku 必須保持可用。安裝後請為新套件授予 Shizuku。</string>
+    <string name="settings_revert_dialog_title">還原為原始套件</string>
+    <string name="settings_revert_confirm">還原</string>
+    <string name="settings_revert_warning">從 JingMatrix/LSPatch 的發行版下載最新的 manager.apk，將其安裝為 org.lsposed.lspatch（會還原設定與本機應用程式的關聯），然後解除安裝此應用程式。需要 Shizuku 與網路。</string>
 </resources>

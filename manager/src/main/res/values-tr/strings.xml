@@ -247,4 +247,15 @@
     <string name="settings_keystore_custom_desc">Kendi anahtar deponuzla (BKS) imzalayın.</string>
     <string name="update_reinstall">Bu yapıyı yeniden kur</string>
     <string name="update_check_failed">Güncellemeler denetlenemedi</string>
+    <string name="home_package">Paket</string>
+    <string name="settings_cloak_dialog_title">Paket adını değiştir</string>
+    <string name="settings_cloak_package">Yeni paket adı</string>
+    <string name="settings_cloak_randomize">Rastgele</string>
+    <string name="settings_cloak_invalid">Geçerli bir paket adı girin (ör. org.example.app)</string>
+    <string name="settings_cloak_need_shizuku">Paket adını değiştirmek için Shizuku gerekir</string>
+    <string name="settings_cloak_confirm">Devam</string>
+    <string name="settings_cloak_warning">Bu, LSPatch Manager\'ın farklı bir paket adıyla yeni bir kopyasını yükler, yerel moddaki uygulamaları günceller ve ardından mevcut kopyayı kaldırır. Tümleşik yamalar etkilenmez. Shizuku kullanılabilir kalmalıdır. Kurulumdan sonra yeni pakete Shizuku izni verin.</string>
+    <string name="settings_revert_dialog_title">Özgün pakete geri dön</string>
+    <string name="settings_revert_confirm">Geri al</string>
+    <string name="settings_revert_warning">JingMatrix/LSPatch sürümlerinden en yeni manager.apk dosyasını indirir, org.lsposed.lspatch olarak yükler (ayarlar ve yerel uygulama bağlantıları geri yüklenir) ve ardından bu uygulamayı kaldırır. Shizuku ve ağ gerektirir.</string>
 </resources>

@@ -247,4 +247,15 @@
     <string name="settings_keystore_custom_desc">独自のキーストア（BKS）で署名します。</string>
     <string name="update_reinstall">このビルドを再インストール</string>
     <string name="update_check_failed">更新を確認できませんでした</string>
+    <string name="home_package">パッケージ</string>
+    <string name="settings_cloak_dialog_title">パッケージ名を変更</string>
+    <string name="settings_cloak_package">新しいパッケージ名</string>
+    <string name="settings_cloak_randomize">ランダム</string>
+    <string name="settings_cloak_invalid">有効なパッケージ名を入力してください（例: org.example.app）</string>
+    <string name="settings_cloak_need_shizuku">パッケージ名の変更には Shizuku が必要です</string>
+    <string name="settings_cloak_confirm">続行</string>
+    <string name="settings_cloak_warning">LSPatch Manager を別のパッケージ名で新しくインストールし、ローカルモードのアプリを更新してから、現在のものをアンインストールします。統合パッチには影響しません。Shizuku は利用可能なままにしてください。インストール後、新しいパッケージに Shizuku を許可してください。</string>
+    <string name="settings_revert_dialog_title">元のパッケージに戻す</string>
+    <string name="settings_revert_confirm">元に戻す</string>
+    <string name="settings_revert_warning">JingMatrix/LSPatch のリリースから最新の manager.apk をダウンロードし、org.lsposed.lspatch としてインストールして（設定とローカルアプリのリンクが復元されます）、このアプリをアンインストールします。Shizuku とネットワークが必要です。</string>
 </resources>

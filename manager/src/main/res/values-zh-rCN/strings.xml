@@ -247,4 +247,15 @@
     <string name="patch_manifest_permissions_count">已添加 %1$d 个</string>
     <string name="patch_manifest_documents_provider">暴露私有数据</string>
     <string name="patch_manifest_documents_provider_desc">添加一个提供程序，让文件管理器无需 root 即可通过系统文件选择器浏览应用的私有数据目录。这会扩大可访问应用数据的范围——若无需要请保持关闭。</string>
+    <string name="home_package">包名</string>
+    <string name="settings_cloak_dialog_title">更改包名</string>
+    <string name="settings_cloak_package">新包名</string>
+    <string name="settings_cloak_randomize">随机生成</string>
+    <string name="settings_cloak_invalid">请输入有效的包名（例如 org.example.app）</string>
+    <string name="settings_cloak_need_shizuku">更改包名需要 Shizuku</string>
+    <string name="settings_cloak_confirm">继续</string>
+    <string name="settings_cloak_warning">这将以不同的包名安装一个新的 LSPatch Manager 副本，更新本地模式应用，然后卸载当前副本。集成模式的补丁不受影响。Shizuku 必须保持可用。安装后请为新包授予 Shizuku。</string>
+    <string name="settings_revert_dialog_title">还原为原始包名</string>
+    <string name="settings_revert_confirm">还原</string>
+    <string name="settings_revert_warning">从 JingMatrix/LSPatch 的发行版下载最新的 manager.apk，将其安装为 org.lsposed.lspatch（会还原设置和本地应用的关联），然后卸载此应用。需要 Shizuku 和网络。</string>
 </resources>

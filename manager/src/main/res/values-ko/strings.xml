@@ -247,4 +247,15 @@
     <string name="settings_keystore_custom_desc">자신의 키스토어(BKS)로 서명합니다.</string>
     <string name="update_reinstall">이 빌드 다시 설치</string>
     <string name="update_check_failed">업데이트를 확인하지 못했습니다</string>
+    <string name="home_package">패키지</string>
+    <string name="settings_cloak_dialog_title">패키지 이름 변경</string>
+    <string name="settings_cloak_package">새 패키지 이름</string>
+    <string name="settings_cloak_randomize">무작위</string>
+    <string name="settings_cloak_invalid">올바른 패키지 이름을 입력하세요 (예: org.example.app)</string>
+    <string name="settings_cloak_need_shizuku">패키지 이름을 변경하려면 Shizuku가 필요합니다</string>
+    <string name="settings_cloak_confirm">계속</string>
+    <string name="settings_cloak_warning">LSPatch Manager를 다른 패키지 이름으로 새로 설치하고 로컬 모드 앱을 업데이트한 다음 현재 앱을 제거합니다. 통합 패치는 영향을 받지 않습니다. Shizuku를 계속 사용할 수 있어야 합니다. 설치 후 새 패키지에 Shizuku를 허용하세요.</string>
+    <string name="settings_revert_dialog_title">원래 패키지로 되돌리기</string>
+    <string name="settings_revert_confirm">되돌리기</string>
+    <string name="settings_revert_warning">JingMatrix/LSPatch 릴리스에서 최신 manager.apk를 다운로드하여 org.lsposed.lspatch로 설치하고(설정과 로컬 앱 링크가 복원됨) 이 앱을 제거합니다. Shizuku와 네트워크가 필요합니다.</string>
 </resources>

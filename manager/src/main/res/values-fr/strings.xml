@@ -247,4 +247,15 @@
     <string name="settings_keystore_custom_desc">Signer avec votre propre keystore (BKS).</string>
     <string name="update_reinstall">Réinstaller cette version</string>
     <string name="update_check_failed">Impossible de rechercher les mises à jour</string>
+    <string name="home_package">Paquet</string>
+    <string name="settings_cloak_dialog_title">Changer le nom du paquet</string>
+    <string name="settings_cloak_package">Nouveau nom de paquet</string>
+    <string name="settings_cloak_randomize">Aléatoire</string>
+    <string name="settings_cloak_invalid">Saisissez un nom de paquet valide (par ex. org.example.app)</string>
+    <string name="settings_cloak_need_shizuku">Shizuku est requis pour changer le nom du paquet</string>
+    <string name="settings_cloak_confirm">Continuer</string>
+    <string name="settings_cloak_warning">Cela installe une nouvelle copie de LSPatch Manager sous un nom de paquet différent, met à jour les applications en mode local, puis désinstalle la copie actuelle. Les correctifs intégrés ne sont pas affectés. Shizuku doit rester disponible. Accordez Shizuku au nouveau paquet après l\'installation.</string>
+    <string name="settings_revert_dialog_title">Revenir au paquet d\'origine</string>
+    <string name="settings_revert_confirm">Rétablir</string>
+    <string name="settings_revert_warning">Télécharge le dernier manager.apk depuis les versions JingMatrix/LSPatch, l\'installe en tant que org.lsposed.lspatch (les paramètres et les liens des applications locales sont restaurés), puis désinstalle cette application. Nécessite Shizuku et le réseau.</string>
 </resources>

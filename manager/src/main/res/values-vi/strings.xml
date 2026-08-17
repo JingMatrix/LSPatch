@@ -247,4 +247,15 @@
     <string name="settings_keystore_custom_desc">Ký bằng kho khoá của riêng bạn (BKS).</string>
     <string name="update_reinstall">Cài lại bản dựng này</string>
     <string name="update_check_failed">Không kiểm tra được cập nhật</string>
+    <string name="home_package">Gói</string>
+    <string name="settings_cloak_dialog_title">Đổi tên gói</string>
+    <string name="settings_cloak_package">Tên gói mới</string>
+    <string name="settings_cloak_randomize">Ngẫu nhiên</string>
+    <string name="settings_cloak_invalid">Nhập tên gói hợp lệ (ví dụ: org.example.app)</string>
+    <string name="settings_cloak_need_shizuku">Cần Shizuku để đổi tên gói</string>
+    <string name="settings_cloak_confirm">Tiếp tục</string>
+    <string name="settings_cloak_warning">Thao tác này cài đặt một bản LSPatch Manager mới với tên gói khác, cập nhật các ứng dụng ở chế độ cục bộ, rồi gỡ cài đặt bản hiện tại. Các bản vá tích hợp không bị ảnh hưởng. Shizuku phải luôn khả dụng. Hãy cấp Shizuku cho gói mới sau khi cài đặt.</string>
+    <string name="settings_revert_dialog_title">Khôi phục về gói gốc</string>
+    <string name="settings_revert_confirm">Khôi phục</string>
+    <string name="settings_revert_warning">Tải manager.apk mới nhất từ các bản phát hành JingMatrix/LSPatch, cài đặt dưới tên org.lsposed.lspatch (khôi phục cài đặt và liên kết ứng dụng cục bộ), rồi gỡ cài đặt ứng dụng này. Yêu cầu Shizuku và mạng.</string>
 </resources>
