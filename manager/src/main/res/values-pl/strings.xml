@@ -72,8 +72,6 @@
     <string name="patch_sigbypasslv0">lv0: Wył.</string>
     <string name="patch_sigbypasslv1">lv1: Omiń PM</string>
     <string name="patch_sigbypasslv2">lv2: Omiń PM + openat (libc)</string>
-    <string name="patch_override_version_code">Zastąp kod wersji</string>
-    <string name="patch_override_version_code_desc">Zastąp kod wersji spatchowanej aplikacji wartością 1\nUmożliwia to w przyszłości instalację z obniżeniem wersji i zazwyczaj nie wpływa na kod wersji faktycznie widziany przez aplikację</string>
     <string name="patch_return">Wróć</string>
     <string name="patch_uninstall_text">Ze względu na różne podpisy przed instalacją spatchowanej aplikacji musisz odinstalować oryginalną.\nUpewnij się, że masz kopię zapasową danych osobistych.</string>
     <string name="patch_install_successfully">Zainstalowano</string>
@@ -82,6 +80,8 @@
     <string name="patch_section_options">Opcje</string>
     <string name="patch_section_signing">Podpisywanie i logowanie</string>
     <string name="patch_section_manifest">Manifest</string>
+    <string name="patch_manifest_version_code">Kod wersji</string>
+    <string name="patch_manifest_version_code_hint">Pozostaw puste, aby zachować oryginalny</string>
     <string name="patch_manifest_label">Nazwa aplikacji</string>
     <string name="patch_manifest_label_hint">Pozostaw puste, aby zachować oryginalną</string>
     <string name="patch_manifest_extract_libs">Wypakuj biblioteki natywne</string>
