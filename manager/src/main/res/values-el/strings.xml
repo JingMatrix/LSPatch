@@ -72,8 +72,6 @@
     <string name="patch_sigbypasslv0">lv0: Ανενεργό</string>
     <string name="patch_sigbypasslv1">lv1: Παράκαμψη PM</string>
     <string name="patch_sigbypasslv2">lv2: Παράκαμψη PM + openat (libc)</string>
-    <string name="patch_override_version_code">Παράκαμψη κωδικού έκδοσης</string>
-    <string name="patch_override_version_code_desc">Ορίζει τον κώδικα έκδοσης της έκδοσης του APK στο 1, έτσι ώστε μια μεταγενέστερη έκδοση να μπορεί να εγκατασταθεί πάνω του. Η ίδια η εφαρμογή διαβάζει συνήθως την πραγματική της έκδοση.</string>
     <string name="patch_return">ΕΠΙΣΤΡΟΦΗ</string>
     <string name="patch_uninstall_text">Η εγκατεστημένη εφαρμογή έχει υπογραφεί διαφορετικά, οπότε πρέπει πρώτα να απεγκατασταθεί. Τα δεδομένα της θα χαθούν - να δημιουργήσετε αντίγραφα ασφαλείας για οτιδήποτε χρειάζεστε πριν συνεχίσετε.</string>
     <string name="patch_install_successfully">Εγκατεστημένο</string>
@@ -82,6 +80,8 @@
     <string name="patch_section_options">Επιλογές</string>
     <string name="patch_section_signing">Υπογραφή &amp; καταγραφής</string>
     <string name="patch_section_manifest">Μανιφέστο</string>
+    <string name="patch_manifest_version_code">Κώδικας έκδοσης</string>
+    <string name="patch_manifest_version_code_hint">Αφήστε κενό για να κρατήσει το πρωτότυπο</string>
     <string name="patch_manifest_label">Όνομα εφαρμογής</string>
     <string name="patch_manifest_label_hint">Αφήστε κενό για να κρατήσει το πρωτότυπο</string>
     <string name="patch_manifest_extract_libs">Εξαγωγή εγγενών βιβλιοθηκών</string>
