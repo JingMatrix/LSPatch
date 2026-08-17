@@ -72,8 +72,6 @@
     <string name="patch_sigbypasslv0">lv0: オフ</string>
     <string name="patch_sigbypasslv1">lv1: PM をバイパス</string>
     <string name="patch_sigbypasslv2">lv2: PM + openat (libc) をバイパス</string>
-    <string name="patch_override_version_code">バージョンコードを上書き</string>
-    <string name="patch_override_version_code_desc">パッチ済みアプリのバージョンコードを 1 に上書きします\nこれにより将来のダウングレードインストールが可能になり、通常はアプリが実際に認識するバージョンコードには影響しません</string>
     <string name="patch_return">戻る</string>
     <string name="patch_uninstall_text">署名が異なるため、パッチ済みアプリをインストールする前に元のアプリをアンインストールする必要があります。\n個人データをバックアップしたことを確認してください。</string>
     <string name="patch_install_successfully">インストールしました</string>
@@ -82,6 +80,8 @@
     <string name="patch_section_options">オプション</string>
     <string name="patch_section_signing">署名とログ</string>
     <string name="patch_section_manifest">マニフェスト</string>
+    <string name="patch_manifest_version_code">バージョンコード</string>
+    <string name="patch_manifest_version_code_hint">空欄のままにすると元の値を保持します</string>
     <string name="patch_manifest_label">アプリ名</string>
     <string name="patch_manifest_label_hint">空欄のままにすると元の名前を保持します</string>
     <string name="patch_manifest_extract_libs">ネイティブライブラリを展開</string>
