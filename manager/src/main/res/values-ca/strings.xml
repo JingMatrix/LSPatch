@@ -22,7 +22,6 @@
     <string name="manage_no_match">Cap coincidència</string>
     <string name="manage_loading">Carregant</string>
     <string name="manage_no_apps">Encara no hi ha cap aplicació pegada</string>
-    <string name="manage_rolling">Rodant</string>
     <string name="manage_update_loader">Actualitza el carregador</string>
     <string name="manage_optimize">Reoptimitzar</string>
     <string name="manage_optimize_successfully">Codi AOT descartat: cap persona que truca pot tenir un mètode enganxat inlineat. S\'aplica a partir del proper llançament de l\'aplicació.</string>
@@ -79,8 +78,6 @@
     <string name="patch_install_hint_shizuku">Llest per instal·lar-se silenciosament a través de Shizuku.</string>
     <string name="patch_install_hint_system">Llest per instal·lar. El sistema us demanarà que confirmeu.</string>
     <string name="patch_section_options">Opcions</string>
-    <string name="patch_section_signing">Signant el registre &amp;</string>
-    <string name="patch_section_manifest">Manifest</string>
     <string name="patch_manifest_version_code">Codi de versió</string>
     <string name="patch_manifest_version_code_hint">Deixeu-ho en blanc per conservar l\'original</string>
     <string name="patch_manifest_label">Nom de l\'aplicació</string>
@@ -160,7 +157,6 @@
     <string name="patch_export_done">Exportat</string>
     <string name="patch_export_failed">L\'exportació ha fallat</string>
     <!-- App detail page -->
-    <string name="appdetail_mode">Mode de pegat</string>
     <string name="appdetail_modules">Mòduls</string>
     <string name="appdetail_actions">Accions</string>
     <string name="appdetail_info">Detalls</string>
@@ -203,12 +199,10 @@
     <string name="settings_keystore_custom">Personalitzat</string>
     <string name="settings_keystore_default_desc">La clau pròpia de LSPatch. L\'opció correcta tret que necessiteu una signatura específica.</string>
     <string name="settings_keystore_custom_desc">Signa amb el teu propi magatzem de claus (BKS).</string>
-    <string name="settings_keystore_dialog_title">Magatzem de claus personalitzat</string>
     <string name="settings_keystore_file">Fitxer de magatzem de claus</string>
     <string name="settings_keystore_password">Contrasenya</string>
     <string name="settings_keystore_alias">Àlies</string>
     <string name="settings_keystore_alias_password">Contrasenya d\'àlies</string>
-    <string name="settings_keystore_desc">Estableix el magatzem de claus (BKS)</string>
     <string name="settings_keystore_wrong_keystore">Tipus de magatzem de claus incorrecte</string>
     <string name="settings_keystore_wrong_password">La contrasenya del magatzem de claus és incorrecta</string>
     <string name="settings_keystore_wrong_alias">Nom d\'àlies incorrecte</string>
