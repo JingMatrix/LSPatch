@@ -14,6 +14,7 @@
     <string name="home_info_copied">Скопировано в буфер обмена</string>
     <string name="home_device">Устройство</string>
     <string name="home_system">Система</string>
+    <string name="home_package">Пакет</string>
     <!-- Manage Screen -->
     <string name="screen_manage">Управление</string>
     <string name="manage_summary">Пропатчено: %1$d  ·  Модулей: %2$d</string>
@@ -213,6 +214,16 @@
     <string name="settings_keystore_wrong_alias">Неверное имя псевдонима</string>
     <string name="settings_keystore_wrong_alias_password">Неверный пароль псевдонима</string>
     <string name="settings_detail_patch_logs">Подробные журналы патча</string>
+    <string name="settings_cloak_dialog_title">Изменить имя пакета</string>
+    <string name="settings_cloak_package">Новое имя пакета</string>
+    <string name="settings_cloak_randomize">Случайно</string>
+    <string name="settings_cloak_warning">При этом устанавливается новая копия LSPatch Manager под другим именем пакета, обновляются приложения в локальном режиме, а затем удаляется текущая копия. Встроенные патчи не затрагиваются. Shizuku должен оставаться доступным. После установки предоставьте Shizuku новому пакету.</string>
+    <string name="settings_cloak_invalid">Введите допустимое имя пакета (например, org.example.app)</string>
+    <string name="settings_cloak_need_shizuku">Для изменения имени пакета требуется Shizuku</string>
+    <string name="settings_cloak_confirm">Продолжить</string>
+    <string name="settings_revert_dialog_title">Вернуть исходный пакет</string>
+    <string name="settings_revert_warning">Загружает последний manager.apk из релизов JingMatrix/LSPatch, устанавливает его как org.lsposed.lspatch (настройки и связи локальных приложений восстанавливаются), затем удаляет это приложение. Требуются Shizuku и сеть.</string>
+    <string name="settings_revert_confirm">Вернуть</string>
     <string name="patch_inject_dex">Внедрить dex загрузчика</string>
     <string name="patch_inject_dex_desc">Для приложений с изолированными службами, например движков рендеринга браузеров, включите эту опцию, чтобы они работали корректно.</string>
     <!-- Repo Details Screen -->
