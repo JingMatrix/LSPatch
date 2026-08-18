@@ -22,7 +22,6 @@
     <string name="manage_no_match">Kein Treffer</string>
     <string name="manage_loading">Wird geladen</string>
     <string name="manage_no_apps">Noch keine gepatchten Apps</string>
-    <string name="manage_rolling">Wird zurückgesetzt</string>
     <string name="manage_update_loader">Loader aktualisieren</string>
     <string name="manage_optimize">Neu optimieren</string>
     <string name="manage_optimize_successfully">Neu optimiert. Weg-inlinte Hooks sollten jetzt funktionieren.</string>
@@ -79,8 +78,6 @@
     <string name="patch_install_hint_shizuku">Bereit zur stillen Installation über Shizuku.</string>
     <string name="patch_install_hint_system">Bereit zur Installation. Dein System wird eine Bestätigung anfordern.</string>
     <string name="patch_section_options">Optionen</string>
-    <string name="patch_section_signing">Signierung &amp; Protokollierung</string>
-    <string name="patch_section_manifest">Manifest</string>
     <string name="patch_manifest_version_code">Versionscode</string>
     <string name="patch_manifest_version_code_hint">Leer lassen, um den ursprünglichen zu behalten</string>
     <string name="patch_manifest_label">App-Name</string>
@@ -160,7 +157,6 @@
     <string name="patch_export_done">Exportiert</string>
     <string name="patch_export_failed">Export fehlgeschlagen</string>
     <!-- App detail page -->
-    <string name="appdetail_mode">Patch-Modus</string>
     <string name="appdetail_modules">Module</string>
     <string name="appdetail_actions">Aktionen</string>
     <string name="appdetail_info">Details</string>
@@ -203,12 +199,10 @@
     <string name="settings_keystore_custom">Benutzerdefiniert</string>
     <string name="settings_keystore_default_desc">LSPatchs eigener Schlüssel. Die richtige Wahl, sofern du keine bestimmte Signatur brauchst.</string>
     <string name="settings_keystore_custom_desc">Mit deinem eigenen Keystore (BKS) signieren.</string>
-    <string name="settings_keystore_dialog_title">Benutzerdefinierter Keystore</string>
     <string name="settings_keystore_file">Keystore-Datei</string>
     <string name="settings_keystore_password">Passwort</string>
     <string name="settings_keystore_alias">Alias</string>
     <string name="settings_keystore_alias_password">Alias-Passwort</string>
-    <string name="settings_keystore_desc">Keystore festlegen (BKS)</string>
     <string name="settings_keystore_wrong_keystore">Falscher Keystore-Typ</string>
     <string name="settings_keystore_wrong_password">Falsches Keystore-Passwort</string>
     <string name="settings_keystore_wrong_alias">Falscher Alias-Name</string>
