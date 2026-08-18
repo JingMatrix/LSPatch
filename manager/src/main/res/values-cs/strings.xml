@@ -22,7 +22,6 @@
     <string name="manage_no_match">Žádná shoda</string>
     <string name="manage_loading">načítání</string>
     <string name="manage_no_apps">Zatím žádné opravené aplikace</string>
-    <string name="manage_rolling">Válcování</string>
     <string name="manage_update_loader">Aktualizace zavaděče</string>
     <string name="manage_optimize">Znovu optimalizovat</string>
     <string name="manage_optimize_successfully">AOT kód vyřazen - žádný volající nemůže mít vložený způsob zavěšení. Použije se z dalšího spuštění aplikace.</string>
@@ -79,8 +78,6 @@
     <string name="patch_install_hint_shizuku">Připraven k tiché instalaci přes Shizuku.</string>
     <string name="patch_install_hint_system">Připraveno k instalaci. Váš systém vás požádá o potvrzení.</string>
     <string name="patch_section_options">Možnosti</string>
-    <string name="patch_section_signing">Přihlašování &amp; logování</string>
-    <string name="patch_section_manifest">Manifest</string>
     <string name="patch_manifest_version_code">Kód verze</string>
     <string name="patch_manifest_version_code_hint">Ponechte prázdné pro zachování originálu</string>
     <string name="patch_manifest_label">Název aplikace</string>
@@ -160,7 +157,6 @@
     <string name="patch_export_done">Exportováno</string>
     <string name="patch_export_failed">Export selhal</string>
     <!-- App detail page -->
-    <string name="appdetail_mode">Režim patch</string>
     <string name="appdetail_modules">Moduly</string>
     <string name="appdetail_actions">Akce</string>
     <string name="appdetail_info">Detaily</string>
@@ -203,12 +199,10 @@
     <string name="settings_keystore_custom">Vlastní</string>
     <string name="settings_keystore_default_desc">LSPatche vlastní klíč. Správná volba, pokud nepotřebujete konkrétní podpis.</string>
     <string name="settings_keystore_custom_desc">Přihlaste se pomocí vlastního úložiště klíčů (BKS).</string>
-    <string name="settings_keystore_dialog_title">Vlastní úložiště klíčů</string>
     <string name="settings_keystore_file">Soubor úložiště klíčů</string>
     <string name="settings_keystore_password">Heslo</string>
     <string name="settings_keystore_alias">Alias</string>
     <string name="settings_keystore_alias_password">Alias heslo</string>
-    <string name="settings_keystore_desc">Nastavení úložiště klíčů (BKS)</string>
     <string name="settings_keystore_wrong_keystore">Nesprávný typ úložiště klíčů</string>
     <string name="settings_keystore_wrong_password">Špatné heslo úložiště klíčů</string>
     <string name="settings_keystore_wrong_alias">Špatný název aliasu</string>
