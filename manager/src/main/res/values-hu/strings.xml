@@ -22,7 +22,6 @@
     <string name="manage_no_match">Nincs egyezés</string>
     <string name="manage_loading">Betöltés</string>
     <string name="manage_no_apps">Még nincsenek patchelt alkalmazások</string>
-    <string name="manage_rolling">Gördülő</string>
     <string name="manage_update_loader">Betöltő frissítése</string>
     <string name="manage_optimize">Újraoptimalizálás</string>
     <string name="manage_optimize_successfully">AOT kód eldobva — egyetlen hívóba sem lehet beágyazott hooked metódus. Az alkalmazás következő indításától érvényes.</string>
@@ -79,8 +78,6 @@
     <string name="patch_install_hint_shizuku">Készen áll a csendes telepítésre Shizuku-n keresztül.</string>
     <string name="patch_install_hint_system">Telepítésre kész. A rendszer megerősítést kér majd.</string>
     <string name="patch_section_options">Opciók</string>
-    <string name="patch_section_signing">Aláírás &amp; naplózás</string>
-    <string name="patch_section_manifest">Nyilvánvaló</string>
     <string name="patch_manifest_version_code">Verziókód</string>
     <string name="patch_manifest_version_code_hint">Hagyja üresen az eredeti megtartásához</string>
     <string name="patch_manifest_label">Alkalmazás neve</string>
@@ -160,7 +157,6 @@
     <string name="patch_export_done">Exportálva</string>
     <string name="patch_export_failed">Exportálás sikertelen</string>
     <!-- App detail page -->
-    <string name="appdetail_mode">Patch mód</string>
     <string name="appdetail_modules">Modulok</string>
     <string name="appdetail_actions">Műveletek</string>
     <string name="appdetail_info">Részletek</string>
@@ -203,12 +199,10 @@
     <string name="settings_keystore_custom">Egyedi</string>
     <string name="settings_keystore_default_desc">Az LSPatch saját kulcsa. A megfelelő választás, kivéve, ha speciális aláírásra van szükséged.</string>
     <string name="settings_keystore_custom_desc">Írja alá saját kulcstárával (BKS).</string>
-    <string name="settings_keystore_dialog_title">Egyéni kulcstár</string>
     <string name="settings_keystore_file">Kulcstároló fájl</string>
     <string name="settings_keystore_password">Jelszó</string>
     <string name="settings_keystore_alias">Álnév</string>
     <string name="settings_keystore_alias_password">Alias jelszó</string>
-    <string name="settings_keystore_desc">Kulcstároló beállítása (BKS)</string>
     <string name="settings_keystore_wrong_keystore">Rossz típusú kulcstároló</string>
     <string name="settings_keystore_wrong_password">Rossz kulcstároló jelszó</string>
     <string name="settings_keystore_wrong_alias">Rossz alias név</string>
