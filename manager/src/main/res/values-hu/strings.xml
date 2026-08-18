@@ -14,6 +14,7 @@
     <string name="home_info_copied">Vágólapra másolva</string>
     <string name="home_device">Eszköz</string>
     <string name="home_system">Rendszer</string>
+    <string name="home_package">Csomag</string>
     <!-- Manage Screen -->
     <string name="screen_manage">Kezelés</string>
     <string name="manage_summary">%1$d javított ·  %2$d modulok</string>
@@ -213,6 +214,16 @@
     <string name="settings_keystore_wrong_alias">Rossz alias név</string>
     <string name="settings_keystore_wrong_alias_password">Rossz alias jelszó</string>
     <string name="settings_detail_patch_logs">Részletes patch naplók</string>
+    <string name="settings_cloak_dialog_title">Csomag nevének módosítása</string>
+    <string name="settings_cloak_package">Új csomagnév</string>
+    <string name="settings_cloak_randomize">Véletlenszerűsítés</string>
+    <string name="settings_cloak_warning">Ez telepíti az LSPatch Manager egy új példányát egy másik csomagnév alatt, frissíti a helyi módú alkalmazásokat, majd eltávolítja a jelenlegit. Az integrált javítások nem változnak. A Shizuku-nak elérhetőnek kell maradnia. A telepítés után adja meg a Shizuku hozzáférést az új csomagnak.</string>
+    <string name="settings_cloak_invalid">Adjon meg egy érvényes csomagnevet (pl. org.example.app)</string>
+    <string name="settings_cloak_need_shizuku">A Shizuku szükséges a csomag nevének módosításához</string>
+    <string name="settings_cloak_confirm">Folytatás</string>
+    <string name="settings_revert_dialog_title">Visszatérés az eredeti csomaghoz</string>
+    <string name="settings_revert_warning">Letölti a legújabb manager.apk fájlt a JingMatrix/LSPatch kiadásokból, telepíti org.lsposed.lspatch néven (a beállítások és a helyi alkalmazások linkjei visszaállnak), majd eltávolítja ezt az alkalmazást. Shizuku és hálózat szükséges hozzá.</string>
+    <string name="settings_revert_confirm">Visszaállítás</string>
     <string name="patch_inject_dex">Betöltő dex befecskendezése</string>
     <string name="patch_inject_dex_desc">Közvetlenül az alkalmazásba injektálja a betöltő dexet. Kapcsolja be ezt az elszigetelt folyamatokat használó alkalmazásoknál, például egy böngésző renderelőmotorjánál, hogy a hookjaik továbbra is betöltődjenek.</string>
     <!-- Repo Details Screen -->
