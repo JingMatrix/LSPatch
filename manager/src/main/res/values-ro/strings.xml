@@ -14,6 +14,7 @@
     <string name="home_info_copied">Copiat în clipboard</string>
     <string name="home_device">Dispozitiv</string>
     <string name="home_system">Sistem</string>
+    <string name="home_package">Pachet</string>
     <!-- Manage Screen -->
     <string name="screen_manage">Gestionați</string>
     <string name="manage_summary">%1$d modificat ·  %2$d module</string>
@@ -213,6 +214,16 @@
     <string name="settings_keystore_wrong_alias">Nume alias greșit</string>
     <string name="settings_keystore_wrong_alias_password">Parolă alias greșită</string>
     <string name="settings_detail_patch_logs">Detaliile jurnalelor de patch-uri</string>
+    <string name="settings_cloak_dialog_title">Schimbă numele pachetului</string>
+    <string name="settings_cloak_package">Nume pachet nou</string>
+    <string name="settings_cloak_randomize">Randomizați</string>
+    <string name="settings_cloak_warning">Aceasta instalează o nouă copie a LSPatch Manager sub un nume diferit de pachet, actualizează aplicațiile în mod local, apoi dezinstalează aplicația curentă. Plasturii integraţi nu sunt afectaţi. Shizuku trebuie să rămână disponibil. Acordaţi Shizuku noului pachet după instalare.</string>
+    <string name="settings_cloak_invalid">Introduceți un nume valid pentru pachet (de ex. org.example.app)</string>
+    <string name="settings_cloak_need_shizuku">Shizuku este necesar pentru a schimba numele pachetului</string>
+    <string name="settings_cloak_confirm">Continuă</string>
+    <string name="settings_revert_dialog_title">Reveniţi la ambalajul original</string>
+    <string name="settings_revert_warning">Descarcă ultimul manager.apk din versiunile JingMatrix/LSPatch și îl instalează ca org.lsposed. ceas (setările și link-urile aplicațiilor locale sunt restaurate), apoi dezinstalează această aplicație. Necesită Shizuku și rețea.</string>
+    <string name="settings_revert_confirm">Revenire</string>
     <string name="patch_inject_dex">Injectare loader dex</string>
     <string name="patch_inject_dex_desc">Injectează dispozitivul de identificare direct în aplicație. Activați acest lucru pentru aplicațiile cu procese izolate, cum ar fi motorul de randare al unui browser, astfel încât cârligele să se încarce încă.</string>
     <!-- Repo Details Screen -->
