@@ -8,6 +8,27 @@
     <string name="shizuku_available">Serviciu Shizuku disponibil</string>
     <string name="shizuku_unavailable">Serviciul Shizuku nu este conectat</string>
     <string name="shizuku_off">Nu este conectat</string>
+    <!-- Shizuku failure dialog -->
+    <string name="shizuku_failure_not_running">Shizuku nu rulează</string>
+    <string name="shizuku_failure_lost">Conexiune pierdută la Shizuku</string>
+    <string name="shizuku_failure_hint_lost">Shizuku lucra şi LSPatch şi-a pierdut conexiunea cu ea. Redeschide LSPatch; dacă acest lucru nu ajută, reporniţi Shizuku.</string>
+    <string name="shizuku_failure_not_granted">Accesul Shizuku nu este permis</string>
+    <string name="shizuku_failure_no_service">Shizuku shell service unavailable</string>
+    <string name="shizuku_failure_call">Apelul Shizuku a eșuat</string>
+    <string name="shizuku_failure_op_grant">Solicitarea accesului necesită ca Shizuku să fie în funcţiune.</string>
+    <string name="shizuku_failure_op_install">Instalarea unei aplicații necesită silențios Shizuku.</string>
+    <string name="shizuku_failure_op_uninstall">Dezinstalarea unei aplicații necesită silențios Shizuku.</string>
+    <string name="shizuku_failure_op_packages">Citirea pachetelor instalate prin intermediul proiectilului necesită Shizuku.</string>
+    <string name="shizuku_failure_op_logs">Colectarea jurnalelor dispozitivului are nevoie de Shizuku.</string>
+    <string name="shizuku_failure_op_shell">Rularea unei comenzi shizuku necesită Shizuku.</string>
+    <string name="shizuku_failure_op_optimize">Re-optimizarea unei aplicații are nevoie de Shizuku.</string>
+    <string name="shizuku_failure_hint_not_running">Pornește Shizuku — din propria sa aplicație, peste ADB sau cu rădăcină — și încearcă din nou.</string>
+    <string name="shizuku_failure_hint_not_granted">Shizuku rulează, dar LSPatch nu are acces. Acordați-o, apoi încercați din nou.</string>
+    <string name="shizuku_failure_hint_no_service">Shizuku este acceptat, dar procesul de proiecţie început pentru LSPatch nu a venit. Reporniţi Shizuku, apoi redeschideţi LSPatch.</string>
+    <string name="shizuku_failure_hint_call">Shizuku a acceptat cererea şi sistemul a respins-o. Urmatoarea este ceea ce trebuie inclus într-un raport.</string>
+    <string name="shizuku_failure_view_trace">Vizualizare traseu</string>
+    <string name="shizuku_failure_grant">Acordă acces</string>
+    <string name="shizuku_failure_dismiss">Renunţaţi</string>
     <string name="error_unknown">Eroare necunoscută</string>
     <!-- Home Screen -->
     <string name="home_shizuku_warning">Unele caracteristici nu sunt disponibile</string>
@@ -135,6 +156,7 @@
     <string name="patch_action_update_loader">Actualizare încărcător</string>
     <string name="patch_action_install">Instalează</string>
     <string name="patch_action_open">Deschideți</string>
+    <string name="patch_action_other_installer">Alt instalator</string>
     <string name="patch_action_retry">Reîncercați</string>
     <string name="patch_patched">Patchat</string>
     <string name="patch_patched_splits">Divizii de bază + %1$d</string>
