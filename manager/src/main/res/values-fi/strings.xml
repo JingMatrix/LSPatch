@@ -22,7 +22,6 @@
     <string name="manage_no_match">Ei osumia</string>
     <string name="manage_loading">Ladataan</string>
     <string name="manage_no_apps">Ei vielä korjattuja sovelluksia</string>
-    <string name="manage_rolling">Valssaus</string>
     <string name="manage_update_loader">Päivitä lataaja</string>
     <string name="manage_optimize">Uudelleenoptimoi</string>
     <string name="manage_optimize_successfully">AOT-koodi hylätty — millään soittajalla ei voi olla koukkutapaa. Soittaa sovelluksen seuraavasta käynnistyksestä.</string>
@@ -79,8 +78,6 @@
     <string name="patch_install_hint_shizuku">Valmis asentamaan äänettömästi Shizukun kautta.</string>
     <string name="patch_install_hint_system">Valmis asentamaan. Järjestelmäsi pyytää sinua vahvistamaan.</string>
     <string name="patch_section_options">Valinnat</string>
-    <string name="patch_section_signing">Allekirjoitusloki &amp;</string>
-    <string name="patch_section_manifest">Manifest</string>
     <string name="patch_manifest_version_code">Version koodi</string>
     <string name="patch_manifest_version_code_hint">Jätä tyhjäksi säilyttääksesi alkuperäisen</string>
     <string name="patch_manifest_label">Sovelluksen nimi</string>
@@ -160,7 +157,6 @@
     <string name="patch_export_done">Viety</string>
     <string name="patch_export_failed">Vienti epäonnistui</string>
     <!-- App detail page -->
-    <string name="appdetail_mode">Paikan tila</string>
     <string name="appdetail_modules">Moduulit</string>
     <string name="appdetail_actions">Toiminnot</string>
     <string name="appdetail_info">Yksityiskohdat</string>
@@ -203,12 +199,10 @@
     <string name="settings_keystore_custom">Mukautettu</string>
     <string name="settings_keystore_default_desc">LSPatchin oma avain. Oikea valinta, ellet tarvitse tiettyä allekirjoitusta.</string>
     <string name="settings_keystore_custom_desc">Allekirjoita omalla avaimellasi (BKS).</string>
-    <string name="settings_keystore_dialog_title">Mukautettu avainsäilö</string>
     <string name="settings_keystore_file">Avainsäilytystiedosto</string>
     <string name="settings_keystore_password">Salasana</string>
     <string name="settings_keystore_alias">Alias</string>
     <string name="settings_keystore_alias_password">Alias-salasana</string>
-    <string name="settings_keystore_desc">Avainsäilön asettaminen (BKS)</string>
     <string name="settings_keystore_wrong_keystore">Väärän tyyppinen avainsäilö</string>
     <string name="settings_keystore_wrong_password">Väärä avainsäilön salasana</string>
     <string name="settings_keystore_wrong_alias">Väärä alias-nimi</string>
