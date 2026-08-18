@@ -22,7 +22,6 @@
     <string name="manage_no_match">Geen ooreenstemming nie</string>
     <string name="manage_loading">Laai tans</string>
     <string name="manage_no_apps">Nog geen reggemaakte programme nie</string>
-    <string name="manage_rolling">Rol</string>
     <string name="manage_update_loader">Dateer laaier op</string>
     <string name="manage_optimize">Heroptimaliseer</string>
     <string name="manage_optimize_successfully">AOT-kode weggegooi — geen oproeper kan \'n gekoppelde metode daarin ingebou hê nie. Geld vanaf die toepassing se volgende bekendstelling.</string>
@@ -79,8 +78,6 @@
     <string name="patch_install_hint_shizuku">Gereed om stilweg deur Shizuku te installeer.</string>
     <string name="patch_install_hint_system">Gereed om te installeer. Jou stelsel sal jou vra om te bevestig.</string>
     <string name="patch_section_options">Opsies</string>
-    <string name="patch_section_signing">Ondertekening van &amp; logging</string>
-    <string name="patch_section_manifest">Manifest</string>
     <string name="patch_manifest_version_code">Weergawekode</string>
     <string name="patch_manifest_version_code_hint">Los leeg om die oorspronklike te behou</string>
     <string name="patch_manifest_label">Programnaam</string>
@@ -160,7 +157,6 @@
     <string name="patch_export_done">Uitgevoerd</string>
     <string name="patch_export_failed">Uitvoer het misluk</string>
     <!-- App detail page -->
-    <string name="appdetail_mode">Pleistermodus</string>
     <string name="appdetail_modules">Modules</string>
     <string name="appdetail_actions">Aksies</string>
     <string name="appdetail_info">Besonderhede</string>
@@ -203,12 +199,10 @@
     <string name="settings_keystore_custom">Pasgemaak</string>
     <string name="settings_keystore_default_desc">LSPatch se eie sleutel. Die regte keuse tensy jy \'n spesifieke handtekening benodig.</string>
     <string name="settings_keystore_custom_desc">Teken met jou eie sleutelstoor (BKS).</string>
-    <string name="settings_keystore_dialog_title">Pasgemaakte sleutelstoor</string>
     <string name="settings_keystore_file">Sleutelstoor lêer</string>
     <string name="settings_keystore_password">Wagwoord</string>
     <string name="settings_keystore_alias">Alias</string>
     <string name="settings_keystore_alias_password">Alias wagwoord</string>
-    <string name="settings_keystore_desc">Stel sleutelstoor (BKS)</string>
     <string name="settings_keystore_wrong_keystore">Verkeerde tipe sleutelstoor</string>
     <string name="settings_keystore_wrong_password">Verkeerde sleutelstoor wagwoord</string>
     <string name="settings_keystore_wrong_alias">Verkeerde alias naam</string>
