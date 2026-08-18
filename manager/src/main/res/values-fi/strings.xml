@@ -14,6 +14,7 @@
     <string name="home_info_copied">Kopioitu leikepöydälle</string>
     <string name="home_device">Laite</string>
     <string name="home_system">Järjestelmä</string>
+    <string name="home_package">Paketti</string>
     <!-- Manage Screen -->
     <string name="screen_manage">Hallitse</string>
     <string name="manage_summary">%1$d paikattu ·  %2$d moduulit</string>
@@ -213,6 +214,16 @@
     <string name="settings_keystore_wrong_alias">Väärä alias-nimi</string>
     <string name="settings_keystore_wrong_alias_password">Väärä alias-salasana</string>
     <string name="settings_detail_patch_logs">Yksityiskohtaiset korjauslokit</string>
+    <string name="settings_cloak_dialog_title">Muuta paketin nimeä</string>
+    <string name="settings_cloak_package">Uuden paketin nimi</string>
+    <string name="settings_cloak_randomize">Satunnaista</string>
+    <string name="settings_cloak_warning">Tämä asentaa uuden kopion LSPatch Managerista eri pakettinimellä, päivittää paikallinen tila -sovelluksia ja poistaa sitten nykyisen sovelluksen. Integroidut korjaukset säilyvät ennallaan. Shizukun täytyy pysyä saatavilla. Myönnä Shizuku uuteen pakettiin asennuksen jälkeen.</string>
+    <string name="settings_cloak_invalid">Anna kelvollinen paketin nimi (esim. org.example.app)</string>
+    <string name="settings_cloak_need_shizuku">Shizuku on pakollinen paketin nimen vaihtamiseksi</string>
+    <string name="settings_cloak_confirm">Jatka</string>
+    <string name="settings_revert_dialog_title">Palauta alkuperäiseen pakettiin</string>
+    <string name="settings_revert_warning">Lataa uusin manager.apk osoitteesta JingMatrix/LSPatch releases, asentaa sen org.lsposed. spatch (asetukset ja Paikalliset sovelluslinkit palautetaan) ja poista sitten tämä sovellus. Vaatii Shizukun ja verkon.</string>
+    <string name="settings_revert_confirm">Palauta</string>
     <string name="patch_inject_dex">Inject loadader dex</string>
     <string name="patch_inject_dex_desc">Pistää lataajan deksin suoraan sovellukseen. Ota tämä käyttöön sovelluksissa, joissa on yksittäisiä prosesseja, kuten selaimen renderointimoottori, joten niiden koukut latautuvat edelleen.</string>
     <!-- Repo Details Screen -->
