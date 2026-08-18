@@ -22,7 +22,6 @@
     <string name="manage_no_match">Eşleşme yok</string>
     <string name="manage_loading">Yükleniyor</string>
     <string name="manage_no_apps">Henüz yamalı uygulama yok</string>
-    <string name="manage_rolling">Geri alınıyor</string>
     <string name="manage_update_loader">Yükleyiciyi güncelle</string>
     <string name="manage_optimize">Yeniden optimize et</string>
     <string name="manage_optimize_successfully">Yeniden optimize edildi. Satır içine alınıp devre dışı kalan kancalar artık çalışmalı.</string>
@@ -79,8 +78,6 @@
     <string name="patch_install_hint_shizuku">Shizuku aracılığıyla sessizce yüklemeye hazır.</string>
     <string name="patch_install_hint_system">Yüklemeye hazır. Sisteminiz onay isteyecek.</string>
     <string name="patch_section_options">Seçenekler</string>
-    <string name="patch_section_signing">İmzalama ve günlükleme</string>
-    <string name="patch_section_manifest">Manifest</string>
     <string name="patch_manifest_version_code">Sürüm kodu</string>
     <string name="patch_manifest_version_code_hint">Özgün değeri korumak için boş bırakın</string>
     <string name="patch_manifest_label">Uygulama adı</string>
@@ -160,7 +157,6 @@
     <string name="patch_export_done">Dışa aktarıldı</string>
     <string name="patch_export_failed">Dışa aktarma başarısız</string>
     <!-- App detail page -->
-    <string name="appdetail_mode">Yama modu</string>
     <string name="appdetail_modules">Modüller</string>
     <string name="appdetail_actions">İşlemler</string>
     <string name="appdetail_info">Ayrıntılar</string>
@@ -203,12 +199,10 @@
     <string name="settings_keystore_custom">Özel</string>
     <string name="settings_keystore_default_desc">LSPatch\'in kendi anahtarı. Belirli bir imzaya ihtiyacınız yoksa doğru seçim budur.</string>
     <string name="settings_keystore_custom_desc">Kendi anahtar deponuzla (BKS) imzalayın.</string>
-    <string name="settings_keystore_dialog_title">Özel anahtar deposu</string>
     <string name="settings_keystore_file">Anahtar deposu dosyası</string>
     <string name="settings_keystore_password">Parola</string>
     <string name="settings_keystore_alias">Takma ad</string>
     <string name="settings_keystore_alias_password">Takma ad parolası</string>
-    <string name="settings_keystore_desc">Anahtar deposunu ayarla (BKS)</string>
     <string name="settings_keystore_wrong_keystore">Yanlış anahtar deposu türü</string>
     <string name="settings_keystore_wrong_password">Yanlış anahtar deposu parolası</string>
     <string name="settings_keystore_wrong_alias">Yanlış takma ad</string>
