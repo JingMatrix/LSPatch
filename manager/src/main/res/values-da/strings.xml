@@ -22,7 +22,6 @@
     <string name="manage_no_match">Ingen match</string>
     <string name="manage_loading">Indlæser</string>
     <string name="manage_no_apps">Ingen lappede apps endnu</string>
-    <string name="manage_rolling">Rullende</string>
     <string name="manage_update_loader">Opdatering af loader</string>
     <string name="manage_optimize">Genoptimér</string>
     <string name="manage_optimize_successfully">AOT-kode kasseret - ingen opkaldskilder kan have en kroget metode indlejret i den. Anvendes fra app\'ens næste lancering.</string>
@@ -79,8 +78,6 @@
     <string name="patch_install_hint_shizuku">Klar til at installere lydløst gennem Shizuku.</string>
     <string name="patch_install_hint_system">Klar til installation. Dit system vil bede dig om at bekræfte.</string>
     <string name="patch_section_options">Indstillinger</string>
-    <string name="patch_section_signing">Signerer &amp; logning</string>
-    <string name="patch_section_manifest">Manifest</string>
     <string name="patch_manifest_version_code">Versionskode</string>
     <string name="patch_manifest_version_code_hint">Lad stå tomt for at beholde originalen</string>
     <string name="patch_manifest_label">Navn på app</string>
@@ -160,7 +157,6 @@
     <string name="patch_export_done">Eksporteret</string>
     <string name="patch_export_failed">Eksport mislykkedes</string>
     <!-- App detail page -->
-    <string name="appdetail_mode">Rettelsestilstand</string>
     <string name="appdetail_modules">Moduler</string>
     <string name="appdetail_actions">Handlinger</string>
     <string name="appdetail_info">Detaljer</string>
@@ -203,12 +199,10 @@
     <string name="settings_keystore_custom">Tilpasset</string>
     <string name="settings_keystore_default_desc">LSPatchs egen nøgle. Det rigtige valg med mindre du har brug for en specifik signatur.</string>
     <string name="settings_keystore_custom_desc">Log ind med din egen nøglebutik (BKS).</string>
-    <string name="settings_keystore_dialog_title">Brugerdefineret keystore</string>
     <string name="settings_keystore_file">Keystore-fil</string>
     <string name="settings_keystore_password">Adgangskode</string>
     <string name="settings_keystore_alias">Alias</string>
     <string name="settings_keystore_alias_password">Alias-adgangskode</string>
-    <string name="settings_keystore_desc">Indstil nøgleopbevaring (BKS)</string>
     <string name="settings_keystore_wrong_keystore">Forkert type nøgleopbevaring</string>
     <string name="settings_keystore_wrong_password">Forkert adgangskode til keystore</string>
     <string name="settings_keystore_wrong_alias">Forkert aliasnavn</string>
