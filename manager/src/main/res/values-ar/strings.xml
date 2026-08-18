@@ -22,7 +22,6 @@
     <string name="manage_no_match">لا توجد نتائج مطابقة</string>
     <string name="manage_loading">جارٍ التحميل</string>
     <string name="manage_no_apps">لا توجد تطبيقات مُرقّعة بعد</string>
-    <string name="manage_rolling">جارٍ التراجع</string>
     <string name="manage_update_loader">تحديث المُحمّل</string>
     <string name="manage_optimize">إعادة التحسين</string>
     <string name="manage_optimize_successfully">تمت إعادة التحسين. يُفترض أن تعمل الآن الخطافات التي أُزيلت بالتضمين.</string>
@@ -79,8 +78,6 @@
     <string name="patch_install_hint_shizuku">جاهز للتثبيت الصامت عبر Shizuku.</string>
     <string name="patch_install_hint_system">جاهز للتثبيت. سيطلب منك نظامك التأكيد.</string>
     <string name="patch_section_options">الخيارات</string>
-    <string name="patch_section_signing">التوقيع والتسجيل</string>
-    <string name="patch_section_manifest">البيان</string>
     <string name="patch_manifest_version_code">رمز الإصدار</string>
     <string name="patch_manifest_version_code_hint">اتركه فارغًا للإبقاء على الأصلي</string>
     <string name="patch_manifest_label">اسم التطبيق</string>
@@ -160,7 +157,6 @@
     <string name="patch_export_done">تم التصدير</string>
     <string name="patch_export_failed">فشل التصدير</string>
     <!-- App detail page -->
-    <string name="appdetail_mode">وضع الترقيع</string>
     <string name="appdetail_modules">الوحدات</string>
     <string name="appdetail_actions">الإجراءات</string>
     <string name="appdetail_info">التفاصيل</string>
@@ -203,12 +199,10 @@
     <string name="settings_keystore_custom">مخصّص</string>
     <string name="settings_keystore_default_desc">مفتاح LSPatch الخاص. الخيار الصحيح ما لم تحتج إلى توقيع معيّن.</string>
     <string name="settings_keystore_custom_desc">التوقيع بمخزن مفاتيحك الخاص (BKS).</string>
-    <string name="settings_keystore_dialog_title">مخزن مفاتيح مخصّص</string>
     <string name="settings_keystore_file">ملف مخزن المفاتيح</string>
     <string name="settings_keystore_password">كلمة المرور</string>
     <string name="settings_keystore_alias">الاسم المستعار</string>
     <string name="settings_keystore_alias_password">كلمة مرور الاسم المستعار</string>
-    <string name="settings_keystore_desc">تعيين مخزن المفاتيح (BKS)</string>
     <string name="settings_keystore_wrong_keystore">نوع مخزن المفاتيح خاطئ</string>
     <string name="settings_keystore_wrong_password">كلمة مرور مخزن المفاتيح خاطئة</string>
     <string name="settings_keystore_wrong_alias">اسم مستعار خاطئ</string>
