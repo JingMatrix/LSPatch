@@ -8,6 +8,27 @@
     <string name="shizuku_available">Servei Shizuku disponible</string>
     <string name="shizuku_unavailable">El servei Shizuku no està connectat</string>
     <string name="shizuku_off">No connectat</string>
+    <!-- Shizuku failure dialog -->
+    <string name="shizuku_failure_not_running">La Shizuku no corre.</string>
+    <string name="shizuku_failure_lost">S\'ha perdut la connexió amb Shizuku</string>
+    <string name="shizuku_failure_hint_lost">El Shizuku funcionava i LSPatch va perdre la connexió. Torneu a obrir LSPatch; si això no ajuda, reinicieu el Shizuku.</string>
+    <string name="shizuku_failure_not_granted">Accés a Shizuku no concedit</string>
+    <string name="shizuku_failure_no_service">El servei de shell de Shizuku no està disponible</string>
+    <string name="shizuku_failure_call">La trucada de Shizuku ha fallat</string>
+    <string name="shizuku_failure_op_grant">Sol·licitar accés requereix que la mateixa Shizuku estigui en execució.</string>
+    <string name="shizuku_failure_op_install">La instal·lació silenciosa d\'una aplicació requereix Shizuku.</string>
+    <string name="shizuku_failure_op_uninstall">Desinstal·lar una aplicació silenciosament requereix Shizuku.</string>
+    <string name="shizuku_failure_op_packages">La lectura dels paquets instal·lats a través de l\'intèrpret d\'ordres necessita Shizuku.</string>
+    <string name="shizuku_failure_op_logs">La recopilació de registres del dispositiu necessita la Shizuku.</string>
+    <string name="shizuku_failure_op_shell">Per executar una ordre de shell cal la Shizuku.</string>
+    <string name="shizuku_failure_op_optimize">Reoptimitzar una aplicació requereix Shizuku.</string>
+    <string name="shizuku_failure_hint_not_running">Inicia Shizuku (des de la seva pròpia aplicació, sobre ADB o amb root) i torna-ho a provar.</string>
+    <string name="shizuku_failure_hint_not_granted">Shizuku està en execució però LSPatch no hi té accés. Concedeix-ho i torna-ho a provar.</string>
+    <string name="shizuku_failure_hint_no_service">S\'ha aprovat Shizuku, però el procés de shell que inicia per a LSPatch no s\'ha activat. Reinicieu Shizuku i torneu a obrir LSPatch.</string>
+    <string name="shizuku_failure_hint_call">La Shizuku va acceptar la sol·licitud i el sistema la va rebutjar. El rastre és el que s\'ha d\'incloure en un informe.</string>
+    <string name="shizuku_failure_view_trace">Veure traça</string>
+    <string name="shizuku_failure_grant">Concedir accés</string>
+    <string name="shizuku_failure_dismiss">Ignora</string>
     <string name="error_unknown">Error desconegut</string>
     <!-- Home Screen -->
     <string name="home_shizuku_warning">Algunes funcions no estan disponibles</string>
@@ -135,6 +156,7 @@
     <string name="patch_action_update_loader">Carregador d\'actualitzacions</string>
     <string name="patch_action_install">Instal·la</string>
     <string name="patch_action_open">Obre</string>
+    <string name="patch_action_other_installer">Un altre instal·lador</string>
     <string name="patch_action_retry">Torna-ho a intentar</string>
     <string name="patch_patched">Pegat</string>
     <string name="patch_patched_splits">base + %1$d divideix</string>
