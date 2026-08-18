@@ -8,6 +8,27 @@
     <string name="shizuku_available">Shizuku-service beschikbaar</string>
     <string name="shizuku_unavailable">Shizuku-service niet verbonden</string>
     <string name="shizuku_off">Niet verbonden</string>
+    <!-- Shizuku failure dialog -->
+    <string name="shizuku_failure_not_running">Shizuku is niet actief</string>
+    <string name="shizuku_failure_lost">Verbinding met Shizuku verloren</string>
+    <string name="shizuku_failure_hint_lost">Shizuku werkte en LSPatch heeft zijn verbinding verloren. Heropen LSPatch; als dat niet helpt, herstart Shizuku.</string>
+    <string name="shizuku_failure_not_granted">Shizuku toegang niet verleend</string>
+    <string name="shizuku_failure_no_service">Shizuku shell service unavailable</string>
+    <string name="shizuku_failure_call">Shizuku oproep mislukt</string>
+    <string name="shizuku_failure_op_grant">Om toegang te krijgen heeft Shizuku zelf nodig.</string>
+    <string name="shizuku_failure_op_install">Om een app stilletjes te installeren heeft Shizuku nodig.</string>
+    <string name="shizuku_failure_op_uninstall">Deïnstalleren van een app heeft Shizuku nodig.</string>
+    <string name="shizuku_failure_op_packages">Lezen van geïnstalleerde pakketten via de shell heeft Shizuku nodig.</string>
+    <string name="shizuku_failure_op_logs">Het verzamelen van apparaatlogs vereist Shizuku.</string>
+    <string name="shizuku_failure_op_shell">Shizuku heeft nodig om een shell commando te uitvoeren.</string>
+    <string name="shizuku_failure_op_optimize">Opnieuw optimaliseren van een app vereist Shizuku.</string>
+    <string name="shizuku_failure_hint_not_running">Start Shizuku - vanuit zijn eigen app, via ADB of met root - en probeer het opnieuw.</string>
+    <string name="shizuku_failure_hint_not_granted">Shizuku draait maar LSPatch heeft geen toegang. Sta het toe en probeer het opnieuw.</string>
+    <string name="shizuku_failure_hint_no_service">Shizuku is toegestaan, maar het granaatproces dat het start voor LSPatch is niet ontstaan. Herstart Shizuku en heropen daarna LSPatch.</string>
+    <string name="shizuku_failure_hint_call">Shizuku heeft het verzoek aanvaard en het systeem heeft het verworpen. Het spoor is wat in een verslag moet worden opgenomen.</string>
+    <string name="shizuku_failure_view_trace">Bekijk spoor</string>
+    <string name="shizuku_failure_grant">Toegang verlenen</string>
+    <string name="shizuku_failure_dismiss">Uitschakelen</string>
     <string name="error_unknown">Onbekende fout</string>
     <!-- Home Screen -->
     <string name="home_shizuku_warning">Sommige functies zijn niet beschikbaar</string>
@@ -135,6 +156,7 @@
     <string name="patch_action_update_loader">Lader bijwerken</string>
     <string name="patch_action_install">Installeren</string>
     <string name="patch_action_open">Open</string>
+    <string name="patch_action_other_installer">Een andere installateur</string>
     <string name="patch_action_retry">Opnieuw</string>
     <string name="patch_patched">Geplaatst</string>
     <string name="patch_patched_splits">basis + %1$d splitsingen</string>
