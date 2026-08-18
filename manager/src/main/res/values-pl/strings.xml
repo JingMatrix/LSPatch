@@ -14,6 +14,7 @@
     <string name="home_info_copied">Skopiowano do schowka</string>
     <string name="home_device">Urządzenie</string>
     <string name="home_system">System</string>
+    <string name="home_package">Pakiet</string>
     <!-- Manage Screen -->
     <string name="screen_manage">Zarządzaj</string>
     <string name="manage_summary">%1$d spatchowanych  ·  %2$d modułów</string>
@@ -213,6 +214,16 @@
     <string name="settings_keystore_wrong_alias">Nieprawidłowa nazwa aliasu</string>
     <string name="settings_keystore_wrong_alias_password">Nieprawidłowe hasło aliasu</string>
     <string name="settings_detail_patch_logs">Szczegółowe logi patchowania</string>
+    <string name="settings_cloak_dialog_title">Zmień nazwę pakietu</string>
+    <string name="settings_cloak_package">Nowa nazwa pakietu</string>
+    <string name="settings_cloak_randomize">Losowo</string>
+    <string name="settings_cloak_warning">Spowoduje to zainstalowanie nowej kopii LSPatch Manager pod inną nazwą pakietu, zaktualizowanie aplikacji w trybie lokalnym, a następnie odinstalowanie bieżącej. Łatki zintegrowane nie są naruszane. Shizuku musi pozostać dostępne. Po instalacji przyznaj Shizuku nowemu pakietowi.</string>
+    <string name="settings_cloak_invalid">Wprowadź prawidłową nazwę pakietu (np. org.example.app)</string>
+    <string name="settings_cloak_need_shizuku">Do zmiany nazwy pakietu wymagane jest Shizuku</string>
+    <string name="settings_cloak_confirm">Kontynuuj</string>
+    <string name="settings_revert_dialog_title">Przywróć oryginalny pakiet</string>
+    <string name="settings_revert_warning">Pobiera najnowszy plik manager.apk z wydań JingMatrix/LSPatch, instaluje go jako org.lsposed.lspatch (ustawienia i powiązania aplikacji lokalnych zostają przywrócone), a następnie odinstalowuje tę aplikację. Wymaga Shizuku i sieci.</string>
+    <string name="settings_revert_confirm">Przywróć</string>
     <string name="patch_inject_dex">Wstrzyknij dex loadera</string>
     <string name="patch_inject_dex_desc">W przypadku aplikacji z izolowanymi usługami, takich jak silniki renderujące przeglądarek, włącz tę opcję, aby zapewnić ich prawidłowe działanie.</string>
     <!-- Repo Details Screen -->
