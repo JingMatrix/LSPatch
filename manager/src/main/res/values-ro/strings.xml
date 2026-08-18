@@ -22,7 +22,6 @@
     <string name="manage_no_match">Nicio potrivire</string>
     <string name="manage_loading">Se încarcă</string>
     <string name="manage_no_apps">Nicio aplicație corecţionată încă</string>
-    <string name="manage_rolling">Rostogolire</string>
     <string name="manage_update_loader">Actualizarea încărcătorului</string>
     <string name="manage_optimize">Re-optimizare</string>
     <string name="manage_optimize_successfully">Codul AOT eliminat - nici un apelant nu poate avea o metodă fixată în el. Se aplică de la următoarea lansare a aplicației.</string>
@@ -79,8 +78,6 @@
     <string name="patch_install_hint_shizuku">Gata de instalare silențioasă prin Shizuku.</string>
     <string name="patch_install_hint_system">Gata de instalare. Sistemul dvs. vă va cere să confirmați.</string>
     <string name="patch_section_options">Opţiuni</string>
-    <string name="patch_section_signing">Semnare &amp; logare</string>
-    <string name="patch_section_manifest">Manifestare</string>
     <string name="patch_manifest_version_code">Cod versiune</string>
     <string name="patch_manifest_version_code_hint">Lăsați gol pentru a păstra originalul</string>
     <string name="patch_manifest_label">Numele aplicației</string>
@@ -160,7 +157,6 @@
     <string name="patch_export_done">Exportat</string>
     <string name="patch_export_failed">Exportul a eșuat</string>
     <!-- App detail page -->
-    <string name="appdetail_mode">Mod patch-uri</string>
     <string name="appdetail_modules">Module</string>
     <string name="appdetail_actions">Acțiuni</string>
     <string name="appdetail_info">Detalii</string>
@@ -203,12 +199,10 @@
     <string name="settings_keystore_custom">Personalizat</string>
     <string name="settings_keystore_default_desc">Cheia lui LSPatch. Alegerea corectă dacă nu ai nevoie de o semnătură specifică.</string>
     <string name="settings_keystore_custom_desc">Semnează cu propria tastatură (BKS).</string>
-    <string name="settings_keystore_dialog_title">Keystore personalizat</string>
     <string name="settings_keystore_file">Fișier Keystore</string>
     <string name="settings_keystore_password">Parola</string>
     <string name="settings_keystore_alias">Alias</string>
     <string name="settings_keystore_alias_password">Alias parola</string>
-    <string name="settings_keystore_desc">Setați keystore (BKS)</string>
     <string name="settings_keystore_wrong_keystore">Tip greșit de depozit de chei</string>
     <string name="settings_keystore_wrong_password">Parolă greșită pentru keystore</string>
     <string name="settings_keystore_wrong_alias">Nume alias greșit</string>
