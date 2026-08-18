@@ -14,6 +14,7 @@
     <string name="home_info_copied">Gekopieerd naar het klembord</string>
     <string name="home_device">Apparaat</string>
     <string name="home_system">Systeem</string>
+    <string name="home_package">Pakket</string>
     <!-- Manage Screen -->
     <string name="screen_manage">Beheer</string>
     <string name="manage_summary">%1$d aangepaste ·  %2$d modules</string>
@@ -213,6 +214,16 @@
     <string name="settings_keystore_wrong_alias">Verkeerde aliasnaam</string>
     <string name="settings_keystore_wrong_alias_password">Verkeerd alias wachtwoord</string>
     <string name="settings_detail_patch_logs">Gedetailleerde patch-logs</string>
+    <string name="settings_cloak_dialog_title">Wijzig pakketnaam</string>
+    <string name="settings_cloak_package">Nieuwe pakketnaam</string>
+    <string name="settings_cloak_randomize">Willekeurig</string>
+    <string name="settings_cloak_warning">Dit installeert een nieuwe kopie van LSPatch Manager onder een andere pakketnaam, update Local-mode apps, en deïnstalleert daarna de huidige. De geïntegreerde patches zijn niet beïnvloed. Shizuku moet beschikbaar blijven. Verleen Shizuku het nieuwe pakket na de installatie.</string>
+    <string name="settings_cloak_invalid">Voer een geldige pakketnaam in (bijv. org.example.app)</string>
+    <string name="settings_cloak_need_shizuku">Shizuku is vereist om de pakketnaam te wijzigen</string>
+    <string name="settings_cloak_confirm">Doorgaan</string>
+    <string name="settings_revert_dialog_title">Terugkeren naar origineel pakket</string>
+    <string name="settings_revert_warning">Download de nieuwste manager.apk van JingMatrix/LSPatch releases, installeert het als org.lsposed. spatch (instellingen en lokale app links zijn hersteld), en deïnstalleert deze app. Vereist Shizuku en het netwerk.</string>
+    <string name="settings_revert_confirm">Terugzetten</string>
     <string name="patch_inject_dex">Inject lader dex</string>
     <string name="patch_inject_dex_desc">Injecteert de lader dex direct in de app. Schakel dit in voor apps met geïsoleerde processen, zoals de rendering engine van een browser, zodat hun haken nog steeds geladen zijn.</string>
     <!-- Repo Details Screen -->
