@@ -14,6 +14,7 @@
     <string name="home_info_copied">Copiado para a área de transferência</string>
     <string name="home_device">Dispositivo</string>
     <string name="home_system">SISTEMA</string>
+    <string name="home_package">Pacote</string>
     <!-- Manage Screen -->
     <string name="screen_manage">Gerir</string>
     <string name="manage_summary">%1$d corrigido ·  %2$d módulos</string>
@@ -213,6 +214,16 @@
     <string name="settings_keystore_wrong_alias">Nome falso</string>
     <string name="settings_keystore_wrong_alias_password">Palavra-passe de outrora incorrecta</string>
     <string name="settings_detail_patch_logs">Registos de remendos detalhados</string>
+    <string name="settings_cloak_dialog_title">Alterar nome do pacote</string>
+    <string name="settings_cloak_package">Nome do novo pacote</string>
+    <string name="settings_cloak_randomize">Aleatório</string>
+    <string name="settings_cloak_warning">Isso instala uma nova cópia do LSPatch Manager sob um nome de pacote diferente, atualiza aplicativos de modo local e depois desinstala o atual. As atualizações integradas não são afetadas. Shizuku deve permanecer disponível. Conceda Shizuku ao novo pacote após a instalação.</string>
+    <string name="settings_cloak_invalid">Insira um nome de pacote válido (por exemplo, org.example.app)</string>
+    <string name="settings_cloak_need_shizuku">Shizuku é necessário para alterar o nome do pacote</string>
+    <string name="settings_cloak_confirm">Continuar</string>
+    <string name="settings_revert_dialog_title">Reverter para o pacote original</string>
+    <string name="settings_revert_warning">Baixa o último manager.apk do JingMatrix/LSPatch, instala-o como org.lsposed. spatch (configurações e links do aplicativo local são restaurados), e depois desinstala este aplicativo. Requer Shizuku e rede.</string>
+    <string name="settings_revert_confirm">Reverter</string>
     <string name="patch_inject_dex">Desvio dex do carregador</string>
     <string name="patch_inject_dex_desc">Injeta o carregador dex diretamente no aplicativo. Ative isto para aplicativos com processos isolados, como o mecanismo de renderização do navegador, para que seus ganchos ainda sejam carregados.</string>
     <!-- Repo Details Screen -->
