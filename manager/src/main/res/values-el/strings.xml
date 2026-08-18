@@ -22,7 +22,6 @@
     <string name="manage_no_match">Δεν υπάρχει αντιστοιχία</string>
     <string name="manage_loading">Φόρτωση</string>
     <string name="manage_no_apps">Δεν υπάρχουν ακόμα επιδιορθωμένες εφαρμογές</string>
-    <string name="manage_rolling">Τροχαίο</string>
     <string name="manage_update_loader">Ενημέρωση φορτωτή</string>
     <string name="manage_optimize">Επαναβελτιστοποίηση</string>
     <string name="manage_optimize_successfully">Ο κωδικός AOT απορρίφθηκε - κανένας καλούντας δεν μπορεί να έχει ενσωματωμένη μέθοδο σε αυτό. Ισχύει από την επόμενη εκκίνηση της εφαρμογής.</string>
@@ -79,8 +78,6 @@
     <string name="patch_install_hint_shizuku">Έτοιμο για σιωπηλή εγκατάσταση μέσω Shizuku.</string>
     <string name="patch_install_hint_system">Έτοιμο για εγκατάσταση. Το σύστημά σας θα σας ζητήσει να επιβεβαιώσετε.</string>
     <string name="patch_section_options">Επιλογές</string>
-    <string name="patch_section_signing">Υπογραφή &amp; καταγραφής</string>
-    <string name="patch_section_manifest">Μανιφέστο</string>
     <string name="patch_manifest_version_code">Κώδικας έκδοσης</string>
     <string name="patch_manifest_version_code_hint">Αφήστε κενό για να κρατήσει το πρωτότυπο</string>
     <string name="patch_manifest_label">Όνομα εφαρμογής</string>
@@ -160,7 +157,6 @@
     <string name="patch_export_done">Εξαγόμενα</string>
     <string name="patch_export_failed">Η εξαγωγή απέτυχε</string>
     <!-- App detail page -->
-    <string name="appdetail_mode">Λειτουργία διόρθωσης</string>
     <string name="appdetail_modules">Πρόσθετα</string>
     <string name="appdetail_actions">Ενέργειες</string>
     <string name="appdetail_info">Λεπτομέρειες</string>
@@ -203,12 +199,10 @@
     <string name="settings_keystore_custom">Προσαρμοσμένο</string>
     <string name="settings_keystore_default_desc">Το κλειδί του LSPatch. Η σωστή επιλογή εκτός αν χρειάζεστε μια συγκεκριμένη υπογραφή.</string>
     <string name="settings_keystore_custom_desc">Εγγραφείτε με το δικό σας keystore (BKS).</string>
-    <string name="settings_keystore_dialog_title">Προσαρμοσμένο keystore</string>
     <string name="settings_keystore_file">Αρχείο κλειδοθήκης</string>
     <string name="settings_keystore_password">Κωδικός πρόσβασης</string>
     <string name="settings_keystore_alias">Ψευδώνυμο</string>
     <string name="settings_keystore_alias_password">Κωδικός πρόσβασης Alias</string>
-    <string name="settings_keystore_desc">Ορισμός κλειδοθήκης (BKS)</string>
     <string name="settings_keystore_wrong_keystore">Λάθος τύπος κλειδοθήκης</string>
     <string name="settings_keystore_wrong_password">Λάθος κωδικός πρόσβασης keystore</string>
     <string name="settings_keystore_wrong_alias">Λάθος όνομα ψευδώνυμου</string>
