@@ -14,6 +14,7 @@
     <string name="home_info_copied">Kopiert til utklippstavlen</string>
     <string name="home_device">Enhet</string>
     <string name="home_system">Systemadministrasjon</string>
+    <string name="home_package">Pakke</string>
     <!-- Manage Screen -->
     <string name="screen_manage">Få til</string>
     <string name="manage_summary">%1$d patchet ·  %2$d moduler</string>
@@ -213,6 +214,16 @@
     <string name="settings_keystore_wrong_alias">Feil aliasnavn</string>
     <string name="settings_keystore_wrong_alias_password">Feil alias passord</string>
     <string name="settings_detail_patch_logs">Detalj patchlogger</string>
+    <string name="settings_cloak_dialog_title">Endre pakkenavn</string>
+    <string name="settings_cloak_package">Nytt pakkenavn</string>
+    <string name="settings_cloak_randomize">Tilfeldig</string>
+    <string name="settings_cloak_warning">Dette installerer en ny kopi av LSPatch Manager under et annet pakkenavn, oppdateringer Lokal-modus apper, og avinstallerer deretter den nåværende. Integrerte patcher er ikke berørt. Shizuku må holde tilgjengelig. Grant Shizuku til den nye pakken etter at du har installert.</string>
+    <string name="settings_cloak_invalid">Angi et gyldig pakkenavn (f.eks. org.example.app)</string>
+    <string name="settings_cloak_need_shizuku">Shizuku er nchar@@0 endre pakkenavnet</string>
+    <string name="settings_cloak_confirm">Fortsett</string>
+    <string name="settings_revert_dialog_title">Gå tilbake til originalpakningen</string>
+    <string name="settings_revert_warning">Laster ned siste manager.apk fra JingMatrix/LSPatch utgivelser, installerer den som org.lspioned. spatch (innstillinger og lokale app koblinger gjenopprettes), deretter avinstallerer du denne appen. Krever Shizuku og nettverk.</string>
+    <string name="settings_revert_confirm">Tilbakestill</string>
     <string name="patch_inject_dex">Injiser lastebildeksel</string>
     <string name="patch_inject_dex_desc">Injiserer lastebildekslet direkte i appen. Slå dette på for apper med isolerte prosesser, som for eksempel en nettlesers gjengivelsesmotor, slik at krokene deres fortsatt lastes inn.</string>
     <!-- Repo Details Screen -->
