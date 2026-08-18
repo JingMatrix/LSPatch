@@ -14,6 +14,7 @@
     <string name="home_info_copied">تم النسخ إلى الحافظة</string>
     <string name="home_device">الجهاز</string>
     <string name="home_system">النظام</string>
+    <string name="home_package">الحزمة</string>
     <!-- Manage Screen -->
     <string name="screen_manage">إدارة</string>
     <string name="manage_summary">%1$d مُرقّع  ·  %2$d وحدة</string>
@@ -213,6 +214,16 @@
     <string name="settings_keystore_wrong_alias">اسم مستعار خاطئ</string>
     <string name="settings_keystore_wrong_alias_password">كلمة مرور الاسم المستعار خاطئة</string>
     <string name="settings_detail_patch_logs">سجلات ترقيع مفصّلة</string>
+    <string name="settings_cloak_dialog_title">تغيير اسم الحزمة</string>
+    <string name="settings_cloak_package">اسم الحزمة الجديد</string>
+    <string name="settings_cloak_randomize">عشوائي</string>
+    <string name="settings_cloak_warning">يؤدي هذا إلى تثبيت نسخة جديدة من LSPatch Manager باسم حزمة مختلف، وتحديث تطبيقات الوضع المحلي، ثم إلغاء تثبيت النسخة الحالية. لا تتأثر الترقيعات المدمجة. يجب أن يظل Shizuku متاحًا. امنح Shizuku للحزمة الجديدة بعد التثبيت.</string>
+    <string name="settings_cloak_invalid">أدخل اسم حزمة صالحًا (مثال: org.example.app)</string>
+    <string name="settings_cloak_need_shizuku">‏Shizuku مطلوب لتغيير اسم الحزمة</string>
+    <string name="settings_cloak_confirm">متابعة</string>
+    <string name="settings_revert_dialog_title">الرجوع إلى الحزمة الأصلية</string>
+    <string name="settings_revert_warning">يقوم بتنزيل أحدث manager.apk من إصدارات JingMatrix/LSPatch، وتثبيته باسم org.lsposed.lspatch (تتم استعادة الإعدادات وروابط التطبيقات المحلية)، ثم إلغاء تثبيت هذا التطبيق. يتطلب Shizuku واتصالًا بالشبكة.</string>
+    <string name="settings_revert_confirm">رجوع</string>
     <string name="patch_inject_dex">حقن dex الخاص بالمُحمّل</string>
     <string name="patch_inject_dex_desc">بالنسبة للتطبيقات ذات الخدمات المعزولة، مثل محركات عرض المتصفحات، فعّل هذا الخيار لضمان عملها بشكل صحيح.</string>
     <!-- Repo Details Screen -->
