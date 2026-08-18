@@ -23,7 +23,6 @@
     <string name="manage_no_match">No match</string>
     <string name="manage_loading">Loading</string>
     <string name="manage_no_apps">No patched apps yet</string>
-    <string name="manage_rolling">Rolling</string>
     <string name="manage_update_loader">Update loader</string>
     <string name="manage_optimize">Re-optimize</string>
     <string name="manage_optimize_successfully">AOT code discarded — no caller can have a hooked method inlined into it. Applies from the app\'s next launch.</string>
@@ -82,8 +81,6 @@
     <string name="patch_install_hint_shizuku">Ready to install silently through Shizuku.</string>
     <string name="patch_install_hint_system">Ready to install. Your system will ask you to confirm.</string>
     <string name="patch_section_options">Options</string>
-    <string name="patch_section_signing">Signing &amp; logging</string>
-    <string name="patch_section_manifest">Manifest</string>
     <string name="patch_manifest_version_code">Version code</string>
     <string name="patch_manifest_version_code_hint">Leave blank to keep the original</string>
     <string name="patch_manifest_label">App name</string>
@@ -166,7 +163,6 @@
     <string name="patch_export_failed">Export failed</string>
 
     <!-- App detail page -->
-    <string name="appdetail_mode">Patch mode</string>
     <string name="appdetail_modules">Modules</string>
     <string name="appdetail_actions">Actions</string>
     <string name="appdetail_info">Details</string>
@@ -210,12 +206,10 @@
     <string name="settings_keystore_custom">Custom</string>
     <string name="settings_keystore_default_desc">LSPatch\'s own key. The right choice unless you need a specific signature.</string>
     <string name="settings_keystore_custom_desc">Sign with your own keystore (BKS).</string>
-    <string name="settings_keystore_dialog_title">Custom keystore</string>
     <string name="settings_keystore_file">Keystore file</string>
     <string name="settings_keystore_password">Password</string>
     <string name="settings_keystore_alias">Alias</string>
     <string name="settings_keystore_alias_password">Alias password</string>
-    <string name="settings_keystore_desc">Set keystore (BKS)</string>
     <string name="settings_keystore_wrong_keystore">Wrong type of keystore</string>
     <string name="settings_keystore_wrong_password">Wrong keystore password</string>
     <string name="settings_keystore_wrong_alias">Wrong alias name</string>
