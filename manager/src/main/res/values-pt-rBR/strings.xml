@@ -8,6 +8,27 @@
     <string name="shizuku_available">Serviço Shizuku disponível</string>
     <string name="shizuku_unavailable">Serviço Shizuku não conectado</string>
     <string name="shizuku_off">Não conectado</string>
+    <!-- Shizuku failure dialog -->
+    <string name="shizuku_failure_not_running">O Shizuku não está em execução</string>
+    <string name="shizuku_failure_lost">Conexão com o Shizuku perdida</string>
+    <string name="shizuku_failure_hint_lost">O Shizuku estava funcionando e o LSPatch perdeu a conexão. Reabra o LSPatch; se não resolver, reinicie o Shizuku.</string>
+    <string name="shizuku_failure_not_granted">Acesso ao Shizuku não concedido</string>
+    <string name="shizuku_failure_no_service">Serviço shell do Shizuku indisponível</string>
+    <string name="shizuku_failure_call">A chamada ao Shizuku falhou</string>
+    <string name="shizuku_failure_op_grant">Para pedir acesso, o Shizuku precisa estar em execução.</string>
+    <string name="shizuku_failure_op_install">Instalar um app silenciosamente exige o Shizuku.</string>
+    <string name="shizuku_failure_op_uninstall">Desinstalar um app silenciosamente exige o Shizuku.</string>
+    <string name="shizuku_failure_op_packages">Ler os pacotes instalados pelo shell exige o Shizuku.</string>
+    <string name="shizuku_failure_op_logs">Coletar os registros do dispositivo exige o Shizuku.</string>
+    <string name="shizuku_failure_op_shell">Executar um comando de shell exige o Shizuku.</string>
+    <string name="shizuku_failure_op_optimize">Reotimizar um app exige o Shizuku.</string>
+    <string name="shizuku_failure_hint_not_running">Inicie o Shizuku — pelo app dele, por ADB ou com root — e tente de novo.</string>
+    <string name="shizuku_failure_hint_not_granted">O Shizuku está em execução, mas o LSPatch não tem acesso. Conceda-o e tente de novo.</string>
+    <string name="shizuku_failure_hint_no_service">O Shizuku está autorizado, mas o processo shell que ele inicia para o LSPatch não subiu. Reinicie o Shizuku e reabra o LSPatch.</string>
+    <string name="shizuku_failure_hint_call">O Shizuku aceitou a solicitação e o sistema a recusou. O rastreamento é o que deve ir no relatório.</string>
+    <string name="shizuku_failure_view_trace">Ver rastreamento</string>
+    <string name="shizuku_failure_grant">Conceder acesso</string>
+    <string name="shizuku_failure_dismiss">Dispensar</string>
     <string name="error_unknown">Erro desconhecido</string>
     <!-- Home Screen -->
     <string name="home_shizuku_warning">Alguns recursos estão indisponíveis</string>
@@ -135,6 +156,7 @@
     <string name="patch_action_update_loader">Atualizar o carregador</string>
     <string name="patch_action_install">Instalar</string>
     <string name="patch_action_open">Abrir</string>
+    <string name="patch_action_other_installer">Outro instalador</string>
     <string name="patch_action_retry">Tentar de novo</string>
     <string name="patch_patched">Com patch</string>
     <string name="patch_patched_splits">Base + %1$d divisões</string>
