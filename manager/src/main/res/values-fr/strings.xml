@@ -14,6 +14,7 @@
     <string name="home_info_copied">Copié dans le presse-papiers</string>
     <string name="home_device">Appareil</string>
     <string name="home_system">Système</string>
+    <string name="home_package">Paquet</string>
     <!-- Manage Screen -->
     <string name="screen_manage">Gérer</string>
     <string name="manage_summary">%1$d patchées  ·  %2$d modules</string>
@@ -213,6 +214,16 @@
     <string name="settings_keystore_wrong_alias">Nom d\'alias incorrect</string>
     <string name="settings_keystore_wrong_alias_password">Mot de passe de l\'alias incorrect</string>
     <string name="settings_detail_patch_logs">Journaux de patch détaillés</string>
+    <string name="settings_cloak_dialog_title">Changer le nom du paquet</string>
+    <string name="settings_cloak_package">Nouveau nom de paquet</string>
+    <string name="settings_cloak_randomize">Aléatoire</string>
+    <string name="settings_cloak_warning">Cela installe une nouvelle copie de LSPatch Manager sous un nom de paquet différent, met à jour les applications en mode local, puis désinstalle la copie actuelle. Les correctifs intégrés ne sont pas affectés. Shizuku doit rester disponible. Accordez Shizuku au nouveau paquet après l\'installation.</string>
+    <string name="settings_cloak_invalid">Saisissez un nom de paquet valide (par ex. org.example.app)</string>
+    <string name="settings_cloak_need_shizuku">Shizuku est requis pour changer le nom du paquet</string>
+    <string name="settings_cloak_confirm">Continuer</string>
+    <string name="settings_revert_dialog_title">Revenir au paquet d\'origine</string>
+    <string name="settings_revert_warning">Télécharge le dernier manager.apk depuis les versions JingMatrix/LSPatch, l\'installe en tant que org.lsposed.lspatch (les paramètres et les liens des applications locales sont restaurés), puis désinstalle cette application. Nécessite Shizuku et le réseau.</string>
+    <string name="settings_revert_confirm">Rétablir</string>
     <string name="patch_inject_dex">Injecter le dex du loader</string>
     <string name="patch_inject_dex_desc">Pour les applications avec des services isolés, comme les moteurs de rendu des navigateurs, veuillez activer cette option pour garantir leur bon fonctionnement.</string>
     <!-- Repo Details Screen -->
