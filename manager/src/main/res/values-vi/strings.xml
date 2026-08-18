@@ -22,7 +22,6 @@
     <string name="manage_no_match">Không có kết quả</string>
     <string name="manage_loading">Đang tải</string>
     <string name="manage_no_apps">Chưa có ứng dụng nào được vá</string>
-    <string name="manage_rolling">Đang khôi phục</string>
     <string name="manage_update_loader">Cập nhật trình nạp</string>
     <string name="manage_optimize">Tối ưu lại</string>
     <string name="manage_optimize_successfully">Đã tối ưu lại. Các hook bị nội tuyến trước đây giờ sẽ hoạt động.</string>
@@ -79,8 +78,6 @@
     <string name="patch_install_hint_shizuku">Sẵn sàng cài đặt ngầm qua Shizuku.</string>
     <string name="patch_install_hint_system">Sẵn sàng cài đặt. Hệ thống sẽ yêu cầu bạn xác nhận.</string>
     <string name="patch_section_options">Tùy chọn</string>
-    <string name="patch_section_signing">Ký &amp; ghi nhật ký</string>
-    <string name="patch_section_manifest">Biểu hiện</string>
     <string name="patch_manifest_version_code">Mã phiên bản</string>
     <string name="patch_manifest_version_code_hint">Để trống để giữ nguyên bản gốc</string>
     <string name="patch_manifest_label">Tên ứng dụng</string>
@@ -160,7 +157,6 @@
     <string name="patch_export_done">Đã xuất</string>
     <string name="patch_export_failed">Xuất thất bại</string>
     <!-- App detail page -->
-    <string name="appdetail_mode">Chế độ vá</string>
     <string name="appdetail_modules">Mô-đun</string>
     <string name="appdetail_actions">Thao tác</string>
     <string name="appdetail_info">Chi tiết</string>
@@ -203,12 +199,10 @@
     <string name="settings_keystore_custom">Tùy chỉnh</string>
     <string name="settings_keystore_default_desc">Khoá riêng của LSPatch. Là lựa chọn đúng trừ khi bạn cần một chữ ký cụ thể.</string>
     <string name="settings_keystore_custom_desc">Ký bằng kho khoá của riêng bạn (BKS).</string>
-    <string name="settings_keystore_dialog_title">Kho khóa tùy chỉnh</string>
     <string name="settings_keystore_file">Tệp kho khóa</string>
     <string name="settings_keystore_password">Mật khẩu</string>
     <string name="settings_keystore_alias">Bí danh</string>
     <string name="settings_keystore_alias_password">Mật khẩu bí danh</string>
-    <string name="settings_keystore_desc">Đặt kho khóa (BKS)</string>
     <string name="settings_keystore_wrong_keystore">Loại kho khóa không đúng</string>
     <string name="settings_keystore_wrong_password">Sai mật khẩu kho khóa</string>
     <string name="settings_keystore_wrong_alias">Sai tên bí danh</string>
