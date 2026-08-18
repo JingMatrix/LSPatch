@@ -8,6 +8,27 @@
     <string name="shizuku_available">Служба Shizuku доступна</string>
     <string name="shizuku_unavailable">Служба Shizuku не подключена</string>
     <string name="shizuku_off">Не подключено</string>
+    <!-- Shizuku failure dialog -->
+    <string name="shizuku_failure_not_running">Shizuku не запущен</string>
+    <string name="shizuku_failure_lost">Соединение с Shizuku потеряно</string>
+    <string name="shizuku_failure_hint_lost">Shizuku работал, и LSPatch потерял соединение с ним. Откройте LSPatch заново; если это не помогает, перезапустите Shizuku.</string>
+    <string name="shizuku_failure_not_granted">Доступ к Shizuku не предоставлен</string>
+    <string name="shizuku_failure_no_service">Shell-служба Shizuku недоступна</string>
+    <string name="shizuku_failure_call">Вызов Shizuku не удался</string>
+    <string name="shizuku_failure_op_grant">Чтобы запросить доступ, сам Shizuku должен быть запущен.</string>
+    <string name="shizuku_failure_op_install">Тихая установка приложения требует Shizuku.</string>
+    <string name="shizuku_failure_op_uninstall">Тихое удаление приложения требует Shizuku.</string>
+    <string name="shizuku_failure_op_packages">Чтение установленных пакетов через shell требует Shizuku.</string>
+    <string name="shizuku_failure_op_logs">Сбор журналов устройства требует Shizuku.</string>
+    <string name="shizuku_failure_op_shell">Выполнение shell-команды требует Shizuku.</string>
+    <string name="shizuku_failure_op_optimize">Повторная оптимизация приложения требует Shizuku.</string>
+    <string name="shizuku_failure_hint_not_running">Запустите Shizuku — из его приложения, через ADB или с root — и повторите попытку.</string>
+    <string name="shizuku_failure_hint_not_granted">Shizuku запущен, но у LSPatch нет доступа. Предоставьте его и повторите попытку.</string>
+    <string name="shizuku_failure_hint_no_service">Доступ к Shizuku есть, но shell-процесс, который он запускает для LSPatch, не поднялся. Перезапустите Shizuku и откройте LSPatch заново.</string>
+    <string name="shizuku_failure_hint_call">Shizuku принял запрос, а система его отклонила. Именно эту трассировку нужно приложить к отчёту.</string>
+    <string name="shizuku_failure_view_trace">Показать трассировку</string>
+    <string name="shizuku_failure_grant">Предоставить доступ</string>
+    <string name="shizuku_failure_dismiss">Закрыть</string>
     <string name="error_unknown">Неизвестная ошибка</string>
     <!-- Home Screen -->
     <string name="home_shizuku_warning">Некоторые функции недоступны</string>
@@ -135,6 +156,7 @@
     <string name="patch_action_update_loader">Обновить загрузчик</string>
     <string name="patch_action_install">Установить</string>
     <string name="patch_action_open">Открыть</string>
+    <string name="patch_action_other_installer">Другой установщик</string>
     <string name="patch_action_retry">Повторить</string>
     <string name="patch_patched">Пропатчено</string>
     <string name="patch_patched_splits">база + %1$d сплитов</string>
