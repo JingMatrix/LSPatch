@@ -8,6 +8,27 @@
     <string name="shizuku_available">Shizuku 服務可用</string>
     <string name="shizuku_unavailable">Shizuku 服務未連線</string>
     <string name="shizuku_off">未連線</string>
+    <!-- Shizuku failure dialog -->
+    <string name="shizuku_failure_not_running">Shizuku 未執行</string>
+    <string name="shizuku_failure_lost">與 Shizuku 的連線已中斷</string>
+    <string name="shizuku_failure_hint_lost">Shizuku 原本正常運作，LSPatch 與它的連線已中斷。請重新開啟 LSPatch；若仍無效，請重新啟動 Shizuku。</string>
+    <string name="shizuku_failure_not_granted">未授予 Shizuku 權限</string>
+    <string name="shizuku_failure_no_service">Shizuku shell 服務無法使用</string>
+    <string name="shizuku_failure_call">Shizuku 呼叫失敗</string>
+    <string name="shizuku_failure_op_grant">要求授權前，Shizuku 本身必須正在執行。</string>
+    <string name="shizuku_failure_op_install">靜默安裝應用程式需要 Shizuku。</string>
+    <string name="shizuku_failure_op_uninstall">靜默解除安裝應用程式需要 Shizuku。</string>
+    <string name="shizuku_failure_op_packages">透過 shell 讀取已安裝的套件需要 Shizuku。</string>
+    <string name="shizuku_failure_op_logs">收集裝置記錄需要 Shizuku。</string>
+    <string name="shizuku_failure_op_shell">執行 shell 指令需要 Shizuku。</string>
+    <string name="shizuku_failure_op_optimize">重新最佳化應用程式需要 Shizuku。</string>
+    <string name="shizuku_failure_hint_not_running">請啟動 Shizuku（透過其應用程式、ADB 或 root），然後再試一次。</string>
+    <string name="shizuku_failure_hint_not_granted">Shizuku 正在執行，但尚未授權 LSPatch。請授予權限後再試一次。</string>
+    <string name="shizuku_failure_hint_no_service">已授予 Shizuku 權限，但它為 LSPatch 啟動的 shell 程序未能就緒。請重新啟動 Shizuku，然後重新開啟 LSPatch。</string>
+    <string name="shizuku_failure_hint_call">Shizuku 已接受該請求，但系統拒絕了它。回報問題時請附上此堆疊追蹤。</string>
+    <string name="shizuku_failure_view_trace">檢視堆疊追蹤</string>
+    <string name="shizuku_failure_grant">授予權限</string>
+    <string name="shizuku_failure_dismiss">關閉</string>
     <string name="error_unknown">未知錯誤</string>
     <!-- Home Screen -->
     <string name="home_shizuku_warning">部分功能無法使用</string>
@@ -135,6 +156,7 @@
     <string name="patch_action_update_loader">更新載入器</string>
     <string name="patch_action_install">安裝</string>
     <string name="patch_action_open">開啟</string>
+    <string name="patch_action_other_installer">其他安裝程式</string>
     <string name="patch_action_retry">重試</string>
     <string name="patch_patched">已修補</string>
     <string name="patch_patched_splits">基礎包 + %1$d 個分包</string>
