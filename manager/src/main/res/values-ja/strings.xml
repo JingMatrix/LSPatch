@@ -8,6 +8,27 @@
     <string name="shizuku_available">Shizuku サービスが利用可能</string>
     <string name="shizuku_unavailable">Shizuku サービスに接続されていません</string>
     <string name="shizuku_off">未接続</string>
+    <!-- Shizuku failure dialog -->
+    <string name="shizuku_failure_not_running">Shizuku が起動していません</string>
+    <string name="shizuku_failure_lost">Shizuku との接続が切れました</string>
+    <string name="shizuku_failure_hint_lost">Shizuku は動作していましたが、LSPatch が接続を失いました。LSPatch を開き直してください。解決しない場合は Shizuku を再起動してください。</string>
+    <string name="shizuku_failure_not_granted">Shizuku の許可がありません</string>
+    <string name="shizuku_failure_no_service">Shizuku のシェルサービスを利用できません</string>
+    <string name="shizuku_failure_call">Shizuku の呼び出しに失敗しました</string>
+    <string name="shizuku_failure_op_grant">許可を求めるには Shizuku 自体が起動している必要があります。</string>
+    <string name="shizuku_failure_op_install">アプリのサイレントインストールには Shizuku が必要です。</string>
+    <string name="shizuku_failure_op_uninstall">アプリのサイレントアンインストールには Shizuku が必要です。</string>
+    <string name="shizuku_failure_op_packages">シェル経由でインストール済みパッケージを読み取るには Shizuku が必要です。</string>
+    <string name="shizuku_failure_op_logs">端末のログ収集には Shizuku が必要です。</string>
+    <string name="shizuku_failure_op_shell">シェルコマンドの実行には Shizuku が必要です。</string>
+    <string name="shizuku_failure_op_optimize">アプリの再最適化には Shizuku が必要です。</string>
+    <string name="shizuku_failure_hint_not_running">Shizuku を起動してから（アプリ本体、ADB、または root で）もう一度お試しください。</string>
+    <string name="shizuku_failure_hint_not_granted">Shizuku は動作していますが、LSPatch に許可がありません。許可してからもう一度お試しください。</string>
+    <string name="shizuku_failure_hint_no_service">Shizuku は許可されていますが、LSPatch 用に起動されるシェルプロセスが立ち上がりませんでした。Shizuku を再起動してから LSPatch を開き直してください。</string>
+    <string name="shizuku_failure_hint_call">Shizuku は要求を受け付けましたが、システムが拒否しました。報告にはこのスタックトレースを添えてください。</string>
+    <string name="shizuku_failure_view_trace">スタックトレースを表示</string>
+    <string name="shizuku_failure_grant">アクセスを許可</string>
+    <string name="shizuku_failure_dismiss">閉じる</string>
     <string name="error_unknown">不明なエラー</string>
     <!-- Home Screen -->
     <string name="home_shizuku_warning">一部の機能が利用できません</string>
@@ -135,6 +156,7 @@
     <string name="patch_action_update_loader">ローダーを更新</string>
     <string name="patch_action_install">インストール</string>
     <string name="patch_action_open">開く</string>
+    <string name="patch_action_other_installer">別のインストーラー</string>
     <string name="patch_action_retry">再試行</string>
     <string name="patch_patched">パッチ済み</string>
     <string name="patch_patched_splits">ベース + 分割 %1$d 個</string>
