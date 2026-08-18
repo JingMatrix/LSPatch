@@ -22,7 +22,6 @@
     <string name="manage_no_match">Нічого не знайдено</string>
     <string name="manage_loading">Завантаження</string>
     <string name="manage_no_apps">Ще немає пропатчених застосунків</string>
-    <string name="manage_rolling">Відкат</string>
     <string name="manage_update_loader">Оновити завантажувач</string>
     <string name="manage_optimize">Переоптимізувати</string>
     <string name="manage_optimize_successfully">Переоптимізовано. Хуки, які були вбудовані, тепер мають працювати.</string>
@@ -79,8 +78,6 @@
     <string name="patch_install_hint_shizuku">Готово до тихого встановлення через Shizuku.</string>
     <string name="patch_install_hint_system">Готово до встановлення. Система попросить підтвердження.</string>
     <string name="patch_section_options">Параметри</string>
-    <string name="patch_section_signing">Підпис і журнали</string>
-    <string name="patch_section_manifest">Маніфест</string>
     <string name="patch_manifest_version_code">Код версії</string>
     <string name="patch_manifest_version_code_hint">Залиште порожнім, щоб зберегти вихідний</string>
     <string name="patch_manifest_label">Назва застосунку</string>
@@ -160,7 +157,6 @@
     <string name="patch_export_done">Експортовано</string>
     <string name="patch_export_failed">Не вдалося експортувати</string>
     <!-- App detail page -->
-    <string name="appdetail_mode">Режим патчу</string>
     <string name="appdetail_modules">Модулі</string>
     <string name="appdetail_actions">Дії</string>
     <string name="appdetail_info">Відомості</string>
@@ -203,12 +199,10 @@
     <string name="settings_keystore_custom">Власне</string>
     <string name="settings_keystore_default_desc">Власний ключ LSPatch. Правильний вибір, якщо вам не потрібен конкретний підпис.</string>
     <string name="settings_keystore_custom_desc">Підписати власним сховищем ключів (BKS).</string>
-    <string name="settings_keystore_dialog_title">Власне сховище ключів</string>
     <string name="settings_keystore_file">Файл сховища ключів</string>
     <string name="settings_keystore_password">Пароль</string>
     <string name="settings_keystore_alias">Псевдонім</string>
     <string name="settings_keystore_alias_password">Пароль псевдоніма</string>
-    <string name="settings_keystore_desc">Задати сховище ключів (BKS)</string>
     <string name="settings_keystore_wrong_keystore">Неправильний тип сховища ключів</string>
     <string name="settings_keystore_wrong_password">Неправильний пароль сховища ключів</string>
     <string name="settings_keystore_wrong_alias">Неправильне ім\'я псевдоніма</string>
