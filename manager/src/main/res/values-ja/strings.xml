@@ -22,7 +22,6 @@
     <string name="manage_no_match">一致するものがありません</string>
     <string name="manage_loading">読み込み中</string>
     <string name="manage_no_apps">パッチ済みのアプリはまだありません</string>
-    <string name="manage_rolling">処理中</string>
     <string name="manage_update_loader">ローダーを更新</string>
     <string name="manage_optimize">再最適化</string>
     <string name="manage_optimize_successfully">再最適化しました。インライン化で失われていたフックが動作するはずです。</string>
@@ -79,8 +78,6 @@
     <string name="patch_install_hint_shizuku">Shizuku を通じてサイレントインストールする準備ができました。</string>
     <string name="patch_install_hint_system">インストールの準備ができました。システムが確認を求めます。</string>
     <string name="patch_section_options">オプション</string>
-    <string name="patch_section_signing">署名とログ</string>
-    <string name="patch_section_manifest">マニフェスト</string>
     <string name="patch_manifest_version_code">バージョンコード</string>
     <string name="patch_manifest_version_code_hint">空欄のままにすると元の値を保持します</string>
     <string name="patch_manifest_label">アプリ名</string>
@@ -160,7 +157,6 @@
     <string name="patch_export_done">エクスポートしました</string>
     <string name="patch_export_failed">エクスポートに失敗しました</string>
     <!-- App detail page -->
-    <string name="appdetail_mode">パッチモード</string>
     <string name="appdetail_modules">モジュール</string>
     <string name="appdetail_actions">操作</string>
     <string name="appdetail_info">詳細</string>
@@ -203,12 +199,10 @@
     <string name="settings_keystore_custom">カスタム</string>
     <string name="settings_keystore_default_desc">LSPatch 独自のキー。特定の署名が必要でない限り、これが適切な選択です。</string>
     <string name="settings_keystore_custom_desc">独自のキーストア（BKS）で署名します。</string>
-    <string name="settings_keystore_dialog_title">カスタムキーストア</string>
     <string name="settings_keystore_file">キーストアファイル</string>
     <string name="settings_keystore_password">パスワード</string>
     <string name="settings_keystore_alias">エイリアス</string>
     <string name="settings_keystore_alias_password">エイリアスのパスワード</string>
-    <string name="settings_keystore_desc">キーストアを設定 (BKS)</string>
     <string name="settings_keystore_wrong_keystore">キーストアの種類が間違っています</string>
     <string name="settings_keystore_wrong_password">キーストアのパスワードが間違っています</string>
     <string name="settings_keystore_wrong_alias">エイリアス名が間違っています</string>
