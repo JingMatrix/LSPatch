@@ -8,6 +8,27 @@
     <string name="shizuku_available">Dịch vụ Shizuku khả dụng</string>
     <string name="shizuku_unavailable">Dịch vụ Shizuku chưa được kết nối</string>
     <string name="shizuku_off">Chưa kết nối</string>
+    <!-- Shizuku failure dialog -->
+    <string name="shizuku_failure_not_running">Shizuku chưa chạy</string>
+    <string name="shizuku_failure_lost">Mất kết nối với Shizuku</string>
+    <string name="shizuku_failure_hint_lost">Shizuku đang hoạt động và LSPatch đã mất kết nối. Hãy mở lại LSPatch; nếu vẫn không được, khởi động lại Shizuku.</string>
+    <string name="shizuku_failure_not_granted">Chưa cấp quyền Shizuku</string>
+    <string name="shizuku_failure_no_service">Không dùng được dịch vụ shell của Shizuku</string>
+    <string name="shizuku_failure_call">Lệnh gọi Shizuku thất bại</string>
+    <string name="shizuku_failure_op_grant">Muốn xin quyền thì bản thân Shizuku phải đang chạy.</string>
+    <string name="shizuku_failure_op_install">Cài đặt ứng dụng ngầm cần Shizuku.</string>
+    <string name="shizuku_failure_op_uninstall">Gỡ cài đặt ứng dụng ngầm cần Shizuku.</string>
+    <string name="shizuku_failure_op_packages">Đọc các gói đã cài qua shell cần Shizuku.</string>
+    <string name="shizuku_failure_op_logs">Thu thập nhật ký thiết bị cần Shizuku.</string>
+    <string name="shizuku_failure_op_shell">Chạy lệnh shell cần Shizuku.</string>
+    <string name="shizuku_failure_op_optimize">Tối ưu lại ứng dụng cần Shizuku.</string>
+    <string name="shizuku_failure_hint_not_running">Hãy khởi động Shizuku — từ ứng dụng của nó, qua ADB hoặc bằng root — rồi thử lại.</string>
+    <string name="shizuku_failure_hint_not_granted">Shizuku đang chạy nhưng LSPatch chưa có quyền. Hãy cấp quyền rồi thử lại.</string>
+    <string name="shizuku_failure_hint_no_service">Shizuku đã được cấp quyền, nhưng tiến trình shell mà nó khởi động cho LSPatch không lên. Hãy khởi động lại Shizuku rồi mở lại LSPatch.</string>
+    <string name="shizuku_failure_hint_call">Shizuku đã nhận yêu cầu còn hệ thống từ chối. Hãy đính kèm dấu vết này vào báo cáo.</string>
+    <string name="shizuku_failure_view_trace">Xem dấu vết</string>
+    <string name="shizuku_failure_grant">Cấp quyền</string>
+    <string name="shizuku_failure_dismiss">Bỏ qua</string>
     <string name="error_unknown">Lỗi không xác định</string>
     <!-- Home Screen -->
     <string name="home_shizuku_warning">Một số tính năng không khả dụng</string>
@@ -135,6 +156,7 @@
     <string name="patch_action_update_loader">Cập nhật bộ nạp</string>
     <string name="patch_action_install">Cài đặt</string>
     <string name="patch_action_open">Mở</string>
+    <string name="patch_action_other_installer">Trình cài đặt khác</string>
     <string name="patch_action_retry">Thử lại</string>
     <string name="patch_patched">Đã vá</string>
     <string name="patch_patched_splits">gói cơ sở + %1$d split</string>
