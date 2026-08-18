@@ -22,7 +22,6 @@
     <string name="manage_no_match">Ingen match</string>
     <string name="manage_loading">Laddar</string>
     <string name="manage_no_apps">Inga patchade appar ännu</string>
-    <string name="manage_rolling">Rullande</string>
     <string name="manage_update_loader">Uppdatera loader</string>
     <string name="manage_optimize">Återoptimera</string>
     <string name="manage_optimize_successfully">AOT-koden kasseras — ingen uppringare kan ha en krokad metod infodrad i den. Gäller från appens nästa lansering.</string>
@@ -79,8 +78,6 @@
     <string name="patch_install_hint_shizuku">Redo att installera tyst genom Shizuku.</string>
     <string name="patch_install_hint_system">Redo att installera. Ditt system kommer att be dig att bekräfta.</string>
     <string name="patch_section_options">Alternativ</string>
-    <string name="patch_section_signing">Signerar &amp; loggning</string>
-    <string name="patch_section_manifest">Manifest</string>
     <string name="patch_manifest_version_code">Versionskod</string>
     <string name="patch_manifest_version_code_hint">Lämna tomt för att behålla originalet</string>
     <string name="patch_manifest_label">Appens namn</string>
@@ -160,7 +157,6 @@
     <string name="patch_export_done">Exporterad</string>
     <string name="patch_export_failed">Exporten misslyckades</string>
     <!-- App detail page -->
-    <string name="appdetail_mode">Patch läge</string>
     <string name="appdetail_modules">Moduler</string>
     <string name="appdetail_actions">Åtgärder</string>
     <string name="appdetail_info">Detaljer</string>
@@ -203,12 +199,10 @@
     <string name="settings_keystore_custom">Anpassad</string>
     <string name="settings_keystore_default_desc">LSPatchs egen nyckel. Rätt val om du inte behöver en specifik signatur.</string>
     <string name="settings_keystore_custom_desc">Logga in med din egen nyckelbutik (BKS).</string>
-    <string name="settings_keystore_dialog_title">Anpassat nyckelarkiv</string>
     <string name="settings_keystore_file">Nyckelarkivfil</string>
     <string name="settings_keystore_password">Lösenord</string>
     <string name="settings_keystore_alias">Alias</string>
     <string name="settings_keystore_alias_password">Alias-lösenord</string>
-    <string name="settings_keystore_desc">Ställ in nyckelarkiv (BKS)</string>
     <string name="settings_keystore_wrong_keystore">Fel typ av nyckelarkiv</string>
     <string name="settings_keystore_wrong_password">Fel lösenord till nyckelarkivet</string>
     <string name="settings_keystore_wrong_alias">Fel aliasnamn</string>
