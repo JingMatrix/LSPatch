@@ -22,7 +22,6 @@
     <string name="manage_no_match">無相符結果</string>
     <string name="manage_loading">載入中</string>
     <string name="manage_no_apps">尚無已修補的應用程式</string>
-    <string name="manage_rolling">正在還原</string>
     <string name="manage_update_loader">更新載入器</string>
     <string name="manage_optimize">重新最佳化</string>
     <string name="manage_optimize_successfully">已重新最佳化。先前被內聯掉的 hook 現在應該可以正常運作了。</string>
@@ -79,8 +78,6 @@
     <string name="patch_install_hint_shizuku">可透過 Shizuku 靜默安裝。</string>
     <string name="patch_install_hint_system">準備安裝。系統將要求你確認。</string>
     <string name="patch_section_options">選項</string>
-    <string name="patch_section_signing">簽章與記錄</string>
-    <string name="patch_section_manifest">資訊清單</string>
     <string name="patch_manifest_version_code">版本號</string>
     <string name="patch_manifest_version_code_hint">留空則保持原值</string>
     <string name="patch_manifest_label">應用程式名稱</string>
@@ -160,7 +157,6 @@
     <string name="patch_export_done">已匯出</string>
     <string name="patch_export_failed">匯出失敗</string>
     <!-- App detail page -->
-    <string name="appdetail_mode">修補模式</string>
     <string name="appdetail_modules">模組</string>
     <string name="appdetail_actions">操作</string>
     <string name="appdetail_info">詳細資訊</string>
@@ -203,12 +199,10 @@
     <string name="settings_keystore_custom">自訂</string>
     <string name="settings_keystore_default_desc">LSPatch 自身的金鑰。除非你需要特定的簽章，否則選擇此項即可。</string>
     <string name="settings_keystore_custom_desc">使用你自己的金鑰庫（BKS）簽署。</string>
-    <string name="settings_keystore_dialog_title">自訂金鑰庫</string>
     <string name="settings_keystore_file">金鑰庫檔案</string>
     <string name="settings_keystore_password">密碼</string>
     <string name="settings_keystore_alias">別名</string>
     <string name="settings_keystore_alias_password">別名密碼</string>
-    <string name="settings_keystore_desc">設定金鑰庫 (BKS)</string>
     <string name="settings_keystore_wrong_keystore">金鑰庫類型錯誤</string>
     <string name="settings_keystore_wrong_password">金鑰庫密碼錯誤</string>
     <string name="settings_keystore_wrong_alias">別名錯誤</string>
