@@ -14,6 +14,7 @@
     <string name="home_info_copied">Gekopieer na knipbord</string>
     <string name="home_device">Toestel</string>
     <string name="home_system">Stelsel</string>
+    <string name="home_package">Pakket</string>
     <!-- Manage Screen -->
     <string name="screen_manage">Bestuur</string>
     <string name="manage_summary">%1$d geplak ·  %2$d modules</string>
@@ -213,6 +214,16 @@
     <string name="settings_keystore_wrong_alias">Verkeerde alias naam</string>
     <string name="settings_keystore_wrong_alias_password">Verkeerde alias wagwoord</string>
     <string name="settings_detail_patch_logs">Detail pleister logs</string>
+    <string name="settings_cloak_dialog_title">Verander pakketnaam</string>
+    <string name="settings_cloak_package">Nuwe pakketnaam</string>
+    <string name="settings_cloak_randomize">Willekeurig maak</string>
+    <string name="settings_cloak_warning">Dit installeer \'n nuwe kopie van LSPatch Manager onder \'n ander pakketnaam, werk plaaslike-modus-programme op en deïnstalleer dan die huidige een. Geïntegreerde kolle word nie beïnvloed nie. Shizuku moet beskikbaar bly. Gee Shizuku die nuwe pakket na installasie.</string>
+    <string name="settings_cloak_invalid">Voer \'n geldige pakketnaam in (bv. org.example.app)</string>
+    <string name="settings_cloak_need_shizuku">Shizuku moet die pakketnaam verander</string>
+    <string name="settings_cloak_confirm">Gaan voort</string>
+    <string name="settings_revert_dialog_title">Keer terug na oorspronklike verpakking</string>
+    <string name="settings_revert_warning">Laai die nuutste manager.apk van JingMatrix/LSPatch-vrystellings af, installeer dit as org.lsposed.lspatch (instellings en plaaslike toepassingskakels word herstel), en deïnstalleer dan hierdie toepassing. Vereis Shizuku en netwerk.</string>
+    <string name="settings_revert_confirm">Terugkeer</string>
     <string name="patch_inject_dex">Spuit loader dex</string>
     <string name="patch_inject_dex_desc">Spuit die laaier-dex direk in die toepassing in. Skakel dit aan vir toepassings met geïsoleerde prosesse, soos \'n blaaier se weergawe-enjin, sodat hul hake steeds laai.</string>
     <!-- Repo Details Screen -->
