@@ -8,6 +8,27 @@
     <string name="shizuku_available">Shizuku hizmeti kullanılabilir</string>
     <string name="shizuku_unavailable">Shizuku hizmeti bağlı değil</string>
     <string name="shizuku_off">Bağlı değil</string>
+    <!-- Shizuku failure dialog -->
+    <string name="shizuku_failure_not_running">Shizuku çalışmıyor</string>
+    <string name="shizuku_failure_lost">Shizuku bağlantısı koptu</string>
+    <string name="shizuku_failure_hint_lost">Shizuku çalışıyordu ve LSPatch bağlantıyı kaybetti. LSPatch\'i yeniden aç; işe yaramazsa Shizuku\'yu yeniden başlat.</string>
+    <string name="shizuku_failure_not_granted">Shizuku erişimi verilmedi</string>
+    <string name="shizuku_failure_no_service">Shizuku kabuk hizmeti kullanılamıyor</string>
+    <string name="shizuku_failure_call">Shizuku çağrısı başarısız oldu</string>
+    <string name="shizuku_failure_op_grant">Erişim istemek için Shizuku\'nun kendisinin çalışıyor olması gerekir.</string>
+    <string name="shizuku_failure_op_install">Bir uygulamayı sessizce kurmak Shizuku gerektirir.</string>
+    <string name="shizuku_failure_op_uninstall">Bir uygulamayı sessizce kaldırmak Shizuku gerektirir.</string>
+    <string name="shizuku_failure_op_packages">Kurulu paketleri kabuk üzerinden okumak Shizuku gerektirir.</string>
+    <string name="shizuku_failure_op_logs">Cihaz günlüklerini toplamak Shizuku gerektirir.</string>
+    <string name="shizuku_failure_op_shell">Kabuk komutu çalıştırmak Shizuku gerektirir.</string>
+    <string name="shizuku_failure_op_optimize">Bir uygulamayı yeniden iyileştirmek Shizuku gerektirir.</string>
+    <string name="shizuku_failure_hint_not_running">Shizuku\'yu başlat — kendi uygulamasından, ADB ile ya da root ile — ve yeniden dene.</string>
+    <string name="shizuku_failure_hint_not_granted">Shizuku çalışıyor ama LSPatch\'in erişimi yok. İzin ver ve yeniden dene.</string>
+    <string name="shizuku_failure_hint_no_service">Shizuku izinli, ancak LSPatch için başlattığı kabuk süreci açılmadı. Shizuku\'yu yeniden başlat, sonra LSPatch\'i yeniden aç.</string>
+    <string name="shizuku_failure_hint_call">Shizuku isteği kabul etti, sistem reddetti. Rapora eklenmesi gereken şey bu izdir.</string>
+    <string name="shizuku_failure_view_trace">İzi görüntüle</string>
+    <string name="shizuku_failure_grant">Erişim ver</string>
+    <string name="shizuku_failure_dismiss">Kapat</string>
     <string name="error_unknown">Bilinmeyen hata</string>
     <!-- Home Screen -->
     <string name="home_shizuku_warning">Bazı özellikler kullanılamıyor</string>
@@ -135,6 +156,7 @@
     <string name="patch_action_update_loader">Yükleyiciyi güncelle</string>
     <string name="patch_action_install">Kur</string>
     <string name="patch_action_open">Aç</string>
+    <string name="patch_action_other_installer">Başka yükleyici</string>
     <string name="patch_action_retry">Yeniden dene</string>
     <string name="patch_patched">Yamalandı</string>
     <string name="patch_patched_splits">temel + %1$d bölünme</string>
