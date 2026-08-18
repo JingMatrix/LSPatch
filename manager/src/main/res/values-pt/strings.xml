@@ -22,7 +22,6 @@
     <string name="manage_no_match">Sem correspondência</string>
     <string name="manage_loading">Carregando</string>
     <string name="manage_no_apps">Nenhum aplicativo corrigido ainda</string>
-    <string name="manage_rolling">Rolagem</string>
     <string name="manage_update_loader">Carregador de actualização</string>
     <string name="manage_optimize">Re-otimizar</string>
     <string name="manage_optimize_successfully">O código AOT foi descartado - nenhum chamador pode ter um método ligado nele. Aplica-se a partir do próximo lançamento do aplicativo.</string>
@@ -79,8 +78,6 @@
     <string name="patch_install_hint_shizuku">Pronto para instalar silenciosamente através do Shizuku.</string>
     <string name="patch_install_hint_system">Pronto para instalar. Seu sistema pedirá que você confirme.</string>
     <string name="patch_section_options">Opções</string>
-    <string name="patch_section_signing">Assinando &amp; registro</string>
-    <string name="patch_section_manifest">Manifesto</string>
     <string name="patch_manifest_version_code">Código da versão</string>
     <string name="patch_manifest_version_code_hint">Deixe em branco para manter o original</string>
     <string name="patch_manifest_label">Nome do aplicativo</string>
@@ -160,7 +157,6 @@
     <string name="patch_export_done">Exportado</string>
     <string name="patch_export_failed">Exportação falhou</string>
     <!-- App detail page -->
-    <string name="appdetail_mode">Modo de atualização</string>
     <string name="appdetail_modules">módulos</string>
     <string name="appdetail_actions">Ações.</string>
     <string name="appdetail_info">detalhes</string>
@@ -203,12 +199,10 @@
     <string name="settings_keystore_custom">Personalizado</string>
     <string name="settings_keystore_default_desc">LSPatch chave própria. A escolha certa, a menos que você precise de uma assinatura específica.</string>
     <string name="settings_keystore_custom_desc">Assine com sua própria keystore (BKS).</string>
-    <string name="settings_keystore_dialog_title">Chaveiro personalizado</string>
     <string name="settings_keystore_file">Arquivo da Keystore</string>
     <string name="settings_keystore_password">Senha</string>
     <string name="settings_keystore_alias">Alias</string>
     <string name="settings_keystore_alias_password">Palavra-passe</string>
-    <string name="settings_keystore_desc">Definir keystore (BKS)</string>
     <string name="settings_keystore_wrong_keystore">Tipo errado de chaveiro</string>
     <string name="settings_keystore_wrong_password">Palavra-chave de loja errada</string>
     <string name="settings_keystore_wrong_alias">Nome falso</string>
