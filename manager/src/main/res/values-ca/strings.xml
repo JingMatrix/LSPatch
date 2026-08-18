@@ -14,6 +14,7 @@
     <string name="home_info_copied">S\'ha copiat al porta-retalls</string>
     <string name="home_device">Dispositiu</string>
     <string name="home_system">Sistema</string>
+    <string name="home_package">Paquet</string>
     <!-- Manage Screen -->
     <string name="screen_manage">Gestionar</string>
     <string name="manage_summary">%1$d pegats ·  %2$d mòduls</string>
@@ -213,6 +214,16 @@
     <string name="settings_keystore_wrong_alias">Nom d\'àlies incorrecte</string>
     <string name="settings_keystore_wrong_alias_password">Contrasenya d\'àlies incorrecta</string>
     <string name="settings_detail_patch_logs">Registres de pedaços detallats</string>
+    <string name="settings_cloak_dialog_title">Canvia el nom del paquet</string>
+    <string name="settings_cloak_package">Nom del paquet nou</string>
+    <string name="settings_cloak_randomize">Aleatori</string>
+    <string name="settings_cloak_warning">Això instal·la una nova còpia de LSPatch Manager amb un nom de paquet diferent, actualitza les aplicacions en mode local i després desinstal·la l\'actual. Els pegats integrats no es veuen afectats. Shizuku ha de romandre disponible. Atorga Shizuku al nou paquet després de la instal·lació.</string>
+    <string name="settings_cloak_invalid">Introduïu un nom de paquet vàlid (per exemple, org.example.app)</string>
+    <string name="settings_cloak_need_shizuku">Cal que Shizuku canviï el nom del paquet.</string>
+    <string name="settings_cloak_confirm">Continua</string>
+    <string name="settings_revert_dialog_title">Torna al paquet original</string>
+    <string name="settings_revert_warning">Descarrega l\'última versió manager.apk de JingMatrix/LSPatch, l\'instal·la com a org.lsposed.lspatch (es restauren la configuració i els enllaços de l\'aplicació local) i, a continuació, desinstal·la aquesta aplicació. Requereix Shizuku i la xarxa.</string>
+    <string name="settings_revert_confirm">Revertir</string>
     <string name="patch_inject_dex">Injectar carregador dex</string>
     <string name="patch_inject_dex_desc">Injecta el dex del carregador directament a l\'aplicació. Activa aquesta opció per a aplicacions amb processos aïllats, com ara el motor de renderització d\'un navegador, de manera que els seus hooks encara es carreguin.</string>
     <!-- Repo Details Screen -->
