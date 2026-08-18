@@ -14,6 +14,7 @@
     <string name="home_info_copied">Kopieret til udklipsholder</string>
     <string name="home_device">Enhed</string>
     <string name="home_system">System</string>
+    <string name="home_package">Pakke</string>
     <!-- Manage Screen -->
     <string name="screen_manage">Administrer</string>
     <string name="manage_summary">%1$d lappet ·  %2$d moduler</string>
@@ -213,6 +214,16 @@
     <string name="settings_keystore_wrong_alias">Forkert aliasnavn</string>
     <string name="settings_keystore_wrong_alias_password">Forkert adgangskode til alias</string>
     <string name="settings_detail_patch_logs">Detaljerede patch-logfiler</string>
+    <string name="settings_cloak_dialog_title">Skift pakkenavn</string>
+    <string name="settings_cloak_package">Nyt pakkenavn</string>
+    <string name="settings_cloak_randomize">Tilfældig</string>
+    <string name="settings_cloak_warning">Dette installerer en ny kopi af LSPatch Manager under et andet pakkenavn, opdaterer Local-mode apps, og afinstallerer derefter den nuværende. Integrerede rettelser er upåvirkede. Shizuku skal forblive tilgængelig. Giv Shizuku til den nye pakke efter installation.</string>
+    <string name="settings_cloak_invalid">Indtast et gyldigt pakkenavn (f.eks. org.example.app)</string>
+    <string name="settings_cloak_need_shizuku">Shizuku kræves for at ændre pakkenavnet</string>
+    <string name="settings_cloak_confirm">Fortsæt</string>
+    <string name="settings_revert_dialog_title">Vend tilbage til original pakke</string>
+    <string name="settings_revert_warning">Downloads den nyeste manager.apk fra JingMatrix / LSPatch udgivelser, installerer det som org.lsposed. spatch (indstillinger og lokale app-links gendannes) og afinstallerer derefter denne app. Kræver Shizuku og netværk.</string>
+    <string name="settings_revert_confirm">Gendan</string>
     <string name="patch_inject_dex">Injicer loader dex</string>
     <string name="patch_inject_dex_desc">Indsprøjter læsseren dex direkte i appen. Slå dette til for apps med isolerede processer, såsom en browsers renderingsmotor, så deres kroge stadig indlæses.</string>
     <!-- Repo Details Screen -->
