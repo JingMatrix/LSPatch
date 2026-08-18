@@ -8,6 +8,27 @@
     <string name="shizuku_available">Shizuku service tilgængelig</string>
     <string name="shizuku_unavailable">Shizuku-tjenesten er ikke tilsluttet</string>
     <string name="shizuku_off">Ikke forbundet</string>
+    <!-- Shizuku failure dialog -->
+    <string name="shizuku_failure_not_running">Shizuku kører ikke</string>
+    <string name="shizuku_failure_lost">Mistet forbindelse til Shizuku</string>
+    <string name="shizuku_failure_hint_lost">Shizuku virkede og LSPatch mistede sin forbindelse til den. Genåbn LSPatch; hvis det ikke hjælper, genstart Shizuku.</string>
+    <string name="shizuku_failure_not_granted">Shizuku adgang ikke tildelt</string>
+    <string name="shizuku_failure_no_service">Shizuku shell service unavailable</string>
+    <string name="shizuku_failure_call">Shizuku opkald mislykkedes</string>
+    <string name="shizuku_failure_op_grant">At bede om adgang behøver Shizuku selv at køre.</string>
+    <string name="shizuku_failure_op_install">Installation af en app kræver lydløst Shizuku.</string>
+    <string name="shizuku_failure_op_uninstall">Afinstallerer en app lydløst har brug for Shizuku.</string>
+    <string name="shizuku_failure_op_packages">Læsning af installerede pakker gennem skallen behøver Shizuku.</string>
+    <string name="shizuku_failure_op_logs">Indsamling af enhedslogs skal bruges Shizuku.</string>
+    <string name="shizuku_failure_op_shell">At køre en skal- kommando behøver Shizuku.</string>
+    <string name="shizuku_failure_op_optimize">Genoptimering af en app behøver Shizuku.</string>
+    <string name="shizuku_failure_hint_not_running">Start Shizuku - fra sin egen app, over ADB eller med rod - og prøv igen.</string>
+    <string name="shizuku_failure_hint_not_granted">Shizuku kører, men LSPatch har ingen adgang. Giv det, og prøv igen.</string>
+    <string name="shizuku_failure_hint_no_service">Shizuku er givet, men shell processen det starter for LSPatch ikke kommer op. Genstart Shizuku, derefter genåbne LSPatch.</string>
+    <string name="shizuku_failure_hint_call">Shizuku accepterede anmodningen og systemet afviste den. Sporet er, hvad der skal medtages i en rapport.</string>
+    <string name="shizuku_failure_view_trace">Vis spor</string>
+    <string name="shizuku_failure_grant">Giv adgang</string>
+    <string name="shizuku_failure_dismiss">Afvis</string>
     <string name="error_unknown">Ukendt fejl</string>
     <!-- Home Screen -->
     <string name="home_shizuku_warning">Nogle funktioner er utilgængelige</string>
@@ -135,6 +156,7 @@
     <string name="patch_action_update_loader">Opdater indlæsning</string>
     <string name="patch_action_install">Installér</string>
     <string name="patch_action_open">Åbn</string>
+    <string name="patch_action_other_installer">Et andet installationsprogram</string>
     <string name="patch_action_retry">Forsøg igen</string>
     <string name="patch_patched">Patcheret</string>
     <string name="patch_patched_splits">base + %1$d splits</string>
