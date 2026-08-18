@@ -14,6 +14,7 @@
     <string name="home_info_copied">Kopierat till urklipp</string>
     <string name="home_device">Enhet</string>
     <string name="home_system">System</string>
+    <string name="home_package">Paket</string>
     <!-- Manage Screen -->
     <string name="screen_manage">Hantera</string>
     <string name="manage_summary">%1$d lappade ·  %2$d moduler</string>
@@ -213,6 +214,16 @@
     <string name="settings_keystore_wrong_alias">Fel aliasnamn</string>
     <string name="settings_keystore_wrong_alias_password">Fel lösenord för alias</string>
     <string name="settings_detail_patch_logs">Detaljerade patchloggar</string>
+    <string name="settings_cloak_dialog_title">Ändra paketnamn</string>
+    <string name="settings_cloak_package">Nytt paketnamn</string>
+    <string name="settings_cloak_randomize">Slumpa</string>
+    <string name="settings_cloak_warning">Detta installerar en ny kopia av LSPatch Manager under ett annat paketnamn, uppdaterar lokala appar och avinstallerar sedan den nuvarande. Integrerade patchar är opåverkade. Shizuku måste förbli tillgänglig. Bevilja Shizuku till det nya paketet efter installationen.</string>
+    <string name="settings_cloak_invalid">Ange ett giltigt paketnamn (t.ex. org.example.app)</string>
+    <string name="settings_cloak_need_shizuku">Shizuku krävs för att ändra paketnamnet</string>
+    <string name="settings_cloak_confirm">Fortsätt</string>
+    <string name="settings_revert_dialog_title">Återgå till originalpaketet</string>
+    <string name="settings_revert_warning">Ladda ner den senaste manager.apk från JingMatrix/LSPatch releaser, installerar den som org.lsposed. spatch (inställningar och lokala applänkar återställs), avinstallera sedan denna app. Kräver Shizuku och nätverk.</string>
+    <string name="settings_revert_confirm">Återgå</string>
     <string name="patch_inject_dex">Inject loader dex</string>
     <string name="patch_inject_dex_desc">Infogar testet av lastaren direkt i appen. Slå på detta för appar med isolerade processer, till exempel en webbläsares renderingsmotor, så att deras krokar fortfarande laddas.</string>
     <!-- Repo Details Screen -->
