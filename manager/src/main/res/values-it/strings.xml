@@ -14,6 +14,7 @@
     <string name="home_info_copied">Copiato negli appunti</string>
     <string name="home_device">Dispositivo</string>
     <string name="home_system">Sistema</string>
+    <string name="home_package">Pacchetto</string>
     <!-- Manage Screen -->
     <string name="screen_manage">Gestisci</string>
     <string name="manage_summary">%1$d con patch  ·  %2$d moduli</string>
@@ -213,6 +214,16 @@
     <string name="settings_keystore_wrong_alias">Nome alias errato</string>
     <string name="settings_keystore_wrong_alias_password">Password alias errata</string>
     <string name="settings_detail_patch_logs">Log dettagliati della patch</string>
+    <string name="settings_cloak_dialog_title">Cambia nome del pacchetto</string>
+    <string name="settings_cloak_package">Nuovo nome del pacchetto</string>
+    <string name="settings_cloak_randomize">Casuale</string>
+    <string name="settings_cloak_warning">Questo installa una nuova copia di LSPatch Manager con un nome di pacchetto diverso, aggiorna le app in modalità locale, quindi disinstalla quella attuale. Le patch integrate non sono interessate. Shizuku deve restare disponibile. Concedi Shizuku al nuovo pacchetto dopo l\'installazione.</string>
+    <string name="settings_cloak_invalid">Inserisci un nome del pacchetto valido (es. org.example.app)</string>
+    <string name="settings_cloak_need_shizuku">Shizuku è necessario per cambiare il nome del pacchetto</string>
+    <string name="settings_cloak_confirm">Continua</string>
+    <string name="settings_revert_dialog_title">Ripristina il pacchetto originale</string>
+    <string name="settings_revert_warning">Scarica l\'ultimo manager.apk dalle release di JingMatrix/LSPatch, lo installa come org.lsposed.lspatch (impostazioni e collegamenti delle app locali vengono ripristinati), quindi disinstalla questa app. Richiede Shizuku e la rete.</string>
+    <string name="settings_revert_confirm">Ripristina</string>
     <string name="patch_inject_dex">Inietta dex del loader</string>
     <string name="patch_inject_dex_desc">Per le applicazioni con servizi isolati, come i motori di rendering dei browser, attiva questa opzione per garantire il loro corretto funzionamento.</string>
     <!-- Repo Details Screen -->
