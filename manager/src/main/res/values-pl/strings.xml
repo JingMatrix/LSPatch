@@ -8,6 +8,27 @@
     <string name="shizuku_available">Usługa Shizuku dostępna</string>
     <string name="shizuku_unavailable">Usługa Shizuku nie jest połączona</string>
     <string name="shizuku_off">Nie połączono</string>
+    <!-- Shizuku failure dialog -->
+    <string name="shizuku_failure_not_running">Shizuku nie działa</string>
+    <string name="shizuku_failure_lost">Utracono połączenie z Shizuku</string>
+    <string name="shizuku_failure_hint_lost">Shizuku działało, a LSPatch stracił z nim połączenie. Otwórz LSPatch ponownie; jeśli to nie pomoże, uruchom Shizuku od nowa.</string>
+    <string name="shizuku_failure_not_granted">Brak dostępu do Shizuku</string>
+    <string name="shizuku_failure_no_service">Usługa powłoki Shizuku niedostępna</string>
+    <string name="shizuku_failure_call">Wywołanie Shizuku nie powiodło się</string>
+    <string name="shizuku_failure_op_grant">Aby poprosić o dostęp, samo Shizuku musi działać.</string>
+    <string name="shizuku_failure_op_install">Ciche zainstalowanie aplikacji wymaga Shizuku.</string>
+    <string name="shizuku_failure_op_uninstall">Ciche odinstalowanie aplikacji wymaga Shizuku.</string>
+    <string name="shizuku_failure_op_packages">Odczyt zainstalowanych pakietów przez powłokę wymaga Shizuku.</string>
+    <string name="shizuku_failure_op_logs">Zbieranie dzienników urządzenia wymaga Shizuku.</string>
+    <string name="shizuku_failure_op_shell">Wykonanie polecenia powłoki wymaga Shizuku.</string>
+    <string name="shizuku_failure_op_optimize">Ponowna optymalizacja aplikacji wymaga Shizuku.</string>
+    <string name="shizuku_failure_hint_not_running">Uruchom Shizuku — z jego aplikacji, przez ADB lub z rootem — i spróbuj ponownie.</string>
+    <string name="shizuku_failure_hint_not_granted">Shizuku działa, ale LSPatch nie ma dostępu. Przyznaj go i spróbuj ponownie.</string>
+    <string name="shizuku_failure_hint_no_service">Shizuku ma zgodę, ale proces powłoki, który uruchamia dla LSPatch, nie wystartował. Uruchom Shizuku ponownie, a potem otwórz LSPatch.</string>
+    <string name="shizuku_failure_hint_call">Shizuku przyjęło żądanie, a system je odrzucił. To właśnie ten ślad należy dołączyć do zgłoszenia.</string>
+    <string name="shizuku_failure_view_trace">Pokaż ślad</string>
+    <string name="shizuku_failure_grant">Przyznaj dostęp</string>
+    <string name="shizuku_failure_dismiss">Zamknij</string>
     <string name="error_unknown">Nieznany błąd</string>
     <!-- Home Screen -->
     <string name="home_shizuku_warning">Niektóre funkcje są niedostępne</string>
@@ -135,6 +156,7 @@
     <string name="patch_action_update_loader">Zaktualizuj loader</string>
     <string name="patch_action_install">Zainstaluj</string>
     <string name="patch_action_open">Otwórz</string>
+    <string name="patch_action_other_installer">Inny instalator</string>
     <string name="patch_action_retry">Spróbuj ponownie</string>
     <string name="patch_patched">Zmodyfikowano</string>
     <string name="patch_patched_splits">pakiet podstawowy + %1$d podziałów</string>
