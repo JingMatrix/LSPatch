@@ -22,7 +22,6 @@
     <string name="manage_no_match">Ingen treff</string>
     <string name="manage_loading">Laster</string>
     <string name="manage_no_apps">Ingen lappede apper ennå</string>
-    <string name="manage_rolling">Rullende</string>
     <string name="manage_update_loader">Oppdater loader</string>
     <string name="manage_optimize">Gjenoptimaliser</string>
     <string name="manage_optimize_successfully">AOT-koden er forkastet— ingen ringere kan ha en kroket metode inkonsekvent i den. Gjelder fra neste lansering av appen.</string>
@@ -79,8 +78,6 @@
     <string name="patch_install_hint_shizuku">Klar til å installere stille gjennom Shizuku.</string>
     <string name="patch_install_hint_system">Klar for installasjon. Systemet ditt vil be deg om å bekrefte.</string>
     <string name="patch_section_options">Alternativer</string>
-    <string name="patch_section_signing">Signer &amp; logging</string>
-    <string name="patch_section_manifest">Manifest</string>
     <string name="patch_manifest_version_code">Versjonskode</string>
     <string name="patch_manifest_version_code_hint">La være blank for å beholde originalen</string>
     <string name="patch_manifest_label">Navn på app</string>
@@ -160,7 +157,6 @@
     <string name="patch_export_done">Eksportert</string>
     <string name="patch_export_failed">Eksportering feilet</string>
     <!-- App detail page -->
-    <string name="appdetail_mode">Patch modus</string>
     <string name="appdetail_modules">Moduler</string>
     <string name="appdetail_actions">Handlinger</string>
     <string name="appdetail_info">Detaljer</string>
@@ -203,12 +199,10 @@
     <string name="settings_keystore_custom">Tilpasset</string>
     <string name="settings_keystore_default_desc">LSPatchs egen nøkkel. Riktig valg med mindre du trenger en bestemt signatur.</string>
     <string name="settings_keystore_custom_desc">Logg deg med din egen nøkkelbutikk (BKS).</string>
-    <string name="settings_keystore_dialog_title">Egendefinert nøkkellager</string>
     <string name="settings_keystore_file">Keystore-fil</string>
     <string name="settings_keystore_password">Passord</string>
     <string name="settings_keystore_alias">Alias</string>
     <string name="settings_keystore_alias_password">Alias passord</string>
-    <string name="settings_keystore_desc">Angi nøkkellager (BKS)</string>
     <string name="settings_keystore_wrong_keystore">Feil type nøkkellager</string>
     <string name="settings_keystore_wrong_password">Feil nøkkellagerpassord</string>
     <string name="settings_keystore_wrong_alias">Feil aliasnavn</string>
