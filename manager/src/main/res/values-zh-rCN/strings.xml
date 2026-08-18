@@ -14,6 +14,7 @@
     <string name="home_info_copied">已复制到剪贴板</string>
     <string name="home_device">设备</string>
     <string name="home_system">系统</string>
+    <string name="home_package">包名</string>
     <!-- Manage Screen -->
     <string name="screen_manage">管理</string>
     <string name="manage_summary">已修补 %1$d 个  ·  %2$d 个模块</string>
@@ -213,6 +214,16 @@
     <string name="settings_keystore_wrong_alias">别名错误</string>
     <string name="settings_keystore_wrong_alias_password">别名密码错误</string>
     <string name="settings_detail_patch_logs">详细修补日志</string>
+    <string name="settings_cloak_dialog_title">更改包名</string>
+    <string name="settings_cloak_package">新包名</string>
+    <string name="settings_cloak_randomize">随机生成</string>
+    <string name="settings_cloak_warning">这将以不同的包名安装一个新的 LSPatch Manager 副本，更新本地模式应用，然后卸载当前副本。集成模式的补丁不受影响。Shizuku 必须保持可用。安装后请为新包授予 Shizuku。</string>
+    <string name="settings_cloak_invalid">请输入有效的包名（例如 org.example.app）</string>
+    <string name="settings_cloak_need_shizuku">更改包名需要 Shizuku</string>
+    <string name="settings_cloak_confirm">继续</string>
+    <string name="settings_revert_dialog_title">还原为原始包名</string>
+    <string name="settings_revert_warning">从 JingMatrix/LSPatch 的发行版下载最新的 manager.apk，将其安装为 org.lsposed.lspatch（会还原设置和本地应用的关联），然后卸载此应用。需要 Shizuku 和网络。</string>
+    <string name="settings_revert_confirm">还原</string>
     <string name="patch_inject_dex">注入加载器 dex</string>
     <string name="patch_inject_dex_desc">将加载器 dex 直接注入应用。对于有隔离进程的应用（例如浏览器的渲染引擎），请开启此项，以便其 hook 仍能加载。</string>
     <!-- Repo Details Screen -->
