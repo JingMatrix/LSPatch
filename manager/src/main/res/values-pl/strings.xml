@@ -22,7 +22,6 @@
     <string name="manage_no_match">Brak dopasowań</string>
     <string name="manage_loading">Ładowanie</string>
     <string name="manage_no_apps">Brak spatchowanych aplikacji</string>
-    <string name="manage_rolling">Wycofywanie</string>
     <string name="manage_update_loader">Aktualizuj loader</string>
     <string name="manage_optimize">Ponowna optymalizacja</string>
     <string name="manage_optimize_successfully">Ponownie zoptymalizowano. Hooki usunięte przez inlining powinny teraz działać.</string>
@@ -79,8 +78,6 @@
     <string name="patch_install_hint_shizuku">Gotowe do cichej instalacji przez Shizuku.</string>
     <string name="patch_install_hint_system">Gotowe do instalacji. System poprosi o potwierdzenie.</string>
     <string name="patch_section_options">Opcje</string>
-    <string name="patch_section_signing">Podpisywanie i logowanie</string>
-    <string name="patch_section_manifest">Manifest</string>
     <string name="patch_manifest_version_code">Kod wersji</string>
     <string name="patch_manifest_version_code_hint">Pozostaw puste, aby zachować oryginalny</string>
     <string name="patch_manifest_label">Nazwa aplikacji</string>
@@ -160,7 +157,6 @@
     <string name="patch_export_done">Wyeksportowano</string>
     <string name="patch_export_failed">Eksport nie powiódł się</string>
     <!-- App detail page -->
-    <string name="appdetail_mode">Tryb modyfikacji</string>
     <string name="appdetail_modules">Moduły</string>
     <string name="appdetail_actions">Akcje</string>
     <string name="appdetail_info">Szczegóły</string>
@@ -203,12 +199,10 @@
     <string name="settings_keystore_custom">Niestandardowy</string>
     <string name="settings_keystore_default_desc">Własny klucz LSPatch. Właściwy wybór, chyba że potrzebujesz konkretnego podpisu.</string>
     <string name="settings_keystore_custom_desc">Podpisz własnym magazynem kluczy (BKS).</string>
-    <string name="settings_keystore_dialog_title">Niestandardowy magazyn kluczy</string>
     <string name="settings_keystore_file">Plik magazynu kluczy</string>
     <string name="settings_keystore_password">Hasło</string>
     <string name="settings_keystore_alias">Alias</string>
     <string name="settings_keystore_alias_password">Hasło aliasu</string>
-    <string name="settings_keystore_desc">Ustaw magazyn kluczy (BKS)</string>
     <string name="settings_keystore_wrong_keystore">Nieprawidłowy typ magazynu kluczy</string>
     <string name="settings_keystore_wrong_password">Nieprawidłowe hasło magazynu kluczy</string>
     <string name="settings_keystore_wrong_alias">Nieprawidłowa nazwa aliasu</string>
