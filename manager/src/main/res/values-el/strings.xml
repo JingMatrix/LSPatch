@@ -14,6 +14,7 @@
     <string name="home_info_copied">Αντιγράφηκε στο πρόχειρο</string>
     <string name="home_device">Συσκευή</string>
     <string name="home_system">Σύστημα</string>
+    <string name="home_package">Πακέτο</string>
     <!-- Manage Screen -->
     <string name="screen_manage">Διαχείριση</string>
     <string name="manage_summary">%1$d patched ·  %2$d modules</string>
@@ -213,6 +214,16 @@
     <string name="settings_keystore_wrong_alias">Λάθος όνομα ψευδώνυμου</string>
     <string name="settings_keystore_wrong_alias_password">Λάθος κωδικός πρόσβασης ψευδώνυμου</string>
     <string name="settings_detail_patch_logs">Λεπτομερή αρχεία καταγραφής επιδιορθώσεων</string>
+    <string name="settings_cloak_dialog_title">Αλλαγή ονόματος πακέτου</string>
+    <string name="settings_cloak_package">Όνομα νέου πακέτου</string>
+    <string name="settings_cloak_randomize">Τυχαία</string>
+    <string name="settings_cloak_warning">Αυτό εγκαθιστά ένα νέο αντίγραφο του LSPatch Manager κάτω από ένα διαφορετικό όνομα πακέτου, ενημερώνει τις εφαρμογές Τοπικής λειτουργίας και στη συνέχεια απεγκαθιστά την τρέχουσα εφαρμογή. Οι ενσωματωμένες ενημερώσεις δεν επηρεάζονται. Ο Shizuku πρέπει να παραμείνει διαθέσιμος. Grant Shizuku στο νέο πακέτο μετά την εγκατάσταση.</string>
+    <string name="settings_cloak_invalid">Εισάγετε ένα έγκυρο όνομα πακέτου (π.χ. org.example.app)</string>
+    <string name="settings_cloak_need_shizuku">Ο Shizuku απαιτείται για να αλλάξει το όνομα του πακέτου</string>
+    <string name="settings_cloak_confirm">Συνέχεια</string>
+    <string name="settings_revert_dialog_title">Επαναφορά στην αρχική συσκευασία</string>
+    <string name="settings_revert_warning">Κατεβάζει τις τελευταίες εκδόσεις manager.apk από JingMatrix/LSPatch, εγκαθιστά ως org.lsposed. spatch (οι ρυθμίσεις και οι τοπικοί σύνδεσμοι εφαρμογών αποκαθίστανται), στη συνέχεια απεγκαθιστά αυτή την εφαρμογή. Απαιτεί Shizuku και δίκτυο.</string>
+    <string name="settings_revert_confirm">Επαναφορά</string>
     <string name="patch_inject_dex">Έγχυση dex φορτωτή</string>
     <string name="patch_inject_dex_desc">Εγχύει τον φορτωτή dex απευθείας στην εφαρμογή. Ενεργοποιήστε αυτήν την επιλογή για εφαρμογές με απομονωμένες διεργασίες, όπως μηχανή απόδοσης ενός περιηγητή, οπότε τα άγκιστρά τους εξακολουθούν να φορτώνουν.</string>
     <!-- Repo Details Screen -->
