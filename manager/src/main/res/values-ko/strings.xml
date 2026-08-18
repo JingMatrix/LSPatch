@@ -8,6 +8,27 @@
     <string name="shizuku_available">Shizuku 서비스 사용 가능</string>
     <string name="shizuku_unavailable">Shizuku 서비스에 연결되지 않음</string>
     <string name="shizuku_off">연결되지 않음</string>
+    <!-- Shizuku failure dialog -->
+    <string name="shizuku_failure_not_running">Shizuku가 실행 중이 아닙니다</string>
+    <string name="shizuku_failure_lost">Shizuku와의 연결이 끊어졌습니다</string>
+    <string name="shizuku_failure_hint_lost">Shizuku가 작동 중이었지만 LSPatch가 연결을 잃었습니다. LSPatch를 다시 여세요. 그래도 안 되면 Shizuku를 다시 시작하세요.</string>
+    <string name="shizuku_failure_not_granted">Shizuku 권한이 없습니다</string>
+    <string name="shizuku_failure_no_service">Shizuku 셸 서비스를 사용할 수 없습니다</string>
+    <string name="shizuku_failure_call">Shizuku 호출이 실패했습니다</string>
+    <string name="shizuku_failure_op_grant">권한을 요청하려면 Shizuku 자체가 실행 중이어야 합니다.</string>
+    <string name="shizuku_failure_op_install">앱을 무음 설치하려면 Shizuku가 필요합니다.</string>
+    <string name="shizuku_failure_op_uninstall">앱을 무음 제거하려면 Shizuku가 필요합니다.</string>
+    <string name="shizuku_failure_op_packages">셸로 설치된 패키지를 읽으려면 Shizuku가 필요합니다.</string>
+    <string name="shizuku_failure_op_logs">기기 로그를 수집하려면 Shizuku가 필요합니다.</string>
+    <string name="shizuku_failure_op_shell">셸 명령을 실행하려면 Shizuku가 필요합니다.</string>
+    <string name="shizuku_failure_op_optimize">앱을 다시 최적화하려면 Shizuku가 필요합니다.</string>
+    <string name="shizuku_failure_hint_not_running">Shizuku를 시작한 뒤 — 자체 앱, ADB 또는 root로 — 다시 시도하세요.</string>
+    <string name="shizuku_failure_hint_not_granted">Shizuku는 실행 중이지만 LSPatch에 권한이 없습니다. 권한을 준 뒤 다시 시도하세요.</string>
+    <string name="shizuku_failure_hint_no_service">Shizuku 권한은 있지만 LSPatch용 셸 프로세스가 시작되지 않았습니다. Shizuku를 다시 시작한 뒤 LSPatch를 다시 여세요.</string>
+    <string name="shizuku_failure_hint_call">Shizuku는 요청을 받아들였고 시스템이 거부했습니다. 보고에는 이 스택 트레이스를 첨부하세요.</string>
+    <string name="shizuku_failure_view_trace">스택 트레이스 보기</string>
+    <string name="shizuku_failure_grant">권한 부여</string>
+    <string name="shizuku_failure_dismiss">닫기</string>
     <string name="error_unknown">알 수 없는 오류</string>
     <!-- Home Screen -->
     <string name="home_shizuku_warning">일부 기능을 사용할 수 없습니다</string>
@@ -135,6 +156,7 @@
     <string name="patch_action_update_loader">로더 업데이트</string>
     <string name="patch_action_install">설치</string>
     <string name="patch_action_open">열기</string>
+    <string name="patch_action_other_installer">다른 설치 프로그램</string>
     <string name="patch_action_retry">다시 시도</string>
     <string name="patch_patched">패치됨</string>
     <string name="patch_patched_splits">기본 + 분할 %1$d개</string>
