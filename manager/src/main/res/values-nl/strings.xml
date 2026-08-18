@@ -22,7 +22,6 @@
     <string name="manage_no_match">Geen overeenkomst</string>
     <string name="manage_loading">Bezig met laden</string>
     <string name="manage_no_apps">Nog geen gepatchte apps</string>
-    <string name="manage_rolling">Rollen</string>
     <string name="manage_update_loader">Update lader</string>
     <string name="manage_optimize">Heroptimaliseren</string>
     <string name="manage_optimize_successfully">AOT code verwijderd - geen beller kan een gelookte methode erin hebben. Gelieerd op basis van de volgende start van de app.</string>
@@ -79,8 +78,6 @@
     <string name="patch_install_hint_shizuku">Klaar om stilletjes te installeren via Shizuku.</string>
     <string name="patch_install_hint_system">Klaar voor installatie. Uw systeem zal u om bevestiging vragen.</string>
     <string name="patch_section_options">Instellingen</string>
-    <string name="patch_section_signing">Ondertekening &amp; logging</string>
-    <string name="patch_section_manifest">manifesteren</string>
     <string name="patch_manifest_version_code">Versie code</string>
     <string name="patch_manifest_version_code_hint">Laat leeg om het origineel te houden</string>
     <string name="patch_manifest_label">App naam</string>
@@ -160,7 +157,6 @@
     <string name="patch_export_done">geëxporteerd</string>
     <string name="patch_export_failed">Exporteren mislukt</string>
     <!-- App detail page -->
-    <string name="appdetail_mode">Patch modus</string>
     <string name="appdetail_modules">modules</string>
     <string name="appdetail_actions">acties</string>
     <string name="appdetail_info">Beschrijving</string>
@@ -203,12 +199,10 @@
     <string name="settings_keystore_custom">Aangepaste</string>
     <string name="settings_keystore_default_desc">LSPatch\'s eigen sleutel. De juiste keuze tenzij je een specifieke handtekening nodig hebt.</string>
     <string name="settings_keystore_custom_desc">Onderteken met uw eigen keystore (BKS).</string>
-    <string name="settings_keystore_dialog_title">Aangepaste sleutelbewaarplaats</string>
     <string name="settings_keystore_file">Keystore bestand</string>
     <string name="settings_keystore_password">Wachtwoord</string>
     <string name="settings_keystore_alias">Alias</string>
     <string name="settings_keystore_alias_password">Alias wachtwoord</string>
-    <string name="settings_keystore_desc">Sleutelbewaarplaats instellen (BKS)</string>
     <string name="settings_keystore_wrong_keystore">Verkeerde type sleutelbewaarplaats</string>
     <string name="settings_keystore_wrong_password">Verkeerd wachtwoord voor sleutelbewaarplaats</string>
     <string name="settings_keystore_wrong_alias">Verkeerde aliasnaam</string>
