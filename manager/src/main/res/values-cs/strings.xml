@@ -14,6 +14,7 @@
     <string name="home_info_copied">Zkopírováno do schránky</string>
     <string name="home_device">přístroj</string>
     <string name="home_system">Systém</string>
+    <string name="home_package">Balík</string>
     <!-- Manage Screen -->
     <string name="screen_manage">Správa</string>
     <string name="manage_summary">%1$d upravené moduly ·  %2$d</string>
@@ -213,6 +214,16 @@
     <string name="settings_keystore_wrong_alias">Špatný název aliasu</string>
     <string name="settings_keystore_wrong_alias_password">Špatné heslo aliasu</string>
     <string name="settings_detail_patch_logs">Podrobné protokoly oprav</string>
+    <string name="settings_cloak_dialog_title">Změnit název balíčku</string>
+    <string name="settings_cloak_package">Název nového balíčku</string>
+    <string name="settings_cloak_randomize">Náhodně</string>
+    <string name="settings_cloak_warning">Toto nainstaluje novou kopii LSPatch Manager pod jiným názvem balíčku, aktualizuje aplikace v místním režimu a odinstaluje stávající. Integrované záplaty nejsou dotčeny. Po instalaci musí zůstat k dispozici. Udělte nový balíček Šizuku.</string>
+    <string name="settings_cloak_invalid">Zadejte platný název balíčku (např. org.example.app)</string>
+    <string name="settings_cloak_need_shizuku">Pro změnu názvu balíčku je vyžadováno Shizuku</string>
+    <string name="settings_cloak_confirm">Pokračovat</string>
+    <string name="settings_revert_dialog_title">Vrátit se k původnímu balíčku</string>
+    <string name="settings_revert_warning">Stahuje nejnovější verzi manager.apk z JingMatrix/LSPatch, nainstaluje ji jako org.lsposed. spatch (nastavení a místní odkazy jsou obnoveny), pak odinstaluje tuto aplikaci. Vyžaduje Shizuku a síť.</string>
+    <string name="settings_revert_confirm">Vrátit</string>
     <string name="patch_inject_dex">Injektovat dex zavaděče</string>
     <string name="patch_inject_dex_desc">Vložte nakladač přímo do aplikace. Zapněte toto pro aplikace s izolovanými procesy, jako je vykreslování prohlížeče, takže jejich háčky stále načítají.</string>
     <!-- Repo Details Screen -->
