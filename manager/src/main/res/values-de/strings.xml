@@ -14,6 +14,7 @@
     <string name="home_info_copied">In die Zwischenablage kopiert</string>
     <string name="home_device">Gerät</string>
     <string name="home_system">System</string>
+    <string name="home_package">Paket</string>
     <!-- Manage Screen -->
     <string name="screen_manage">Verwalten</string>
     <string name="manage_summary">%1$d gepatcht  ·  %2$d Module</string>
@@ -213,6 +214,16 @@
     <string name="settings_keystore_wrong_alias">Falscher Alias-Name</string>
     <string name="settings_keystore_wrong_alias_password">Falsches Alias-Passwort</string>
     <string name="settings_detail_patch_logs">Ausführliche Patch-Protokolle</string>
+    <string name="settings_cloak_dialog_title">Paketnamen ändern</string>
+    <string name="settings_cloak_package">Neuer Paketname</string>
+    <string name="settings_cloak_randomize">Zufällig</string>
+    <string name="settings_cloak_warning">Dadurch wird eine neue Kopie von LSPatch Manager unter einem anderen Paketnamen installiert, Apps im lokalen Modus werden aktualisiert und die aktuelle Kopie wird deinstalliert. Integrierte Patches sind nicht betroffen. Shizuku muss verfügbar bleiben. Erteile Shizuku nach der Installation die Berechtigung für das neue Paket.</string>
+    <string name="settings_cloak_invalid">Gültigen Paketnamen eingeben (z. B. org.example.app)</string>
+    <string name="settings_cloak_need_shizuku">Zum Ändern des Paketnamens wird Shizuku benötigt</string>
+    <string name="settings_cloak_confirm">Fortfahren</string>
+    <string name="settings_revert_dialog_title">Auf ursprüngliches Paket zurücksetzen</string>
+    <string name="settings_revert_warning">Lädt die neueste manager.apk aus den JingMatrix/LSPatch-Releases herunter, installiert sie als org.lsposed.lspatch (Einstellungen und Verknüpfungen der lokalen Apps werden wiederhergestellt) und deinstalliert anschließend diese App. Erfordert Shizuku und eine Netzwerkverbindung.</string>
+    <string name="settings_revert_confirm">Zurücksetzen</string>
     <string name="patch_inject_dex">Loader-dex injizieren</string>
     <string name="patch_inject_dex_desc">Aktiviere diese Option bei Apps mit isolierten Diensten, etwa den Render-Engines von Browsern, damit sie einwandfrei funktionieren.</string>
     <!-- Repo Details Screen -->
