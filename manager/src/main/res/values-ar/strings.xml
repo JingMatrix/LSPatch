@@ -8,6 +8,27 @@
     <string name="shizuku_available">خدمة Shizuku متاحة</string>
     <string name="shizuku_unavailable">خدمة Shizuku غير متصلة</string>
     <string name="shizuku_off">غير متصل</string>
+    <!-- Shizuku failure dialog -->
+    <string name="shizuku_failure_not_running">Shizuku غير مشغّل</string>
+    <string name="shizuku_failure_lost">انقطع الاتصال بـ Shizuku</string>
+    <string name="shizuku_failure_hint_lost">كان Shizuku يعمل وفقد LSPatch الاتصال به. أعد فتح LSPatch، وإن لم ينفع ذلك فأعد تشغيل Shizuku.</string>
+    <string name="shizuku_failure_not_granted">لم يُمنح الوصول إلى Shizuku</string>
+    <string name="shizuku_failure_no_service">خدمة الصدفة في Shizuku غير متاحة</string>
+    <string name="shizuku_failure_call">فشل استدعاء Shizuku</string>
+    <string name="shizuku_failure_op_grant">لطلب الوصول يجب أن يكون Shizuku نفسه قيد التشغيل.</string>
+    <string name="shizuku_failure_op_install">تثبيت تطبيق بصمت يتطلب Shizuku.</string>
+    <string name="shizuku_failure_op_uninstall">إلغاء تثبيت تطبيق بصمت يتطلب Shizuku.</string>
+    <string name="shizuku_failure_op_packages">قراءة الحزم المثبّتة عبر الصدفة تتطلب Shizuku.</string>
+    <string name="shizuku_failure_op_logs">جمع سجلات الجهاز يتطلب Shizuku.</string>
+    <string name="shizuku_failure_op_shell">تنفيذ أمر صدفة يتطلب Shizuku.</string>
+    <string name="shizuku_failure_op_optimize">إعادة تحسين تطبيق تتطلب Shizuku.</string>
+    <string name="shizuku_failure_hint_not_running">شغّل Shizuku — من تطبيقه أو عبر ADB أو بصلاحيات الجذر — ثم أعد المحاولة.</string>
+    <string name="shizuku_failure_hint_not_granted">Shizuku يعمل لكن LSPatch لا يملك الوصول. امنحه ثم أعد المحاولة.</string>
+    <string name="shizuku_failure_hint_no_service">Shizuku ممنوح، لكن عملية الصدفة التي يشغّلها من أجل LSPatch لم تبدأ. أعد تشغيل Shizuku ثم افتح LSPatch من جديد.</string>
+    <string name="shizuku_failure_hint_call">قبل Shizuku الطلب ورفضه النظام. هذا التتبّع هو ما ينبغي إرفاقه بالتقرير.</string>
+    <string name="shizuku_failure_view_trace">عرض التتبّع</string>
+    <string name="shizuku_failure_grant">منح الوصول</string>
+    <string name="shizuku_failure_dismiss">إغلاق</string>
     <string name="error_unknown">خطأ غير معروف</string>
     <!-- Home Screen -->
     <string name="home_shizuku_warning">بعض الميزات غير متاحة</string>
@@ -135,6 +156,7 @@
     <string name="patch_action_update_loader">تحديث المُحمّل</string>
     <string name="patch_action_install">تثبيت</string>
     <string name="patch_action_open">فتح</string>
+    <string name="patch_action_other_installer">مثبّت آخر</string>
     <string name="patch_action_retry">إعادة المحاولة</string>
     <string name="patch_patched">مُرقّع</string>
     <string name="patch_patched_splits">الأساسي + %1$d تقسيمة</string>
