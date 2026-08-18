@@ -14,6 +14,7 @@
     <string name="home_info_copied">Panoya kopyalandı</string>
     <string name="home_device">Cihaz</string>
     <string name="home_system">Sistem</string>
+    <string name="home_package">Paket</string>
     <!-- Manage Screen -->
     <string name="screen_manage">Yönet</string>
     <string name="manage_summary">%1$d yamalı  ·  %2$d modül</string>
@@ -213,6 +214,16 @@
     <string name="settings_keystore_wrong_alias">Yanlış takma ad</string>
     <string name="settings_keystore_wrong_alias_password">Yanlış takma ad parolası</string>
     <string name="settings_detail_patch_logs">Ayrıntılı yama günlükleri</string>
+    <string name="settings_cloak_dialog_title">Paket adını değiştir</string>
+    <string name="settings_cloak_package">Yeni paket adı</string>
+    <string name="settings_cloak_randomize">Rastgele</string>
+    <string name="settings_cloak_warning">Bu, LSPatch Manager\'ın farklı bir paket adıyla yeni bir kopyasını yükler, yerel moddaki uygulamaları günceller ve ardından mevcut kopyayı kaldırır. Tümleşik yamalar etkilenmez. Shizuku kullanılabilir kalmalıdır. Kurulumdan sonra yeni pakete Shizuku izni verin.</string>
+    <string name="settings_cloak_invalid">Geçerli bir paket adı girin (ör. org.example.app)</string>
+    <string name="settings_cloak_need_shizuku">Paket adını değiştirmek için Shizuku gerekir</string>
+    <string name="settings_cloak_confirm">Devam</string>
+    <string name="settings_revert_dialog_title">Özgün pakete geri dön</string>
+    <string name="settings_revert_warning">JingMatrix/LSPatch sürümlerinden en yeni manager.apk dosyasını indirir, org.lsposed.lspatch olarak yükler (ayarlar ve yerel uygulama bağlantıları geri yüklenir) ve ardından bu uygulamayı kaldırır. Shizuku ve ağ gerektirir.</string>
+    <string name="settings_revert_confirm">Geri al</string>
     <string name="patch_inject_dex">Yükleyici dex enjekte et</string>
     <string name="patch_inject_dex_desc">Tarayıcıların işleme motorları gibi izole hizmetleri olan uygulamalar için, düzgün çalışmalarını sağlamak amacıyla lütfen bu seçeneği açın.</string>
     <!-- Repo Details Screen -->
