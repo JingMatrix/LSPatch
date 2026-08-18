@@ -8,6 +8,27 @@
     <string name="shizuku_available">Διατίθεται υπηρεσία Shizuku</string>
     <string name="shizuku_unavailable">Η υπηρεσία Shizuku δεν είναι συνδεδεμένη</string>
     <string name="shizuku_off">Δεν συνδέθηκε</string>
+    <!-- Shizuku failure dialog -->
+    <string name="shizuku_failure_not_running">Ο Shizuku δεν εκτελείται</string>
+    <string name="shizuku_failure_lost">Χαμένη σύνδεση με Shizuku</string>
+    <string name="shizuku_failure_hint_lost">Ο Shizuku εργαζόταν και ο LSPatch έχασε τη σύνδεσή του με αυτό. Ανοίξτε ξανά το LSPatch. Αν αυτό δεν βοηθήσει, επανεκκινήστε τον Shizuku.</string>
+    <string name="shizuku_failure_not_granted">Δεν χορηγήθηκε πρόσβαση στο Shizuku</string>
+    <string name="shizuku_failure_no_service">Shizuku shell service unavailable</string>
+    <string name="shizuku_failure_call">Η κλήση Shizuku απέτυχε</string>
+    <string name="shizuku_failure_op_grant">Ζητώντας πρόσβαση χρειάζεται να τεθεί σε λειτουργία ο ίδιος ο Shizuku.</string>
+    <string name="shizuku_failure_op_install">Η εγκατάσταση μιας εφαρμογής χρειάζεται σιωπηλά Shizuku.</string>
+    <string name="shizuku_failure_op_uninstall">Η απεγκατάσταση μιας εφαρμογής χρειάζεται σιωπηλά Shizuku.</string>
+    <string name="shizuku_failure_op_packages">Η ανάγνωση εγκατεστημένων πακέτων μέσω του κελύφους χρειάζεται Shizuku.</string>
+    <string name="shizuku_failure_op_logs">Η συλλογή αρχείων καταγραφής συσκευής χρειάζεται Shizuku.</string>
+    <string name="shizuku_failure_op_shell">Η εκτέλεση μιας εντολής κελύφους χρειάζεται Shizuku.</string>
+    <string name="shizuku_failure_op_optimize">Επαναβελτιστοποίηση μιας εφαρμογής χρειάζεται Shizuku.</string>
+    <string name="shizuku_failure_hint_not_running">Ξεκινήστε Shizuku — από τη δική του εφαρμογή, πάνω από ADB ή με ρίζα — και προσπαθήστε ξανά.</string>
+    <string name="shizuku_failure_hint_not_granted">Το Shizuku εκτελείται αλλά το LSPatch δεν έχει πρόσβαση. Παραχωρήστε το και προσπαθήστε ξανά.</string>
+    <string name="shizuku_failure_hint_no_service">Ο Shizuku χορηγείται, αλλά η διαδικασία κελύφους που ξεκινά για το LSPatch δεν εμφανίστηκε. Επανεκκινήστε τον Shizuku, στη συνέχεια ανοίξτε ξανά το LSPatch.</string>
+    <string name="shizuku_failure_hint_call">Ο Shizuku αποδέχθηκε το αίτημα και το σύστημα το απέρριψε. \" ουσία είναι τι θα συμπεριληφθεί σε μια έκθεση.</string>
+    <string name="shizuku_failure_view_trace">Προβολή ίχνους</string>
+    <string name="shizuku_failure_grant">Παραχώρηση πρόσβασης</string>
+    <string name="shizuku_failure_dismiss">Απόρριψη</string>
     <string name="error_unknown">Άγνωστο σφάλμα</string>
     <!-- Home Screen -->
     <string name="home_shizuku_warning">Μερικά χαρακτηριστικά δεν είναι διαθέσιμα</string>
@@ -135,6 +156,7 @@
     <string name="patch_action_update_loader">Ενημέρωση φορτωτή</string>
     <string name="patch_action_install">Εγκατάσταση</string>
     <string name="patch_action_open">Άνοιγμα</string>
+    <string name="patch_action_other_installer">Ένας άλλος εγκαταστάτης</string>
     <string name="patch_action_retry">Επανάληψη</string>
     <string name="patch_patched">Διορθώθηκε</string>
     <string name="patch_patched_splits">βάση + %1$d splits</string>
