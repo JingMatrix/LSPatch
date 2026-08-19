@@ -66,11 +66,18 @@ afterEvaluate {
         // asset merge names them directly: a dependency routed through an aggregator lifecycle task
         // carries no output and does not satisfy the input/output validation, which a parallel build
         // (CI) turns into a hard error rather than a warning.
-        tasks.named("merge${variantCapped}Assets") {
-            dependsOn(":meta-loader:copyDex$variantCapped")
-            dependsOn(":patch-loader:copyDex$variantCapped")
-            dependsOn(":patch-loader:copySo$variantCapped")
-        }
+        val loaderArtifacts = listOf(
+            ":meta-loader:copyDex$variantCapped",
+            ":patch-loader:copyDex$variantCapped",
+            ":patch-loader:copySo$variantCapped",
+        )
+        tasks.named("merge${variantCapped}Assets") { dependsOn(loaderArtifacts) }
+
+        // Lint reads that same directory to model the variant, and infers its producers no better than
+        // the asset merge does. Undeclared, the validation is a hard error rather than a warning, so
+        // `gradlew build` fails on a project that assembles perfectly well.
+        tasks.matching { it.name.contains("lint", ignoreCase = true) && it.name.contains(variantCapped) }
+            .configureEach { dependsOn(loaderArtifacts) }
 
         tasks.register<Copy>("build$variantCapped") {
             dependsOn(tasks["assemble$variantCapped"])
