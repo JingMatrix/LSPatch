@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="log_service_channel">Monitorowanie logów</string>
-    <string name="log_service_title">LSPatch jest dziennikiem monitorowania</string>
-    <string name="log_service_text">800***Collecting framework and patched-app log</string>
+    <string name="log_service_channel">Monitorowanie dzienników</string>
+    <string name="log_service_title">LSPatch monitoruje dzienniki</string>
+    <string name="log_service_text">Zbieranie dzienników frameworka i spatchowanych aplikacji</string>
 </resources>
