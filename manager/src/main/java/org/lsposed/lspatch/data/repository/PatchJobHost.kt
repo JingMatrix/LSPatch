@@ -13,6 +13,7 @@ import org.lsposed.lspatch.data.model.LogLine
 import org.lsposed.lspatch.data.model.PatchRequest
 import org.lsposed.lspatch.data.model.PatchStage
 import org.lsposed.lspatch.data.model.PatchStep
+import org.lsposed.lspatch.data.model.PatchTarget
 import org.lsposed.lspatch.lspApp
 import org.lsposed.lspatch.util.LSPPackageManager
 import org.lsposed.lspatch.util.ShizukuApi
@@ -124,12 +125,13 @@ object PatchJobHost {
      * A second request is refused rather than queued: two patches at once would contend for the package installer, and
      * a queue would leave the user watching a job they did not ask for yet.
      */
-    fun start(request: PatchRequest): Boolean {
+    fun start(requested: PatchRequest): Boolean {
         if (busy) return false
+        val (request, note) = resolvedNow(requested)
         _log.value = emptyList()
         _active.value = request
         _step.value = PatchStep.Preparing(request)
-        appendHeader(PatchReport.preamble(request))
+        appendHeader(PatchReport.preamble(request, note))
         currentStage = null
         startedAt = System.currentTimeMillis()
         job =
@@ -152,6 +154,35 @@ object PatchJobHost {
                 archive(request.packageName)
             }
         return true
+    }
+
+    /**
+     * [request] with an installed target's apks as the system reports them now, and a note when that differs from what
+     * the request carries.
+     *
+     * A request records where its target was when it was built, then survives editing, storage and a re-run, so the
+     * moment it is built and the moment it is used are not the same one -- and between them an update, a reinstall or
+     * an uninstall moves or removes exactly those files. The recorded paths are therefore treated as a name for the app
+     * rather than as its location, and the location is read again here. Apks picked from storage are copies this app
+     * owns, and nothing outside it can move them.
+     */
+    private fun resolvedNow(request: PatchRequest): Pair<PatchRequest, String?> {
+        val target = request.target as? PatchTarget.InstalledApp ?: return request to null
+        val live = LSPPackageManager.installedApkPaths(target.packageName)
+        if (live == null) {
+            // Absent and absent-with-a-record are different answers to "what happened to it", and a
+            // report that cannot separate them leaves the question open.
+            val kept = LSPPackageManager.isArchivedPackage(target.packageName)
+            val note =
+                if (kept) "${target.packageName} is archived: the device keeps the package, not its apks"
+                else "${target.packageName} is not installed; the recorded paths are used unchanged"
+            Log.w(TAG, note)
+            return request to note
+        }
+        if (live == target.apkPaths) return request to null
+        Log.i(TAG, "${target.packageName} moved: recorded ${target.apkPaths}, now $live")
+        return request.copy(target = target.copy(apkPaths = live)) to
+            "read again: ${target.packageName} has moved since this request was built"
     }
 
     /**
