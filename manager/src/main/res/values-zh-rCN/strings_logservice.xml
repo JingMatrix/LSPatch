@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="log_service_channel">日志监测</string>
-    <string name="log_service_title">LSPatch 正在监测日志</string>
-    <string name="log_service_text">收集框架和补丁应用日志</string>
+    <string name="log_service_channel">日志监控</string>
+    <string name="log_service_title">LSPatch 正在监控日志</string>
+    <string name="log_service_text">正在收集框架和已修补应用的日志</string>
 </resources>
