@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="log_service_channel">Surveillance des logs</string>
-    <string name="log_service_title">LSPatch surveille les logs</string>
-    <string name="log_service_text">Collecte du framework et des logs patched-app</string>
+    <string name="log_service_channel">Surveillance des journaux</string>
+    <string name="log_service_title">LSPatch surveille les journaux</string>
+    <string name="log_service_text">Collecte des journaux du framework et des applications patchées</string>
 </resources>
