@@ -13,7 +13,7 @@ import org.lsposed.hiddenapibypass.HiddenApiBypass
 import org.lsposed.lspatch.data.repository.PatchOutputStore
 import org.lsposed.lspatch.data.repository.PatchRequestStore
 import org.lsposed.lspatch.manager.AppBroadcastReceiver
-import org.lsposed.lspatch.service.LogCollectorService
+import org.lsposed.lspatch.service.ManagerResidentService
 import org.lsposed.lspatch.util.LSPPackageManager
 import org.lsposed.lspatch.util.ManagerMigrate
 import org.lsposed.lspatch.util.ShizukuApi
@@ -72,8 +72,9 @@ class LSPApplication : Application() {
         // by someone; the app list is what says which packages still have a reason to keep theirs.
         globalScope.launch { PatchOutputStore.sweep() }
         globalScope.launch { PatchRequestStore.prune() }
-        // The service itself waits for Shizuku before starting the shell-side collector, and the
-        // start is guarded against the background foreground-service restriction.
-        LogCollectorService.start(this)
+        // The service keeps the manager reachable for patched apps, and collects logs once Shizuku is
+        // granted; it stands down on its own if nothing on this device is patched. The start is
+        // guarded against the background foreground-service restriction.
+        ManagerResidentService.start(this)
     }
 }

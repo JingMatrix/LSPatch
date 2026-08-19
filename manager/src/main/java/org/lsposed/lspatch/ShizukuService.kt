@@ -396,8 +396,113 @@ class ShizukuService : IShizukuService.Stub() {
     override fun destroy() {
         Log.i(TAG, "Shell service destroyed")
         stopLogCollector()
+        stopManagerWatchdog()
         exitProcess(0)
     }
+
+    // --- Keeping the manager reachable ---
+
+    @Volatile private var watchdog: Thread? = null
+
+    /**
+     * What the running watchdog was asked to watch.
+     *
+     * The manager re-states its wish on every tick of its own supervisor loop -- it has to, because this process
+     * outlives it and may have been started since the last time it spoke -- so without this a thread would be torn down
+     * and built again every few seconds for no change at all.
+     */
+    @Volatile private var watching: String? = null
+
+    /**
+     * Starts the manager again whenever it is found gone.
+     *
+     * This runs as the shell user, in a process the Shizuku server owns rather than the manager: a device's background
+     * reaper and a force-stop both act on the manager's package and leave this one untouched, which is what makes a
+     * watchdog here able to do something no code inside the manager can. Starting a component from the shell also
+     * clears the stopped state a force-stop leaves behind, so the manager is not merely restarted but made reachable
+     * again.
+     *
+     * It gives up after [MAX_WATCHDOG_FAILURES] starts in a row that changed nothing -- the manager uninstalled, or a
+     * device that refuses the start outright -- rather than retrying forever at the cost of the battery it was meant to
+     * protect.
+     */
+    @Synchronized
+    override fun startManagerWatchdog(
+        packageName: String,
+        component: String,
+        userId: Int,
+        intervalSeconds: Int,
+    ): Boolean {
+        val wanted = "$packageName|$component|$userId|$intervalSeconds"
+        if (wanted == watching && watchdog?.isAlive == true) return true
+        stopManagerWatchdog()
+        if (packageName.isEmpty() || component.isEmpty()) return false
+        watching = wanted
+        val interval = intervalSeconds.coerceIn(30, 3600) * 1000L
+        Log.i(TAG, "Watching $packageName; restarting $component (user $userId) every ${interval}ms")
+        val thread = Thread {
+            var failures = 0
+            while (!Thread.currentThread().isInterrupted) {
+                try {
+                    Thread.sleep(interval)
+                } catch (e: InterruptedException) {
+                    return@Thread
+                }
+                if (isProcessRunning(packageName)) {
+                    failures = 0
+                    continue
+                }
+                Log.i(TAG, "$packageName is not running; starting $component")
+                val output = runShellCommand("am start-foreground-service --user $userId -n $component")
+                // The command reports its own refusals, and they are the interesting case: a device
+                // that will not let the shell start this component says so here and nowhere else.
+                if (output.isNotBlank()) Log.i(TAG, "start-foreground-service: ${output.trim()}")
+                failures = if (isProcessRunning(packageName)) 0 else failures + 1
+                if (failures >= MAX_WATCHDOG_FAILURES) {
+                    Log.w(TAG, "Giving up on $packageName after $failures starts that changed nothing")
+                    return@Thread
+                }
+            }
+        }
+        thread.isDaemon = true
+        thread.name = "lspatch-manager-watchdog"
+        watchdog = thread
+        thread.start()
+        return true
+    }
+
+    @Synchronized
+    override fun stopManagerWatchdog() {
+        watchdog?.let {
+            Log.i(TAG, "Stopping the manager watchdog")
+            it.interrupt()
+        }
+        watchdog = null
+        watching = null
+    }
+
+    override fun isManagerWatchdogRunning(): Boolean = watchdog?.isAlive == true
+
+    /**
+     * Whether the manager's own process exists.
+     *
+     * By process name rather than by asking the activity manager: an app's main process is named after its package, the
+     * same `ps` this service already reads to reap its own strays, and it costs no privileged call.
+     *
+     * The match is exact, and that is the whole of it: this service runs as `<package>:service`, so a prefix match
+     * would find *itself* and report the manager alive for as long as the watchdog that asked was running -- which is
+     * every moment it could ever have acted.
+     */
+    private fun isProcessRunning(packageName: String): Boolean = runCatching {
+        Runtime.getRuntime().exec(arrayOf("sh", "-c", "ps -A -o NAME")).inputStream.bufferedReader().useLines { lines ->
+            lines.any { it.trim() == packageName }
+        }
+    }
+        .getOrElse {
+            Log.w(TAG, "Cannot tell whether $packageName is running", it)
+            // Assumed alive: a failed read must not turn into a restart the device did not need.
+            true
+        }
 
     /**
      * A rotating writer for one stream. Lines append to `<prefix>_<timestamp>.log` until it exceeds [MAX_PART_BYTES];
@@ -487,6 +592,9 @@ class ShizukuService : IShizukuService.Stub() {
          * than anything having died. A quarter of the buffer leaves room for its neighbours.
          */
         const val MAX_OUTPUT_CHARS = 128_000
+
+        /** Consecutive restarts that changed nothing before the watchdog concludes it cannot help. */
+        const val MAX_WATCHDOG_FAILURES = 5
 
         /** ~4 MB per part, eight parts per stream — ~32 MB of history apiece at most. */
         const val MAX_PART_BYTES = 4L * 1024 * 1024

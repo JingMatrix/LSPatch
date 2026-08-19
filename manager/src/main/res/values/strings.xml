@@ -279,4 +279,34 @@
     <string name="update_no_notes">No release notes</string>
     <string name="update_back">Back</string>
     <string name="update_retry">Retry</string>
+    <!-- The resident service, when it is present but not collecting logs -->
+    <string name="resident_service_title">LSPatch is running</string>
+    <string name="resident_service_text">Serving modules to patched apps</string>
+
+    <!-- Background restrictions -->
+    <string name="background_reports_title">LSPatch was stopped in the background</string>
+    <string name="background_reports_line">%1$s started %2$d time(s) without reaching LSPatch</string>
+    <string name="background_battery">Ignore battery optimisation</string>
+    <string name="background_battery_done">Battery optimisation is already off for LSPatch</string>
+    <string name="shizuku_open_app">Open Shizuku</string>
+    <string name="stay_alive_title">Keep LSPatch reachable</string>
+    <string name="stay_alive_body">A patched app asks LSPatch for its modules the moment it starts. If this device has stopped LSPatch by then, the app falls back to the module list it remembers — and anything changed here since is missed. Neither of these is required.</string>
+    <string name="stay_alive_notifications">Show an ongoing notification</string>
+    <string name="stay_alive_notifications_summary">What keeps LSPatch out of the first bucket the system empties — and the only sign it is running</string>
+    <string name="stay_alive_done">Done</string>
+    <string name="background_whitelist_done">This device lifted every limit asked for</string>
+    <string name="background_whitelist_refused">Refused: %1$s</string>
+    <string name="background_battery_summary">Doze is what stops a manager nobody opened today from answering</string>
+    <string name="background_keep_alive">Restart when stopped</string>
+    <string name="background_keep_alive_summary">Uses the Shizuku shell to start LSPatch again whenever it finds it gone. The shell process outlives LSPatch, so it works even after a force stop.</string>
+    <string name="background_keep_alive_needs_shizuku">Needs Shizuku</string>
+    <string name="background_whitelist">Lift background limits</string>
+    <string name="background_whitelist_summary">Asks the shell to take LSPatch off the doze list and out of the app-standby buckets. Reports what the device refused.</string>
+    <string name="background_whitelist_running">Asking the shell…</string>
+    <!-- What each background limit is called where a refusal is reported -->
+    <string name="background_limit_doze">Doze whitelist</string>
+    <string name="background_limit_background">Background work</string>
+    <string name="background_limit_any_background">Any background work</string>
+    <string name="background_limit_standby">App standby bucket</string>
+    <string name="background_limit_autostart">Vendor auto-start</string>
 </resources>

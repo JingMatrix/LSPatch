@@ -13,12 +13,18 @@
     <!-- Module Store fetches the LSPosed modules.json catalog. -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <!-- Continuous log monitoring runs as a foreground service so the process (which holds the
-         Shizuku binding) is not reaped in the background. Log collection maps to no standard
-         foreground-service bucket, so it declares the "special use" type. -->
+    <!-- The manager runs a foreground service so its process is not reaped in the background: a
+         patched app reaches it the moment it starts, and a reaped manager answers late or not at all.
+         Neither that nor log collection maps to a standard foreground-service bucket, so it declares
+         the "special use" type. -->
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <!-- So the service comes back after a reboot without the person having to open the manager. -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <!-- Only ever used to ask, through the system's own dialog. Doze is what stops a manager that was
+         never opened today from answering a patched app at all. -->
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
 
     <application
         android:name=".LSPApplication"
@@ -50,14 +56,32 @@
             android:name=".manager.ModuleService"
             android:exported="true" />
 
+        <!-- Exported so the Shizuku shell can start it: that watchdog runs as the shell user, which is
+             the whole reason it survives what stops this app, and the shell may only start a component
+             that says it may. It grants nothing new — any app can already cause this manager to run by
+             binding the exported ModuleService below, and all this one does is make it present. -->
         <service
-            android:name=".service.LogCollectorService"
-            android:exported="false"
+            android:name=".service.ManagerResidentService"
+            android:exported="true"
             android:foregroundServiceType="specialUse">
             <property
                 android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
-                android:value="continuous log monitoring for patched apps and the Xposed framework" />
+                android:value="serving modules to patched apps and monitoring their logs" />
         </service>
+
+        <!-- Brings the service back after a reboot or an update of the manager itself. A package the
+             system considers stopped receives neither, which is exactly the state a force-stop leaves
+             it in: this covers the reboot, and the shell-side watchdog covers the rest.
+             Exported because the sender is the system rather than this app; both actions are
+             protected broadcasts, so nothing else can send them. -->
+        <receiver
+            android:name=".manager.BootReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+            </intent-filter>
+        </receiver>
 
         <!-- Hands one patched apk to whatever installer the device has, when neither the shell nor
              the platform session could install it. A patched apk lives in this app's private

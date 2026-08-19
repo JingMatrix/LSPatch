@@ -4,6 +4,7 @@ import android.content.pm.PackageManager
 import android.util.Log
 import androidx.room.Room
 import androidx.room.withTransaction
+import java.io.File
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -16,20 +17,22 @@ import org.lsposed.lspatch.database.entity.Scope
 import org.lsposed.lspatch.lspApp
 import org.lsposed.lspatch.manager.ManagerRemoteServices
 import org.lsposed.lspatch.util.LSPPackageManager
-import org.lsposed.lspatch.util.ModuleLoader
+import org.lsposed.lspatch.util.LoadedModules
 import org.matrix.vector.ipc.LoadedModule
-import java.io.File
 
 object ConfigManager {
 
     private const val TAG = "ConfigManager"
 
-    @OptIn(ExperimentalCoroutinesApi::class)
-    private val dispatcher = Dispatchers.Default.limitedParallelism(1)
+    @OptIn(ExperimentalCoroutinesApi::class) private val dispatcher = Dispatchers.Default.limitedParallelism(1)
 
-    private val db: LSPDatabase = Room.databaseBuilder(
-        lspApp, LSPDatabase::class.java, "modules_config.db"
-    ).build()
+    private val db: LSPDatabase =
+        Room.databaseBuilder(
+                lspApp,
+                LSPDatabase::class.java,
+                "modules_config.db",
+            )
+            .build()
 
     private val moduleDao = db.moduleDao()
     private val scopeDao = db.scopeDao()
@@ -43,7 +46,8 @@ object ConfigManager {
                 // scope that points at it. Delete only when the package is genuinely gone.
                 val stillInstalled = runCatching {
                     lspApp.packageManager.getApplicationInfo(module.pkgName, 0)
-                }.isSuccess
+                }
+                    .isSuccess
                 if (!stillInstalled) moduleDao.delete(module)
             }
             for ((pkgName, apkPath) in newModules) {
@@ -68,9 +72,8 @@ object ConfigManager {
     /**
      * Counts up whenever any app's module scope changes.
      *
-     * The scope lives in the database, which nothing observes; without a signal, editing an app's
-     * modules on one screen left the other screen showing the set from before the edit until the
-     * manager was restarted.
+     * The scope lives in the database, which nothing observes; without a signal, editing an app's modules on one screen
+     * left the other screen showing the set from before the edit until the manager was restarted.
      */
     private val _scopeRevision = MutableStateFlow(0)
     val scopeRevision: StateFlow<Int> = _scopeRevision.asStateFlow()
@@ -78,23 +81,25 @@ object ConfigManager {
     /**
      * Makes [modules] the complete set of modules enabled for [appPkgName], in one transaction.
      *
-     * All of it or none of it: a half-applied scope is a patched app running a module combination
-     * the user never chose. The parent [Module] row is ensured for every target first, because the
-     * scope table has a foreign key onto it and inserting a scope row alone fails for a module the
-     * manager has not catalogued yet.
+     * All of it or none of it: a half-applied scope is a patched app running a module combination the user never chose.
+     * The parent [Module] row is ensured for every target first, because the scope table has a foreign key onto it and
+     * inserting a scope row alone fails for a module the manager has not catalogued yet.
      */
     suspend fun setScopeForApp(appPkgName: String, modules: Set<String>): Result<Unit> =
         withContext(dispatcher) {
             runCatching {
+                var before = emptySet<String>()
                 db.withTransaction {
-                    val before = scopeDao.getModulesForApp(appPkgName).map { it.pkgName }.toSet()
+                    before = scopeDao.getModulesForApp(appPkgName).map { it.pkgName }.toSet()
                     (before - modules).forEach {
                         scopeDao.delete(Scope(appPkgName = appPkgName, modulePkgName = it))
                     }
                     (modules - before).forEach { pkg ->
-                        val apkPath = runCatching {
-                            lspApp.packageManager.getApplicationInfo(pkg, 0).sourceDir
-                        }.getOrNull() ?: return@forEach
+                        val apkPath =
+                            runCatching {
+                                lspApp.packageManager.getApplicationInfo(pkg, 0).sourceDir
+                            }
+                                .getOrNull() ?: return@forEach
                         moduleDao.insert(Module(pkg, apkPath))
                         moduleDao.updatePath(pkg, apkPath)
                         scopeDao.insert(Scope(appPkgName = appPkgName, modulePkgName = pkg))
@@ -102,6 +107,10 @@ object ConfigManager {
                 }
                 LSPPackageManager.invalidateModuleIcons(appPkgName)
                 _scopeRevision.value++
+                // Whoever gained or lost this app is now describing a different scope to its companion,
+                // and a companion holding no service at all is the common case; both are settled by a
+                // push, which reaches the module app whether or not it is already running.
+                ManagerRemoteServices.pushToCompanionsAsync(before + modules)
                 Unit
             }
         }
@@ -137,9 +146,9 @@ object ConfigManager {
         }
 
     /**
-     * A fresh [LoadedModule] for a single module by package, or null if it is not a [legacy]-matching
-     * module or cannot be loaded. Hot reload uses this to build the new generation from the module's
-     * currently installed apk, the same way [getModuleFilesForApp] builds the ones a host loads.
+     * A fresh [LoadedModule] for a single module by package, or null if it is not a [legacy]-matching module or cannot
+     * be loaded. Hot reload uses this to build the new generation from the module's currently installed apk, the same
+     * way [getModuleFilesForApp] builds the ones a host loads.
      */
     suspend fun buildLoadedModule(pkgName: String, legacy: Boolean = false): LoadedModule? =
         withContext(dispatcher) {
@@ -158,27 +167,26 @@ object ConfigManager {
             }
             Log.i(TAG, "Module apk path updated: ${module.pkgName}")
         }
-        val code = ModuleLoader.loadModule(module.apkPath) ?: return null
-        if (code.legacy != legacy) {
-            code.preLoadedDexes.forEach { dex -> runCatching { dex.close() } }
-            return null
-        }
         val pm = lspApp.packageManager
-        val appInfo = try {
-            pm.getApplicationInfo(module.pkgName, 0)
-        } catch (e: PackageManager.NameNotFoundException) {
-            null
+        val appInfo =
+            try {
+                pm.getApplicationInfo(module.pkgName, 0)
+            } catch (e: PackageManager.NameNotFoundException) {
+                null
+            }
+        val appId = (appInfo?.uid ?: -1).let { uid -> if (uid < 0) -1 else uid % 100000 }
+        val versionCode = runCatching {
+            pm.getPackageInfo(module.pkgName, 0).longVersionCode
         }
-        return LoadedModule().apply {
-            packageName = module.pkgName
-            apkPath = module.apkPath
-            this.code = code
-            applicationInfo = appInfo
-            appId = (appInfo?.uid ?: -1).let { uid -> if (uid < 0) -1 else uid % 100000 }
-            versionCode = runCatching {
-                pm.getPackageInfo(module.pkgName, 0).longVersionCode
-            }.getOrDefault(0L)
-            service = ManagerRemoteServices.moduleService(module.pkgName)
-        }
+            .getOrDefault(0L)
+        return LoadedModules.fromApk(
+            module.pkgName,
+            module.apkPath,
+            appId,
+            versionCode,
+            appInfo,
+            legacy,
+            ManagerRemoteServices.moduleService(module.pkgName),
+        )
     }
 }

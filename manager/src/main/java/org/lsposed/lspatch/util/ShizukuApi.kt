@@ -23,6 +23,7 @@ import kotlinx.coroutines.withContext
 import kotlinx.coroutines.withTimeoutOrNull
 import moe.shizuku.server.IShizukuService as IShizukuServer
 import org.lsposed.lspatch.IShizukuService
+import org.lsposed.lspatch.R
 import org.lsposed.lspatch.ShizukuService
 import rikka.shizuku.Shizuku
 import rikka.shizuku.ShizukuBinderWrapper
@@ -398,18 +399,39 @@ object ShizukuApi {
             guard(op, fallback) { block(service) }
         }
 
-    // One instance, because unbinding takes the same args the bind was given: a copy built on the
-    // spot is fine to bind with and useless to let go with.
-    private val serviceArgs by lazy {
+    /**
+     * Whether the shell process should outlive this app.
+     *
+     * Normally it should not -- a shell-uid process left running for the rest of the boot is a leak, and
+     * [releaseUserService] exists to avoid exactly that. The exception is the watchdog: its whole job starts when the
+     * manager's process ends, so while it is armed the shell service is asked for as a daemon instead. The two
+     * lifetimes are two different service records, which is why the args come in pairs and why switching means letting
+     * the running one go first.
+     */
+    @Volatile private var daemonRequested = false
+
+    val shellIsDaemon
+        get() = daemonRequested
+
+    /** The args a running service was bound with -- unbinding takes the same ones the bind was given. */
+    @Volatile private var boundArgs: Shizuku.UserServiceArgs? = null
+
+    private val transientArgs by lazy { buildServiceArgs(daemon = false) }
+    private val daemonArgs by lazy { buildServiceArgs(daemon = true) }
+
+    private val serviceArgs
+        get() = if (daemonRequested) daemonArgs else transientArgs
+
+    private fun buildServiceArgs(daemon: Boolean) =
         Shizuku.UserServiceArgs(ComponentName(appContext.packageName, ShizukuService::class.java.name))
-            .daemon(false)
+            .daemon(daemon)
+            .tag(if (daemon) "lspatch-shell-daemon" else "lspatch-shell")
             .processNameSuffix("service")
             .debuggable(true)
             // Version the service by the app's version code: on an upgrade Shizuku tears down the old
             // instance and starts a fresh one, so a rebuilt ShizukuService (new AIDL, new collector)
             // actually takes effect instead of the app binding to a stale cached process.
             .version(org.lsposed.lspatch.share.LSPConfig.instance.VERSION_CODE)
-    }
 
     private fun bindUserService() {
         if (userService != null) return
@@ -419,7 +441,9 @@ object ShizukuApi {
         binding = true
         bindingSince = SystemClock.elapsedRealtime()
         try {
-            Shizuku.bindUserService(serviceArgs, userServiceConnection)
+            val args = serviceArgs
+            boundArgs = args
+            Shizuku.bindUserService(args, userServiceConnection)
         } catch (t: Throwable) {
             binding = false
             record(ShizukuOp.Shell, ShizukuReason.CallFailed, t.toString(), t)
@@ -440,7 +464,132 @@ object ShizukuApi {
         userServiceDeferred = CompletableDeferred()
         if (!wasBound || !::appContext.isInitialized) return
         Log.i(TAG, "Unbinding the shell service and asking Shizuku to stop it")
-        guard(ShizukuOp.Shell, Unit) { Shizuku.unbindUserService(serviceArgs, userServiceConnection, true) }
+        val args = boundArgs ?: serviceArgs
+        boundArgs = null
+        guard(ShizukuOp.Shell, Unit) { Shizuku.unbindUserService(args, userServiceConnection, true) }
+    }
+
+    /**
+     * Chooses whether the next shell service is a daemon, letting go of one bound the other way.
+     *
+     * A service record's lifetime is fixed when it starts, so there is no changing it in place; the running one is
+     * released and the next call binds under the new rule.
+     */
+    @Synchronized
+    private fun setShellDaemon(enabled: Boolean) {
+        if (daemonRequested == enabled) return
+        Log.i(TAG, "Shell service lifetime is now " + if (enabled) "daemon" else "tied to this app")
+        val hadService = userService != null
+        daemonRequested = enabled
+        if (hadService) releaseUserService()
+    }
+
+    /**
+     * Arms the shell-side watchdog: the shell process starts [component] again whenever it finds no process of
+     * [packageName].
+     *
+     * The user id is this app's own, so a manager installed in a secondary profile is restarted in the profile it lives
+     * in rather than in the primary one.
+     */
+    suspend fun startManagerWatchdog(packageName: String, component: String, intervalSeconds: Int): Boolean {
+        setShellDaemon(true)
+        val userId = android.os.Process.myUid() / 100000
+        val arm = { service: IShizukuService ->
+            service.startManagerWatchdog(packageName, component, userId, intervalSeconds)
+        }
+        if (onService(ShizukuOp.Shell, false, arm)) return true
+        // A daemon shell service outlives the app that asked for it -- that is the point of it -- so
+        // the one answering here can be from a previous life of this app, running code that predates
+        // this call and cannot serve it. Nothing distinguishes that from any other failure except
+        // trying again against a process this build started, so it is let go of exactly once.
+        Log.i(TAG, "The shell service could not arm the watchdog; replacing it and trying once more")
+        releaseUserService()
+        return onService(ShizukuOp.Shell, false, arm)
+    }
+
+    /** Disarms the watchdog and lets the shell process go back to living only as long as this app does. */
+    suspend fun stopManagerWatchdog() {
+        if (userService != null) {
+            onService(ShizukuOp.Shell, Unit) { it.stopManagerWatchdog() }
+        }
+        setShellDaemon(false)
+    }
+
+    /**
+     * How a device answered one request to lift a limit.
+     *
+     * [Unsupported] is not a failure and must not be reported as one: several of these limits are a vendor's invention
+     * and simply do not exist elsewhere, so a device that has never heard of one has nothing to refuse. Telling a
+     * person their phone "refused" a setting it does not have sends them looking for a problem that is not there.
+     */
+    enum class ShellVerdict {
+        Accepted,
+        Unsupported,
+        Refused,
+    }
+
+    /**
+     * One command the shell was asked to run on the manager's behalf, and what it answered.
+     *
+     * [label] is what the limit is called, because the command is not what a reader wants to be told was refused;
+     * [command] and [output] stay for the log and for a report.
+     */
+    data class ShellOutcome(
+        val label: String,
+        val command: String,
+        val output: String,
+        val verdict: ShellVerdict,
+    ) {
+        val accepted
+            get() = verdict == ShellVerdict.Accepted
+    }
+
+    /**
+     * Asks the shell to take [packageName] out of the platform's background limits.
+     *
+     * Every one of these is a request the device is free to refuse -- the doze whitelist and the standby buckets are
+     * platform features, the auto-start op is not a platform feature at all and exists only on some vendors' builds --
+     * so each is run on its own and reported as it answered. Nothing here is retried or assumed: what the reader is
+     * shown is what the shell said.
+     */
+    suspend fun exemptFromBackgroundLimits(packageName: String): List<ShellOutcome> {
+        val commands =
+            listOf(
+                appContext.getString(R.string.background_limit_doze) to "cmd deviceidle whitelist +$packageName",
+                appContext.getString(R.string.background_limit_background) to
+                    "cmd appops set $packageName RUN_IN_BACKGROUND allow",
+                appContext.getString(R.string.background_limit_any_background) to
+                    "cmd appops set $packageName RUN_ANY_IN_BACKGROUND allow",
+                appContext.getString(R.string.background_limit_standby) to "am set-standby-bucket $packageName active",
+                // Vendor-specific and absent from AOSP; asked for because on the devices that reap hardest
+                // it is the one that matters, and its refusal elsewhere is harmless and reported plainly.
+                appContext.getString(R.string.background_limit_autostart) to
+                    "cmd appops set $packageName AUTO_START allow",
+            )
+        return commands.map { (label, command) ->
+            val output = runShellCommand(command)
+            val verdict = if (output == null) ShellVerdict.Refused else verdictOf(output)
+            val outcome = ShellOutcome(label, command, output?.trim().orEmpty(), verdict)
+            if (verdict != ShellVerdict.Accepted) Log.i(TAG, "$label $verdict: $command -> ${outcome.output}")
+            outcome
+        }
+    }
+
+    /**
+     * What a shell command's output says about itself.
+     *
+     * A command that printed nothing did what it was asked. Everything else is read for the one distinction worth
+     * making: a device that does not know the setting, versus one that knows it and said no. The first is how AOSP
+     * answers a vendor's app-op, and the wording is the platform's own ("Unknown operation string: AUTO_START"), so it
+     * is what there is to match on.
+     */
+    private fun verdictOf(output: String): ShellVerdict {
+        val text = output.trim().lowercase()
+        if (text.isEmpty()) return ShellVerdict.Accepted
+        val absent = listOf("unknown operation", "unknown command", "not found", "no such", "unknown option")
+        if (absent.any { text.contains(it) }) return ShellVerdict.Unsupported
+        val refusals = listOf("error", "exception", "failure", "failed", "permission", "usage:", "bad ")
+        return if (refusals.any { text.contains(it) }) ShellVerdict.Refused else ShellVerdict.Accepted
     }
 
     /**

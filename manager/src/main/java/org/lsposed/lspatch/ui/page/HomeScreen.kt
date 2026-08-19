@@ -82,16 +82,22 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.lsposed.lspatch.R
+import org.lsposed.lspatch.config.Configs
 import org.lsposed.lspatch.data.model.PatchMode
 import org.lsposed.lspatch.data.model.PatchOrigin
 import org.lsposed.lspatch.data.model.PatchRequest
 import org.lsposed.lspatch.data.model.PatchTarget
 import org.lsposed.lspatch.data.repository.PatchRequestStore
 import org.lsposed.lspatch.lspApp
+import org.lsposed.lspatch.manager.ModuleDeliveryReports
 import org.lsposed.lspatch.share.Constants
 import org.lsposed.lspatch.share.LSPConfig
 import org.lsposed.lspatch.ui.appearance.LSPAmbienceSettings
 import org.lsposed.lspatch.ui.appearance.LSPSettings
+import org.lsposed.lspatch.ui.component.ShizukuSheet
+import org.lsposed.lspatch.ui.component.StayAliveSheet
+import org.lsposed.lspatch.ui.component.hasNotificationPermission
+import org.lsposed.lspatch.ui.component.isIgnoringBatteryOptimizations
 import org.lsposed.lspatch.ui.page.destinations.ManageScreenDestination
 import org.lsposed.lspatch.ui.page.destinations.NewPatchScreenDestination
 import org.lsposed.lspatch.ui.page.destinations.UpdateScreenDestination
@@ -168,6 +174,15 @@ fun HomeScreen(navigator: DestinationsNavigator) {
                 }
             }
         }
+    }
+
+    // Once, on the first open, and only while there is something left to ask for: what LSPatch needs
+    // to still be there when a patched app starts. Deciding it here rather than inside the sheet keeps
+    // a sheet from opening and closing itself on a device that already granted both.
+    var showStayAlive by remember {
+        mutableStateOf(
+            !Configs.askedStayAlive && !(hasNotificationPermission(context) && isIgnoringBatteryOptimizations(context))
+        )
     }
 
     var showAppearance by remember { mutableStateOf(false) }
@@ -259,6 +274,14 @@ fun HomeScreen(navigator: DestinationsNavigator) {
         }
     }
 
+    if (showStayAlive) {
+        StayAliveSheet(
+            onDismiss = {
+                showStayAlive = false
+                Configs.askedStayAlive = true
+            }
+        )
+    }
     if (showAppearance) {
         val floatingNav by LSPSettings.floatingNav.collectAsStateWithLifecycle()
         AppearanceSheet(
@@ -385,11 +408,10 @@ private fun SystemPropertiesCard(navigator: DestinationsNavigator) {
     // getVersion is only valid while the binder is alive, which a granted permission guarantees.
     val shizukuVersion = if (shizukuGranted) ShizukuApi.serverVersion() else null
     val shizukuValue = if (shizukuVersion != null) "API $shizukuVersion" else stringResource(R.string.shizuku_off)
-    // Tapping Shizuku opens the Shizuku app itself; inert when it is not installed.
-    val openShizuku: (() -> Unit)? =
-        LSPPackageManager.getLaunchIntentForPackage(SHIZUKU_PACKAGE)?.let { intent ->
-            { runCatching { context.startActivity(intent) } }
-        }
+    // Tapping Shizuku opens what LSPatch does with it, not Shizuku's own screen: this row's reader is
+    // asking about the shell LSPatch runs on, and opening the app is one of the rows in that drawer.
+    var showShizukuSheet by remember { mutableStateOf(false) }
+    val openShizuku: () -> Unit = { showShizukuSheet = true }
 
     val toApplications = {
         navigator.navigate(ManageScreenDestination(initialTab = 0))
@@ -417,11 +439,15 @@ private fun SystemPropertiesCard(navigator: DestinationsNavigator) {
             Icons.Rounded.Badge,
             stringResource(R.string.home_package),
             lspApp.packageName,
-        ) {
-            showPackageDialog = true
-        }
+            onClick = { showPackageDialog = true },
+        )
 
-    val shizukuProp = SystemProperty(Icons.Rounded.Terminal, "Shizuku", shizukuValue, openShizuku)
+    // Marked, not spelled out: a patched app that had to start without the manager is a fact about the
+    // shell LSPatch runs on, so it belongs on this row rather than in a card of its own -- and the row
+    // it belongs to already leads to the page that explains it.
+    val missedLaunches = ModuleDeliveryReports.reports.collectAsStateWithLifecycle().value.isNotEmpty()
+    val shizukuProp =
+        SystemProperty(Icons.Rounded.Terminal, "Shizuku", shizukuValue, openShizuku, mark = missedLaunches)
     val androidProp = SystemProperty(Icons.Rounded.Android, "Android", androidAndAbi)
     val deviceProp = SystemProperty(Icons.Rounded.Smartphone, stringResource(R.string.home_device), deviceName)
     // The core *is* Vector; its row carries the tag it was built from and links to that exact commit,
@@ -516,6 +542,9 @@ private fun SystemPropertiesCard(navigator: DestinationsNavigator) {
 
     if (showPackageDialog) {
         ManagerPackageDialog(onDismiss = { showPackageDialog = false })
+    }
+    if (showShizukuSheet) {
+        ShizukuSheet(onDismiss = { showShizukuSheet = false })
     }
 }
 
@@ -646,6 +675,8 @@ private data class SystemProperty(
     val label: String,
     val value: String,
     val onClick: (() -> Unit)? = null,
+    /** Draws a dot beside the value: something behind this row wants the reader, without saying so twice. */
+    val mark: Boolean = false,
 )
 
 /** A full-width property row: icon well, label, value, and a chevron when it leads somewhere. */
@@ -688,6 +719,13 @@ private fun PropertyRow(property: SystemProperty) {
             color = MaterialTheme.colorScheme.onSurface,
             textAlign = TextAlign.End,
         )
+        if (property.mark) {
+            Spacer(Modifier.width(6.dp))
+            Box(
+                modifier =
+                    Modifier.size(6.dp).clip(RoundedCornerShape(3.dp)).background(MaterialTheme.colorScheme.error)
+            )
+        }
         if (clickable) {
             Spacer(Modifier.width(4.dp))
             Icon(

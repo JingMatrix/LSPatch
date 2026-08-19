@@ -69,4 +69,20 @@ interface IShizukuService {
     // caller pushes the current set periodically so that app joins the framework stream in place.
     // Does nothing when no collector is running -- the next start carries the set anyway.
     void updateLogCollectorUids(in int[] relevantUids) = 11;
+
+    // --- Keeping the manager reachable. This process runs as the shell user and is owned by the
+    // Shizuku server rather than by the manager, so it is not what a device's background reaper or a
+    // force-stop acts on -- which is the whole reason the watchdog lives here and not in the app. ---
+
+    // Starts a supervisor that starts [component] (an "package/class" name, in [userId]) again
+    // whenever no process of [packageName] is running, checking every [intervalSeconds]. Started from
+    // the shell, that start also clears the stopped state a force-stop leaves behind, which nothing
+    // running inside the app can do. Replaces any watchdog already running.
+    boolean startManagerWatchdog(String packageName, String component, int userId, int intervalSeconds) = 14;
+
+    // Stops the supervisor, if any.
+    void stopManagerWatchdog() = 15;
+
+    // Whether a supervisor is currently running.
+    boolean isManagerWatchdogRunning() = 16;
 }

@@ -17,7 +17,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.withContext
-import org.lsposed.lspatch.service.LogCollectorService
+import org.lsposed.lspatch.service.ManagerResidentService
 import org.lsposed.lspatch.share.LSPConfig
 import org.lsposed.lspatch.util.LSPPackageManager
 import org.lsposed.lspatch.util.ShizukuApi
@@ -36,7 +36,7 @@ import org.matrix.vector.ui.logs.isThrowableHeader
 /**
  * LSPatch's Shizuku-backed implementation of the shared Logs screen's [LogSource].
  *
- * Where Vector streams a rotating file from a root daemon, LSPatch has [LogCollectorService] keep a shell-side
+ * Where Vector streams a rotating file from a root daemon, LSPatch has [ManagerResidentService] keep a shell-side
  * collector running continuously (see [ShizukuService]): it fans one live logcat into two rotating, timestamped stream
  * files the shell user owns — `verbose` (every line) and `framework`. This reads those parts back — so the screen's
  * part chevrons are real rotations, and logs captured while the screen was closed are still there — falling back to a
@@ -79,7 +79,7 @@ class LSPLogSource(private val context: Context) : LogSource {
         // Only parts with something in them, matching what [open] reads back: a rotation opens an
         // empty part, and listing it would number the chevrons one ahead of the content, with the
         // last one selectable and blank.
-        ShizukuApi.listLogParts(LogCollectorService.LOG_DIR, streamPrefix(verbose))
+        ShizukuApi.listLogParts(ManagerResidentService.LOG_DIR, streamPrefix(verbose))
                 .filter { it.second > 0L }
                 .map { it.first }
 
@@ -107,7 +107,7 @@ class LSPLogSource(private val context: Context) : LogSource {
                     // The newest part, whatever is in it. A part just opened by "start a new log" is
                     // empty, and reading the one before it instead would answer a request to start
                     // afresh with the log the reader asked to leave behind.
-                    val newest = ShizukuApi.listLogParts(LogCollectorService.LOG_DIR, prefix).lastOrNull()?.first
+                    val newest = ShizukuApi.listLogParts(ManagerResidentService.LOG_DIR, prefix).lastOrNull()?.first
                     // Only when the collector has produced no part at all (Shizuku just granted, the
                     // service still spinning up) does a one-shot snapshot stand in for one.
                     if (newest != null) readTail(newest)
@@ -256,7 +256,7 @@ class LSPLogSource(private val context: Context) : LogSource {
                 // none of the lines describing the breakage.
                 if (shizuku) {
                     for (prefix in listOf("verbose", "framework")) {
-                        ShizukuApi.listLogParts(LogCollectorService.LOG_DIR, prefix).forEach { (path, _) ->
+                        ShizukuApi.listLogParts(ManagerResidentService.LOG_DIR, prefix).forEach { (path, _) ->
                             shellFileEntry("logs/${path.substringAfterLast('/')}", path)
                         }
                     }
@@ -412,8 +412,8 @@ class LSPLogSource(private val context: Context) : LogSource {
                 ShizukuApi.startNewLogPart()
             } else {
                 ShizukuApi.startLogCollector(
-                    LogCollectorService.LOG_DIR,
-                    LogCollectorService.relevantUids(context),
+                    ManagerResidentService.LOG_DIR,
+                    ManagerResidentService.relevantUids(context),
                 )
             }
         }
@@ -497,7 +497,7 @@ class LSPLogSource(private val context: Context) : LogSource {
             // refuse -- which would leave the screen blank, the one thing this exists to avoid.
             "logcat -d -b main -b crash -b system -v threadtime -t 4000"
         } else {
-            val uids = LogCollectorService.relevantUids(context).joinToString(",")
+            val uids = ManagerResidentService.relevantUids(context).joinToString(",")
             // No -t here, though the verbose form has one: logd applies -t itself, over every buffer,
             // and --uid is applied afterwards by logcat on what it was sent. The last N lines of a
             // chatty device can hold almost nothing from these uids, so the window would decide the
