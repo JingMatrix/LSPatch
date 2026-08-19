@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="log_service_channel">مراقبة السجل</string>
-    <string name="log_service_title">LSPatch يقوم برصد السجلات</string>
-    <string name="log_service_text">جمع الاطار وسجلات التطبيقات المعدلة</string>
+    <string name="log_service_channel">مراقبة السجلات</string>
+    <string name="log_service_title">يراقب LSPatch السجلات</string>
+    <string name="log_service_text">جمع سجلات الإطار والتطبيقات المرقّعة</string>
 </resources>
