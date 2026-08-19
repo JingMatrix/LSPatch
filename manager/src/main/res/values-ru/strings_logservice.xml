@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="log_service_channel">Журнал мониторинга</string>
-    <string name="log_service_title">LSPatch - это мониторинг журналов</string>
-    <string name="log_service_text">Сбор журналов фреймворка и патчевого приложения</string>
+    <string name="log_service_channel">Мониторинг журналов</string>
+    <string name="log_service_title">LSPatch отслеживает журналы</string>
+    <string name="log_service_text">Сбор журналов фреймворка и пропатченных приложений</string>
 </resources>
