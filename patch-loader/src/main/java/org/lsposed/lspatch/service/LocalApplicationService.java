@@ -1,21 +1,11 @@
 package org.lsposed.lspatch.service;
 
 import android.content.Context;
-import android.content.pm.ApplicationInfo;
 import android.os.Environment;
 import android.os.IBinder;
 import android.os.ParcelFileDescriptor;
 import android.util.Log;
-
-import org.lsposed.lspatch.loader.util.FileUtils;
-import org.lsposed.lspatch.share.Constants;
-import org.lsposed.lspatch.util.ModuleLoader;
-import org.matrix.vector.ipc.IFrameworkService;
-import org.matrix.vector.ipc.IProcessChannel;
-import org.matrix.vector.ipc.LoadedModule;
-
 import io.github.libxposed.service.IXposedService;
-
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -24,6 +14,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.zip.ZipFile;
+import org.lsposed.lspatch.loader.util.FileUtils;
+import org.lsposed.lspatch.share.Constants;
+import org.lsposed.lspatch.util.LoadedModules;
+import org.matrix.vector.ipc.IFrameworkService;
+import org.matrix.vector.ipc.IProcessChannel;
+import org.matrix.vector.ipc.LoadedModule;
 
 /**
  * The {@link IFrameworkService} for embedded (no-manager) mode: it serves the modules the patcher
@@ -51,7 +47,10 @@ public class LocalApplicationService extends IFrameworkService.Stub {
                 String modulePath = context.getCacheDir() + "/lspatch/" + packageName + "/";
                 String cacheApkPath;
                 try (ZipFile sourceFile = new ZipFile(context.getPackageResourcePath())) {
-                    cacheApkPath = modulePath + sourceFile.getEntry(Constants.EMBEDDED_MODULES_ASSET_PATH + name).getCrc() + ".apk";
+                    cacheApkPath = modulePath
+                            + sourceFile
+                                    .getEntry(Constants.EMBEDDED_MODULES_ASSET_PATH + name)
+                                    .getCrc() + ".apk";
                 }
 
                 if (!Files.exists(Paths.get(cacheApkPath))) {
@@ -63,37 +62,23 @@ public class LocalApplicationService extends IFrameworkService.Stub {
                     }
                 }
 
-                var code = ModuleLoader.loadModule(cacheApkPath);
-                if (code == null) {
-                    Log.w(TAG, "Failed to load module " + packageName);
-                    continue;
-                }
-
-                var module = new LoadedModule();
-                module.packageName = packageName;
-                module.apkPath = cacheApkPath;
-                module.appId = -1;
-                module.versionCode = 0;
-                module.code = code;
-                module.applicationInfo = syntheticApplicationInfo(packageName, cacheApkPath);
-                module.service = EmbeddedRemoteServices.get(context)
-                        .moduleService(packageName, IXposedService.PROP_CAP_REMOTE);
+                // Not installed as an app, so PackageManager can describe neither its identity (appId,
+                // version code) nor where it lives; the synthetic ApplicationInfo carries what the
+                // framework actually reads.
+                var module = LoadedModules.fromApk(
+                        packageName,
+                        cacheApkPath,
+                        -1,
+                        0,
+                        LoadedModules.syntheticApplicationInfo(packageName, cacheApkPath, null),
+                        null,
+                        EmbeddedRemoteServices.get(context).moduleService(packageName, IXposedService.PROP_CAP_REMOTE));
+                if (module == null) continue;
                 modules.add(module);
             } catch (Throwable e) {
                 Log.e(TAG, "Error loading embedded module " + name, e);
             }
         }
-    }
-
-    // The module is not installed as an app in embedded mode, so PackageManager cannot describe it.
-    // The framework only reads packageName and sourceDir off this (getModuleApplicationInfo, and the
-    // in-APK native library path), so a synthetic ApplicationInfo carrying those is enough.
-    private static ApplicationInfo syntheticApplicationInfo(String packageName, String apkPath) {
-        var info = new ApplicationInfo();
-        info.packageName = packageName;
-        info.sourceDir = apkPath;
-        info.publicSourceDir = apkPath;
-        return info;
     }
 
     @Override
