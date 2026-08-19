@@ -2,5 +2,5 @@
 <resources>
     <string name="log_service_channel">日誌監控</string>
     <string name="log_service_title">LSPatch 正在監控日誌</string>
-    <string name="log_service_text">收集框架和已修補應用程式日誌</string>
+    <string name="log_service_text">正在收集框架與已修補應用程式的日誌</string>
 </resources>
