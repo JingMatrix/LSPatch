@@ -269,4 +269,33 @@
     <string name="update_no_notes">Fără note de lansare</string>
     <string name="update_back">Înapoi</string>
     <string name="update_retry">Reîncercați</string>
+    <!-- The resident service, when it is present but not collecting logs -->
+    <string name="resident_service_title">LSPatch rulează</string>
+    <string name="resident_service_text">Se servesc module la aplicații modificate</string>
+    <!-- Background restrictions -->
+    <string name="background_reports_title">LSPatch a fost oprit în fundal</string>
+    <string name="background_reports_line">%1$s a început cu %2$d ori fără a ajunge în LSPatch</string>
+    <string name="background_battery">Ignoră optimizarea bateriei</string>
+    <string name="background_battery_done">Optimizarea bateriei este deja dezactivată pentru LSPatch</string>
+    <string name="shizuku_open_app">Open Shizuku</string>
+    <string name="stay_alive_title">Păstrează LSPatch accesibil</string>
+    <string name="stay_alive_body">O aplicație modificată cere LSPatch pentru modulele sale în momentul în care pornește. Dacă acest dispozitiv a oprit LSPatch de atunci, aplicația se întoarce la lista de module pe care o amintește — și orice s-a schimbat aici din moment ce este ratat. Niciuna dintre acestea nu este necesară.</string>
+    <string name="stay_alive_notifications">Arată o notificare în curs</string>
+    <string name="stay_alive_notifications_summary">Ce ţine LSPatch de la prima găleată a sistemului empirică - şi singurul semn pe care îl foloseşte</string>
+    <string name="stay_alive_done">Terminat</string>
+    <string name="background_whitelist_done">Acest dispozitiv a ridicat fiecare limită solicitată</string>
+    <string name="background_whitelist_refused">Refuzat: %1$s</string>
+    <string name="background_battery_summary">Doze este ceea ce împiedică pe nimeni să dea un răspuns azi</string>
+    <string name="background_keep_alive">Repornește când se oprește</string>
+    <string name="background_keep_alive_summary">Foloseşte carcasa Shizuku pentru a începe din nou LSPatch ori de câte ori o găseşte. Procesul de scoică depășește LSPatch, așa că funcționează chiar și după oprirea unei forțe.</string>
+    <string name="background_keep_alive_needs_shizuku">Necesită Shizuku</string>
+    <string name="background_whitelist">Ridicați limitele de fundal</string>
+    <string name="background_whitelist_summary">Cere sigiliului să scoată LSPatch de pe lista cu doze şi să iasă din găleţile în stand-by. Raportaţi ce a refuzat dispozitivul.</string>
+    <string name="background_whitelist_running">Se cere sigla…</string>
+    <!-- What each background limit is called where a refusal is reported -->
+    <string name="background_limit_doze">Lista permiselor</string>
+    <string name="background_limit_background">Lucrări de fundal</string>
+    <string name="background_limit_any_background">Orice activitate de fundal</string>
+    <string name="background_limit_standby">Costum în standby al aplicației</string>
+    <string name="background_limit_autostart">Auto-pornire a vânzătorului</string>
 </resources>
