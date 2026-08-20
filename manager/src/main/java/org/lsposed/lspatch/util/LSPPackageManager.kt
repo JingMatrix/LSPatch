@@ -13,6 +13,7 @@ import android.content.pm.PackageInstallerHidden.SessionParamsHidden
 import android.content.pm.PackageManager
 import android.content.pm.PackageManagerHidden
 import android.net.Uri
+import android.os.Build
 import android.os.Parcelable
 import android.util.Log
 import androidx.compose.runtime.getValue
@@ -315,6 +316,35 @@ object LSPPackageManager {
             origin = origin,
         )
     }
+
+    /**
+     * Where [packageName] is installed right now, base first -- or null when the package manager does not list it.
+     *
+     * Every install of a package writes its apks into a freshly named directory, so a path read once describes where
+     * the app was at that moment, not where it is. Anything holding on to such a path has to ask again before using it.
+     */
+    fun installedApkPaths(packageName: String): List<String>? = runCatching {
+        val app = lspApp.packageManager.getApplicationInfo(packageName, 0)
+        listOf(app.sourceDir) + (app.splitSourceDirs ?: emptyArray())
+    }
+        .getOrNull()
+
+    /**
+     * Whether [packageName] is on the device as a record without its apks.
+     *
+     * A package can be kept while its files are removed, which leaves it out of an ordinary lookup and yet not
+     * uninstalled. The distinction is invisible from a missing path alone, and is the difference between an app that
+     * can be restored by opening it and one that is gone.
+     */
+    fun isArchivedPackage(packageName: String): Boolean =
+        Build.VERSION.SDK_INT >= Build.VERSION_CODES.VANILLA_ICE_CREAM &&
+            runCatching {
+                lspApp.packageManager.getPackageInfo(
+                    packageName,
+                    PackageManager.PackageInfoFlags.of(PackageManager.MATCH_ARCHIVED_PACKAGES),
+                )
+            }
+                .isSuccess
 
     suspend fun cleanTmpApkDir() {
         withContext(Dispatchers.IO) {

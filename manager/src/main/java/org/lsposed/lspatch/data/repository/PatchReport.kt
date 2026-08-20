@@ -28,7 +28,7 @@ object PatchReport {
     private val wallClock = SimpleDateFormat("yyyy-MM-dd HH:mm:ss z", Locale.ROOT)
 
     /** The environment and the request, as the opening lines of a job's log. */
-    fun preamble(request: PatchRequest): List<String> = buildList {
+    fun preamble(request: PatchRequest, inputNote: String? = null): List<String> = buildList {
         add("=== LSPatch patch report ===")
         add("Started      ${wallClock.format(Date())}")
         add("")
@@ -64,6 +64,7 @@ object PatchReport {
         add("Verbose      ${Configs.detailPatchLogs}")
         add("")
         add("-- Input apks (${request.target.apkPaths.size}) --")
+        inputNote?.let { add("  ($it)") }
         request.target.apkPaths.forEach { path ->
             val file = File(path)
             add("  ${file.name}  ${sizeOf(file)}${if (file.exists()) "" else "  (MISSING)"}")
