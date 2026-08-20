@@ -269,4 +269,33 @@
     <string name="update_no_notes">Geen release notities</string>
     <string name="update_back">Achterzijde</string>
     <string name="update_retry">Opnieuw</string>
+    <!-- The resident service, when it is present but not collecting logs -->
+    <string name="resident_service_title">LSPatch is actief</string>
+    <string name="resident_service_text">Modules te serveren aan aangepaste apps</string>
+    <!-- Background restrictions -->
+    <string name="background_reports_title">LSPatch is gestopt op de achtergrond</string>
+    <string name="background_reports_line">%1$s heeft %2$d keer gestart zonder LSPatch te bereiken</string>
+    <string name="background_battery">Negeer batterij optimalisatie</string>
+    <string name="background_battery_done">Batterijoptimalisatie is al uitgeschakeld voor LSPatch</string>
+    <string name="shizuku_open_app">Open Shizuku</string>
+    <string name="stay_alive_title">Houd LSPatch bereikbaar</string>
+    <string name="stay_alive_body">Een gepatched app vraagt LSPatch om de modules op het moment dat hij start. Als dit apparaat LSPatch heeft gestopt tegen dan, de app valt terug naar de module lijst met herinneringen - en alles wat hier is gewijzigd omdat het is gemist. Geen van beide is nodig.</string>
+    <string name="stay_alive_notifications">Toon een doorlopende melding</string>
+    <string name="stay_alive_notifications_summary">Wat houdt LSPatch uit de eerste emmer van het systeem leeg - en het enige teken dat het loopt</string>
+    <string name="stay_alive_done">Voltooid</string>
+    <string name="background_whitelist_done">Dit apparaat heeft elke limiet die gevraagd werd opgeheven</string>
+    <string name="background_whitelist_refused">Geweigerd: %1$s</string>
+    <string name="background_battery_summary">Doze is wat een beheerder die niemand vandaag heeft geopend ervan weerhoudt te reageren</string>
+    <string name="background_keep_alive">Opnieuw opstarten wanneer gestopt</string>
+    <string name="background_keep_alive_summary">Gebruikt Shizuku shell om opnieuw te beginnen met LSPatch wanneer het weg is. Het granaatproces gaat voorbij aan LSPatch, dus het werkt zelfs nadat een troepenmacht is gestopt.</string>
+    <string name="background_keep_alive_needs_shizuku">Heeft Shizuku nodig</string>
+    <string name="background_whitelist">Achtergrondlimieten opheffen</string>
+    <string name="background_whitelist_summary">Vraagt de shell om LSPatch van de doze lijst af te halen en uit de app-standby buckets. Rapporteert wat het apparaat weigerde.</string>
+    <string name="background_whitelist_running">De shell vragen…</string>
+    <!-- What each background limit is called where a refusal is reported -->
+    <string name="background_limit_doze">Doze whitelist</string>
+    <string name="background_limit_background">Achtergrond werk</string>
+    <string name="background_limit_any_background">Elk achtergrondwerk</string>
+    <string name="background_limit_standby">App stand-by emmer</string>
+    <string name="background_limit_autostart">Leverancier auto-start</string>
 </resources>
