@@ -269,4 +269,33 @@
     <string name="update_no_notes">Žádné poznámky k vydání</string>
     <string name="update_back">Zpět</string>
     <string name="update_retry">Opakovat</string>
+    <!-- The resident service, when it is present but not collecting logs -->
+    <string name="resident_service_title">LSPatch je spuštěn</string>
+    <string name="resident_service_text">Servisní moduly pro upravené aplikace</string>
+    <!-- Background restrictions -->
+    <string name="background_reports_title">LSPatch byl zastaven na pozadí</string>
+    <string name="background_reports_line">%1$s spustil %2$d krát bez dosažení LSPatch</string>
+    <string name="background_battery">Ignorovat optimalizaci baterie</string>
+    <string name="background_battery_done">Optimalizace baterie pro LSPatch je již vypnuta</string>
+    <string name="shizuku_open_app">Open Shizuku</string>
+    <string name="stay_alive_title">Ponechat LSPatch dosažitelný</string>
+    <string name="stay_alive_body">Upravená aplikace se zeptá LSPatch na své moduly od okamžiku, kdy začne. Pokud toto zařízení do té doby zastavilo LSPatch, aplikace spadne zpět do seznamu modulů, který si pamatuje - a cokoliv se zde změní, protože je chybí. Ani jedna z těchto věcí není nutná.</string>
+    <string name="stay_alive_notifications">Zobrazit probíhající oznámení</string>
+    <string name="stay_alive_notifications_summary">Co udržuje LSPatch mimo první kbelík systému prázdný – a jediné znamení, že je spuštěn</string>
+    <string name="stay_alive_done">Hotovo</string>
+    <string name="background_whitelist_done">Toto zařízení zrušilo každý limit požadovaný</string>
+    <string name="background_whitelist_refused">Zamítnuto: %1$s</string>
+    <string name="background_battery_summary">Doze je to, co brání manažerovi, který dnes nebyl otevřen z odpovědí</string>
+    <string name="background_keep_alive">Restartovat po zastavení</string>
+    <string name="background_keep_alive_summary">Používá Shizuku shell k opětovnému spuštění LSPatch, kdykoli ho najde pryč. Proces skořápky překonává LSPatch, takže funguje i po zastavení sil.</string>
+    <string name="background_keep_alive_needs_shizuku">Potřebuje Šizuku</string>
+    <string name="background_whitelist">Limity pozadí pro zdvih</string>
+    <string name="background_whitelist_summary">Požádá shell o vyjmutí LSPatch ze seznamu z aplikace a ze záložních bloků. Nahlásí, co zařízení odmítlo.</string>
+    <string name="background_whitelist_running">Požádání o skořápku…</string>
+    <!-- What each background limit is called where a refusal is reported -->
+    <string name="background_limit_doze">Seznam povolených hráčů Doze</string>
+    <string name="background_limit_background">Práce na pozadí</string>
+    <string name="background_limit_any_background">Jakákoli práce na pozadí</string>
+    <string name="background_limit_standby">Pohotovostní bloky aplikací</string>
+    <string name="background_limit_autostart">Automatický start dodavatele</string>
 </resources>
