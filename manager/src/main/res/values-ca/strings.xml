@@ -269,4 +269,33 @@
     <string name="update_no_notes">Sense notes de llançament</string>
     <string name="update_back">Enrere</string>
     <string name="update_retry">Torna-ho a intentar</string>
+    <!-- The resident service, when it is present but not collecting logs -->
+    <string name="resident_service_title">LSPatch està en execució</string>
+    <string name="resident_service_text">Servint mòduls a aplicacions amb pegats</string>
+    <!-- Background restrictions -->
+    <string name="background_reports_title">LSPatch s\'ha aturat en segon pla</string>
+    <string name="background_reports_line">%1$s ha començat %2$d vegades sense arribar a LSPatch</string>
+    <string name="background_battery">Ignora l\'optimització de la bateria</string>
+    <string name="background_battery_done">L\'optimització de la bateria ja està desactivada per a LSPatch</string>
+    <string name="shizuku_open_app">Obre Shizuku</string>
+    <string name="stay_alive_title">Mantenir LSPatch accessible</string>
+    <string name="stay_alive_body">Una aplicació amb pegats demana a LSPatch els seus mòduls en el moment en què s\'inicia. Si aquest dispositiu ha aturat LSPatch en aquell moment, l\'aplicació torna a la llista de mòduls que recorda, i qualsevol canvi que s\'hagi fet des de llavors es perd. Cap d\'aquests dos és obligatori.</string>
+    <string name="stay_alive_notifications">Mostra una notificació en curs</string>
+    <string name="stay_alive_notifications_summary">Què impedeix que LSPatch arribi al primer contenidor que el sistema buida, i l\'únic senyal que està funcionant</string>
+    <string name="stay_alive_done">Fet</string>
+    <string name="background_whitelist_done">Aquest dispositiu va superar tots els límits demanats</string>
+    <string name="background_whitelist_refused">Rebutjat: %1$s</string>
+    <string name="background_battery_summary">La somnolència és el que impedeix que un gerent que ningú ha obert avui respongui.</string>
+    <string name="background_keep_alive">Reinicia quan s\'atura</string>
+    <string name="background_keep_alive_summary">Utilitza l\'intèrpret d\'ordres Shizuku per reiniciar LSPatch sempre que el troba desaparegut. El procés de l\'intèrpret d\'ordres sobreviu a LSPatch, de manera que funciona fins i tot després d\'una aturada forçada.</string>
+    <string name="background_keep_alive_needs_shizuku">Necessita Shizuku</string>
+    <string name="background_whitelist">Aixeca els límits de fons</string>
+    <string name="background_whitelist_summary">Demana a l\'intèrpret d\'ordres que tregui LSPatch de la llista de dosificació i dels contenidors d\'aplicacions en espera. Informa del que el dispositiu ha rebutjat.</string>
+    <string name="background_whitelist_running">Preguntant a la closca…</string>
+    <!-- What each background limit is called where a refusal is reported -->
+    <string name="background_limit_doze">Llista blanca de Doze</string>
+    <string name="background_limit_background">Treball de fons</string>
+    <string name="background_limit_any_background">Qualsevol treball de fons</string>
+    <string name="background_limit_standby">Cub d\'espera d\'aplicació</string>
+    <string name="background_limit_autostart">Inici automàtic del proveïdor</string>
 </resources>
