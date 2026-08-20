@@ -269,4 +269,33 @@
     <string name="update_no_notes">Geen vrystellingsnotas nie</string>
     <string name="update_back">Terug</string>
     <string name="update_retry">Probeer weer</string>
+    <!-- The resident service, when it is present but not collecting logs -->
+    <string name="resident_service_title">LSPatch loop tans</string>
+    <string name="resident_service_text">Bedien modules aan gepatchte programme</string>
+    <!-- Background restrictions -->
+    <string name="background_reports_title">LSPatch is in die agtergrond gestop</string>
+    <string name="background_reports_line">%1$s het %2$d keer begin sonder om LSPatch te bereik</string>
+    <string name="background_battery">Ignoreer batteryoptimalisering</string>
+    <string name="background_battery_done">Batteryoptimalisering is reeds af vir LSPatch</string>
+    <string name="shizuku_open_app">Maak Shizuku oop</string>
+    <string name="stay_alive_title">Hou LSPatch bereikbaar</string>
+    <string name="stay_alive_body">’n Opgedateerde toepassing vra LSPatch vir sy modules die oomblik as dit begin. As hierdie toestel LSPatch teen daardie tyd gestop het, val die toepassing terug na die modulelys wat dit onthou – en enigiets wat hier sedertdien verander het, word gemis. Nie een van hierdie is nodig nie.</string>
+    <string name="stay_alive_notifications">Wys \'n deurlopende kennisgewing</string>
+    <string name="stay_alive_notifications_summary">Wat LSPatch uit die eerste emmer hou wat die stelsel leegmaak – en die enigste teken dat dit loop</string>
+    <string name="stay_alive_done">Klaar</string>
+    <string name="background_whitelist_done">Hierdie toestel het elke limiet wat gevra is, opgehef</string>
+    <string name="background_whitelist_refused">Geweier: %1$s</string>
+    <string name="background_battery_summary">Dut is wat \'n bestuurder keer wat niemand vandag oopgemaak het nie om te antwoord</string>
+    <string name="background_keep_alive">Herbegin wanneer gestop</string>
+    <string name="background_keep_alive_summary">Gebruik die Shizuku-dop om LSPatch weer te begin wanneer dit weg is. Die dopproses oorleef LSPatch, so dit werk selfs na \'n geforseerde stop.</string>
+    <string name="background_keep_alive_needs_shizuku">Benodig Shizuku</string>
+    <string name="background_whitelist">Lig agtergrondlimiete op</string>
+    <string name="background_whitelist_summary">Vra die dop om LSPatch van die slaaplys en uit die app-bystand-emmers te verwyder. Rapporteer wat die toestel geweier het.</string>
+    <string name="background_whitelist_running">Vra die dop…</string>
+    <!-- What each background limit is called where a refusal is reported -->
+    <string name="background_limit_doze">Doze witlys</string>
+    <string name="background_limit_background">Agtergrondwerk</string>
+    <string name="background_limit_any_background">Enige agtergrondwerk</string>
+    <string name="background_limit_standby">Program-bystandhouer</string>
+    <string name="background_limit_autostart">Verkoper se outomatiese begin</string>
 </resources>
