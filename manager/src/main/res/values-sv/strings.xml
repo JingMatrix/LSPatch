@@ -269,4 +269,33 @@
     <string name="update_no_notes">Inga versionsfakta</string>
     <string name="update_back">Tillbaka</string>
     <string name="update_retry">Försök igen</string>
+    <!-- The resident service, when it is present but not collecting logs -->
+    <string name="resident_service_title">LSPatch körs</string>
+    <string name="resident_service_text">Servera moduler till lappade appar</string>
+    <!-- Background restrictions -->
+    <string name="background_reports_title">LSPatch stoppades i bakgrunden</string>
+    <string name="background_reports_line">%1$s startade %2$d gång(er) utan att nå LSPatch</string>
+    <string name="background_battery">Ignorera batterioptimering</string>
+    <string name="background_battery_done">Batterioptimering är redan avstängd för LSPatch</string>
+    <string name="shizuku_open_app">Open Shizuku</string>
+    <string name="stay_alive_title">Håll LSPatch nåbar</string>
+    <string name="stay_alive_body">En lappad app frågar LSPatch för sina moduler när den startar. Om denna enhet har stoppat LSPatch då, appen faller tillbaka till modullistan den kommer ihåg-och allt som ändrats här sedan missas. Ingen av dessa är nödvändig.</string>
+    <string name="stay_alive_notifications">Visa en pågående avisering</string>
+    <string name="stay_alive_notifications_summary">Det som håller LSPatch ur den första skopan systemet tömmer — och det enda tecken det är igång</string>
+    <string name="stay_alive_done">Klar</string>
+    <string name="background_whitelist_done">Denna enhet lyfte varje gräns som begärdes för</string>
+    <string name="background_whitelist_refused">Nej: %1$s</string>
+    <string name="background_battery_summary">Doze är det som stoppar en chef ingen öppnade idag från att svara</string>
+    <string name="background_keep_alive">Starta om när stoppad</string>
+    <string name="background_keep_alive_summary">Använder Shizuku skalet för att starta LSPatch igen när den hittar den borta. Skalprocessen överlever LSPatch, så den fungerar även efter en kraftstopp.</string>
+    <string name="background_keep_alive_needs_shizuku">Behöver Shizuku</string>
+    <string name="background_whitelist">Hiss bakgrundsgränser</string>
+    <string name="background_whitelist_summary">Frågar skalet att ta LSPatch från doze listan och ut ur app-standby hinkar. Rapporter vad enheten vägrade.</string>
+    <string name="background_whitelist_running">Fråga skalet…</string>
+    <!-- What each background limit is called where a refusal is reported -->
+    <string name="background_limit_doze">Doze vitlista</string>
+    <string name="background_limit_background">Bakgrundsarbete</string>
+    <string name="background_limit_any_background">Valfritt bakgrundsarbete</string>
+    <string name="background_limit_standby">Appens standby-skopa</string>
+    <string name="background_limit_autostart">Leverantörens auto-start</string>
 </resources>
