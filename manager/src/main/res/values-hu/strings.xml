@@ -269,4 +269,33 @@
     <string name="update_no_notes">Nincsenek kiadási megjegyzések</string>
     <string name="update_back">Vissza</string>
     <string name="update_retry">Újrapróbálkozás</string>
+    <!-- The resident service, when it is present but not collecting logs -->
+    <string name="resident_service_title">Az LSPatch fut</string>
+    <string name="resident_service_text">Modulok kiszolgálása javított alkalmazásokhoz</string>
+    <!-- Background restrictions -->
+    <string name="background_reports_title">Az LSPatch leállt a háttérben.</string>
+    <string name="background_reports_line">%1$s elkezdődött %2$d alkalommal LSPatch elérése nélkül</string>
+    <string name="background_battery">Az akkumulátoroptimalizálás figyelmen kívül hagyása</string>
+    <string name="background_battery_done">Az akkumulátoroptimalizálás már ki van kapcsolva az LSPatch esetében.</string>
+    <string name="shizuku_open_app">Nyissa meg a Shizukut</string>
+    <string name="stay_alive_title">Tartsa elérhetően az LSPatch-et</string>
+    <string name="stay_alive_body">Egy frissített alkalmazás az indulás pillanatában lekérdezi az LSPatch-től a moduljait. Ha ez az eszköz addigra leállította az LSPatch-et, az alkalmazás visszatér az általa megjegyzett modullistához – és az azóta itt történtek kimaradnak. Ezek egyike sem kötelező.</string>
+    <string name="stay_alive_notifications">Folyamatban lévő értesítés megjelenítése</string>
+    <string name="stay_alive_notifications_summary">Mi tartja távol az LSPatch-et az első tárolóedénytől, amit a rendszer kiürít – és az egyetlen jel, hogy fut</string>
+    <string name="stay_alive_done">Kész</string>
+    <string name="background_whitelist_done">Ez az eszköz minden kért határt átlépett</string>
+    <string name="background_whitelist_refused">Elutasítva: %1$s</string>
+    <string name="background_battery_summary">A szundikálás az, ami megakadályozza azt a vezetőt, akit ma senki sem nyitott meg, hogy válaszoljon.</string>
+    <string name="background_keep_alive">Újraindítás leállítás után</string>
+    <string name="background_keep_alive_summary">A Shizuku shell segítségével újraindítja az LSPatch-et, amikor azt elveszettnek találja. A shell folyamat túléli az LSPatch-et, így kényszerített leállítás után is működik.</string>
+    <string name="background_keep_alive_needs_shizuku">Shizuku kell</string>
+    <string name="background_whitelist">Háttérbeli korlátok feloldása</string>
+    <string name="background_whitelist_summary">Arra kéri a shellt, hogy vegye le az LSPatch-et a szundikálási listáról és az alkalmazás-készenléti állapot tárolókról. Jelenti, hogy mit utasított vissza az eszköz.</string>
+    <string name="background_whitelist_running">A shell megkérdezése…</string>
+    <!-- What each background limit is called where a refusal is reported -->
+    <string name="background_limit_doze">Doze fehérlistája</string>
+    <string name="background_limit_background">Háttérmunka</string>
+    <string name="background_limit_any_background">Bármilyen háttérmunka</string>
+    <string name="background_limit_standby">Alkalmazás készenléti tároló</string>
+    <string name="background_limit_autostart">Szállító automatikus indítása</string>
 </resources>
