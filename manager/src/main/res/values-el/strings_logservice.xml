@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="log_service_channel">Παρακολούθηση αρχείου καταγραφής</string>
+    <string name="log_service_title">Το LSPatch παρακολουθεί αρχεία καταγραφής</string>
+    <string name="log_service_text">Συλλογή πλαισίου και καταγραφών patched-app</string>
+</resources>
