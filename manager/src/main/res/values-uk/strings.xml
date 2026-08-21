@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="add">Додати</string>
     <string name="uninstall">Видалити</string>
@@ -7,6 +8,7 @@
     <string name="shizuku_available">Служба Shizuku доступна</string>
     <string name="shizuku_unavailable">Служба Shizuku не підключена</string>
     <string name="shizuku_off">Не підключено</string>
+    <!-- Shizuku failure dialog -->
     <string name="shizuku_failure_not_running">Shizuku не запущено</string>
     <string name="shizuku_failure_lost">З\'єднання з Shizuku втрачено</string>
     <string name="shizuku_failure_hint_lost">Shizuku працював, і LSPatch втратив з\'єднання з ним. Відкрийте LSPatch знову; якщо це не допомагає, перезапустіть Shizuku.</string>
@@ -28,12 +30,12 @@
     <string name="shizuku_failure_grant">Надати доступ</string>
     <string name="shizuku_failure_dismiss">Закрити</string>
     <string name="error_unknown">Невідома помилка</string>
-
     <!-- Home Screen -->
     <string name="home_shizuku_warning">Деякі функції недоступні</string>
     <string name="home_info_copied">Скопійовано до буфера обміну</string>
     <string name="home_device">Пристрій</string>
-
+    <string name="home_system">Система</string>
+    <string name="home_package">Пакет</string>
     <!-- Manage Screen -->
     <string name="screen_manage">Керування</string>
     <string name="manage_summary">Пропатчено: %1$d  ·  Модулів: %2$d</string>
@@ -57,7 +59,6 @@
     <string name="manage_info_desc">Переглянути в системних налаштуваннях застосунку</string>
     <string name="manage_module_applies_to">Застосовується до</string>
     <string name="manage_module_applies_none">Ще не увімкнено для жодного застосунку</string>
-
     <!-- Action drawer descriptions -->
     <string name="manage_update_loader_desc">Оновити вбудований завантажувач LSPatch до останньої версії</string>
     <string name="manage_module_scope_desc">Виберіть, які модулі застосовуються до цього застосунку</string>
@@ -65,13 +66,27 @@
     <string name="manage_uninstall_desc">Видалити пропатчений застосунок із цього пристрою</string>
     <string name="manage_module_settings_desc">Відкрити власний екран налаштувань модуля</string>
     <string name="manage_app_info_desc">Переглянути цей модуль у системних налаштуваннях застосунку</string>
-
     <!-- New Patch Screen -->
     <string name="screen_new_patch">Новий патч</string>
     <string name="patch_from_storage">Вибрати apk зі сховища</string>
     <string name="patch_mode">Режим патча</string>
+    <string name="patch_source_installed">Встановлений застосунок</string>
+    <string name="patch_source_storage">Зі сховища</string>
+    <string name="patch_source_repatch">Зібрано заново з оригіналу всередині пропатченого застосунку</string>
+    <string name="patch_local_modules_later">Вибираються пізніше, на сторінці цього застосунку</string>
     <string name="patch_local">Локальний</string>
+    <string name="patch_aspect_modules">Модулі</string>
+    <string name="patch_aspect_scope">Перехоплення</string>
+    <string name="patch_aspect_runs">Працює на</string>
+    <string name="patch_aspect_modules_local">Надається менеджером, не вбудовано — підтримує гаряче перезавантаження</string>
+    <string name="patch_aspect_modules_integrated">Вбудовані в пропатчений APK</string>
+    <string name="patch_aspect_scope_local">Можна змінити будь-коли, без повторного патчу</string>
+    <string name="patch_aspect_scope_integrated">Фіксоване — зміна потребує повторного патчу</string>
+    <string name="patch_aspect_runs_local">Лише цей пристрій</string>
+    <string name="patch_aspect_runs_integrated">Будь-який пристрій, із менеджером чи без</string>
+    <string name="patch_local_summary">Менеджер надає модулі для цього застосунку</string>
     <string name="patch_integrated">Інтегрований</string>
+    <string name="patch_integrated_summary">Модулі вбудовані в APK</string>
     <string name="patch_embed_modules">Вбудувати модулі</string>
     <string name="patch_debuggable">Налагоджуваний</string>
     <string name="patch_sigbypass">Обхід підпису</string>
@@ -85,71 +100,6 @@
     <string name="patch_install_hint_shizuku">Готово до тихого встановлення через Shizuku.</string>
     <string name="patch_install_hint_system">Готово до встановлення. Система попросить підтвердження.</string>
     <string name="patch_section_options">Параметри</string>
-    <string name="patch_status_patching">Патчинг…</string>
-    <string name="patch_status_error">Патч не вдався</string>
-    <string name="patch_status_error_desc">Щось пішло не так. Скопіюйте журнал, щоб побачити подробиці.</string>
-
-    <!-- Select Apps Screen -->
-
-    <!-- Signing keystore -->
-    <string name="settings_keystore">Сховище ключів підпису</string>
-    <string name="settings_keystore_default">Вбудоване</string>
-    <string name="settings_keystore_custom">Власне</string>
-    <string name="settings_keystore_file">Файл сховища ключів</string>
-    <string name="settings_keystore_password">Пароль</string>
-    <string name="settings_keystore_alias">Псевдонім</string>
-    <string name="settings_keystore_alias_password">Пароль псевдоніма</string>
-    <string name="settings_keystore_wrong_keystore">Неправильний тип сховища ключів</string>
-    <string name="settings_keystore_wrong_password">Неправильний пароль сховища ключів</string>
-    <string name="settings_keystore_wrong_alias">Неправильне ім\'я псевдоніма</string>
-    <string name="settings_keystore_wrong_alias_password">Неправильний пароль псевдоніма</string>
-    <string name="settings_detail_patch_logs">Докладні журнали патчу</string>
-    <string name="patch_inject_dex">Впровадити dex завантажувача</string>
-    <string name="patch_inject_dex_desc">Для застосунків з ізольованими службами, як-от рушії рендерингу браузерів, увімкніть цей параметр, щоб вони працювали належним чином.</string>
-
-    <!-- Repo Details Screen -->
-
-    <!-- Logs Screen -->
-    <string name="logs_word_wrap">Перенесення рядків</string>
-    <string name="logs_grant">Надати Shizuku</string>
-    <string name="logs_state_shizuku_title">Для журналів потрібен Shizuku</string>
-    <string name="logs_state_shizuku_body">LSPatch читає журнал пристрою через оболонку Shizuku. Надайте доступ, щоб переглядати тут журнали фреймворка та збоїв.</string>
-    <!-- Appearance -->
-    <string name="appearance_title">Вигляд</string>
-    <string name="appearance_floating_nav">Плаваюча навігація</string>
-    <string name="appearance_floating_nav_summary">Показувати навігацію як рухому кульку поверх вмісту замість панелі.</string>
-    <!-- Language -->
-    <string name="language_title">Мова</string>
-    <string name="home_status_ready">Готово</string>
-    <string name="home_status_limited">Обмежено</string>
-    <string name="update_up_to_date">У вас найновіша версія</string>
-    <string name="update_checking">Перевірка оновлень…</string>
-    <string name="update_check">Перевірити оновлення</string>
-    <string name="update_install">Завантажити та встановити</string>
-    <string name="update_open_release">Відкрити сторінку випуску</string>
-    <string name="update_downloading">Завантаження…</string>
-    <string name="update_installing">Встановлення…</string>
-    <string name="update_channel_release">Випуск</string>
-    <string name="update_channel_debug">Налагодження</string>
-    <string name="update_no_notes">Немає приміток до випуску</string>
-    <string name="update_back">Назад</string>
-    <string name="update_retry">Повторити</string>
-    <string name="home_system">Система</string>
-    <string name="patch_aspect_modules_local">Надається менеджером, не вбудовано — підтримує гаряче перезавантаження</string>
-    <string name="patch_source_installed">Встановлений застосунок</string>
-    <string name="patch_source_storage">Зі сховища</string>
-    <string name="patch_source_repatch">Зібрано заново з оригіналу всередині пропатченого застосунку</string>
-    <string name="patch_local_modules_later">Вибираються пізніше, на сторінці цього застосунку</string>
-    <string name="patch_aspect_modules">Модулі</string>
-    <string name="patch_aspect_scope">Перехоплення</string>
-    <string name="patch_aspect_runs">Працює на</string>
-    <string name="patch_aspect_modules_integrated">Вбудовані в пропатчений APK</string>
-    <string name="patch_aspect_scope_local">Можна змінити будь-коли, без повторного патчу</string>
-    <string name="patch_aspect_scope_integrated">Фіксоване — зміна потребує повторного патчу</string>
-    <string name="patch_aspect_runs_local">Лише цей пристрій</string>
-    <string name="patch_aspect_runs_integrated">Будь-який пристрій, із менеджером чи без</string>
-    <string name="patch_local_summary">Менеджер надає модулі для цього застосунку</string>
-    <string name="patch_integrated_summary">Модулі вбудовані в APK</string>
     <string name="patch_manifest_version_code">Код версії</string>
     <string name="patch_manifest_version_code_hint">Залиште порожнім, щоб зберегти вихідний</string>
     <string name="patch_manifest_label">Назва застосунку</string>
@@ -166,6 +116,10 @@
     <string name="patch_manifest_permissions_count">Додано: %1$d</string>
     <string name="patch_manifest_documents_provider">Відкрити приватні дані</string>
     <string name="patch_manifest_documents_provider_desc">Додає постачальника, щоб файловий менеджер міг переглядати теку приватних даних застосунку через системний вибір файлів, без root. Розширює те, що може дістатися до даних застосунку — лишіть вимкненим, якщо не потрібно.</string>
+    <string name="patch_status_patching">Патчинг…</string>
+    <string name="patch_status_error">Патч не вдався</string>
+    <string name="patch_status_error_desc">Щось пішло не так. Скопіюйте журнал, щоб побачити подробиці.</string>
+    <!-- Choosing what to patch, and which modules to embed -->
     <string name="patch_select_target">Виберіть застосунок для патчу</string>
     <string name="patch_target_loading">Завантаження встановлених застосунків…</string>
     <string name="patch_target_already_patched">Уже пропатчено</string>
@@ -185,6 +139,7 @@
     <string name="patch_module_origin_file">Зі сховища</string>
     <string name="patch_module_unreadable">Не вдалося прочитати з APK</string>
     <string name="patch_local_drop_warning">Перехід на локальний режим відкине %1$d вбудованих модулів. Будь-який модуль, якого у вас не встановлено, відновити не вдасться.</string>
+    <!-- Patch progress and outcome -->
     <string name="patch_effect_replace">Встановлюється поверх наявного застосунку; його дані зберігаються</string>
     <string name="patch_effect_uninstall">Спочатку потрібно видалити; дані застосунку буде втрачено</string>
     <string name="patch_stage_reading">Читання APK</string>
@@ -213,6 +168,7 @@
     <string name="patch_hide_log">Сховати журнал</string>
     <string name="patch_copy_log">Копіювати звіт</string>
     <string name="patch_share_log">Поділитися звітом</string>
+    <string name="logs_word_wrap">Перенесення рядків</string>
     <string name="patch_log_copied">Журнал скопійовано</string>
     <string name="patch_log_empty">Патчер не видав жодного виводу</string>
     <string name="patch_progress_running">Патчиться %1$s</string>
@@ -223,6 +179,7 @@
     <string name="patch_export_running">Експортування…</string>
     <string name="patch_export_done">Експортовано</string>
     <string name="patch_export_failed">Не вдалося експортувати</string>
+    <!-- App detail page -->
     <string name="appdetail_modules">Модулі</string>
     <string name="appdetail_actions">Дії</string>
     <string name="appdetail_info">Відомості</string>
@@ -259,28 +216,68 @@
     <string name="manage_restore_running_line">Відновлення %1$s</string>
     <string name="manage_export_desc">Зберегти копію пропатченого APK</string>
     <string name="cancel">Скасувати</string>
+    <!-- Signing keystore -->
+    <string name="settings_keystore">Сховище ключів підпису</string>
+    <string name="settings_keystore_default">Вбудоване</string>
+    <string name="settings_keystore_custom">Власне</string>
     <string name="settings_keystore_default_desc">Власний ключ LSPatch. Правильний вибір, якщо вам не потрібен конкретний підпис.</string>
     <string name="settings_keystore_custom_desc">Підписати власним сховищем ключів (BKS).</string>
-    <string name="update_reinstall">Перевстановити цю збірку</string>
-    <string name="update_check_failed">Не вдалося перевірити оновлення</string>
-    <string name="home_package">Пакет</string>
+    <string name="settings_keystore_file">Файл сховища ключів</string>
+    <string name="settings_keystore_password">Пароль</string>
+    <string name="settings_keystore_alias">Псевдонім</string>
+    <string name="settings_keystore_alias_password">Пароль псевдоніма</string>
+    <string name="settings_keystore_wrong_keystore">Неправильний тип сховища ключів</string>
+    <string name="settings_keystore_wrong_password">Неправильний пароль сховища ключів</string>
+    <string name="settings_keystore_wrong_alias">Неправильне ім\'я псевдоніма</string>
+    <string name="settings_keystore_wrong_alias_password">Неправильний пароль псевдоніма</string>
+    <string name="settings_detail_patch_logs">Докладні журнали патчу</string>
     <string name="settings_cloak_dialog_title">Змінити назву пакета</string>
     <string name="settings_cloak_package">Нова назва пакета</string>
     <string name="settings_cloak_randomize">Випадково</string>
+    <string name="settings_cloak_warning">Це встановлює нову копію LSPatch Manager під іншою назвою пакета, оновлює застосунки в локальному режимі, а потім видаляє поточну копію. Вбудовані патчі не зачіпаються. Shizuku має залишатися доступним. Після встановлення надайте Shizuku новому пакету.</string>
     <string name="settings_cloak_invalid">Введіть дійсну назву пакета (наприклад, org.example.app)</string>
     <string name="settings_cloak_need_shizuku">Щоб змінити назву пакета, потрібен Shizuku</string>
     <string name="settings_cloak_confirm">Продовжити</string>
-    <string name="settings_cloak_warning">Це встановлює нову копію LSPatch Manager під іншою назвою пакета, оновлює застосунки в локальному режимі, а потім видаляє поточну копію. Вбудовані патчі не зачіпаються. Shizuku має залишатися доступним. Після встановлення надайте Shizuku новому пакету.</string>
     <string name="settings_revert_dialog_title">Повернути початковий пакет</string>
-    <string name="settings_revert_confirm">Повернути</string>
     <string name="settings_revert_warning">Завантажує найновіший manager.apk із випусків JingMatrix/LSPatch, встановлює його як org.lsposed.lspatch (налаштування та зв\'язки локальних застосунків відновлюються), а потім видаляє цей застосунок. Потребує Shizuku та мережі.</string>
+    <string name="settings_revert_confirm">Повернути</string>
+    <string name="patch_inject_dex">Впровадити dex завантажувача</string>
+    <string name="patch_inject_dex_desc">Для застосунків з ізольованими службами, як-от рушії рендерингу браузерів, увімкніть цей параметр, щоб вони працювали належним чином.</string>
+    <!-- Repo Details Screen -->
+    <!-- Logs Screen -->
+    <string name="logs_grant">Надати Shizuku</string>
+    <string name="logs_state_shizuku_title">Для журналів потрібен Shizuku</string>
+    <string name="logs_state_shizuku_body">LSPatch читає журнал пристрою через оболонку Shizuku. Надайте доступ, щоб переглядати тут журнали фреймворка та збоїв.</string>
+    <!-- Appearance -->
+    <string name="appearance_title">Вигляд</string>
+    <string name="appearance_floating_nav">Плаваюча навігація</string>
+    <string name="appearance_floating_nav_summary">Показувати навігацію як рухому кульку поверх вмісту замість панелі.</string>
+    <!-- Language -->
+    <string name="language_title">Мова</string>
+    <string name="home_status_ready">Готово</string>
+    <string name="home_status_limited">Обмежено</string>
+    <string name="update_checking">Перевірка оновлень…</string>
+    <string name="update_check">Перевірити оновлення</string>
+    <string name="update_install">Завантажити та встановити</string>
+    <string name="update_reinstall">Перевстановити цю збірку</string>
+    <string name="update_open_release">Відкрити сторінку випуску</string>
+    <string name="update_downloading">Завантаження…</string>
+    <string name="update_installing">Встановлення…</string>
+    <string name="update_channel_release">Випуск</string>
+    <string name="update_channel_debug">Налагодження</string>
+    <string name="update_up_to_date">У вас найновіша версія</string>
+    <string name="update_check_failed">Не вдалося перевірити оновлення</string>
+    <string name="update_no_notes">Немає приміток до випуску</string>
+    <string name="update_back">Назад</string>
+    <string name="update_retry">Повторити</string>
+    <!-- The resident service, when it is present but not collecting logs -->
     <string name="resident_service_title">LSPatch працює</string>
     <string name="resident_service_text">Видає модулі пропатченим застосункам</string>
+    <!-- Background restrictions -->
     <string name="background_reports_title">Цей пристрій зупинив LSPatch у фоні</string>
     <string name="background_reports_line">%1$s запускався %2$d раз(и) без зв\'язку з LSPatch</string>
     <string name="background_battery">Ігнорувати оптимізацію батареї</string>
     <string name="background_battery_done">Оптимізацію батареї для LSPatch уже вимкнено</string>
-    <string name="background_battery_summary">Саме Doze не дає відповісти менеджеру, якого сьогодні ніхто не відкривав</string>
     <string name="shizuku_open_app">Відкрити Shizuku</string>
     <string name="stay_alive_title">Тримати LSPatch доступним</string>
     <string name="stay_alive_body">Пропатчений застосунок запитує в LSPatch свої модулі щойно запускається. Якщо на той час пристрій уже зупинив LSPatch, застосунок бере запам\'ятований список модулів — і все, що змінено тут відтоді, буде пропущено. Жоден із цих дозволів не є обов\'язковим.</string>
@@ -289,12 +286,14 @@
     <string name="stay_alive_done">Готово</string>
     <string name="background_whitelist_done">Пристрій зняв усі запитані обмеження</string>
     <string name="background_whitelist_refused">Відхилено: %1$s</string>
+    <string name="background_battery_summary">Саме Doze не дає відповісти менеджеру, якого сьогодні ніхто не відкривав</string>
     <string name="background_keep_alive">Перезапускати після зупинки</string>
     <string name="background_keep_alive_summary">Через оболонку Shizuku запускає LSPatch знову, щойно знаходить його зупиненим. Процес оболонки живе довше за LSPatch, тож це діє навіть після примусової зупинки.</string>
     <string name="background_keep_alive_needs_shizuku">Потрібен Shizuku</string>
     <string name="background_whitelist">Зняти фонові обмеження</string>
     <string name="background_whitelist_summary">Просить оболонку прибрати LSPatch зі списку Doze і з груп очікування застосунків. Повідомляє, у чому пристрій відмовив.</string>
     <string name="background_whitelist_running">Запит до оболонки…</string>
+    <!-- What each background limit is called where a refusal is reported -->
     <string name="background_limit_doze">Білий список Doze</string>
     <string name="background_limit_background">Робота у фоні</string>
     <string name="background_limit_any_background">Будь-яка робота у фоні</string>
