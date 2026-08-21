@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="add">追加</string>
     <string name="uninstall">アンインストール</string>
@@ -7,6 +8,7 @@
     <string name="shizuku_available">Shizuku サービスが利用可能</string>
     <string name="shizuku_unavailable">Shizuku サービスに接続されていません</string>
     <string name="shizuku_off">未接続</string>
+    <!-- Shizuku failure dialog -->
     <string name="shizuku_failure_not_running">Shizuku が起動していません</string>
     <string name="shizuku_failure_lost">Shizuku との接続が切れました</string>
     <string name="shizuku_failure_hint_lost">Shizuku は動作していましたが、LSPatch が接続を失いました。LSPatch を開き直してください。解決しない場合は Shizuku を再起動してください。</string>
@@ -28,12 +30,12 @@
     <string name="shizuku_failure_grant">アクセスを許可</string>
     <string name="shizuku_failure_dismiss">閉じる</string>
     <string name="error_unknown">不明なエラー</string>
-
     <!-- Home Screen -->
     <string name="home_shizuku_warning">一部の機能が利用できません</string>
     <string name="home_info_copied">クリップボードにコピーしました</string>
     <string name="home_device">デバイス</string>
-
+    <string name="home_system">システム</string>
+    <string name="home_package">パッケージ</string>
     <!-- Manage Screen -->
     <string name="screen_manage">管理</string>
     <string name="manage_summary">%1$d 個パッチ済み  ·  %2$d 個のモジュール</string>
@@ -57,7 +59,6 @@
     <string name="manage_info_desc">システムのアプリ設定で表示</string>
     <string name="manage_module_applies_to">適用先</string>
     <string name="manage_module_applies_none">まだどのアプリでも有効になっていません</string>
-
     <!-- Action drawer descriptions -->
     <string name="manage_update_loader_desc">組み込みの LSPatch ローダーを最新バージョンにアップグレードします</string>
     <string name="manage_module_scope_desc">このアプリに適用するモジュールを選択します</string>
@@ -65,13 +66,27 @@
     <string name="manage_uninstall_desc">パッチ済みのアプリをこのデバイスから削除します</string>
     <string name="manage_module_settings_desc">モジュール独自の設定画面を開きます</string>
     <string name="manage_app_info_desc">このモジュールをシステムのアプリ設定で表示します</string>
-
     <!-- New Patch Screen -->
     <string name="screen_new_patch">新規パッチ</string>
     <string name="patch_from_storage">ストレージから apk を選択</string>
     <string name="patch_mode">パッチモード</string>
+    <string name="patch_source_installed">インストール済みのアプリ</string>
+    <string name="patch_source_storage">ストレージから</string>
+    <string name="patch_source_repatch">パッチ済みアプリ内の元の APK から再ビルド</string>
+    <string name="patch_local_modules_later">後でこのアプリのページで選択します</string>
     <string name="patch_local">ローカル</string>
+    <string name="patch_aspect_modules">モジュール</string>
+    <string name="patch_aspect_scope">スコープ</string>
+    <string name="patch_aspect_runs">動作環境</string>
+    <string name="patch_aspect_modules_local">マネージャーが提供、埋め込みなし、ホットリロードに対応</string>
+    <string name="patch_aspect_modules_integrated">パッチ済み APK に埋め込み</string>
+    <string name="patch_aspect_scope_local">いつでも変更可能、再パッチ不要</string>
+    <string name="patch_aspect_scope_integrated">固定 — 変更するには再パッチが必要</string>
+    <string name="patch_aspect_runs_local">この端末のみ</string>
+    <string name="patch_aspect_runs_integrated">マネージャーの有無にかかわらず任意の端末</string>
+    <string name="patch_local_summary">このアプリのモジュールはマネージャーが提供します</string>
     <string name="patch_integrated">統合</string>
+    <string name="patch_integrated_summary">モジュールを APK に埋め込みます</string>
     <string name="patch_embed_modules">モジュールを組み込む</string>
     <string name="patch_debuggable">デバッグ可能</string>
     <string name="patch_sigbypass">署名バイパス</string>
@@ -85,71 +100,6 @@
     <string name="patch_install_hint_shizuku">Shizuku を通じてサイレントインストールする準備ができました。</string>
     <string name="patch_install_hint_system">インストールの準備ができました。システムが確認を求めます。</string>
     <string name="patch_section_options">オプション</string>
-    <string name="patch_status_patching">パッチ適用中…</string>
-    <string name="patch_status_error">パッチに失敗しました</string>
-    <string name="patch_status_error_desc">問題が発生しました。ログをコピーして詳細を確認してください。</string>
-
-    <!-- Select Apps Screen -->
-
-    <!-- Signing keystore -->
-    <string name="settings_keystore">署名キーストア</string>
-    <string name="settings_keystore_default">組み込み</string>
-    <string name="settings_keystore_custom">カスタム</string>
-    <string name="settings_keystore_file">キーストアファイル</string>
-    <string name="settings_keystore_password">パスワード</string>
-    <string name="settings_keystore_alias">エイリアス</string>
-    <string name="settings_keystore_alias_password">エイリアスのパスワード</string>
-    <string name="settings_keystore_wrong_keystore">キーストアの種類が間違っています</string>
-    <string name="settings_keystore_wrong_password">キーストアのパスワードが間違っています</string>
-    <string name="settings_keystore_wrong_alias">エイリアス名が間違っています</string>
-    <string name="settings_keystore_wrong_alias_password">エイリアスのパスワードが間違っています</string>
-    <string name="settings_detail_patch_logs">詳細なパッチログ</string>
-    <string name="patch_inject_dex">ローダー dex を注入</string>
-    <string name="patch_inject_dex_desc">ブラウザのレンダリングエンジンなど、独立したサービスを持つアプリでは、正しく動作させるためにこのオプションをオンにしてください。</string>
-
-    <!-- Repo Details Screen -->
-
-    <!-- Logs Screen -->
-    <string name="logs_word_wrap">折り返し</string>
-    <string name="logs_grant">Shizuku を許可</string>
-    <string name="logs_state_shizuku_title">ログには Shizuku が必要です</string>
-    <string name="logs_state_shizuku_body">LSPatch は Shizuku シェルを通じてデバイスのログを読み取ります。ここで framework およびクラッシュログを表示するにはアクセスを許可してください。</string>
-    <!-- Appearance -->
-    <string name="appearance_title">外観</string>
-    <string name="appearance_floating_nav">フローティングナビゲーション</string>
-    <string name="appearance_floating_nav_summary">ナビゲーションをバーではなく、コンテンツ上の移動可能なボールとして表示します。</string>
-    <!-- Language -->
-    <string name="language_title">言語</string>
-    <string name="home_status_ready">準備完了</string>
-    <string name="home_status_limited">制限あり</string>
-    <string name="update_up_to_date">最新の状態です</string>
-    <string name="update_checking">アップデートを確認中…</string>
-    <string name="update_check">アップデートを確認</string>
-    <string name="update_install">ダウンロードしてインストール</string>
-    <string name="update_open_release">リリースページを開く</string>
-    <string name="update_downloading">ダウンロード中…</string>
-    <string name="update_installing">インストール中…</string>
-    <string name="update_channel_release">Release</string>
-    <string name="update_channel_debug">Debug</string>
-    <string name="update_no_notes">リリースノートはありません</string>
-    <string name="update_back">戻る</string>
-    <string name="update_retry">再試行</string>
-    <string name="home_system">システム</string>
-    <string name="patch_aspect_modules_local">マネージャーが提供、埋め込みなし、ホットリロードに対応</string>
-    <string name="patch_source_installed">インストール済みのアプリ</string>
-    <string name="patch_source_storage">ストレージから</string>
-    <string name="patch_source_repatch">パッチ済みアプリ内の元の APK から再ビルド</string>
-    <string name="patch_local_modules_later">後でこのアプリのページで選択します</string>
-    <string name="patch_aspect_modules">モジュール</string>
-    <string name="patch_aspect_scope">スコープ</string>
-    <string name="patch_aspect_runs">動作環境</string>
-    <string name="patch_aspect_modules_integrated">パッチ済み APK に埋め込み</string>
-    <string name="patch_aspect_scope_local">いつでも変更可能、再パッチ不要</string>
-    <string name="patch_aspect_scope_integrated">固定 — 変更するには再パッチが必要</string>
-    <string name="patch_aspect_runs_local">この端末のみ</string>
-    <string name="patch_aspect_runs_integrated">マネージャーの有無にかかわらず任意の端末</string>
-    <string name="patch_local_summary">このアプリのモジュールはマネージャーが提供します</string>
-    <string name="patch_integrated_summary">モジュールを APK に埋め込みます</string>
     <string name="patch_manifest_version_code">バージョンコード</string>
     <string name="patch_manifest_version_code_hint">空欄のままにすると元の値を保持します</string>
     <string name="patch_manifest_label">アプリ名</string>
@@ -166,6 +116,10 @@
     <string name="patch_manifest_permissions_count">%1$d 件追加</string>
     <string name="patch_manifest_documents_provider">非公開データを公開</string>
     <string name="patch_manifest_documents_provider_desc">プロバイダーを追加し、ルート権限なしでシステムのファイル選択画面からアプリの非公開データフォルダーをファイルマネージャーで閲覧できるようにします。アプリのデータにアクセスできる範囲が広がるため、必要でなければオフのままにしてください。</string>
+    <string name="patch_status_patching">パッチ適用中…</string>
+    <string name="patch_status_error">パッチに失敗しました</string>
+    <string name="patch_status_error_desc">問題が発生しました。ログをコピーして詳細を確認してください。</string>
+    <!-- Choosing what to patch, and which modules to embed -->
     <string name="patch_select_target">パッチするアプリを選択</string>
     <string name="patch_target_loading">インストール済みのアプリを読み込み中…</string>
     <string name="patch_target_already_patched">パッチ済み</string>
@@ -185,6 +139,7 @@
     <string name="patch_module_origin_file">ストレージから</string>
     <string name="patch_module_unreadable">APK から読み取れませんでした</string>
     <string name="patch_local_drop_warning">ローカルモードに切り替えると、埋め込まれた %1$d 個のモジュールが破棄されます。インストールしていないモジュールは復元できません。</string>
+    <!-- Patch progress and outcome -->
     <string name="patch_effect_replace">既存のアプリに上書きインストールし、データは保持されます</string>
     <string name="patch_effect_uninstall">先にアンインストールが必要で、アプリのデータは失われます</string>
     <string name="patch_stage_reading">APK を読み取り中</string>
@@ -213,6 +168,7 @@
     <string name="patch_hide_log">ログを非表示</string>
     <string name="patch_copy_log">レポートをコピー</string>
     <string name="patch_share_log">レポートを共有</string>
+    <string name="logs_word_wrap">折り返し</string>
     <string name="patch_log_copied">ログをコピーしました</string>
     <string name="patch_log_empty">パッチャーは何も出力しませんでした</string>
     <string name="patch_progress_running">%1$s をパッチ中</string>
@@ -223,6 +179,7 @@
     <string name="patch_export_running">エクスポート中…</string>
     <string name="patch_export_done">エクスポートしました</string>
     <string name="patch_export_failed">エクスポートに失敗しました</string>
+    <!-- App detail page -->
     <string name="appdetail_modules">モジュール</string>
     <string name="appdetail_actions">操作</string>
     <string name="appdetail_info">詳細</string>
@@ -259,28 +216,68 @@
     <string name="manage_restore_running_line">%1$s を復元中</string>
     <string name="manage_export_desc">パッチ済み APK のコピーを保存します</string>
     <string name="cancel">キャンセル</string>
+    <!-- Signing keystore -->
+    <string name="settings_keystore">署名キーストア</string>
+    <string name="settings_keystore_default">組み込み</string>
+    <string name="settings_keystore_custom">カスタム</string>
     <string name="settings_keystore_default_desc">LSPatch 独自のキー。特定の署名が必要でない限り、これが適切な選択です。</string>
     <string name="settings_keystore_custom_desc">独自のキーストア（BKS）で署名します。</string>
-    <string name="update_reinstall">このビルドを再インストール</string>
-    <string name="update_check_failed">更新を確認できませんでした</string>
-    <string name="home_package">パッケージ</string>
+    <string name="settings_keystore_file">キーストアファイル</string>
+    <string name="settings_keystore_password">パスワード</string>
+    <string name="settings_keystore_alias">エイリアス</string>
+    <string name="settings_keystore_alias_password">エイリアスのパスワード</string>
+    <string name="settings_keystore_wrong_keystore">キーストアの種類が間違っています</string>
+    <string name="settings_keystore_wrong_password">キーストアのパスワードが間違っています</string>
+    <string name="settings_keystore_wrong_alias">エイリアス名が間違っています</string>
+    <string name="settings_keystore_wrong_alias_password">エイリアスのパスワードが間違っています</string>
+    <string name="settings_detail_patch_logs">詳細なパッチログ</string>
     <string name="settings_cloak_dialog_title">パッケージ名を変更</string>
     <string name="settings_cloak_package">新しいパッケージ名</string>
     <string name="settings_cloak_randomize">ランダム</string>
+    <string name="settings_cloak_warning">LSPatch Manager を別のパッケージ名で新しくインストールし、ローカルモードのアプリを更新してから、現在のものをアンインストールします。統合パッチには影響しません。Shizuku は利用可能なままにしてください。インストール後、新しいパッケージに Shizuku を許可してください。</string>
     <string name="settings_cloak_invalid">有効なパッケージ名を入力してください（例: org.example.app）</string>
     <string name="settings_cloak_need_shizuku">パッケージ名の変更には Shizuku が必要です</string>
     <string name="settings_cloak_confirm">続行</string>
-    <string name="settings_cloak_warning">LSPatch Manager を別のパッケージ名で新しくインストールし、ローカルモードのアプリを更新してから、現在のものをアンインストールします。統合パッチには影響しません。Shizuku は利用可能なままにしてください。インストール後、新しいパッケージに Shizuku を許可してください。</string>
     <string name="settings_revert_dialog_title">元のパッケージに戻す</string>
-    <string name="settings_revert_confirm">元に戻す</string>
     <string name="settings_revert_warning">JingMatrix/LSPatch のリリースから最新の manager.apk をダウンロードし、org.lsposed.lspatch としてインストールして（設定とローカルアプリのリンクが復元されます）、このアプリをアンインストールします。Shizuku とネットワークが必要です。</string>
+    <string name="settings_revert_confirm">元に戻す</string>
+    <string name="patch_inject_dex">ローダー dex を注入</string>
+    <string name="patch_inject_dex_desc">ブラウザのレンダリングエンジンなど、独立したサービスを持つアプリでは、正しく動作させるためにこのオプションをオンにしてください。</string>
+    <!-- Repo Details Screen -->
+    <!-- Logs Screen -->
+    <string name="logs_grant">Shizuku を許可</string>
+    <string name="logs_state_shizuku_title">ログには Shizuku が必要です</string>
+    <string name="logs_state_shizuku_body">LSPatch は Shizuku シェルを通じてデバイスのログを読み取ります。ここで framework およびクラッシュログを表示するにはアクセスを許可してください。</string>
+    <!-- Appearance -->
+    <string name="appearance_title">外観</string>
+    <string name="appearance_floating_nav">フローティングナビゲーション</string>
+    <string name="appearance_floating_nav_summary">ナビゲーションをバーではなく、コンテンツ上の移動可能なボールとして表示します。</string>
+    <!-- Language -->
+    <string name="language_title">言語</string>
+    <string name="home_status_ready">準備完了</string>
+    <string name="home_status_limited">制限あり</string>
+    <string name="update_checking">アップデートを確認中…</string>
+    <string name="update_check">アップデートを確認</string>
+    <string name="update_install">ダウンロードしてインストール</string>
+    <string name="update_reinstall">このビルドを再インストール</string>
+    <string name="update_open_release">リリースページを開く</string>
+    <string name="update_downloading">ダウンロード中…</string>
+    <string name="update_installing">インストール中…</string>
+    <string name="update_channel_release">正式版</string>
+    <string name="update_channel_debug">Debug</string>
+    <string name="update_up_to_date">最新の状態です</string>
+    <string name="update_check_failed">更新を確認できませんでした</string>
+    <string name="update_no_notes">リリースノートはありません</string>
+    <string name="update_back">戻る</string>
+    <string name="update_retry">再試行</string>
+    <!-- The resident service, when it is present but not collecting logs -->
     <string name="resident_service_title">LSPatch は動作中です</string>
     <string name="resident_service_text">パッチ済みアプリにモジュールを提供しています</string>
+    <!-- Background restrictions -->
     <string name="background_reports_title">この端末がバックグラウンドで LSPatch を停止しました</string>
     <string name="background_reports_line">%1$s は LSPatch に届かないまま %2$d 回起動しました</string>
     <string name="background_battery">電池の最適化を無視する</string>
     <string name="background_battery_done">LSPatch は既に電池の最適化から除外されています</string>
-    <string name="background_battery_summary">今日誰も開いていないマネージャーが応答できないのは Doze のためです</string>
     <string name="shizuku_open_app">Shizuku を開く</string>
     <string name="stay_alive_title">LSPatch を応答できる状態に保つ</string>
     <string name="stay_alive_body">パッチ済みアプリは起動した瞬間に LSPatch へモジュールを要求します。その時点で端末が LSPatch を停止していれば、アプリは記憶しているモジュール一覧に頼ることになり、以後ここで変更した内容は反映されません。どちらも必須ではありません。</string>
@@ -289,12 +286,14 @@
     <string name="stay_alive_done">完了</string>
     <string name="background_whitelist_done">この端末は要求したすべての制限を解除しました</string>
     <string name="background_whitelist_refused">拒否: %1$s</string>
+    <string name="background_battery_summary">今日誰も開いていないマネージャーが応答できないのは Doze のためです</string>
     <string name="background_keep_alive">停止されたら再起動する</string>
     <string name="background_keep_alive_summary">Shizuku のシェルを使い、LSPatch が消えていれば起動し直します。シェルのプロセスは LSPatch より長く残るため、強制停止の後でも機能します。</string>
     <string name="background_keep_alive_needs_shizuku">Shizuku が必要です</string>
     <string name="background_whitelist">バックグラウンド制限を解除する</string>
     <string name="background_whitelist_summary">Doze リストとアプリスタンバイバケットから LSPatch を外すようシェルに依頼し、端末が拒否した項目をそのまま報告します。</string>
     <string name="background_whitelist_running">シェルに依頼中…</string>
+    <!-- What each background limit is called where a refusal is reported -->
     <string name="background_limit_doze">Doze の除外リスト</string>
     <string name="background_limit_background">バックグラウンド動作</string>
     <string name="background_limit_any_background">あらゆるバックグラウンド動作</string>
