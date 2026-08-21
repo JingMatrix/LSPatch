@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="add">Ajouter</string>
     <string name="uninstall">Désinstaller</string>
@@ -7,6 +8,7 @@
     <string name="shizuku_available">Service Shizuku disponible</string>
     <string name="shizuku_unavailable">Service Shizuku non connecté</string>
     <string name="shizuku_off">Non connecté</string>
+    <!-- Shizuku failure dialog -->
     <string name="shizuku_failure_not_running">Shizuku n\'est pas lancé</string>
     <string name="shizuku_failure_lost">Connexion à Shizuku perdue</string>
     <string name="shizuku_failure_hint_lost">Shizuku fonctionnait et LSPatch a perdu la connexion. Rouvre LSPatch ; si cela ne suffit pas, redémarre Shizuku.</string>
@@ -28,12 +30,12 @@
     <string name="shizuku_failure_grant">Accorder l\'accès</string>
     <string name="shizuku_failure_dismiss">Fermer</string>
     <string name="error_unknown">Erreur inconnue</string>
-
     <!-- Home Screen -->
     <string name="home_shizuku_warning">Certaines fonctionnalités sont indisponibles</string>
     <string name="home_info_copied">Copié dans le presse-papiers</string>
     <string name="home_device">Appareil</string>
-
+    <string name="home_system">Système</string>
+    <string name="home_package">Paquet</string>
     <!-- Manage Screen -->
     <string name="screen_manage">Gérer</string>
     <string name="manage_summary">%1$d patchées  ·  %2$d modules</string>
@@ -57,7 +59,6 @@
     <string name="manage_info_desc">Voir dans les paramètres système de l\'application</string>
     <string name="manage_module_applies_to">S\'applique à</string>
     <string name="manage_module_applies_none">Activé pour aucune application pour l\'instant</string>
-
     <!-- Action drawer descriptions -->
     <string name="manage_update_loader_desc">Mettre à niveau le loader LSPatch intégré vers la dernière version</string>
     <string name="manage_module_scope_desc">Choisir quels modules s\'appliquent à cette application</string>
@@ -65,13 +66,27 @@
     <string name="manage_uninstall_desc">Retirer l\'application patchée de cet appareil</string>
     <string name="manage_module_settings_desc">Ouvrir l\'écran de configuration propre au module</string>
     <string name="manage_app_info_desc">Voir ce module dans les paramètres système de l\'application</string>
-
     <!-- New Patch Screen -->
     <string name="screen_new_patch">Nouveau patch</string>
     <string name="patch_from_storage">Sélectionner des apk depuis le stockage</string>
     <string name="patch_mode">Mode de patch</string>
+    <string name="patch_source_installed">Application installée</string>
+    <string name="patch_source_storage">Depuis le stockage</string>
+    <string name="patch_source_repatch">Reconstruit à partir de l\'original contenu dans l\'application patchée</string>
+    <string name="patch_local_modules_later">Choisis plus tard, sur la page de cette application</string>
     <string name="patch_local">Local</string>
+    <string name="patch_aspect_modules">Modules</string>
+    <string name="patch_aspect_scope">Portée</string>
+    <string name="patch_aspect_runs">S\'exécute sur</string>
+    <string name="patch_aspect_modules_local">Fourni par le gestionnaire, non intégré — prend en charge le rechargement à chaud</string>
+    <string name="patch_aspect_modules_integrated">Intégrés dans l\'APK patché</string>
+    <string name="patch_aspect_scope_local">Modifiable à tout moment, sans re-patcher</string>
+    <string name="patch_aspect_scope_integrated">Fixe — la modifier implique de re-patcher</string>
+    <string name="patch_aspect_runs_local">Cet appareil uniquement</string>
+    <string name="patch_aspect_runs_integrated">N\'importe quel appareil, avec ou sans le gestionnaire</string>
+    <string name="patch_local_summary">Le gestionnaire fournit les modules de cette application</string>
     <string name="patch_integrated">Intégré</string>
+    <string name="patch_integrated_summary">Les modules sont intégrés dans l\'APK</string>
     <string name="patch_embed_modules">Intégrer des modules</string>
     <string name="patch_debuggable">Débogable</string>
     <string name="patch_sigbypass">Contournement de signature</string>
@@ -85,71 +100,6 @@
     <string name="patch_install_hint_shizuku">Prêt à installer silencieusement via Shizuku.</string>
     <string name="patch_install_hint_system">Prêt à installer. Votre système vous demandera de confirmer.</string>
     <string name="patch_section_options">Options</string>
-    <string name="patch_status_patching">Patch en cours…</string>
-    <string name="patch_status_error">Échec du patch</string>
-    <string name="patch_status_error_desc">Une erreur s\'est produite. Copiez le journal pour voir les détails.</string>
-
-    <!-- Select Apps Screen -->
-
-    <!-- Signing keystore -->
-    <string name="settings_keystore">Keystore de signature</string>
-    <string name="settings_keystore_default">Intégré</string>
-    <string name="settings_keystore_custom">Personnalisé</string>
-    <string name="settings_keystore_file">Fichier keystore</string>
-    <string name="settings_keystore_password">Mot de passe</string>
-    <string name="settings_keystore_alias">Alias</string>
-    <string name="settings_keystore_alias_password">Mot de passe de l\'alias</string>
-    <string name="settings_keystore_wrong_keystore">Type de keystore incorrect</string>
-    <string name="settings_keystore_wrong_password">Mot de passe du keystore incorrect</string>
-    <string name="settings_keystore_wrong_alias">Nom d\'alias incorrect</string>
-    <string name="settings_keystore_wrong_alias_password">Mot de passe de l\'alias incorrect</string>
-    <string name="settings_detail_patch_logs">Journaux de patch détaillés</string>
-    <string name="patch_inject_dex">Injecter le dex du loader</string>
-    <string name="patch_inject_dex_desc">Pour les applications avec des services isolés, comme les moteurs de rendu des navigateurs, veuillez activer cette option pour garantir leur bon fonctionnement.</string>
-
-    <!-- Repo Details Screen -->
-
-    <!-- Logs Screen -->
-    <string name="logs_word_wrap">Retour à la ligne</string>
-    <string name="logs_grant">Accorder Shizuku</string>
-    <string name="logs_state_shizuku_title">Les journaux nécessitent Shizuku</string>
-    <string name="logs_state_shizuku_body">LSPatch lit le journal de l\'appareil via le shell Shizuku. Accordez l\'accès pour voir ici les journaux de framework et de plantage.</string>
-    <!-- Appearance -->
-    <string name="appearance_title">Apparence</string>
-    <string name="appearance_floating_nav">Navigation flottante</string>
-    <string name="appearance_floating_nav_summary">Afficher la navigation sous forme de bulle déplaçable sur le contenu plutôt qu\'en barre.</string>
-    <!-- Language -->
-    <string name="language_title">Langue</string>
-    <string name="home_status_ready">Prêt</string>
-    <string name="home_status_limited">Limité</string>
-    <string name="update_up_to_date">Vous êtes à jour</string>
-    <string name="update_checking">Recherche de mises à jour…</string>
-    <string name="update_check">Rechercher des mises à jour</string>
-    <string name="update_install">Télécharger &amp; installer</string>
-    <string name="update_open_release">Ouvrir la page de la version</string>
-    <string name="update_downloading">Téléchargement…</string>
-    <string name="update_installing">Installation…</string>
-    <string name="update_channel_release">Release</string>
-    <string name="update_channel_debug">Debug</string>
-    <string name="update_no_notes">Aucune note de version</string>
-    <string name="update_back">Retour</string>
-    <string name="update_retry">Réessayer</string>
-    <string name="home_system">Système</string>
-    <string name="patch_aspect_modules_local">Fourni par le gestionnaire, non intégré — prend en charge le rechargement à chaud</string>
-    <string name="patch_source_installed">Application installée</string>
-    <string name="patch_source_storage">Depuis le stockage</string>
-    <string name="patch_source_repatch">Reconstruit à partir de l\'original contenu dans l\'application patchée</string>
-    <string name="patch_local_modules_later">Choisis plus tard, sur la page de cette application</string>
-    <string name="patch_aspect_modules">Modules</string>
-    <string name="patch_aspect_scope">Portée</string>
-    <string name="patch_aspect_runs">S\'exécute sur</string>
-    <string name="patch_aspect_modules_integrated">Intégrés dans l\'APK patché</string>
-    <string name="patch_aspect_scope_local">Modifiable à tout moment, sans re-patcher</string>
-    <string name="patch_aspect_scope_integrated">Fixe — la modifier implique de re-patcher</string>
-    <string name="patch_aspect_runs_local">Cet appareil uniquement</string>
-    <string name="patch_aspect_runs_integrated">N\'importe quel appareil, avec ou sans le gestionnaire</string>
-    <string name="patch_local_summary">Le gestionnaire fournit les modules de cette application</string>
-    <string name="patch_integrated_summary">Les modules sont intégrés dans l\'APK</string>
     <string name="patch_manifest_version_code">Code de version</string>
     <string name="patch_manifest_version_code_hint">Laisser vide pour conserver l\'original</string>
     <string name="patch_manifest_label">Nom de l\'application</string>
@@ -166,6 +116,10 @@
     <string name="patch_manifest_permissions_count">%1$d ajoutée(s)</string>
     <string name="patch_manifest_documents_provider">Exposer les données privées</string>
     <string name="patch_manifest_documents_provider_desc">Ajoute un fournisseur pour qu\'un gestionnaire de fichiers puisse parcourir le dossier de données privées de l\'application via le sélecteur de fichiers du système, sans root. Élargit ce qui peut accéder aux données de l\'application — à laisser désactivé sauf besoin.</string>
+    <string name="patch_status_patching">Patch en cours…</string>
+    <string name="patch_status_error">Échec du patch</string>
+    <string name="patch_status_error_desc">Une erreur s\'est produite. Copiez le journal pour voir les détails.</string>
+    <!-- Choosing what to patch, and which modules to embed -->
     <string name="patch_select_target">Choisir une application à patcher</string>
     <string name="patch_target_loading">Chargement des applications installées…</string>
     <string name="patch_target_already_patched">Déjà patchée</string>
@@ -185,6 +139,7 @@
     <string name="patch_module_origin_file">Depuis le stockage</string>
     <string name="patch_module_unreadable">Impossible de lire depuis l\'APK</string>
     <string name="patch_local_drop_warning">Passer en mode local supprimera %1$d module(s) intégré(s). Tout module que vous n\'avez pas installé ne pourra pas être récupéré.</string>
+    <!-- Patch progress and outcome -->
     <string name="patch_effect_replace">S\'installe par-dessus l\'application existante ; ses données sont conservées</string>
     <string name="patch_effect_uninstall">Nécessite de désinstaller d\'abord ; les données de l\'application seront perdues</string>
     <string name="patch_stage_reading">Lecture de l\'APK</string>
@@ -205,7 +160,7 @@
     <string name="patch_action_other_installer">Autre installateur</string>
     <string name="patch_action_retry">Réessayer</string>
     <string name="patch_patched">Patché</string>
-    <string name="patch_patched_splits">base + %1$d splits</string>
+    <string name="patch_patched_splits">base + %1$d divise</string>
     <string name="patch_installing">Installation…</string>
     <string name="patch_confirming">En attente de confirmation…</string>
     <string name="patch_restoring">Restauration…</string>
@@ -213,6 +168,7 @@
     <string name="patch_hide_log">Masquer le journal</string>
     <string name="patch_copy_log">Copier le rapport</string>
     <string name="patch_share_log">Partager le rapport</string>
+    <string name="logs_word_wrap">Retour à la ligne</string>
     <string name="patch_log_copied">Journal copié</string>
     <string name="patch_log_empty">Le patcheur n\'a produit aucune sortie</string>
     <string name="patch_progress_running">Patch de %1$s en cours</string>
@@ -223,6 +179,7 @@
     <string name="patch_export_running">Exportation…</string>
     <string name="patch_export_done">Exporté</string>
     <string name="patch_export_failed">Échec de l\'exportation</string>
+    <!-- App detail page -->
     <string name="appdetail_modules">Modules</string>
     <string name="appdetail_actions">Actions</string>
     <string name="appdetail_info">Détails</string>
@@ -244,9 +201,9 @@
     <string name="appdetail_info_debuggable">Débogable</string>
     <string name="appdetail_info_inject_dex">Dex du loader injecté</string>
     <string name="appdetail_info_app_version">Version de l\'application</string>
-    <string name="appdetail_info_loader">Loader</string>
+    <string name="appdetail_info_loader">Chargeur</string>
     <string name="appdetail_info_target_sdk">SDK cible</string>
-    <string name="appdetail_info_package">Package</string>
+    <string name="appdetail_info_package">Paquet</string>
     <string name="appdetail_yes">Oui</string>
     <string name="appdetail_no">Non</string>
     <string name="manage_repatch">Re-patcher</string>
@@ -259,28 +216,68 @@
     <string name="manage_restore_running_line">Restauration de %1$s</string>
     <string name="manage_export_desc">Enregistrer une copie de l\'APK patché</string>
     <string name="cancel">Annuler</string>
+    <!-- Signing keystore -->
+    <string name="settings_keystore">Keystore de signature</string>
+    <string name="settings_keystore_default">Intégré</string>
+    <string name="settings_keystore_custom">Personnalisé</string>
     <string name="settings_keystore_default_desc">La clé propre à LSPatch. Le bon choix, sauf si vous avez besoin d\'une signature spécifique.</string>
     <string name="settings_keystore_custom_desc">Signer avec votre propre keystore (BKS).</string>
-    <string name="update_reinstall">Réinstaller cette version</string>
-    <string name="update_check_failed">Impossible de rechercher les mises à jour</string>
-    <string name="home_package">Paquet</string>
+    <string name="settings_keystore_file">Fichier keystore</string>
+    <string name="settings_keystore_password">Mot de passe</string>
+    <string name="settings_keystore_alias">Alias</string>
+    <string name="settings_keystore_alias_password">Mot de passe de l\'alias</string>
+    <string name="settings_keystore_wrong_keystore">Type de keystore incorrect</string>
+    <string name="settings_keystore_wrong_password">Mot de passe du keystore incorrect</string>
+    <string name="settings_keystore_wrong_alias">Nom d\'alias incorrect</string>
+    <string name="settings_keystore_wrong_alias_password">Mot de passe de l\'alias incorrect</string>
+    <string name="settings_detail_patch_logs">Journaux de patch détaillés</string>
     <string name="settings_cloak_dialog_title">Changer le nom du paquet</string>
     <string name="settings_cloak_package">Nouveau nom de paquet</string>
     <string name="settings_cloak_randomize">Aléatoire</string>
+    <string name="settings_cloak_warning">Cela installe une nouvelle copie de LSPatch Manager sous un nom de paquet différent, met à jour les applications en mode local, puis désinstalle la copie actuelle. Les correctifs intégrés ne sont pas affectés. Shizuku doit rester disponible. Accordez Shizuku au nouveau paquet après l\'installation.</string>
     <string name="settings_cloak_invalid">Saisissez un nom de paquet valide (par ex. org.example.app)</string>
     <string name="settings_cloak_need_shizuku">Shizuku est requis pour changer le nom du paquet</string>
     <string name="settings_cloak_confirm">Continuer</string>
-    <string name="settings_cloak_warning">Cela installe une nouvelle copie de LSPatch Manager sous un nom de paquet différent, met à jour les applications en mode local, puis désinstalle la copie actuelle. Les correctifs intégrés ne sont pas affectés. Shizuku doit rester disponible. Accordez Shizuku au nouveau paquet après l\'installation.</string>
     <string name="settings_revert_dialog_title">Revenir au paquet d\'origine</string>
-    <string name="settings_revert_confirm">Rétablir</string>
     <string name="settings_revert_warning">Télécharge le dernier manager.apk depuis les versions JingMatrix/LSPatch, l\'installe en tant que org.lsposed.lspatch (les paramètres et les liens des applications locales sont restaurés), puis désinstalle cette application. Nécessite Shizuku et le réseau.</string>
+    <string name="settings_revert_confirm">Rétablir</string>
+    <string name="patch_inject_dex">Injecter le dex du loader</string>
+    <string name="patch_inject_dex_desc">Pour les applications avec des services isolés, comme les moteurs de rendu des navigateurs, veuillez activer cette option pour garantir leur bon fonctionnement.</string>
+    <!-- Repo Details Screen -->
+    <!-- Logs Screen -->
+    <string name="logs_grant">Accorder Shizuku</string>
+    <string name="logs_state_shizuku_title">Les journaux nécessitent Shizuku</string>
+    <string name="logs_state_shizuku_body">LSPatch lit le journal de l\'appareil via le shell Shizuku. Accordez l\'accès pour voir ici les journaux de framework et de plantage.</string>
+    <!-- Appearance -->
+    <string name="appearance_title">Apparence</string>
+    <string name="appearance_floating_nav">Navigation flottante</string>
+    <string name="appearance_floating_nav_summary">Afficher la navigation sous forme de bulle déplaçable sur le contenu plutôt qu\'en barre.</string>
+    <!-- Language -->
+    <string name="language_title">Langue</string>
+    <string name="home_status_ready">Prêt</string>
+    <string name="home_status_limited">Limité</string>
+    <string name="update_checking">Recherche de mises à jour…</string>
+    <string name="update_check">Rechercher des mises à jour</string>
+    <string name="update_install">Télécharger &amp; installer</string>
+    <string name="update_reinstall">Réinstaller cette version</string>
+    <string name="update_open_release">Ouvrir la page de la version</string>
+    <string name="update_downloading">Téléchargement…</string>
+    <string name="update_installing">Installation…</string>
+    <string name="update_channel_release">Version stable</string>
+    <string name="update_channel_debug">Debug</string>
+    <string name="update_up_to_date">Vous êtes à jour</string>
+    <string name="update_check_failed">Impossible de rechercher les mises à jour</string>
+    <string name="update_no_notes">Aucune note de version</string>
+    <string name="update_back">Retour</string>
+    <string name="update_retry">Réessayer</string>
+    <!-- The resident service, when it is present but not collecting logs -->
     <string name="resident_service_title">LSPatch est actif</string>
     <string name="resident_service_text">Fournit leurs modules aux applications patchées</string>
+    <!-- Background restrictions -->
     <string name="background_reports_title">LSPatch a été arrêté en arrière-plan</string>
     <string name="background_reports_line">%1$s a démarré %2$d fois sans joindre LSPatch</string>
     <string name="background_battery">Ignorer l\'optimisation de la batterie</string>
     <string name="background_battery_done">L\'optimisation de la batterie est déjà désactivée pour LSPatch</string>
-    <string name="background_battery_summary">Le mode Doze est ce qui empêche un gestionnaire ouvert par personne aujourd\'hui de répondre</string>
     <string name="shizuku_open_app">Ouvrir Shizuku</string>
     <string name="stay_alive_title">Garder LSPatch joignable</string>
     <string name="stay_alive_body">Une application patchée demande ses modules à LSPatch dès qu\'elle démarre. Si cet appareil a déjà arrêté LSPatch, l\'application se rabat sur la liste de modules qu\'elle a mémorisée — et tout ce qui a changé ici depuis est ignoré. Aucune de ces autorisations n\'est obligatoire.</string>
@@ -289,12 +286,14 @@
     <string name="stay_alive_done">Terminé</string>
     <string name="background_whitelist_done">Cet appareil a levé toutes les limites demandées</string>
     <string name="background_whitelist_refused">Refusé : %1$s</string>
+    <string name="background_battery_summary">Le mode Doze est ce qui empêche un gestionnaire ouvert par personne aujourd\'hui de répondre</string>
     <string name="background_keep_alive">Redémarrer après un arrêt</string>
     <string name="background_keep_alive_summary">Utilise le shell Shizuku pour relancer LSPatch dès qu\'il le trouve arrêté. Le processus du shell survit à LSPatch, donc cela fonctionne même après un arrêt forcé.</string>
     <string name="background_keep_alive_needs_shizuku">Nécessite Shizuku</string>
     <string name="background_whitelist">Lever les limites d\'arrière-plan</string>
     <string name="background_whitelist_summary">Demande au shell de retirer LSPatch de la liste Doze et des paliers de veille des applications. Indique ce que l\'appareil a refusé.</string>
     <string name="background_whitelist_running">Demande au shell…</string>
+    <!-- What each background limit is called where a refusal is reported -->
     <string name="background_limit_doze">Liste blanche Doze</string>
     <string name="background_limit_background">Travail en arrière-plan</string>
     <string name="background_limit_any_background">Tout travail en arrière-plan</string>
