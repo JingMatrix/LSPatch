@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="add">新增</string>
     <string name="uninstall">解除安裝</string>
@@ -7,6 +8,7 @@
     <string name="shizuku_available">Shizuku 服務可用</string>
     <string name="shizuku_unavailable">Shizuku 服務未連線</string>
     <string name="shizuku_off">未連線</string>
+    <!-- Shizuku failure dialog -->
     <string name="shizuku_failure_not_running">Shizuku 未執行</string>
     <string name="shizuku_failure_lost">與 Shizuku 的連線已中斷</string>
     <string name="shizuku_failure_hint_lost">Shizuku 原本正常運作，LSPatch 與它的連線已中斷。請重新開啟 LSPatch；若仍無效，請重新啟動 Shizuku。</string>
@@ -28,12 +30,12 @@
     <string name="shizuku_failure_grant">授予權限</string>
     <string name="shizuku_failure_dismiss">關閉</string>
     <string name="error_unknown">未知錯誤</string>
-
     <!-- Home Screen -->
     <string name="home_shizuku_warning">部分功能無法使用</string>
     <string name="home_info_copied">已複製到剪貼簿</string>
     <string name="home_device">裝置</string>
-
+    <string name="home_system">系統</string>
+    <string name="home_package">套件名稱</string>
     <!-- Manage Screen -->
     <string name="screen_manage">管理</string>
     <string name="manage_summary">已修補 %1$d 個  ·  %2$d 個模組</string>
@@ -57,7 +59,6 @@
     <string name="manage_info_desc">在系統應用程式設定中檢視</string>
     <string name="manage_module_applies_to">套用至</string>
     <string name="manage_module_applies_none">尚未對任何應用程式啟用</string>
-
     <!-- Action drawer descriptions -->
     <string name="manage_update_loader_desc">將內建的 LSPatch 載入器升級到最新版本</string>
     <string name="manage_module_scope_desc">選擇套用至此應用程式的模組</string>
@@ -65,13 +66,27 @@
     <string name="manage_uninstall_desc">從此裝置移除已修補的應用程式</string>
     <string name="manage_module_settings_desc">開啟模組自身的設定畫面</string>
     <string name="manage_app_info_desc">在系統應用程式設定中檢視此模組</string>
-
     <!-- New Patch Screen -->
     <string name="screen_new_patch">新增修補</string>
     <string name="patch_from_storage">從儲存空間選擇 apk</string>
     <string name="patch_mode">修補模式</string>
+    <string name="patch_source_installed">已安裝的應用程式</string>
+    <string name="patch_source_storage">來自儲存空間</string>
+    <string name="patch_source_repatch">從修補後應用程式內的原始 APK 重新建構</string>
+    <string name="patch_local_modules_later">稍後在此應用程式的頁面中選擇</string>
     <string name="patch_local">本機</string>
+    <string name="patch_aspect_modules">模組</string>
+    <string name="patch_aspect_scope">作用範圍</string>
+    <string name="patch_aspect_runs">執行於</string>
+    <string name="patch_aspect_modules_local">由管理器提供，不嵌入，支援熱重載</string>
+    <string name="patch_aspect_modules_integrated">內建於修補後的 APK</string>
+    <string name="patch_aspect_scope_local">隨時可變更，無需重新修補</string>
+    <string name="patch_aspect_scope_integrated">固定 — 變更需要重新修補</string>
+    <string name="patch_aspect_runs_local">僅限本裝置</string>
+    <string name="patch_aspect_runs_integrated">任何裝置，無論是否有管理程式</string>
+    <string name="patch_local_summary">由管理程式提供此應用程式的模組</string>
     <string name="patch_integrated">整合</string>
+    <string name="patch_integrated_summary">模組已內建於 APK 中</string>
     <string name="patch_embed_modules">嵌入模組</string>
     <string name="patch_debuggable">可偵錯</string>
     <string name="patch_sigbypass">簽章繞過</string>
@@ -85,71 +100,6 @@
     <string name="patch_install_hint_shizuku">可透過 Shizuku 靜默安裝。</string>
     <string name="patch_install_hint_system">準備安裝。系統將要求你確認。</string>
     <string name="patch_section_options">選項</string>
-    <string name="patch_status_patching">正在修補…</string>
-    <string name="patch_status_error">修補失敗</string>
-    <string name="patch_status_error_desc">發生問題。複製記錄以檢視詳細資訊。</string>
-
-    <!-- Select Apps Screen -->
-
-    <!-- Signing keystore -->
-    <string name="settings_keystore">簽章金鑰庫</string>
-    <string name="settings_keystore_default">內建</string>
-    <string name="settings_keystore_custom">自訂</string>
-    <string name="settings_keystore_file">金鑰庫檔案</string>
-    <string name="settings_keystore_password">密碼</string>
-    <string name="settings_keystore_alias">別名</string>
-    <string name="settings_keystore_alias_password">別名密碼</string>
-    <string name="settings_keystore_wrong_keystore">金鑰庫類型錯誤</string>
-    <string name="settings_keystore_wrong_password">金鑰庫密碼錯誤</string>
-    <string name="settings_keystore_wrong_alias">別名錯誤</string>
-    <string name="settings_keystore_wrong_alias_password">別名密碼錯誤</string>
-    <string name="settings_detail_patch_logs">詳細修補記錄</string>
-    <string name="patch_inject_dex">注入載入器 dex</string>
-    <string name="patch_inject_dex_desc">對於具有隔離服務的應用程式，例如瀏覽器的算繪引擎，請開啟此選項以確保它們正常運作。</string>
-
-    <!-- Repo Details Screen -->
-
-    <!-- Logs Screen -->
-    <string name="logs_word_wrap">自動換行</string>
-    <string name="logs_grant">授予 Shizuku</string>
-    <string name="logs_state_shizuku_title">記錄需要 Shizuku</string>
-    <string name="logs_state_shizuku_body">LSPatch 透過 Shizuku shell 讀取裝置記錄。授予存取權限以在此檢視框架和當機記錄。</string>
-    <!-- Appearance -->
-    <string name="appearance_title">外觀</string>
-    <string name="appearance_floating_nav">浮動導覽</string>
-    <string name="appearance_floating_nav_summary">以可移動的浮動球形式顯示導覽，覆蓋在內容之上，而非固定的導覽列。</string>
-    <!-- Language -->
-    <string name="language_title">語言</string>
-    <string name="home_status_ready">就緒</string>
-    <string name="home_status_limited">受限</string>
-    <string name="update_up_to_date">已是最新版本</string>
-    <string name="update_checking">正在檢查更新…</string>
-    <string name="update_check">檢查更新</string>
-    <string name="update_install">下載並安裝</string>
-    <string name="update_open_release">開啟發行頁面</string>
-    <string name="update_downloading">正在下載…</string>
-    <string name="update_installing">正在安裝…</string>
-    <string name="update_channel_release">正式版</string>
-    <string name="update_channel_debug">偵錯版</string>
-    <string name="update_no_notes">沒有發行說明</string>
-    <string name="update_back">返回</string>
-    <string name="update_retry">重試</string>
-    <string name="home_system">系統</string>
-    <string name="patch_aspect_modules_local">由管理器提供，不嵌入，支援熱重載</string>
-    <string name="patch_source_installed">已安裝的應用程式</string>
-    <string name="patch_source_storage">來自儲存空間</string>
-    <string name="patch_source_repatch">從修補後應用程式內的原始 APK 重新建構</string>
-    <string name="patch_local_modules_later">稍後在此應用程式的頁面中選擇</string>
-    <string name="patch_aspect_modules">模組</string>
-    <string name="patch_aspect_scope">作用範圍</string>
-    <string name="patch_aspect_runs">執行於</string>
-    <string name="patch_aspect_modules_integrated">內建於修補後的 APK</string>
-    <string name="patch_aspect_scope_local">隨時可變更，無需重新修補</string>
-    <string name="patch_aspect_scope_integrated">固定 — 變更需要重新修補</string>
-    <string name="patch_aspect_runs_local">僅限本裝置</string>
-    <string name="patch_aspect_runs_integrated">任何裝置，無論是否有管理程式</string>
-    <string name="patch_local_summary">由管理程式提供此應用程式的模組</string>
-    <string name="patch_integrated_summary">模組已內建於 APK 中</string>
     <string name="patch_manifest_version_code">版本號</string>
     <string name="patch_manifest_version_code_hint">留空則保持原值</string>
     <string name="patch_manifest_label">應用程式名稱</string>
@@ -166,6 +116,10 @@
     <string name="patch_manifest_permissions_count">已新增 %1$d 個</string>
     <string name="patch_manifest_documents_provider">公開私有資料</string>
     <string name="patch_manifest_documents_provider_desc">新增一個提供者，讓檔案管理器無需 root 即可透過系統檔案選擇器瀏覽應用程式的私有資料目錄。這會擴大可存取應用程式資料的範圍——若無需要請保持關閉。</string>
+    <string name="patch_status_patching">正在修補…</string>
+    <string name="patch_status_error">修補失敗</string>
+    <string name="patch_status_error_desc">發生問題。複製記錄以檢視詳細資訊。</string>
+    <!-- Choosing what to patch, and which modules to embed -->
     <string name="patch_select_target">選擇要修補的應用程式</string>
     <string name="patch_target_loading">正在載入已安裝的應用程式…</string>
     <string name="patch_target_already_patched">已修補</string>
@@ -185,6 +139,7 @@
     <string name="patch_module_origin_file">來自儲存空間</string>
     <string name="patch_module_unreadable">無法從 APK 中讀取</string>
     <string name="patch_local_drop_warning">切換至本機模式會捨棄 %1$d 個嵌入的模組。任何你未安裝的模組將無法復原。</string>
+    <!-- Patch progress and outcome -->
     <string name="patch_effect_replace">覆蓋安裝於現有的應用程式；其資料會保留</string>
     <string name="patch_effect_uninstall">需要先解除安裝；應用程式資料將遺失</string>
     <string name="patch_stage_reading">讀取 APK</string>
@@ -213,6 +168,7 @@
     <string name="patch_hide_log">隱藏日誌</string>
     <string name="patch_copy_log">複製報告</string>
     <string name="patch_share_log">分享報告</string>
+    <string name="logs_word_wrap">自動換行</string>
     <string name="patch_log_copied">日誌已複製</string>
     <string name="patch_log_empty">修補器沒有任何輸出</string>
     <string name="patch_progress_running">正在修補 %1$s</string>
@@ -223,6 +179,7 @@
     <string name="patch_export_running">正在匯出…</string>
     <string name="patch_export_done">已匯出</string>
     <string name="patch_export_failed">匯出失敗</string>
+    <!-- App detail page -->
     <string name="appdetail_modules">模組</string>
     <string name="appdetail_actions">操作</string>
     <string name="appdetail_info">詳細資訊</string>
@@ -259,28 +216,68 @@
     <string name="manage_restore_running_line">正在還原 %1$s</string>
     <string name="manage_export_desc">儲存修補後 APK 的副本</string>
     <string name="cancel">取消</string>
+    <!-- Signing keystore -->
+    <string name="settings_keystore">簽章金鑰庫</string>
+    <string name="settings_keystore_default">內建</string>
+    <string name="settings_keystore_custom">自訂</string>
     <string name="settings_keystore_default_desc">LSPatch 自身的金鑰。除非你需要特定的簽章，否則選擇此項即可。</string>
     <string name="settings_keystore_custom_desc">使用你自己的金鑰庫（BKS）簽署。</string>
-    <string name="update_reinstall">重新安裝此版本</string>
-    <string name="update_check_failed">無法檢查更新</string>
-    <string name="home_package">套件名稱</string>
+    <string name="settings_keystore_file">金鑰庫檔案</string>
+    <string name="settings_keystore_password">密碼</string>
+    <string name="settings_keystore_alias">別名</string>
+    <string name="settings_keystore_alias_password">別名密碼</string>
+    <string name="settings_keystore_wrong_keystore">金鑰庫類型錯誤</string>
+    <string name="settings_keystore_wrong_password">金鑰庫密碼錯誤</string>
+    <string name="settings_keystore_wrong_alias">別名錯誤</string>
+    <string name="settings_keystore_wrong_alias_password">別名密碼錯誤</string>
+    <string name="settings_detail_patch_logs">詳細修補記錄</string>
     <string name="settings_cloak_dialog_title">變更套件名稱</string>
     <string name="settings_cloak_package">新套件名稱</string>
     <string name="settings_cloak_randomize">隨機產生</string>
+    <string name="settings_cloak_warning">這會以不同的套件名稱安裝一份新的 LSPatch Manager，更新本機模式應用程式，然後解除安裝目前的版本。整合模式的修補不受影響。Shizuku 必須保持可用。安裝後請為新套件授予 Shizuku。</string>
     <string name="settings_cloak_invalid">請輸入有效的套件名稱（例如 org.example.app）</string>
     <string name="settings_cloak_need_shizuku">變更套件名稱需要 Shizuku</string>
     <string name="settings_cloak_confirm">繼續</string>
-    <string name="settings_cloak_warning">這會以不同的套件名稱安裝一份新的 LSPatch Manager，更新本機模式應用程式，然後解除安裝目前的版本。整合模式的修補不受影響。Shizuku 必須保持可用。安裝後請為新套件授予 Shizuku。</string>
     <string name="settings_revert_dialog_title">還原為原始套件</string>
-    <string name="settings_revert_confirm">還原</string>
     <string name="settings_revert_warning">從 JingMatrix/LSPatch 的發行版下載最新的 manager.apk，將其安裝為 org.lsposed.lspatch（會還原設定與本機應用程式的關聯），然後解除安裝此應用程式。需要 Shizuku 與網路。</string>
+    <string name="settings_revert_confirm">還原</string>
+    <string name="patch_inject_dex">注入載入器 dex</string>
+    <string name="patch_inject_dex_desc">對於具有隔離服務的應用程式，例如瀏覽器的算繪引擎，請開啟此選項以確保它們正常運作。</string>
+    <!-- Repo Details Screen -->
+    <!-- Logs Screen -->
+    <string name="logs_grant">授予 Shizuku</string>
+    <string name="logs_state_shizuku_title">記錄需要 Shizuku</string>
+    <string name="logs_state_shizuku_body">LSPatch 透過 Shizuku shell 讀取裝置記錄。授予存取權限以在此檢視框架和當機記錄。</string>
+    <!-- Appearance -->
+    <string name="appearance_title">外觀</string>
+    <string name="appearance_floating_nav">浮動導覽</string>
+    <string name="appearance_floating_nav_summary">以可移動的浮動球形式顯示導覽，覆蓋在內容之上，而非固定的導覽列。</string>
+    <!-- Language -->
+    <string name="language_title">語言</string>
+    <string name="home_status_ready">就緒</string>
+    <string name="home_status_limited">受限</string>
+    <string name="update_checking">正在檢查更新…</string>
+    <string name="update_check">檢查更新</string>
+    <string name="update_install">下載並安裝</string>
+    <string name="update_reinstall">重新安裝此版本</string>
+    <string name="update_open_release">開啟發行頁面</string>
+    <string name="update_downloading">正在下載…</string>
+    <string name="update_installing">正在安裝…</string>
+    <string name="update_channel_release">正式版</string>
+    <string name="update_channel_debug">偵錯版</string>
+    <string name="update_up_to_date">已是最新版本</string>
+    <string name="update_check_failed">無法檢查更新</string>
+    <string name="update_no_notes">沒有發行說明</string>
+    <string name="update_back">返回</string>
+    <string name="update_retry">重試</string>
+    <!-- The resident service, when it is present but not collecting logs -->
     <string name="resident_service_title">LSPatch 正在執行</string>
     <string name="resident_service_text">正在為已修補的應用程式提供模組</string>
+    <!-- Background restrictions -->
     <string name="background_reports_title">LSPatch 曾在背景被停止</string>
     <string name="background_reports_line">%1$s 有 %2$d 次啟動時未能連上 LSPatch</string>
     <string name="background_battery">忽略電池最佳化</string>
     <string name="background_battery_done">LSPatch 已不受電池最佳化限制</string>
-    <string name="background_battery_summary">今天沒人開啟過的管理器之所以完全無法回應，正是因為 Doze</string>
     <string name="shizuku_open_app">開啟 Shizuku</string>
     <string name="stay_alive_title">讓 LSPatch 保持可連線</string>
     <string name="stay_alive_body">已修補的應用程式一啟動就會向 LSPatch 索取模組。若此時本機已停止 LSPatch，應用程式只能退回自己記住的模組清單——此後在這裡所做的變更都不會生效。以下兩項都不是必要的。</string>
@@ -289,12 +286,14 @@
     <string name="stay_alive_done">完成</string>
     <string name="background_whitelist_done">本機已解除所有請求的限制</string>
     <string name="background_whitelist_refused">遭拒絕：%1$s</string>
+    <string name="background_battery_summary">今天沒人開啟過的管理器之所以完全無法回應，正是因為 Doze</string>
     <string name="background_keep_alive">被停止後自動重新啟動</string>
     <string name="background_keep_alive_summary">透過 Shizuku 的 shell，一旦發現 LSPatch 已消失便將其重新啟動。shell 行程比 LSPatch 活得更久，因此強制停止後依然有效。</string>
     <string name="background_keep_alive_needs_shizuku">需要 Shizuku</string>
     <string name="background_whitelist">解除背景限制</string>
     <string name="background_whitelist_summary">請求 shell 將 LSPatch 移出 Doze 名單與應用待機分組，並如實回報本機拒絕了哪些。</string>
     <string name="background_whitelist_running">正在請求 shell…</string>
+    <!-- What each background limit is called where a refusal is reported -->
     <string name="background_limit_doze">Doze 白名單</string>
     <string name="background_limit_background">背景執行</string>
     <string name="background_limit_any_background">任意背景執行</string>
