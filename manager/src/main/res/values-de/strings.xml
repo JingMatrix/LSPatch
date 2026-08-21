@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="add">Hinzufügen</string>
     <string name="uninstall">Deinstallieren</string>
@@ -7,6 +8,7 @@
     <string name="shizuku_available">Shizuku-Dienst verfügbar</string>
     <string name="shizuku_unavailable">Shizuku-Dienst nicht verbunden</string>
     <string name="shizuku_off">Nicht verbunden</string>
+    <!-- Shizuku failure dialog -->
     <string name="shizuku_failure_not_running">Shizuku läuft nicht</string>
     <string name="shizuku_failure_lost">Verbindung zu Shizuku verloren</string>
     <string name="shizuku_failure_hint_lost">Shizuku lief und LSPatch hat die Verbindung dazu verloren. Öffne LSPatch erneut; hilft das nicht, starte Shizuku neu.</string>
@@ -28,12 +30,12 @@
     <string name="shizuku_failure_grant">Zugriff erteilen</string>
     <string name="shizuku_failure_dismiss">Schließen</string>
     <string name="error_unknown">Unbekannter Fehler</string>
-
     <!-- Home Screen -->
     <string name="home_shizuku_warning">Einige Funktionen sind nicht verfügbar</string>
     <string name="home_info_copied">In die Zwischenablage kopiert</string>
     <string name="home_device">Gerät</string>
-
+    <string name="home_system">System</string>
+    <string name="home_package">Paket</string>
     <!-- Manage Screen -->
     <string name="screen_manage">Verwalten</string>
     <string name="manage_summary">%1$d gepatcht  ·  %2$d Module</string>
@@ -57,7 +59,6 @@
     <string name="manage_info_desc">In den System-App-Einstellungen anzeigen</string>
     <string name="manage_module_applies_to">Gilt für</string>
     <string name="manage_module_applies_none">Noch für keine App aktiviert</string>
-
     <!-- Action drawer descriptions -->
     <string name="manage_update_loader_desc">Den eingebetteten LSPatch-Loader auf die neueste Version aktualisieren</string>
     <string name="manage_module_scope_desc">Wähle, welche Module für diese App gelten</string>
@@ -65,13 +66,27 @@
     <string name="manage_uninstall_desc">Die gepatchte App von diesem Gerät entfernen</string>
     <string name="manage_module_settings_desc">Den eigenen Konfigurationsbildschirm des Moduls öffnen</string>
     <string name="manage_app_info_desc">Dieses Modul in den System-App-Einstellungen anzeigen</string>
-
     <!-- New Patch Screen -->
     <string name="screen_new_patch">Neuer Patch</string>
     <string name="patch_from_storage">APK(s) aus dem Speicher auswählen</string>
     <string name="patch_mode">Patch-Modus</string>
+    <string name="patch_source_installed">Installierte App</string>
+    <string name="patch_source_storage">Aus dem Speicher</string>
+    <string name="patch_source_repatch">Aus dem Original in der gepatchten App neu erstellt</string>
+    <string name="patch_local_modules_later">Später auf der Seite dieser App gewählt</string>
     <string name="patch_local">Lokal</string>
+    <string name="patch_aspect_modules">Module</string>
+    <string name="patch_aspect_scope">Geltungsbereich</string>
+    <string name="patch_aspect_runs">Läuft auf</string>
+    <string name="patch_aspect_modules_local">Vom Manager bereitgestellt, nicht eingebettet — unterstützt Hot Reload</string>
+    <string name="patch_aspect_modules_integrated">In die gepatchte APK eingebettet</string>
+    <string name="patch_aspect_scope_local">Jederzeit änderbar, ohne erneutes Patchen</string>
+    <string name="patch_aspect_scope_integrated">Fest — eine Änderung erfordert erneutes Patchen</string>
+    <string name="patch_aspect_runs_local">Nur auf diesem Gerät</string>
+    <string name="patch_aspect_runs_integrated">Auf jedem Gerät, mit oder ohne Manager</string>
+    <string name="patch_local_summary">Der Manager stellt die Module dieser App bereit</string>
     <string name="patch_integrated">Integriert</string>
+    <string name="patch_integrated_summary">Module sind in die APK eingebettet</string>
     <string name="patch_embed_modules">Module einbetten</string>
     <string name="patch_debuggable">Debug-fähig</string>
     <string name="patch_sigbypass">Signaturumgehung</string>
@@ -85,71 +100,6 @@
     <string name="patch_install_hint_shizuku">Bereit zur stillen Installation über Shizuku.</string>
     <string name="patch_install_hint_system">Bereit zur Installation. Dein System wird eine Bestätigung anfordern.</string>
     <string name="patch_section_options">Optionen</string>
-    <string name="patch_status_patching">Wird gepatcht…</string>
-    <string name="patch_status_error">Patch fehlgeschlagen</string>
-    <string name="patch_status_error_desc">Etwas ist schiefgelaufen. Kopiere das Protokoll, um die Details zu sehen.</string>
-
-    <!-- Select Apps Screen -->
-
-    <!-- Signing keystore -->
-    <string name="settings_keystore">Signatur-Keystore</string>
-    <string name="settings_keystore_default">Integriert</string>
-    <string name="settings_keystore_custom">Benutzerdefiniert</string>
-    <string name="settings_keystore_file">Keystore-Datei</string>
-    <string name="settings_keystore_password">Passwort</string>
-    <string name="settings_keystore_alias">Alias</string>
-    <string name="settings_keystore_alias_password">Alias-Passwort</string>
-    <string name="settings_keystore_wrong_keystore">Falscher Keystore-Typ</string>
-    <string name="settings_keystore_wrong_password">Falsches Keystore-Passwort</string>
-    <string name="settings_keystore_wrong_alias">Falscher Alias-Name</string>
-    <string name="settings_keystore_wrong_alias_password">Falsches Alias-Passwort</string>
-    <string name="settings_detail_patch_logs">Ausführliche Patch-Protokolle</string>
-    <string name="patch_inject_dex">Loader-dex injizieren</string>
-    <string name="patch_inject_dex_desc">Aktiviere diese Option bei Apps mit isolierten Diensten, etwa den Render-Engines von Browsern, damit sie einwandfrei funktionieren.</string>
-
-    <!-- Repo Details Screen -->
-
-    <!-- Logs Screen -->
-    <string name="logs_word_wrap">Zeilenumbruch</string>
-    <string name="logs_grant">Shizuku gewähren</string>
-    <string name="logs_state_shizuku_title">Protokolle benötigen Shizuku</string>
-    <string name="logs_state_shizuku_body">LSPatch liest das Geräteprotokoll über die Shizuku-Shell. Gewähre Zugriff, um hier Framework- und Absturzprotokolle anzuzeigen.</string>
-    <!-- Appearance -->
-    <string name="appearance_title">Darstellung</string>
-    <string name="appearance_floating_nav">Schwebende Navigation</string>
-    <string name="appearance_floating_nav_summary">Navigation als verschiebbaren Ball über dem Inhalt statt als Leiste anzeigen.</string>
-    <!-- Language -->
-    <string name="language_title">Sprache</string>
-    <string name="home_status_ready">Bereit</string>
-    <string name="home_status_limited">Eingeschränkt</string>
-    <string name="update_up_to_date">Du bist auf dem neuesten Stand</string>
-    <string name="update_checking">Suche nach Updates…</string>
-    <string name="update_check">Nach Updates suchen</string>
-    <string name="update_install">Herunterladen &amp; installieren</string>
-    <string name="update_open_release">Release-Seite öffnen</string>
-    <string name="update_downloading">Wird heruntergeladen…</string>
-    <string name="update_installing">Wird installiert…</string>
-    <string name="update_channel_release">Release</string>
-    <string name="update_channel_debug">Debug</string>
-    <string name="update_no_notes">Keine Versionshinweise</string>
-    <string name="update_back">Zurück</string>
-    <string name="update_retry">Erneut versuchen</string>
-    <string name="home_system">System</string>
-    <string name="patch_aspect_modules_local">Vom Manager bereitgestellt, nicht eingebettet — unterstützt Hot Reload</string>
-    <string name="patch_source_installed">Installierte App</string>
-    <string name="patch_source_storage">Aus dem Speicher</string>
-    <string name="patch_source_repatch">Aus dem Original in der gepatchten App neu erstellt</string>
-    <string name="patch_local_modules_later">Später auf der Seite dieser App gewählt</string>
-    <string name="patch_aspect_modules">Module</string>
-    <string name="patch_aspect_scope">Geltungsbereich</string>
-    <string name="patch_aspect_runs">Läuft auf</string>
-    <string name="patch_aspect_modules_integrated">In die gepatchte APK eingebettet</string>
-    <string name="patch_aspect_scope_local">Jederzeit änderbar, ohne erneutes Patchen</string>
-    <string name="patch_aspect_scope_integrated">Fest — eine Änderung erfordert erneutes Patchen</string>
-    <string name="patch_aspect_runs_local">Nur auf diesem Gerät</string>
-    <string name="patch_aspect_runs_integrated">Auf jedem Gerät, mit oder ohne Manager</string>
-    <string name="patch_local_summary">Der Manager stellt die Module dieser App bereit</string>
-    <string name="patch_integrated_summary">Module sind in die APK eingebettet</string>
     <string name="patch_manifest_version_code">Versionscode</string>
     <string name="patch_manifest_version_code_hint">Leer lassen, um den ursprünglichen zu behalten</string>
     <string name="patch_manifest_label">App-Name</string>
@@ -166,6 +116,10 @@
     <string name="patch_manifest_permissions_count">%1$d hinzugefügt</string>
     <string name="patch_manifest_documents_provider">Private Daten freigeben</string>
     <string name="patch_manifest_documents_provider_desc">Fügt einen Provider hinzu, damit ein Dateimanager den privaten Datenordner der App über die System-Dateiauswahl durchsuchen kann – ohne Root. Erweitert, wer an die App-Daten gelangt – lass es aus, wenn du es nicht brauchst.</string>
+    <string name="patch_status_patching">Wird gepatcht…</string>
+    <string name="patch_status_error">Patch fehlgeschlagen</string>
+    <string name="patch_status_error_desc">Etwas ist schiefgelaufen. Kopiere das Protokoll, um die Details zu sehen.</string>
+    <!-- Choosing what to patch, and which modules to embed -->
     <string name="patch_select_target">Wähle eine App zum Patchen</string>
     <string name="patch_target_loading">Installierte Apps werden geladen…</string>
     <string name="patch_target_already_patched">Bereits gepatcht</string>
@@ -185,6 +139,7 @@
     <string name="patch_module_origin_file">Aus dem Speicher</string>
     <string name="patch_module_unreadable">Konnte nicht aus der APK gelesen werden</string>
     <string name="patch_local_drop_warning">Der Wechsel zu Lokal verwirft %1$d eingebettete(s) Modul(e). Jedes Modul, das du nicht installiert hast, kann nicht wiederhergestellt werden.</string>
+    <!-- Patch progress and outcome -->
     <string name="patch_effect_replace">Wird über die bestehende App installiert; ihre Daten bleiben erhalten</string>
     <string name="patch_effect_uninstall">Erfordert vorheriges Deinstallieren; App-Daten gehen verloren</string>
     <string name="patch_stage_reading">APK wird gelesen</string>
@@ -213,6 +168,7 @@
     <string name="patch_hide_log">Protokoll ausblenden</string>
     <string name="patch_copy_log">Bericht kopieren</string>
     <string name="patch_share_log">Bericht teilen</string>
+    <string name="logs_word_wrap">Zeilenumbruch</string>
     <string name="patch_log_copied">Protokoll kopiert</string>
     <string name="patch_log_empty">Der Patcher hat keine Ausgabe erzeugt</string>
     <string name="patch_progress_running">%1$s wird gepatcht</string>
@@ -223,6 +179,7 @@
     <string name="patch_export_running">Wird exportiert…</string>
     <string name="patch_export_done">Exportiert</string>
     <string name="patch_export_failed">Export fehlgeschlagen</string>
+    <!-- App detail page -->
     <string name="appdetail_modules">Module</string>
     <string name="appdetail_actions">Aktionen</string>
     <string name="appdetail_info">Details</string>
@@ -244,7 +201,7 @@
     <string name="appdetail_info_debuggable">Debug-fähig</string>
     <string name="appdetail_info_inject_dex">Loader-dex injiziert</string>
     <string name="appdetail_info_app_version">App-Version</string>
-    <string name="appdetail_info_loader">Loader</string>
+    <string name="appdetail_info_loader">Lader</string>
     <string name="appdetail_info_target_sdk">Ziel-SDK</string>
     <string name="appdetail_info_package">Paket</string>
     <string name="appdetail_yes">Ja</string>
@@ -259,28 +216,68 @@
     <string name="manage_restore_running_line">%1$s wird wiederhergestellt</string>
     <string name="manage_export_desc">Eine Kopie der gepatchten APK speichern</string>
     <string name="cancel">Abbrechen</string>
+    <!-- Signing keystore -->
+    <string name="settings_keystore">Signatur-Keystore</string>
+    <string name="settings_keystore_default">Integriert</string>
+    <string name="settings_keystore_custom">Benutzerdefiniert</string>
     <string name="settings_keystore_default_desc">LSPatchs eigener Schlüssel. Die richtige Wahl, sofern du keine bestimmte Signatur brauchst.</string>
     <string name="settings_keystore_custom_desc">Mit deinem eigenen Keystore (BKS) signieren.</string>
-    <string name="update_reinstall">Diesen Build neu installieren</string>
-    <string name="update_check_failed">Suche nach Updates fehlgeschlagen</string>
-    <string name="home_package">Paket</string>
+    <string name="settings_keystore_file">Keystore-Datei</string>
+    <string name="settings_keystore_password">Passwort</string>
+    <string name="settings_keystore_alias">Alias</string>
+    <string name="settings_keystore_alias_password">Alias-Passwort</string>
+    <string name="settings_keystore_wrong_keystore">Falscher Keystore-Typ</string>
+    <string name="settings_keystore_wrong_password">Falsches Keystore-Passwort</string>
+    <string name="settings_keystore_wrong_alias">Falscher Alias-Name</string>
+    <string name="settings_keystore_wrong_alias_password">Falsches Alias-Passwort</string>
+    <string name="settings_detail_patch_logs">Ausführliche Patch-Protokolle</string>
     <string name="settings_cloak_dialog_title">Paketnamen ändern</string>
     <string name="settings_cloak_package">Neuer Paketname</string>
     <string name="settings_cloak_randomize">Zufällig</string>
+    <string name="settings_cloak_warning">Dadurch wird eine neue Kopie von LSPatch Manager unter einem anderen Paketnamen installiert, Apps im lokalen Modus werden aktualisiert und die aktuelle Kopie wird deinstalliert. Integrierte Patches sind nicht betroffen. Shizuku muss verfügbar bleiben. Erteile Shizuku nach der Installation die Berechtigung für das neue Paket.</string>
     <string name="settings_cloak_invalid">Gültigen Paketnamen eingeben (z. B. org.example.app)</string>
     <string name="settings_cloak_need_shizuku">Zum Ändern des Paketnamens wird Shizuku benötigt</string>
     <string name="settings_cloak_confirm">Fortfahren</string>
-    <string name="settings_cloak_warning">Dadurch wird eine neue Kopie von LSPatch Manager unter einem anderen Paketnamen installiert, Apps im lokalen Modus werden aktualisiert und die aktuelle Kopie wird deinstalliert. Integrierte Patches sind nicht betroffen. Shizuku muss verfügbar bleiben. Erteile Shizuku nach der Installation die Berechtigung für das neue Paket.</string>
     <string name="settings_revert_dialog_title">Auf ursprüngliches Paket zurücksetzen</string>
-    <string name="settings_revert_confirm">Zurücksetzen</string>
     <string name="settings_revert_warning">Lädt die neueste manager.apk aus den JingMatrix/LSPatch-Releases herunter, installiert sie als org.lsposed.lspatch (Einstellungen und Verknüpfungen der lokalen Apps werden wiederhergestellt) und deinstalliert anschließend diese App. Erfordert Shizuku und eine Netzwerkverbindung.</string>
+    <string name="settings_revert_confirm">Zurücksetzen</string>
+    <string name="patch_inject_dex">Loader-dex injizieren</string>
+    <string name="patch_inject_dex_desc">Aktiviere diese Option bei Apps mit isolierten Diensten, etwa den Render-Engines von Browsern, damit sie einwandfrei funktionieren.</string>
+    <!-- Repo Details Screen -->
+    <!-- Logs Screen -->
+    <string name="logs_grant">Shizuku gewähren</string>
+    <string name="logs_state_shizuku_title">Protokolle benötigen Shizuku</string>
+    <string name="logs_state_shizuku_body">LSPatch liest das Geräteprotokoll über die Shizuku-Shell. Gewähre Zugriff, um hier Framework- und Absturzprotokolle anzuzeigen.</string>
+    <!-- Appearance -->
+    <string name="appearance_title">Darstellung</string>
+    <string name="appearance_floating_nav">Schwebende Navigation</string>
+    <string name="appearance_floating_nav_summary">Navigation als verschiebbaren Ball über dem Inhalt statt als Leiste anzeigen.</string>
+    <!-- Language -->
+    <string name="language_title">Sprache</string>
+    <string name="home_status_ready">Bereit</string>
+    <string name="home_status_limited">Eingeschränkt</string>
+    <string name="update_checking">Suche nach Updates…</string>
+    <string name="update_check">Nach Updates suchen</string>
+    <string name="update_install">Herunterladen &amp; installieren</string>
+    <string name="update_reinstall">Diesen Build neu installieren</string>
+    <string name="update_open_release">Release-Seite öffnen</string>
+    <string name="update_downloading">Wird heruntergeladen…</string>
+    <string name="update_installing">Wird installiert…</string>
+    <string name="update_channel_release">Freigabe</string>
+    <string name="update_channel_debug">Debug</string>
+    <string name="update_up_to_date">Du bist auf dem neuesten Stand</string>
+    <string name="update_check_failed">Suche nach Updates fehlgeschlagen</string>
+    <string name="update_no_notes">Keine Versionshinweise</string>
+    <string name="update_back">Zurück</string>
+    <string name="update_retry">Erneut versuchen</string>
+    <!-- The resident service, when it is present but not collecting logs -->
     <string name="resident_service_title">LSPatch läuft</string>
     <string name="resident_service_text">Versorgt gepatchte Apps mit ihren Modulen</string>
+    <!-- Background restrictions -->
     <string name="background_reports_title">LSPatch wurde im Hintergrund beendet</string>
     <string name="background_reports_line">%1$s startete %2$d mal, ohne LSPatch zu erreichen</string>
     <string name="background_battery">Akku-Optimierung ignorieren</string>
     <string name="background_battery_done">Die Akku-Optimierung ist für LSPatch bereits deaktiviert</string>
-    <string name="background_battery_summary">Doze ist der Grund, warum ein heute von niemandem geöffneter Manager nicht antwortet</string>
     <string name="shizuku_open_app">Shizuku öffnen</string>
     <string name="stay_alive_title">LSPatch erreichbar halten</string>
     <string name="stay_alive_body">Eine gepatchte App fragt LSPatch nach ihren Modulen, sobald sie startet. Hat dieses Gerät LSPatch bis dahin beendet, greift die App auf die gemerkte Modulliste zurück — und alles, was hier seitdem geändert wurde, fehlt. Beides ist nicht erforderlich.</string>
@@ -289,12 +286,14 @@
     <string name="stay_alive_done">Fertig</string>
     <string name="background_whitelist_done">Dieses Gerät hat jede angefragte Beschränkung aufgehoben</string>
     <string name="background_whitelist_refused">Abgelehnt: %1$s</string>
+    <string name="background_battery_summary">Doze ist der Grund, warum ein heute von niemandem geöffneter Manager nicht antwortet</string>
     <string name="background_keep_alive">Nach dem Beenden neu starten</string>
     <string name="background_keep_alive_summary">Startet LSPatch über die Shizuku-Shell neu, sobald sie es beendet vorfindet. Der Shell-Prozess überlebt LSPatch und wirkt daher selbst nach einem erzwungenen Beenden.</string>
     <string name="background_keep_alive_needs_shizuku">Benötigt Shizuku</string>
     <string name="background_whitelist">Hintergrund-Beschränkungen aufheben</string>
     <string name="background_whitelist_summary">Bittet die Shell, LSPatch von der Doze-Liste und aus den App-Standby-Buckets zu nehmen. Meldet, was das Gerät abgelehnt hat.</string>
     <string name="background_whitelist_running">Shell wird gefragt…</string>
+    <!-- What each background limit is called where a refusal is reported -->
     <string name="background_limit_doze">Doze-Ausnahmeliste</string>
     <string name="background_limit_background">Hintergrundausführung</string>
     <string name="background_limit_any_background">Jede Hintergrundausführung</string>
