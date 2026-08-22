@@ -93,7 +93,7 @@
     <string name="patch_sigbypasslv0">Dezactivat</string>
     <string name="patch_sigbypasslv1">+ Manager de pachete: semnarea informațiilor citite ca original</string>
     <string name="patch_sigbypasslv2">+ Fișier citește: aplicația care citește propria aplicație primește originalul (libc)</string>
-    <string name="patch_sigbypasslv3">+ syscall-uri brute: capturează apk citind care ocolește libc</string>
+    <string name="patch_sigbypasslv3">+ syscall-uri brute: capturează apk citind care ocolește libc. Patcheaza codul nativ, astfel încât o aplicație care verifică propriul cod îl poate semnala ca modificata - preferă nivelul 2 dacă nu este suficient.</string>
     <string name="patch_return">Întoarcere</string>
     <string name="patch_uninstall_text">Aplicația instalată este semnată diferit, deci trebuie dezinstalată prima. Datele sale vor fi pierdute - faceți un backup pentru orice aveți nevoie înainte de a continua.</string>
     <string name="patch_install_successfully">Instalat</string>
@@ -265,6 +265,11 @@
     <string name="update_installing">Se instalează…</string>
     <string name="update_channel_release">Eliberează</string>
     <string name="update_channel_debug">Debug</string>
+    <string name="update_channel_canary">Canar</string>
+    <string name="update_versions">Istoricul versiunilor</string>
+    <string name="update_installed">Instalat</string>
+    <string name="update_older">Vechi</string>
+    <string name="update_install_version">Instalează această versiune</string>
     <string name="update_up_to_date">Ești pe ultima versiune</string>
     <string name="update_check_failed">Nu s-au putut verifica actualizările</string>
     <string name="update_no_notes">Fără note de lansare</string>
