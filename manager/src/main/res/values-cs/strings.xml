@@ -93,7 +93,7 @@
     <string name="patch_sigbypasslv0">Vypnuto</string>
     <string name="patch_sigbypasslv1">+ Správce balíčků: podepisování informací čte jako původní</string>
     <string name="patch_sigbypasslv2">+ Soubor přečten: aplikace čte svůj vlastní apk získá originální (libc)</string>
-    <string name="patch_sigbypasslv3">+ Syrové syscally: úlovky apk čtení, které obcházejí libc</string>
+    <string name="patch_sigbypasslv3">+ Syrové syscally: úlovky apk přečtené, které obejdou libc. Patches native code, takže aplikace, která ověřuje svůj vlastní kód, může označit jako nedovolené - dávejte přednost úrovni 2, pokud to nestačí.</string>
     <string name="patch_return">Vrátit se</string>
     <string name="patch_uninstall_text">Nainstalovaná aplikace je podepsána odlišně, takže musí být nejprve odinstalována. Její data budou ztracena — před pokračováním si zálohujete, co potřebujete.</string>
     <string name="patch_install_successfully">Nainstalováno</string>
@@ -265,6 +265,11 @@
     <string name="update_installing">Instalace…</string>
     <string name="update_channel_release">Vydání</string>
     <string name="update_channel_debug">Debug</string>
+    <string name="update_channel_canary">Kanárské</string>
+    <string name="update_versions">Historie verzí</string>
+    <string name="update_installed">Nainstalováno</string>
+    <string name="update_older">Starší</string>
+    <string name="update_install_version">Nainstalovat toto sestavení</string>
     <string name="update_up_to_date">Jste na nejnovější verzi</string>
     <string name="update_check_failed">Nepodařilo se zkontrolovat aktualizace</string>
     <string name="update_no_notes">Žádné poznámky k vydání</string>
