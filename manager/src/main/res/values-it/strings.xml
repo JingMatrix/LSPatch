@@ -93,7 +93,7 @@
     <string name="patch_sigbypasslv0">Disattivato</string>
     <string name="patch_sigbypasslv1">+ Gestore pacchetti: le info di firma appaiono come l\'originale</string>
     <string name="patch_sigbypasslv2">+ Letture file: l\'app che legge il proprio apk ottiene l\'originale (libc)</string>
-    <string name="patch_sigbypasslv3">+ Syscall grezze: intercetta le letture dell\'apk che aggirano libc</string>
+    <string name="patch_sigbypasslv3">+ Syscall grezze: intercetta le letture dell\'apk che aggirano libc. Modifica il codice nativo, quindi le app che verificano il proprio codice possono rilevarlo come manomesso — preferisci il livello 2 salvo quando non basta.</string>
     <string name="patch_return">Torna</string>
     <string name="patch_uninstall_text">A causa delle firme diverse, devi disinstallare l\'app originale prima di installare quella con patch.\nAssicurati di aver eseguito il backup dei dati personali.</string>
     <string name="patch_install_successfully">Installato</string>
@@ -265,6 +265,11 @@
     <string name="update_installing">Installazione…</string>
     <string name="update_channel_release">Versione stabile</string>
     <string name="update_channel_debug">Debug</string>
+    <string name="update_channel_canary">Canario</string>
+    <string name="update_versions">Cronologia versioni</string>
+    <string name="update_installed">Installata</string>
+    <string name="update_older">Più vecchia</string>
+    <string name="update_install_version">Installa questa build</string>
     <string name="update_up_to_date">Sei aggiornato</string>
     <string name="update_check_failed">Impossibile controllare gli aggiornamenti</string>
     <string name="update_no_notes">Nessuna nota di rilascio</string>
