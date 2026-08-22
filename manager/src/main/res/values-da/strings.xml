@@ -93,7 +93,7 @@
     <string name="patch_sigbypasslv0">Fra</string>
     <string name="patch_sigbypasslv1">+ Pakkehåndtering: signeringsinfo læser som originalen</string>
     <string name="patch_sigbypasslv2">+ Fil lyder: den app, der læser sin egen apk får den originale (libc)</string>
-    <string name="patch_sigbypasslv3">+ Rå syscalls: fangster apk læser, der omgår libc</string>
+    <string name="patch_sigbypasslv3">+ Rå syscalls: fangster apk læser, der omgår libc. Rettelser native kode, så en app, der verificerer sin egen kode kan markere det som manipuleret — foretrækker niveau 2, medmindre det ikke er nok.</string>
     <string name="patch_return">Vend tilbage</string>
     <string name="patch_uninstall_text">Den installerede app er signeret anderledes, så det skal afinstalleres først. Dens data vil gå tabt - sikkerhedskopiere noget du har brug for, før du fortsætter.</string>
     <string name="patch_install_successfully">Installeret</string>
@@ -265,6 +265,11 @@
     <string name="update_installing">Installerer…</string>
     <string name="update_channel_release">Udgivelse</string>
     <string name="update_channel_debug">Debug</string>
+    <string name="update_channel_canary">KanarieName</string>
+    <string name="update_versions">Version historik</string>
+    <string name="update_installed">Installeret</string>
+    <string name="update_older">Ældre</string>
+    <string name="update_install_version">Installér denne build</string>
     <string name="update_up_to_date">Du er på det seneste build</string>
     <string name="update_check_failed">Kunne ikke søge efter opdateringer</string>
     <string name="update_no_notes">Ingen udgivelsesnoter</string>
