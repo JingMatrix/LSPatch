@@ -93,7 +93,7 @@
     <string name="patch_sigbypasslv0">Pois</string>
     <string name="patch_sigbypasslv1">+ Paketin hallinta: allekirjoitus info lukee alkuperäisenä</string>
     <string name="patch_sigbypasslv2">+ Tiedosto lukee: sovellus lukee oman apk saa alkuperäisen (libc)</string>
-    <string name="patch_sigbypasslv3">+ Raaka syscalls: saaliit apk lukee, että ohittaa libc</string>
+    <string name="patch_sigbypasslv3">+ Raaka syscalls: saaliit apk lukee, että ohittaa libc. Paikkaa natiivi koodi, joten sovellus, joka vahvistaa oman koodin, voi merkitä sen peukaloksi – mieluummin taso 2, ellei se riitä.</string>
     <string name="patch_return">Palata</string>
     <string name="patch_uninstall_text">Asennettu sovellus on allekirjoitettu eri tavalla, joten se täytyy poistaa ensin. Sen tiedot katoavat – varmuuskopioi kaikki mitä tarvitset ennen jatkamista.</string>
     <string name="patch_install_successfully">Asennettu</string>
@@ -265,6 +265,11 @@
     <string name="update_installing">Asennetaan…</string>
     <string name="update_channel_release">Julkaisu</string>
     <string name="update_channel_debug">Debug</string>
+    <string name="update_channel_canary">Kanariansaari</string>
+    <string name="update_versions">Version historia</string>
+    <string name="update_installed">Asennettu</string>
+    <string name="update_older">Vanhemmat</string>
+    <string name="update_install_version">Asenna tämä versio</string>
     <string name="update_up_to_date">Olet viimeisin versio</string>
     <string name="update_check_failed">Päivityksiä ei voitu tarkistaa</string>
     <string name="update_no_notes">Ei julkaisuilmoituksia</string>
