@@ -93,7 +93,7 @@
     <string name="patch_sigbypasslv0">Desactivat</string>
     <string name="patch_sigbypasslv1">+ Gestor de paquets: la informació de signatura es llegeix com l\'original</string>
     <string name="patch_sigbypasslv2">+ Lectura de fitxers: l\'aplicació que llegeix el seu propi apk obté l\'original (libc)</string>
-    <string name="patch_sigbypasslv3">+ Crides de sistema en brut: detecta lectures d\'apk que ignoren libc</string>
+    <string name="patch_sigbypasslv3">+ Crides de sistema en brut: detecta lectures d\'apk que ignoren libc. Aplica pegats al codi natiu, de manera que una aplicació que verifica el seu propi codi el pot marcar com a manipulat; preferiblement el nivell 2 tret que no sigui suficient.</string>
     <string name="patch_return">Tornar</string>
     <string name="patch_uninstall_text">L\'aplicació instal·lada té una signatura diferent, per la qual cosa primer s\'ha de desinstal·lar. Les seves dades es perdran; fes una còpia de seguretat de tot el que necessitis abans de continuar.</string>
     <string name="patch_install_successfully">Instal·lat</string>
@@ -265,6 +265,11 @@
     <string name="update_installing">Instal·lant…</string>
     <string name="update_channel_release">Llançament</string>
     <string name="update_channel_debug">Depuració</string>
+    <string name="update_channel_canary">Canari</string>
+    <string name="update_versions">Historial de versions</string>
+    <string name="update_installed">Instal·lat</string>
+    <string name="update_older">Més antic</string>
+    <string name="update_install_version">Instal·la aquesta compilació</string>
     <string name="update_up_to_date">Estàs a la darrera compilació</string>
     <string name="update_check_failed">No s\'han pogut comprovar si hi ha actualitzacions</string>
     <string name="update_no_notes">Sense notes de llançament</string>
