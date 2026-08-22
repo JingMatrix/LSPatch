@@ -93,7 +93,7 @@
     <string name="patch_sigbypasslv0">Tắt</string>
     <string name="patch_sigbypasslv1">+ Trình quản lý gói: thông tin chữ ký hiển thị như bản gốc</string>
     <string name="patch_sigbypasslv2">+ Đọc tệp: ứng dụng đọc apk của chính nó nhận được bản gốc (libc)</string>
-    <string name="patch_sigbypasslv3">+ Lời gọi hệ thống thô: bắt các lần đọc apk vượt qua libc</string>
+    <string name="patch_sigbypasslv3">+ Lời gọi hệ thống thô: bắt các lần đọc apk vượt qua libc. Vá mã native, nên ứng dụng tự kiểm tra mã của mình có thể coi đó là bị can thiệp — ưu tiên cấp 2 khi vẫn đủ dùng.</string>
     <string name="patch_return">Quay lại</string>
     <string name="patch_uninstall_text">Do chữ ký khác nhau, bạn cần gỡ ứng dụng gốc trước khi cài bản đã vá.\nHãy đảm bảo bạn đã sao lưu dữ liệu cá nhân.</string>
     <string name="patch_install_successfully">Đã cài đặt</string>
@@ -265,6 +265,11 @@
     <string name="update_installing">Đang cài đặt…</string>
     <string name="update_channel_release">Bản phát hành</string>
     <string name="update_channel_debug">Bản gỡ lỗi</string>
+    <string name="update_channel_canary">Chim hoàng yến</string>
+    <string name="update_versions">Lịch sử phiên bản</string>
+    <string name="update_installed">Đang dùng</string>
+    <string name="update_older">Cũ hơn</string>
+    <string name="update_install_version">Cài đặt bản dựng này</string>
     <string name="update_up_to_date">Bạn đang dùng bản mới nhất</string>
     <string name="update_check_failed">Không kiểm tra được cập nhật</string>
     <string name="update_no_notes">Không có ghi chú phát hành</string>
