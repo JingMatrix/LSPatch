@@ -93,7 +93,7 @@
     <string name="patch_sigbypasslv0">Av</string>
     <string name="patch_sigbypasslv1">+ Pakkebehandler: signering info leser som originalen</string>
     <string name="patch_sigbypasslv2">+ Filleser: appen som leser sitt eget apk får originalen (libc)</string>
-    <string name="patch_sigbypasslv3">+ Rå syskalaer: Fangster i eplet leser som omgår libc</string>
+    <string name="patch_sigbypasslv3">+ Rå syskalaer: Fangster leser det som omgår libc. Patches innebygd kode, så en app som bekrefter sin egen kode kan flagge den som endret — foretrekker nivå 2, med mindre den ikke er nok.</string>
     <string name="patch_return">Komme tilbake</string>
     <string name="patch_uninstall_text">Den installerte appen er signert annerledes, så den må avinstalleres først. Dataene vil gå tapt - sikkerhetskopiering alt du trenger før du fortsetter.</string>
     <string name="patch_install_successfully">Installert</string>
@@ -265,6 +265,11 @@
     <string name="update_installing">Installerer…</string>
     <string name="update_channel_release">Utgivelse</string>
     <string name="update_channel_debug">Debug</string>
+    <string name="update_channel_canary">Kanal</string>
+    <string name="update_versions">Versjonslogg</string>
+    <string name="update_installed">Installert</string>
+    <string name="update_older">Eldre</string>
+    <string name="update_install_version">Installer denne byggingen</string>
     <string name="update_up_to_date">Du er på den nyeste versjonen</string>
     <string name="update_check_failed">Kunne ikke se etter oppdateringer</string>
     <string name="update_no_notes">Ingen utgivelsesnotater</string>
