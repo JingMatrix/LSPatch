@@ -93,7 +93,7 @@
     <string name="patch_sigbypasslv0">Aus</string>
     <string name="patch_sigbypasslv1">+ Paketmanager: Signaturinfo erscheint als Original</string>
     <string name="patch_sigbypasslv2">+ Dateizugriffe: Die App liest ihr eigenes APK als Original (libc)</string>
-    <string name="patch_sigbypasslv3">+ Rohe Syscalls: erfasst APK-Zugriffe, die libc umgehen</string>
+    <string name="patch_sigbypasslv3">+ Rohe Syscalls: erfasst APK-Zugriffe, die libc umgehen. Patcht nativen Code, daher kann eine App, die ihren eigenen Code prüft, dies als Manipulation erkennen — bevorzuge Stufe 2, sofern sie ausreicht.</string>
     <string name="patch_return">Zurück</string>
     <string name="patch_uninstall_text">Aufgrund unterschiedlicher Signaturen musst du die Original-App deinstallieren, bevor du die gepatchte installierst.\nStelle sicher, dass du persönliche Daten gesichert hast.</string>
     <string name="patch_install_successfully">Installiert</string>
@@ -265,6 +265,11 @@
     <string name="update_installing">Wird installiert…</string>
     <string name="update_channel_release">Freigabe</string>
     <string name="update_channel_debug">Debug</string>
+    <string name="update_channel_canary">Kanarische</string>
+    <string name="update_versions">Versionsverlauf</string>
+    <string name="update_installed">Installiert</string>
+    <string name="update_older">Älter</string>
+    <string name="update_install_version">Diesen Build installieren</string>
     <string name="update_up_to_date">Du bist auf dem neuesten Stand</string>
     <string name="update_check_failed">Suche nach Updates fehlgeschlagen</string>
     <string name="update_no_notes">Keine Versionshinweise</string>
