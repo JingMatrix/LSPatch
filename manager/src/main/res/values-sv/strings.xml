@@ -93,7 +93,7 @@
     <string name="patch_sigbypasslv0">Av</string>
     <string name="patch_sigbypasslv1">+ Pakethanterare: signeringsinfo läser som original</string>
     <string name="patch_sigbypasslv2">+ Filen läser: appen som läser sin egen apk får originalet (libc)</string>
-    <string name="patch_sigbypasslv3">+ Rå syscalls: fångar apk läser att kringgå libc</string>
+    <string name="patch_sigbypasslv3">+ Rå syscalls: fångar apk läser att kringgå libc. Patchar infödda kod, så en app som verifierar sin egen kod kan flagga det som manipulerad — föredra nivå 2 om det inte är tillräckligt.</string>
     <string name="patch_return">Återgå</string>
     <string name="patch_uninstall_text">Den installerade appen är signerad annorlunda, så den måste avinstalleras först. Dess data kommer att förloras — säkerhetskopiera allt du behöver innan du fortsätter.</string>
     <string name="patch_install_successfully">Installerad</string>
@@ -265,6 +265,11 @@
     <string name="update_installing">Installerar…</string>
     <string name="update_channel_release">Släpp</string>
     <string name="update_channel_debug">Debug</string>
+    <string name="update_channel_canary">Kanarieöarna</string>
+    <string name="update_versions">Version historik</string>
+    <string name="update_installed">Installerad</string>
+    <string name="update_older">Äldre</string>
+    <string name="update_install_version">Installera denna version</string>
     <string name="update_up_to_date">Du är på den senaste versionen</string>
     <string name="update_check_failed">Kunde inte söka efter uppdateringar</string>
     <string name="update_no_notes">Inga versionsfakta</string>
