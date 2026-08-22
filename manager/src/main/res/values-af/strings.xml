@@ -93,7 +93,7 @@
     <string name="patch_sigbypasslv0">Af</string>
     <string name="patch_sigbypasslv1">+ Pakketbestuurder: ondertekeningsinligting lees soos die oorspronklike</string>
     <string name="patch_sigbypasslv2">+ Lêer lees: die toepassing wat sy eie apk lees, kry die oorspronklike (libc)</string>
-    <string name="patch_sigbypasslv3">+ Rou stelseloproepe: vang apk-lesings wat libc omseil</string>
+    <string name="patch_sigbypasslv3">+ Rou stelseloproepe: vang apk-lesings wat libc omseil. Herstel oorspronklike kode, sodat \'n toepassing wat sy eie kode verifieer, dit as gepeuter kan merk — verkies vlak 2 tensy dit nie genoeg is nie.</string>
     <string name="patch_return">Keer terug</string>
     <string name="patch_uninstall_text">Die geïnstalleerde toepassing is anders geteken, so dit moet eers gedeïnstalleer word. Die data daarvan sal verlore gaan – rugsteun enigiets wat jy nodig het voordat jy voortgaan.</string>
     <string name="patch_install_successfully">Geïnstalleer</string>
@@ -265,6 +265,11 @@
     <string name="update_installing">Installeer…</string>
     <string name="update_channel_release">Vrystelling</string>
     <string name="update_channel_debug">Ontfouting</string>
+    <string name="update_channel_canary">Kanarie</string>
+    <string name="update_versions">Weergawegeskiedenis</string>
+    <string name="update_installed">Geïnstalleer</string>
+    <string name="update_older">Ouer</string>
+    <string name="update_install_version">Installeer hierdie bou</string>
     <string name="update_up_to_date">Jy is op die nuutste weergawe</string>
     <string name="update_check_failed">Kon nie vir opdaterings kyk nie</string>
     <string name="update_no_notes">Geen vrystellingsnotas nie</string>
