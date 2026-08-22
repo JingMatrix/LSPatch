@@ -93,7 +93,7 @@
     <string name="patch_sigbypasslv0">Wyłączone</string>
     <string name="patch_sigbypasslv1">+ Menedżer pakietów: informacje o podpisie odczytywane jako oryginał</string>
     <string name="patch_sigbypasslv2">+ Odczyt plików: aplikacja czytająca własny apk otrzymuje oryginał (libc)</string>
-    <string name="patch_sigbypasslv3">+ Surowe wywołania systemowe: wykrywa odczyty apk omijające libc</string>
+    <string name="patch_sigbypasslv3">+ Surowe wywołania systemowe: wykrywa odczyty apk omijające libc. Modyfikuje kod natywny, więc aplikacja sprawdzająca własny kod może uznać to za naruszenie — preferuj poziom 2, o ile wystarcza.</string>
     <string name="patch_return">Wróć</string>
     <string name="patch_uninstall_text">Ze względu na różne podpisy przed instalacją spatchowanej aplikacji musisz odinstalować oryginalną.\nUpewnij się, że masz kopię zapasową danych osobistych.</string>
     <string name="patch_install_successfully">Zainstalowano</string>
@@ -265,6 +265,11 @@
     <string name="update_installing">Instalowanie…</string>
     <string name="update_channel_release">Wydanie</string>
     <string name="update_channel_debug">Debug</string>
+    <string name="update_channel_canary">Kanada</string>
+    <string name="update_versions">Historia wersji</string>
+    <string name="update_installed">Zainstalowana</string>
+    <string name="update_older">Starsza</string>
+    <string name="update_install_version">Zainstaluj tą kompilację</string>
     <string name="update_up_to_date">Masz najnowszą wersję</string>
     <string name="update_check_failed">Nie udało się sprawdzić aktualizacji</string>
     <string name="update_no_notes">Brak informacji o wydaniu</string>
