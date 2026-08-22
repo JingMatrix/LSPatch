@@ -93,7 +93,7 @@
     <string name="patch_sigbypasslv0">끔</string>
     <string name="patch_sigbypasslv1">+ 패키지 관리자: 서명 정보가 원본으로 읽힘</string>
     <string name="patch_sigbypasslv2">+ 파일 읽기: 자신의 apk를 읽는 앱이 원본을 얻음 (libc)</string>
-    <string name="patch_sigbypasslv3">+ 원시 시스템 호출: libc를 우회하는 apk 읽기를 포착</string>
+    <string name="patch_sigbypasslv3">+ 원시 시스템 호출: libc를 우회하는 apk 읽기를 포착. 네이티브 코드를 패치하므로 자체 코드를 검증하는 앱은 변조로 감지할 수 있습니다 — 충분하다면 레벨 2를 권장.</string>
     <string name="patch_return">돌아가기</string>
     <string name="patch_uninstall_text">서명이 다르기 때문에 패치된 앱을 설치하기 전에 원본 앱을 제거해야 합니다.\n개인 데이터를 백업했는지 확인하세요.</string>
     <string name="patch_install_successfully">설치됨</string>
@@ -265,6 +265,11 @@
     <string name="update_installing">설치 중…</string>
     <string name="update_channel_release">릴리스</string>
     <string name="update_channel_debug">디버그</string>
+    <string name="update_channel_canary">카나리아</string>
+    <string name="update_versions">버전 기록</string>
+    <string name="update_installed">설치됨</string>
+    <string name="update_older">이전</string>
+    <string name="update_install_version">이 빌드를 설치하세요</string>
     <string name="update_up_to_date">최신 상태입니다</string>
     <string name="update_check_failed">업데이트를 확인하지 못했습니다</string>
     <string name="update_no_notes">릴리스 노트 없음</string>
