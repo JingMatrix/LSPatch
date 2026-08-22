@@ -93,7 +93,7 @@
     <string name="patch_sigbypasslv0">Off</string>
     <string name="patch_sigbypasslv1">+ Package manager: signing info reads as the original</string>
     <string name="patch_sigbypasslv2">+ File reads: the app reading its own apk gets the original (libc)</string>
-    <string name="patch_sigbypasslv3">+ Raw syscalls: catches apk reads that bypass libc</string>
+    <string name="patch_sigbypasslv3">+ Raw syscalls: catches apk reads that bypass libc. Patches native code, so an app that verifies its own code may flag it as tampered — prefer level 2 unless it is not enough.</string>
     <string name="patch_return">Return</string>
     <string name="patch_uninstall_text">The installed app is signed differently, so it must be uninstalled first. Its data will be lost — back up anything you need before continuing.</string>
     <string name="patch_install_successfully">Installed</string>
@@ -265,6 +265,11 @@
     <string name="update_installing">Installing…</string>
     <string name="update_channel_release">Release</string>
     <string name="update_channel_debug">Debug</string>
+    <string name="update_channel_canary">Canary</string>
+    <string name="update_versions">Version history</string>
+    <string name="update_installed">Installed</string>
+    <string name="update_older">Older</string>
+    <string name="update_install_version">Install this build</string>
     <string name="update_up_to_date">You\'re on the latest build</string>
     <string name="update_check_failed">Couldn\'t check for updates</string>
     <string name="update_no_notes">No release notes</string>
