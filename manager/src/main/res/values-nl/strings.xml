@@ -93,7 +93,7 @@
     <string name="patch_sigbypasslv0">UIT</string>
     <string name="patch_sigbypasslv1">+ Pakket manager: het ondertekenen van gegevens gelezen als origineel</string>
     <string name="patch_sigbypasslv2">+ Bestand leest: de app die zijn eigen apk leest, krijgt het origineel (libc)</string>
-    <string name="patch_sigbypasslv3">+ Raw syscalls: vangst apk reads die libc omzeilen</string>
+    <string name="patch_sigbypasslv3">+ Raw syscalls: vangt apk reads die libc omzeilen. Patcheert de oorspronkelijke code, zodat een app zijn eigen code kan markeren als geknoeid — geef de voorkeur aan niveau 2 tenzij het niet genoeg is.</string>
     <string name="patch_return">Opbrengst</string>
     <string name="patch_uninstall_text">De geïnstalleerde app is anders aangemeld, dus deze moet eerst worden verwijderd. Zijn gegevens gaan verloren - maak een backup van alles wat je nodig hebt om verder te gaan.</string>
     <string name="patch_install_successfully">Geinstalleerd</string>
@@ -265,6 +265,11 @@
     <string name="update_installing">Installeren…</string>
     <string name="update_channel_release">Vrijgeven</string>
     <string name="update_channel_debug">Debug</string>
+    <string name="update_channel_canary">Canary</string>
+    <string name="update_versions">Versie geschiedenis</string>
+    <string name="update_installed">Geinstalleerd</string>
+    <string name="update_older">Ouder</string>
+    <string name="update_install_version">Deze build installeren</string>
     <string name="update_up_to_date">Je bent op de laatste versie</string>
     <string name="update_check_failed">Kan niet controleren op updates</string>
     <string name="update_no_notes">Geen release notities</string>
