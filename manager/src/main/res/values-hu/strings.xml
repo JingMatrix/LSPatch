@@ -93,7 +93,7 @@
     <string name="patch_sigbypasslv0">Le</string>
     <string name="patch_sigbypasslv1">+ Csomagkezelő: az aláírási információ az eredetinek megfelelően olvasható</string>
     <string name="patch_sigbypasslv2">+ Fájlolvasás: az alkalmazás a saját apk-ját olvasva lekéri az eredetit (libc)</string>
-    <string name="patch_sigbypasslv3">+ Nyers rendszerhívások: elkapja a libc-t megkerülő apk-olvasásokat</string>
+    <string name="patch_sigbypasslv3">+ Nyers rendszerhívások: elkapja a libc-t megkerülő apk-olvasásokat. Javítja a natív kódot, így egy alkalmazás, amely a saját kódját ellenőrzi, megjelölheti azt manipuláltként — a 2. szint a megfelelő, kivéve, ha az nem elég.</string>
     <string name="patch_return">Visszatérés</string>
     <string name="patch_uninstall_text">A telepített alkalmazás másképp van aláírva, ezért először el kell távolítani. Az adatai elvesznek – a folytatás előtt készítsen biztonsági másolatot mindenről, amire szüksége van.</string>
     <string name="patch_install_successfully">Telepítve</string>
@@ -265,6 +265,11 @@
     <string name="update_installing">… telepítése</string>
     <string name="update_channel_release">Kiadás</string>
     <string name="update_channel_debug">Hibakeresés</string>
+    <string name="update_channel_canary">Kanári</string>
+    <string name="update_versions">Verzióelőzmények</string>
+    <string name="update_installed">Telepítve</string>
+    <string name="update_older">Régebbi</string>
+    <string name="update_install_version">Telepítse ezt a buildet</string>
     <string name="update_up_to_date">A legújabb verziót használod</string>
     <string name="update_check_failed">Nem sikerült frissítéseket keresni</string>
     <string name="update_no_notes">Nincsenek kiadási megjegyzések</string>
