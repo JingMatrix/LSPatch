@@ -93,7 +93,7 @@
     <string name="patch_sigbypasslv0">关闭</string>
     <string name="patch_sigbypasslv1">+ 包管理器：签名信息读取为原始值</string>
     <string name="patch_sigbypasslv2">+ 文件读取：应用读取自身 apk 时得到原始文件 (libc)</string>
-    <string name="patch_sigbypasslv3">+ 原始系统调用：捕获绕过 libc 的 apk 读取</string>
+    <string name="patch_sigbypasslv3">+ 原始系统调用：捕获绕过 libc 的 apk 读取。会修改原生代码，因此校验自身代码的应用可能判定为被篡改 — 够用时建议使用等级 2。</string>
     <string name="patch_return">返回</string>
     <string name="patch_uninstall_text">已安装的应用签名不同，必须先卸载。其数据将丢失 — 继续前请备份需要保留的内容。</string>
     <string name="patch_install_successfully">已安装</string>
@@ -265,6 +265,11 @@
     <string name="update_installing">正在安装…</string>
     <string name="update_channel_release">正式版</string>
     <string name="update_channel_debug">调试版</string>
+    <string name="update_channel_canary">预览版</string>
+    <string name="update_versions">版本历史</string>
+    <string name="update_installed">已安装</string>
+    <string name="update_older">较旧</string>
+    <string name="update_install_version">安装此版本</string>
     <string name="update_up_to_date">当前已是最新版本</string>
     <string name="update_check_failed">无法检查更新</string>
     <string name="update_no_notes">没有发行说明</string>
