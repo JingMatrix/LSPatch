@@ -93,7 +93,7 @@
     <string name="patch_sigbypasslv0">Desactivado</string>
     <string name="patch_sigbypasslv1">+ Gestor de paquetes: la info de firma se lee como la original</string>
     <string name="patch_sigbypasslv2">+ Lecturas de archivo: la app que lee su propio apk obtiene el original (libc)</string>
-    <string name="patch_sigbypasslv3">+ Syscalls sin procesar: detecta lecturas del apk que evitan libc</string>
+    <string name="patch_sigbypasslv3">+ Syscalls sin procesar: detecta lecturas del apk que evitan libc. Modifica el código nativo, por lo que una app que verifica su propio código puede detectarlo como manipulado — prefiere el nivel 2 mientras baste.</string>
     <string name="patch_return">Volver</string>
     <string name="patch_uninstall_text">Debido a las diferencias de firma, debes desinstalar la aplicación original antes de instalar la parcheada.\nAsegúrate de haber hecho una copia de seguridad de tus datos personales.</string>
     <string name="patch_install_successfully">Instalada</string>
@@ -265,6 +265,11 @@
     <string name="update_installing">Instalando…</string>
     <string name="update_channel_release">Estable</string>
     <string name="update_channel_debug">Depuración</string>
+    <string name="update_channel_canary">Canarias</string>
+    <string name="update_versions">Historial de versiones</string>
+    <string name="update_installed">Instalada</string>
+    <string name="update_older">Anterior</string>
+    <string name="update_install_version">Instalar esta versión</string>
     <string name="update_up_to_date">Estás al día</string>
     <string name="update_check_failed">No se pudieron buscar actualizaciones</string>
     <string name="update_no_notes">Sin notas de la versión</string>
