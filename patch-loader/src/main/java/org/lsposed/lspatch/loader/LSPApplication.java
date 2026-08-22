@@ -14,7 +14,6 @@ import android.os.RemoteException;
 import android.system.Os;
 import android.util.Log;
 
-import org.lsposed.lspatch.loader.util.FileUtils;
 import org.lsposed.lspatch.loader.util.XLog;
 import org.lsposed.lspatch.service.EmbeddedRemoteServices;
 import org.lsposed.lspatch.service.LocalApplicationService;
@@ -47,6 +46,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.nio.file.attribute.PosixFilePermissions;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -297,8 +297,16 @@ public class LSPApplication {
 
             Path originPath = Paths.get(appInfo.dataDir, "cache/lspatch/origin/");
             Path cacheApkPath;
+            long originSize;
+            long originCrc;
             try (ZipFile sourceFile = new ZipFile(appInfo.sourceDir)) {
-                cacheApkPath = originPath.resolve(sourceFile.getEntry(ORIGINAL_APK_ASSET_PATH).getCrc() + ".apk");
+                var originEntry = sourceFile.getEntry(ORIGINAL_APK_ASSET_PATH);
+                if (originEntry == null) {
+                    throw new IOException("Patched apk does not contain " + ORIGINAL_APK_ASSET_PATH);
+                }
+                originSize = originEntry.getSize();
+                originCrc = originEntry.getCrc();
+                cacheApkPath = originPath.resolve(originCrc + ".apk");
             }
 
             appInfo.sourceDir = cacheApkPath.toString();
@@ -312,12 +320,49 @@ public class LSPApplication {
                 appInfo.appComponentFactory = null;
             }
 
-            if (!Files.exists(cacheApkPath)) {
+            // The extracted copy is trusted on every later launch, so a truncated or corrupt one -- an
+            // extraction interrupted by a process kill, exhausted storage, or a stale file from an earlier
+            // patch -- would be read indefinitely and only surface far downstream as a hard-to-trace
+            // failure. Guard it two ways: accept an existing copy only when its length matches the recorded
+            // original, and extract through a per-process temp file whose CRC is verified before it is
+            // published with an atomic rename, so an interrupted or corrupt extraction can never leave a
+            // trusted bad file in place.
+            boolean cacheValid;
+            try {
+                cacheValid = Files.exists(cacheApkPath) && Files.size(cacheApkPath) == originSize;
+            } catch (IOException e) {
+                cacheValid = false;
+            }
+            if (!cacheValid) {
                 Log.i(TAG, "Extract original apk");
-                FileUtils.deleteFolderIfExists(originPath);
                 Files.createDirectories(originPath);
-                try (InputStream is = baseClassLoader.getResourceAsStream(ORIGINAL_APK_ASSET_PATH)) {
-                    Files.copy(is, cacheApkPath);
+                Path tmpApkPath = originPath.resolve(cacheApkPath.getFileName() + "." + Os.getpid() + ".tmp");
+                try {
+                    long written;
+                    var checksum = new java.util.zip.CRC32();
+                    try (InputStream is = new java.util.zip.CheckedInputStream(
+                            baseClassLoader.getResourceAsStream(ORIGINAL_APK_ASSET_PATH), checksum)) {
+                        written = Files.copy(is, tmpApkPath, StandardCopyOption.REPLACE_EXISTING);
+                    }
+                    if (checksum.getValue() != originCrc) {
+                        throw new IOException("Origin apk extraction corrupt: wrote " + written
+                                + " bytes, crc " + checksum.getValue() + " != " + originCrc);
+                    }
+                    Files.move(tmpApkPath, cacheApkPath, StandardCopyOption.ATOMIC_MOVE, StandardCopyOption.REPLACE_EXISTING);
+                    // A host-app update changes the original apk -> a new crc-named copy, orphaning older
+                    // ones. Drop every sibling apk but the current; in-flight temps end in .tmp and are left.
+                    try (var stale = Files.newDirectoryStream(originPath, "*.apk")) {
+                        for (Path old : stale) {
+                            if (!old.getFileName().equals(cacheApkPath.getFileName())) {
+                                try {
+                                    Files.deleteIfExists(old);
+                                } catch (IOException ignored) {
+                                }
+                            }
+                        }
+                    }
+                } finally {
+                    Files.deleteIfExists(tmpApkPath);
                 }
             }
             cacheApkPath.toFile().setWritable(false);
