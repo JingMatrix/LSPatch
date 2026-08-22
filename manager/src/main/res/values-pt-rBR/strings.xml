@@ -93,7 +93,7 @@
     <string name="patch_sigbypasslv0">Desligado</string>
     <string name="patch_sigbypasslv1">+ Gerenciador de pacotes: as infos de assinatura aparecem como as originais</string>
     <string name="patch_sigbypasslv2">+ Leituras de arquivo: o app que lê o próprio apk recebe o original (libc)</string>
-    <string name="patch_sigbypasslv3">+ Syscalls brutas: detecta leituras do apk que ignoram a libc</string>
+    <string name="patch_sigbypasslv3">+ Syscalls brutas: detecta leituras do apk que ignoram a libc. Modifica o código nativo, então um app que verifica o próprio código pode sinalizá-lo como adulterado — prefira o nível 2 quando bastar.</string>
     <string name="patch_return">Voltar</string>
     <string name="patch_uninstall_text">Devido às assinaturas diferentes, você precisa desinstalar o app original antes de instalar o aplicado.\nCertifique-se de ter feito backup dos dados pessoais.</string>
     <string name="patch_install_successfully">Instalado</string>
@@ -265,6 +265,11 @@
     <string name="update_installing">Instalando…</string>
     <string name="update_channel_release">Versão</string>
     <string name="update_channel_debug">Debug</string>
+    <string name="update_channel_canary">Canárias</string>
+    <string name="update_versions">Histórico de versão</string>
+    <string name="update_installed">Instalada</string>
+    <string name="update_older">Mais antiga</string>
+    <string name="update_install_version">Instalar esta compilação</string>
     <string name="update_up_to_date">Você está atualizado</string>
     <string name="update_check_failed">Não foi possível verificar atualizações</string>
     <string name="update_no_notes">Sem notas da versão</string>
