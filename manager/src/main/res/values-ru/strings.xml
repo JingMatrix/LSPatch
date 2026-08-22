@@ -93,7 +93,7 @@
     <string name="patch_sigbypasslv0">Выкл</string>
     <string name="patch_sigbypasslv1">+ Менеджер пакетов: данные подписи считываются как оригинальные</string>
     <string name="patch_sigbypasslv2">+ Чтение файлов: приложение, читающее свой apk, получает оригинал (libc)</string>
-    <string name="patch_sigbypasslv3">+ Сырые системные вызовы: перехватывает чтения apk в обход libc</string>
+    <string name="patch_sigbypasslv3">+ Сырые системные вызовы: перехватывает чтения apk в обход libc. Патчит нативный код, поэтому приложение, проверяющее собственный код, может счесть это подделкой — предпочитайте уровень 2, пока его хватает.</string>
     <string name="patch_return">Назад</string>
     <string name="patch_uninstall_text">Из-за разных подписей необходимо удалить оригинальное приложение перед установкой пропатченного.\nУбедитесь, что вы сохранили личные данные.</string>
     <string name="patch_install_successfully">Установлено</string>
@@ -265,6 +265,11 @@
     <string name="update_installing">Установка…</string>
     <string name="update_channel_release">Релиз</string>
     <string name="update_channel_debug">Отладка</string>
+    <string name="update_channel_canary">Канал</string>
+    <string name="update_versions">История версий</string>
+    <string name="update_installed">Установлена</string>
+    <string name="update_older">Старее</string>
+    <string name="update_install_version">Установить эту сборку</string>
     <string name="update_up_to_date">У вас последняя версия</string>
     <string name="update_check_failed">Не удалось проверить обновления</string>
     <string name="update_no_notes">Нет примечаний к релизу</string>
