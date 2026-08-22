@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="add">추가</string>
     <string name="uninstall">제거</string>
@@ -7,6 +8,7 @@
     <string name="shizuku_available">Shizuku 서비스 사용 가능</string>
     <string name="shizuku_unavailable">Shizuku 서비스에 연결되지 않음</string>
     <string name="shizuku_off">연결되지 않음</string>
+    <!-- Shizuku failure dialog -->
     <string name="shizuku_failure_not_running">Shizuku가 실행 중이 아닙니다</string>
     <string name="shizuku_failure_lost">Shizuku와의 연결이 끊어졌습니다</string>
     <string name="shizuku_failure_hint_lost">Shizuku가 작동 중이었지만 LSPatch가 연결을 잃었습니다. LSPatch를 다시 여세요. 그래도 안 되면 Shizuku를 다시 시작하세요.</string>
@@ -28,12 +30,12 @@
     <string name="shizuku_failure_grant">권한 부여</string>
     <string name="shizuku_failure_dismiss">닫기</string>
     <string name="error_unknown">알 수 없는 오류</string>
-
     <!-- Home Screen -->
     <string name="home_shizuku_warning">일부 기능을 사용할 수 없습니다</string>
     <string name="home_info_copied">클립보드에 복사됨</string>
     <string name="home_device">기기</string>
-
+    <string name="home_system">시스템</string>
+    <string name="home_package">패키지</string>
     <!-- Manage Screen -->
     <string name="screen_manage">관리</string>
     <string name="manage_summary">패치됨 %1$d개  ·  모듈 %2$d개</string>
@@ -57,7 +59,6 @@
     <string name="manage_info_desc">시스템 앱 설정에서 보기</string>
     <string name="manage_module_applies_to">적용 대상</string>
     <string name="manage_module_applies_none">아직 어떤 앱에도 활성화되지 않음</string>
-
     <!-- Action drawer descriptions -->
     <string name="manage_update_loader_desc">내장된 LSPatch 로더를 최신 버전으로 업그레이드합니다</string>
     <string name="manage_module_scope_desc">이 앱에 적용할 모듈을 선택합니다</string>
@@ -65,13 +66,27 @@
     <string name="manage_uninstall_desc">이 기기에서 패치된 앱을 제거합니다</string>
     <string name="manage_module_settings_desc">모듈 자체 설정 화면을 엽니다</string>
     <string name="manage_app_info_desc">시스템 앱 설정에서 이 모듈을 봅니다</string>
-
     <!-- New Patch Screen -->
     <string name="screen_new_patch">새 패치</string>
     <string name="patch_from_storage">저장소에서 apk 선택</string>
     <string name="patch_mode">패치 모드</string>
+    <string name="patch_source_installed">설치된 앱</string>
+    <string name="patch_source_storage">저장소에서</string>
+    <string name="patch_source_repatch">패치된 앱 내부의 원본에서 다시 빌드됨</string>
+    <string name="patch_local_modules_later">나중에 이 앱의 페이지에서 선택</string>
     <string name="patch_local">로컬</string>
+    <string name="patch_aspect_modules">모듈</string>
+    <string name="patch_aspect_scope">범위</string>
+    <string name="patch_aspect_runs">실행 환경</string>
+    <string name="patch_aspect_modules_local">관리자가 제공, 내장되지 않음 — 핫 리로드 지원</string>
+    <string name="patch_aspect_modules_integrated">패치된 APK에 내장됨</string>
+    <string name="patch_aspect_scope_local">재패치 없이 언제든 변경 가능</string>
+    <string name="patch_aspect_scope_integrated">고정됨 — 변경하려면 재패치해야 합니다</string>
+    <string name="patch_aspect_runs_local">이 기기에서만</string>
+    <string name="patch_aspect_runs_integrated">관리자 유무와 상관없이 모든 기기</string>
+    <string name="patch_local_summary">관리자가 이 앱의 모듈을 제공합니다</string>
     <string name="patch_integrated">통합</string>
+    <string name="patch_integrated_summary">모듈이 APK에 내장됩니다</string>
     <string name="patch_embed_modules">모듈 내장</string>
     <string name="patch_debuggable">디버그 가능</string>
     <string name="patch_sigbypass">서명 우회</string>
@@ -85,71 +100,6 @@
     <string name="patch_install_hint_shizuku">Shizuku를 통해 자동으로 설치할 준비가 되었습니다.</string>
     <string name="patch_install_hint_system">설치할 준비가 되었습니다. 시스템에서 확인을 요청합니다.</string>
     <string name="patch_section_options">옵션</string>
-    <string name="patch_status_patching">패치 중…</string>
-    <string name="patch_status_error">패치 실패</string>
-    <string name="patch_status_error_desc">문제가 발생했습니다. 로그를 복사하여 자세한 내용을 확인하세요.</string>
-
-    <!-- Select Apps Screen -->
-
-    <!-- Signing keystore -->
-    <string name="settings_keystore">서명 키스토어</string>
-    <string name="settings_keystore_default">내장</string>
-    <string name="settings_keystore_custom">사용자 지정</string>
-    <string name="settings_keystore_file">키스토어 파일</string>
-    <string name="settings_keystore_password">비밀번호</string>
-    <string name="settings_keystore_alias">별칭</string>
-    <string name="settings_keystore_alias_password">별칭 비밀번호</string>
-    <string name="settings_keystore_wrong_keystore">잘못된 키스토어 유형</string>
-    <string name="settings_keystore_wrong_password">잘못된 키스토어 비밀번호</string>
-    <string name="settings_keystore_wrong_alias">잘못된 별칭 이름</string>
-    <string name="settings_keystore_wrong_alias_password">잘못된 별칭 비밀번호</string>
-    <string name="settings_detail_patch_logs">상세 패치 로그</string>
-    <string name="patch_inject_dex">로더 dex 삽입</string>
-    <string name="patch_inject_dex_desc">브라우저의 렌더링 엔진과 같이 격리된 서비스가 있는 앱의 경우, 정상적으로 작동하도록 이 옵션을 켜세요.</string>
-
-    <!-- Repo Details Screen -->
-
-    <!-- Logs Screen -->
-    <string name="logs_word_wrap">자동 줄바꿈</string>
-    <string name="logs_grant">Shizuku 허용</string>
-    <string name="logs_state_shizuku_title">로그에 Shizuku가 필요합니다</string>
-    <string name="logs_state_shizuku_body">LSPatch는 Shizuku 셸을 통해 기기 로그를 읽습니다. 프레임워크 및 크래시 로그를 여기서 보려면 액세스를 허용하세요.</string>
-    <!-- Appearance -->
-    <string name="appearance_title">모양</string>
-    <string name="appearance_floating_nav">플로팅 내비게이션</string>
-    <string name="appearance_floating_nav_summary">내비게이션을 막대 대신 콘텐츠 위에 이동 가능한 공 형태로 표시합니다.</string>
-    <!-- Language -->
-    <string name="language_title">언어</string>
-    <string name="home_status_ready">준비됨</string>
-    <string name="home_status_limited">제한됨</string>
-    <string name="update_up_to_date">최신 상태입니다</string>
-    <string name="update_checking">업데이트 확인 중…</string>
-    <string name="update_check">업데이트 확인</string>
-    <string name="update_install">다운로드 및 설치</string>
-    <string name="update_open_release">릴리스 페이지 열기</string>
-    <string name="update_downloading">다운로드 중…</string>
-    <string name="update_installing">설치 중…</string>
-    <string name="update_channel_release">릴리스</string>
-    <string name="update_channel_debug">디버그</string>
-    <string name="update_no_notes">릴리스 노트 없음</string>
-    <string name="update_back">뒤로</string>
-    <string name="update_retry">다시 시도</string>
-    <string name="home_system">시스템</string>
-    <string name="patch_aspect_modules_local">관리자가 제공, 내장되지 않음 — 핫 리로드 지원</string>
-    <string name="patch_source_installed">설치된 앱</string>
-    <string name="patch_source_storage">저장소에서</string>
-    <string name="patch_source_repatch">패치된 앱 내부의 원본에서 다시 빌드됨</string>
-    <string name="patch_local_modules_later">나중에 이 앱의 페이지에서 선택</string>
-    <string name="patch_aspect_modules">모듈</string>
-    <string name="patch_aspect_scope">범위</string>
-    <string name="patch_aspect_runs">실행 환경</string>
-    <string name="patch_aspect_modules_integrated">패치된 APK에 내장됨</string>
-    <string name="patch_aspect_scope_local">재패치 없이 언제든 변경 가능</string>
-    <string name="patch_aspect_scope_integrated">고정됨 — 변경하려면 재패치해야 합니다</string>
-    <string name="patch_aspect_runs_local">이 기기에서만</string>
-    <string name="patch_aspect_runs_integrated">관리자 유무와 상관없이 모든 기기</string>
-    <string name="patch_local_summary">관리자가 이 앱의 모듈을 제공합니다</string>
-    <string name="patch_integrated_summary">모듈이 APK에 내장됩니다</string>
     <string name="patch_manifest_version_code">버전 코드</string>
     <string name="patch_manifest_version_code_hint">비워 두면 원래 값을 유지합니다</string>
     <string name="patch_manifest_label">앱 이름</string>
@@ -166,6 +116,10 @@
     <string name="patch_manifest_permissions_count">%1$d개 추가됨</string>
     <string name="patch_manifest_documents_provider">비공개 데이터 노출</string>
     <string name="patch_manifest_documents_provider_desc">프로바이더를 추가해 루트 없이 시스템 파일 선택기를 통해 파일 관리자가 앱의 비공개 데이터 폴더를 탐색할 수 있게 합니다. 앱 데이터에 접근할 수 있는 범위가 넓어지므로 필요하지 않으면 꺼 두세요.</string>
+    <string name="patch_status_patching">패치 중…</string>
+    <string name="patch_status_error">패치 실패</string>
+    <string name="patch_status_error_desc">문제가 발생했습니다. 로그를 복사하여 자세한 내용을 확인하세요.</string>
+    <!-- Choosing what to patch, and which modules to embed -->
     <string name="patch_select_target">패치할 앱 선택</string>
     <string name="patch_target_loading">설치된 앱을 불러오는 중…</string>
     <string name="patch_target_already_patched">이미 패치됨</string>
@@ -185,6 +139,7 @@
     <string name="patch_module_origin_file">저장소에서</string>
     <string name="patch_module_unreadable">APK에서 읽을 수 없음</string>
     <string name="patch_local_drop_warning">로컬로 전환하면 내장된 모듈 %1$d개가 사라집니다. 설치되어 있지 않은 모듈은 복구할 수 없습니다.</string>
+    <!-- Patch progress and outcome -->
     <string name="patch_effect_replace">기존 앱에 덮어써 설치하며, 데이터는 유지됩니다</string>
     <string name="patch_effect_uninstall">먼저 제거해야 하며, 앱 데이터가 사라집니다</string>
     <string name="patch_stage_reading">APK 읽는 중</string>
@@ -213,6 +168,7 @@
     <string name="patch_hide_log">로그 숨기기</string>
     <string name="patch_copy_log">보고서 복사</string>
     <string name="patch_share_log">보고서 공유</string>
+    <string name="logs_word_wrap">자동 줄바꿈</string>
     <string name="patch_log_copied">로그가 복사됨</string>
     <string name="patch_log_empty">패처가 아무것도 출력하지 않았습니다</string>
     <string name="patch_progress_running">%1$s 패치 중</string>
@@ -223,6 +179,7 @@
     <string name="patch_export_running">내보내는 중…</string>
     <string name="patch_export_done">내보냄</string>
     <string name="patch_export_failed">내보내기 실패</string>
+    <!-- App detail page -->
     <string name="appdetail_modules">모듈</string>
     <string name="appdetail_actions">작업</string>
     <string name="appdetail_info">상세 정보</string>
@@ -259,28 +216,68 @@
     <string name="manage_restore_running_line">%1$s 복원 중</string>
     <string name="manage_export_desc">패치된 APK의 사본을 저장합니다</string>
     <string name="cancel">취소</string>
+    <!-- Signing keystore -->
+    <string name="settings_keystore">서명 키스토어</string>
+    <string name="settings_keystore_default">내장</string>
+    <string name="settings_keystore_custom">사용자 지정</string>
     <string name="settings_keystore_default_desc">LSPatch 자체 키입니다. 특정 서명이 필요하지 않다면 이 선택이 맞습니다.</string>
     <string name="settings_keystore_custom_desc">자신의 키스토어(BKS)로 서명합니다.</string>
-    <string name="update_reinstall">이 빌드 다시 설치</string>
-    <string name="update_check_failed">업데이트를 확인하지 못했습니다</string>
-    <string name="home_package">패키지</string>
+    <string name="settings_keystore_file">키스토어 파일</string>
+    <string name="settings_keystore_password">비밀번호</string>
+    <string name="settings_keystore_alias">별칭</string>
+    <string name="settings_keystore_alias_password">별칭 비밀번호</string>
+    <string name="settings_keystore_wrong_keystore">잘못된 키스토어 유형</string>
+    <string name="settings_keystore_wrong_password">잘못된 키스토어 비밀번호</string>
+    <string name="settings_keystore_wrong_alias">잘못된 별칭 이름</string>
+    <string name="settings_keystore_wrong_alias_password">잘못된 별칭 비밀번호</string>
+    <string name="settings_detail_patch_logs">상세 패치 로그</string>
     <string name="settings_cloak_dialog_title">패키지 이름 변경</string>
     <string name="settings_cloak_package">새 패키지 이름</string>
     <string name="settings_cloak_randomize">무작위</string>
+    <string name="settings_cloak_warning">LSPatch Manager를 다른 패키지 이름으로 새로 설치하고 로컬 모드 앱을 업데이트한 다음 현재 앱을 제거합니다. 통합 패치는 영향을 받지 않습니다. Shizuku를 계속 사용할 수 있어야 합니다. 설치 후 새 패키지에 Shizuku를 허용하세요.</string>
     <string name="settings_cloak_invalid">올바른 패키지 이름을 입력하세요 (예: org.example.app)</string>
     <string name="settings_cloak_need_shizuku">패키지 이름을 변경하려면 Shizuku가 필요합니다</string>
     <string name="settings_cloak_confirm">계속</string>
-    <string name="settings_cloak_warning">LSPatch Manager를 다른 패키지 이름으로 새로 설치하고 로컬 모드 앱을 업데이트한 다음 현재 앱을 제거합니다. 통합 패치는 영향을 받지 않습니다. Shizuku를 계속 사용할 수 있어야 합니다. 설치 후 새 패키지에 Shizuku를 허용하세요.</string>
     <string name="settings_revert_dialog_title">원래 패키지로 되돌리기</string>
-    <string name="settings_revert_confirm">되돌리기</string>
     <string name="settings_revert_warning">JingMatrix/LSPatch 릴리스에서 최신 manager.apk를 다운로드하여 org.lsposed.lspatch로 설치하고(설정과 로컬 앱 링크가 복원됨) 이 앱을 제거합니다. Shizuku와 네트워크가 필요합니다.</string>
+    <string name="settings_revert_confirm">되돌리기</string>
+    <string name="patch_inject_dex">로더 dex 삽입</string>
+    <string name="patch_inject_dex_desc">브라우저의 렌더링 엔진과 같이 격리된 서비스가 있는 앱의 경우, 정상적으로 작동하도록 이 옵션을 켜세요.</string>
+    <!-- Repo Details Screen -->
+    <!-- Logs Screen -->
+    <string name="logs_grant">Shizuku 허용</string>
+    <string name="logs_state_shizuku_title">로그에 Shizuku가 필요합니다</string>
+    <string name="logs_state_shizuku_body">LSPatch는 Shizuku 셸을 통해 기기 로그를 읽습니다. 프레임워크 및 크래시 로그를 여기서 보려면 액세스를 허용하세요.</string>
+    <!-- Appearance -->
+    <string name="appearance_title">모양</string>
+    <string name="appearance_floating_nav">플로팅 내비게이션</string>
+    <string name="appearance_floating_nav_summary">내비게이션을 막대 대신 콘텐츠 위에 이동 가능한 공 형태로 표시합니다.</string>
+    <!-- Language -->
+    <string name="language_title">언어</string>
+    <string name="home_status_ready">준비됨</string>
+    <string name="home_status_limited">제한됨</string>
+    <string name="update_checking">업데이트 확인 중…</string>
+    <string name="update_check">업데이트 확인</string>
+    <string name="update_install">다운로드 및 설치</string>
+    <string name="update_reinstall">이 빌드 다시 설치</string>
+    <string name="update_open_release">릴리스 페이지 열기</string>
+    <string name="update_downloading">다운로드 중…</string>
+    <string name="update_installing">설치 중…</string>
+    <string name="update_channel_release">릴리스</string>
+    <string name="update_channel_debug">디버그</string>
+    <string name="update_up_to_date">최신 상태입니다</string>
+    <string name="update_check_failed">업데이트를 확인하지 못했습니다</string>
+    <string name="update_no_notes">릴리스 노트 없음</string>
+    <string name="update_back">뒤로</string>
+    <string name="update_retry">다시 시도</string>
+    <!-- The resident service, when it is present but not collecting logs -->
     <string name="resident_service_title">LSPatch 실행 중</string>
     <string name="resident_service_text">패치된 앱에 모듈을 제공하는 중</string>
+    <!-- Background restrictions -->
     <string name="background_reports_title">이 기기가 백그라운드에서 LSPatch를 중지했습니다</string>
     <string name="background_reports_line">%1$s이(가) LSPatch에 닿지 못한 채 %2$d번 실행되었습니다</string>
     <string name="background_battery">배터리 최적화 무시</string>
     <string name="background_battery_done">LSPatch는 이미 배터리 최적화에서 제외되어 있습니다</string>
-    <string name="background_battery_summary">오늘 아무도 열지 않은 관리자가 아예 응답하지 못하는 것은 Doze 때문입니다</string>
     <string name="shizuku_open_app">Shizuku 열기</string>
     <string name="stay_alive_title">LSPatch를 연결 가능한 상태로 유지</string>
     <string name="stay_alive_body">패치된 앱은 실행되는 순간 LSPatch에 모듈을 요청합니다. 그때 기기가 이미 LSPatch를 중지했다면 앱은 기억해 둔 모듈 목록에 의존하게 되고, 그 이후 여기서 바꾼 내용은 반영되지 않습니다. 둘 다 필수는 아닙니다.</string>
@@ -289,12 +286,14 @@
     <string name="stay_alive_done">완료</string>
     <string name="background_whitelist_done">이 기기가 요청한 제한을 모두 해제했습니다</string>
     <string name="background_whitelist_refused">거부됨: %1$s</string>
+    <string name="background_battery_summary">오늘 아무도 열지 않은 관리자가 아예 응답하지 못하는 것은 Doze 때문입니다</string>
     <string name="background_keep_alive">중지되면 다시 시작</string>
     <string name="background_keep_alive_summary">Shizuku 셸을 이용해 LSPatch가 사라진 것을 발견하면 다시 시작합니다. 셸 프로세스는 LSPatch보다 오래 남으므로 강제 중지 후에도 동작합니다.</string>
     <string name="background_keep_alive_needs_shizuku">Shizuku 필요</string>
     <string name="background_whitelist">백그라운드 제한 해제</string>
     <string name="background_whitelist_summary">Doze 목록과 앱 대기 버킷에서 LSPatch를 빼도록 셸에 요청하고, 기기가 거부한 항목을 그대로 알려 줍니다.</string>
     <string name="background_whitelist_running">셸에 요청하는 중…</string>
+    <!-- What each background limit is called where a refusal is reported -->
     <string name="background_limit_doze">Doze 허용 목록</string>
     <string name="background_limit_background">백그라운드 작업</string>
     <string name="background_limit_any_background">모든 백그라운드 작업</string>

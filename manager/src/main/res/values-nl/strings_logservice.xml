@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="log_service_channel">Log volgen</string>
+    <string name="log_service_title">LSPatch is monitoring logs</string>
+    <string name="log_service_text">Framework en gepatchte-app logs verzamelen</string>
+</resources>

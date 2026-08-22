@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="add">إضافة</string>
     <string name="uninstall">إلغاء التثبيت</string>
@@ -7,6 +8,7 @@
     <string name="shizuku_available">خدمة Shizuku متاحة</string>
     <string name="shizuku_unavailable">خدمة Shizuku غير متصلة</string>
     <string name="shizuku_off">غير متصل</string>
+    <!-- Shizuku failure dialog -->
     <string name="shizuku_failure_not_running">Shizuku غير مشغّل</string>
     <string name="shizuku_failure_lost">انقطع الاتصال بـ Shizuku</string>
     <string name="shizuku_failure_hint_lost">كان Shizuku يعمل وفقد LSPatch الاتصال به. أعد فتح LSPatch، وإن لم ينفع ذلك فأعد تشغيل Shizuku.</string>
@@ -28,12 +30,12 @@
     <string name="shizuku_failure_grant">منح الوصول</string>
     <string name="shizuku_failure_dismiss">إغلاق</string>
     <string name="error_unknown">خطأ غير معروف</string>
-
     <!-- Home Screen -->
     <string name="home_shizuku_warning">بعض الميزات غير متاحة</string>
     <string name="home_info_copied">تم النسخ إلى الحافظة</string>
     <string name="home_device">الجهاز</string>
-
+    <string name="home_system">النظام</string>
+    <string name="home_package">الحزمة</string>
     <!-- Manage Screen -->
     <string name="screen_manage">إدارة</string>
     <string name="manage_summary">%1$d مُرقّع  ·  %2$d وحدة</string>
@@ -57,7 +59,6 @@
     <string name="manage_info_desc">عرض في إعدادات تطبيقات النظام</string>
     <string name="manage_module_applies_to">ينطبق على</string>
     <string name="manage_module_applies_none">غير مُفعّل لأي تطبيق بعد</string>
-
     <!-- Action drawer descriptions -->
     <string name="manage_update_loader_desc">ترقية مُحمّل LSPatch المضمّن إلى أحدث إصدار</string>
     <string name="manage_module_scope_desc">اختر الوحدات التي تنطبق على هذا التطبيق</string>
@@ -65,13 +66,27 @@
     <string name="manage_uninstall_desc">إزالة التطبيق المُرقّع من هذا الجهاز</string>
     <string name="manage_module_settings_desc">فتح شاشة الإعدادات الخاصة بالوحدة</string>
     <string name="manage_app_info_desc">عرض هذه الوحدة في إعدادات تطبيقات النظام</string>
-
     <!-- New Patch Screen -->
     <string name="screen_new_patch">ترقيع جديد</string>
     <string name="patch_from_storage">اختيار ملف/ملفات apk من التخزين</string>
     <string name="patch_mode">وضع الترقيع</string>
+    <string name="patch_source_installed">تطبيق مثبَّت</string>
+    <string name="patch_source_storage">من التخزين</string>
+    <string name="patch_source_repatch">يُعاد بناؤه من الأصل المحفوظ داخل التطبيق المُرقّع</string>
+    <string name="patch_local_modules_later">يُختار لاحقًا، في صفحة هذا التطبيق</string>
     <string name="patch_local">محلي</string>
+    <string name="patch_aspect_modules">الوحدات</string>
+    <string name="patch_aspect_scope">النطاق</string>
+    <string name="patch_aspect_runs">يعمل على</string>
+    <string name="patch_aspect_modules_local">يقدّمه المدير، غير مضمَّن، ويدعم إعادة التحميل السريع</string>
+    <string name="patch_aspect_modules_integrated">مُضمَّنة في الـ APK المُرقّع</string>
+    <string name="patch_aspect_scope_local">قابل للتغيير في أي وقت، دون إعادة الترقيع</string>
+    <string name="patch_aspect_scope_integrated">ثابت — تغييره يعني إعادة الترقيع</string>
+    <string name="patch_aspect_runs_local">هذا الجهاز فقط</string>
+    <string name="patch_aspect_runs_integrated">أي جهاز، بوجود المدير أو دونه</string>
+    <string name="patch_local_summary">يوفّر المدير وحدات هذا التطبيق</string>
     <string name="patch_integrated">مدمج</string>
+    <string name="patch_integrated_summary">الوحدات مُضمَّنة في الـ APK</string>
     <string name="patch_embed_modules">تضمين الوحدات</string>
     <string name="patch_debuggable">قابل للتصحيح</string>
     <string name="patch_sigbypass">تجاوز التوقيع</string>
@@ -85,71 +100,6 @@
     <string name="patch_install_hint_shizuku">جاهز للتثبيت الصامت عبر Shizuku.</string>
     <string name="patch_install_hint_system">جاهز للتثبيت. سيطلب منك نظامك التأكيد.</string>
     <string name="patch_section_options">الخيارات</string>
-    <string name="patch_status_patching">جارٍ الترقيع…</string>
-    <string name="patch_status_error">فشل الترقيع</string>
-    <string name="patch_status_error_desc">حدث خطأ ما. انسخ السجل لعرض التفاصيل.</string>
-
-    <!-- Select Apps Screen -->
-
-    <!-- Signing keystore -->
-    <string name="settings_keystore">مخزن مفاتيح التوقيع</string>
-    <string name="settings_keystore_default">مُدمج</string>
-    <string name="settings_keystore_custom">مخصّص</string>
-    <string name="settings_keystore_file">ملف مخزن المفاتيح</string>
-    <string name="settings_keystore_password">كلمة المرور</string>
-    <string name="settings_keystore_alias">الاسم المستعار</string>
-    <string name="settings_keystore_alias_password">كلمة مرور الاسم المستعار</string>
-    <string name="settings_keystore_wrong_keystore">نوع مخزن المفاتيح خاطئ</string>
-    <string name="settings_keystore_wrong_password">كلمة مرور مخزن المفاتيح خاطئة</string>
-    <string name="settings_keystore_wrong_alias">اسم مستعار خاطئ</string>
-    <string name="settings_keystore_wrong_alias_password">كلمة مرور الاسم المستعار خاطئة</string>
-    <string name="settings_detail_patch_logs">سجلات ترقيع مفصّلة</string>
-    <string name="patch_inject_dex">حقن dex الخاص بالمُحمّل</string>
-    <string name="patch_inject_dex_desc">بالنسبة للتطبيقات ذات الخدمات المعزولة، مثل محركات عرض المتصفحات، فعّل هذا الخيار لضمان عملها بشكل صحيح.</string>
-
-    <!-- Repo Details Screen -->
-
-    <!-- Logs Screen -->
-    <string name="logs_word_wrap">التفاف النص</string>
-    <string name="logs_grant">منح Shizuku</string>
-    <string name="logs_state_shizuku_title">السجلات تحتاج إلى Shizuku</string>
-    <string name="logs_state_shizuku_body">يقرأ LSPatch سجل الجهاز عبر صدفة Shizuku. امنح الإذن لعرض سجلات إطار العمل والأعطال هنا.</string>
-    <!-- Appearance -->
-    <string name="appearance_title">المظهر</string>
-    <string name="appearance_floating_nav">تنقّل عائم</string>
-    <string name="appearance_floating_nav_summary">عرض التنقّل ككرة قابلة للتحريك فوق المحتوى بدلًا من شريط.</string>
-    <!-- Language -->
-    <string name="language_title">اللغة</string>
-    <string name="home_status_ready">جاهز</string>
-    <string name="home_status_limited">محدود</string>
-    <string name="update_up_to_date">أنت على أحدث إصدار</string>
-    <string name="update_checking">جارٍ البحث عن تحديثات…</string>
-    <string name="update_check">البحث عن تحديثات</string>
-    <string name="update_install">تنزيل وتثبيت</string>
-    <string name="update_open_release">فتح صفحة الإصدار</string>
-    <string name="update_downloading">جارٍ التنزيل…</string>
-    <string name="update_installing">جارٍ التثبيت…</string>
-    <string name="update_channel_release">إصدار مستقر</string>
-    <string name="update_channel_debug">تصحيح</string>
-    <string name="update_no_notes">لا توجد ملاحظات إصدار</string>
-    <string name="update_back">رجوع</string>
-    <string name="update_retry">إعادة المحاولة</string>
-    <string name="home_system">النظام</string>
-    <string name="patch_aspect_modules_local">يقدّمه المدير، غير مضمَّن، ويدعم إعادة التحميل السريع</string>
-    <string name="patch_source_installed">تطبيق مثبَّت</string>
-    <string name="patch_source_storage">من التخزين</string>
-    <string name="patch_source_repatch">يُعاد بناؤه من الأصل المحفوظ داخل التطبيق المُرقّع</string>
-    <string name="patch_local_modules_later">يُختار لاحقًا، في صفحة هذا التطبيق</string>
-    <string name="patch_aspect_modules">الوحدات</string>
-    <string name="patch_aspect_scope">النطاق</string>
-    <string name="patch_aspect_runs">يعمل على</string>
-    <string name="patch_aspect_modules_integrated">مُضمَّنة في الـ APK المُرقّع</string>
-    <string name="patch_aspect_scope_local">قابل للتغيير في أي وقت، دون إعادة الترقيع</string>
-    <string name="patch_aspect_scope_integrated">ثابت — تغييره يعني إعادة الترقيع</string>
-    <string name="patch_aspect_runs_local">هذا الجهاز فقط</string>
-    <string name="patch_aspect_runs_integrated">أي جهاز، بوجود المدير أو دونه</string>
-    <string name="patch_local_summary">يوفّر المدير وحدات هذا التطبيق</string>
-    <string name="patch_integrated_summary">الوحدات مُضمَّنة في الـ APK</string>
     <string name="patch_manifest_version_code">رمز الإصدار</string>
     <string name="patch_manifest_version_code_hint">اتركه فارغًا للإبقاء على الأصلي</string>
     <string name="patch_manifest_label">اسم التطبيق</string>
@@ -166,6 +116,10 @@
     <string name="patch_manifest_permissions_count">أُضيف %1$d</string>
     <string name="patch_manifest_documents_provider">إتاحة البيانات الخاصة</string>
     <string name="patch_manifest_documents_provider_desc">أضف موفّرًا يتيح لمدير الملفات تصفح مجلد البيانات الخاصة بالتطبيق عبر منتقي ملفات النظام، دون الحاجة إلى روت. يوسّع ما يمكنه الوصول إلى بيانات التطبيق — اتركه معطّلًا ما لم تحتَجه.</string>
+    <string name="patch_status_patching">جارٍ الترقيع…</string>
+    <string name="patch_status_error">فشل الترقيع</string>
+    <string name="patch_status_error_desc">حدث خطأ ما. انسخ السجل لعرض التفاصيل.</string>
+    <!-- Choosing what to patch, and which modules to embed -->
     <string name="patch_select_target">اختر تطبيقًا لترقيعه</string>
     <string name="patch_target_loading">جارٍ تحميل التطبيقات المثبَّتة…</string>
     <string name="patch_target_already_patched">مُصحَّح بالفعل</string>
@@ -185,6 +139,7 @@
     <string name="patch_module_origin_file">من التخزين</string>
     <string name="patch_module_unreadable">تعذّرت قراءتها من الـ APK</string>
     <string name="patch_local_drop_warning">التبديل إلى الوضع المحلي سيُسقط %1$d وحدة مضمَّنة. وأي وحدة غير مثبَّتة لديك لا يمكن استعادتها.</string>
+    <!-- Patch progress and outcome -->
     <string name="patch_effect_replace">يُثبَّت فوق التطبيق الحالي؛ وتبقى بياناته</string>
     <string name="patch_effect_uninstall">يتطلّب إلغاء التثبيت أولًا؛ وستُفقد بيانات التطبيق</string>
     <string name="patch_stage_reading">قراءة الـ APK</string>
@@ -213,6 +168,7 @@
     <string name="patch_hide_log">إخفاء السجل</string>
     <string name="patch_copy_log">نسخ التقرير</string>
     <string name="patch_share_log">مشاركة التقرير</string>
+    <string name="logs_word_wrap">التفاف النص</string>
     <string name="patch_log_copied">نُسخ السجل</string>
     <string name="patch_log_empty">لم يُنتج المُرقِّع أي مُخرَجات</string>
     <string name="patch_progress_running">جارٍ ترقيع %1$s</string>
@@ -223,6 +179,7 @@
     <string name="patch_export_running">جارٍ التصدير…</string>
     <string name="patch_export_done">تم التصدير</string>
     <string name="patch_export_failed">فشل التصدير</string>
+    <!-- App detail page -->
     <string name="appdetail_modules">الوحدات</string>
     <string name="appdetail_actions">الإجراءات</string>
     <string name="appdetail_info">التفاصيل</string>
@@ -259,28 +216,68 @@
     <string name="manage_restore_running_line">جارٍ استعادة %1$s</string>
     <string name="manage_export_desc">حفظ نسخة من الـ APK المُرقّع</string>
     <string name="cancel">إلغاء</string>
+    <!-- Signing keystore -->
+    <string name="settings_keystore">مخزن مفاتيح التوقيع</string>
+    <string name="settings_keystore_default">مُدمج</string>
+    <string name="settings_keystore_custom">مخصّص</string>
     <string name="settings_keystore_default_desc">مفتاح LSPatch الخاص. الخيار الصحيح ما لم تحتج إلى توقيع معيّن.</string>
     <string name="settings_keystore_custom_desc">التوقيع بمخزن مفاتيحك الخاص (BKS).</string>
-    <string name="update_reinstall">إعادة تثبيت هذا الإصدار</string>
-    <string name="update_check_failed">تعذّر التحقق من التحديثات</string>
-    <string name="home_package">الحزمة</string>
+    <string name="settings_keystore_file">ملف مخزن المفاتيح</string>
+    <string name="settings_keystore_password">كلمة المرور</string>
+    <string name="settings_keystore_alias">الاسم المستعار</string>
+    <string name="settings_keystore_alias_password">كلمة مرور الاسم المستعار</string>
+    <string name="settings_keystore_wrong_keystore">نوع مخزن المفاتيح خاطئ</string>
+    <string name="settings_keystore_wrong_password">كلمة مرور مخزن المفاتيح خاطئة</string>
+    <string name="settings_keystore_wrong_alias">اسم مستعار خاطئ</string>
+    <string name="settings_keystore_wrong_alias_password">كلمة مرور الاسم المستعار خاطئة</string>
+    <string name="settings_detail_patch_logs">سجلات ترقيع مفصّلة</string>
     <string name="settings_cloak_dialog_title">تغيير اسم الحزمة</string>
     <string name="settings_cloak_package">اسم الحزمة الجديد</string>
     <string name="settings_cloak_randomize">عشوائي</string>
+    <string name="settings_cloak_warning">يؤدي هذا إلى تثبيت نسخة جديدة من LSPatch Manager باسم حزمة مختلف، وتحديث تطبيقات الوضع المحلي، ثم إلغاء تثبيت النسخة الحالية. لا تتأثر الترقيعات المدمجة. يجب أن يظل Shizuku متاحًا. امنح Shizuku للحزمة الجديدة بعد التثبيت.</string>
     <string name="settings_cloak_invalid">أدخل اسم حزمة صالحًا (مثال: org.example.app)</string>
     <string name="settings_cloak_need_shizuku">‏Shizuku مطلوب لتغيير اسم الحزمة</string>
     <string name="settings_cloak_confirm">متابعة</string>
-    <string name="settings_cloak_warning">يؤدي هذا إلى تثبيت نسخة جديدة من LSPatch Manager باسم حزمة مختلف، وتحديث تطبيقات الوضع المحلي، ثم إلغاء تثبيت النسخة الحالية. لا تتأثر الترقيعات المدمجة. يجب أن يظل Shizuku متاحًا. امنح Shizuku للحزمة الجديدة بعد التثبيت.</string>
     <string name="settings_revert_dialog_title">الرجوع إلى الحزمة الأصلية</string>
-    <string name="settings_revert_confirm">رجوع</string>
     <string name="settings_revert_warning">يقوم بتنزيل أحدث manager.apk من إصدارات JingMatrix/LSPatch، وتثبيته باسم org.lsposed.lspatch (تتم استعادة الإعدادات وروابط التطبيقات المحلية)، ثم إلغاء تثبيت هذا التطبيق. يتطلب Shizuku واتصالًا بالشبكة.</string>
+    <string name="settings_revert_confirm">رجوع</string>
+    <string name="patch_inject_dex">حقن dex الخاص بالمُحمّل</string>
+    <string name="patch_inject_dex_desc">بالنسبة للتطبيقات ذات الخدمات المعزولة، مثل محركات عرض المتصفحات، فعّل هذا الخيار لضمان عملها بشكل صحيح.</string>
+    <!-- Repo Details Screen -->
+    <!-- Logs Screen -->
+    <string name="logs_grant">منح Shizuku</string>
+    <string name="logs_state_shizuku_title">السجلات تحتاج إلى Shizuku</string>
+    <string name="logs_state_shizuku_body">يقرأ LSPatch سجل الجهاز عبر صدفة Shizuku. امنح الإذن لعرض سجلات إطار العمل والأعطال هنا.</string>
+    <!-- Appearance -->
+    <string name="appearance_title">المظهر</string>
+    <string name="appearance_floating_nav">تنقّل عائم</string>
+    <string name="appearance_floating_nav_summary">عرض التنقّل ككرة قابلة للتحريك فوق المحتوى بدلًا من شريط.</string>
+    <!-- Language -->
+    <string name="language_title">اللغة</string>
+    <string name="home_status_ready">جاهز</string>
+    <string name="home_status_limited">محدود</string>
+    <string name="update_checking">جارٍ البحث عن تحديثات…</string>
+    <string name="update_check">البحث عن تحديثات</string>
+    <string name="update_install">تنزيل وتثبيت</string>
+    <string name="update_reinstall">إعادة تثبيت هذا الإصدار</string>
+    <string name="update_open_release">فتح صفحة الإصدار</string>
+    <string name="update_downloading">جارٍ التنزيل…</string>
+    <string name="update_installing">جارٍ التثبيت…</string>
+    <string name="update_channel_release">إصدار مستقر</string>
+    <string name="update_channel_debug">تصحيح</string>
+    <string name="update_up_to_date">أنت على أحدث إصدار</string>
+    <string name="update_check_failed">تعذّر التحقق من التحديثات</string>
+    <string name="update_no_notes">لا توجد ملاحظات إصدار</string>
+    <string name="update_back">رجوع</string>
+    <string name="update_retry">إعادة المحاولة</string>
+    <!-- The resident service, when it is present but not collecting logs -->
     <string name="resident_service_title">LSPatch قيد التشغيل</string>
     <string name="resident_service_text">يزوّد التطبيقات المعدّلة بوحداتها</string>
+    <!-- Background restrictions -->
     <string name="background_reports_title">أوقف هذا الجهاز LSPatch في الخلفية</string>
     <string name="background_reports_line">بدأ %1$s %2$d مرة دون الوصول إلى LSPatch</string>
     <string name="background_battery">تجاهل تحسين البطارية</string>
     <string name="background_battery_done">تحسين البطارية معطّل بالفعل لتطبيق LSPatch</string>
-    <string name="background_battery_summary">وضع Doze هو ما يمنع مديرًا لم يفتحه أحد اليوم من الاستجابة</string>
     <string name="shizuku_open_app">فتح Shizuku</string>
     <string name="stay_alive_title">إبقاء LSPatch قابلاً للوصول</string>
     <string name="stay_alive_body">يطلب التطبيق المعدّل وحداته من LSPatch لحظة بدئه. فإن كان الجهاز قد أوقف LSPatch قبل ذلك، يعود التطبيق إلى قائمة الوحدات التي يتذكرها، ويضيع كل ما تغيّر هنا منذئذ. وكلا الإذنين غير إلزامي.</string>
@@ -289,12 +286,14 @@
     <string name="stay_alive_done">تم</string>
     <string name="background_whitelist_done">رفع هذا الجهاز كل القيود المطلوبة</string>
     <string name="background_whitelist_refused">مرفوض: %1$s</string>
+    <string name="background_battery_summary">وضع Doze هو ما يمنع مديرًا لم يفتحه أحد اليوم من الاستجابة</string>
     <string name="background_keep_alive">إعادة التشغيل بعد الإيقاف</string>
     <string name="background_keep_alive_summary">يستخدم صدفة Shizuku لتشغيل LSPatch من جديد كلما وجده متوقفًا. تبقى عملية الصدفة حية بعد LSPatch، لذا ينجح ذلك حتى بعد الإيقاف القسري.</string>
     <string name="background_keep_alive_needs_shizuku">يتطلب Shizuku</string>
     <string name="background_whitelist">رفع قيود الخلفية</string>
     <string name="background_whitelist_summary">يطلب من الصدفة إخراج LSPatch من قائمة Doze ومن مجموعات انتظار التطبيقات، ويبلّغ بما رفضه الجهاز.</string>
     <string name="background_whitelist_running">جارٍ سؤال الصدفة…</string>
+    <!-- What each background limit is called where a refusal is reported -->
     <string name="background_limit_doze">قائمة استثناءات Doze</string>
     <string name="background_limit_background">العمل في الخلفية</string>
     <string name="background_limit_any_background">أي عمل في الخلفية</string>

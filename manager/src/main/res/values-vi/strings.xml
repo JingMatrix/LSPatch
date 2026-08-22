@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="add">Thêm</string>
     <string name="uninstall">Gỡ cài đặt</string>
@@ -7,6 +8,7 @@
     <string name="shizuku_available">Dịch vụ Shizuku khả dụng</string>
     <string name="shizuku_unavailable">Dịch vụ Shizuku chưa được kết nối</string>
     <string name="shizuku_off">Chưa kết nối</string>
+    <!-- Shizuku failure dialog -->
     <string name="shizuku_failure_not_running">Shizuku chưa chạy</string>
     <string name="shizuku_failure_lost">Mất kết nối với Shizuku</string>
     <string name="shizuku_failure_hint_lost">Shizuku đang hoạt động và LSPatch đã mất kết nối. Hãy mở lại LSPatch; nếu vẫn không được, khởi động lại Shizuku.</string>
@@ -28,12 +30,12 @@
     <string name="shizuku_failure_grant">Cấp quyền</string>
     <string name="shizuku_failure_dismiss">Bỏ qua</string>
     <string name="error_unknown">Lỗi không xác định</string>
-
     <!-- Home Screen -->
     <string name="home_shizuku_warning">Một số tính năng không khả dụng</string>
     <string name="home_info_copied">Đã sao chép vào bộ nhớ tạm</string>
     <string name="home_device">Thiết bị</string>
-
+    <string name="home_system">Hệ thống</string>
+    <string name="home_package">Gói</string>
     <!-- Manage Screen -->
     <string name="screen_manage">Quản lý</string>
     <string name="manage_summary">%1$d đã vá  ·  %2$d mô-đun</string>
@@ -57,7 +59,6 @@
     <string name="manage_info_desc">Xem trong cài đặt ứng dụng của hệ thống</string>
     <string name="manage_module_applies_to">Áp dụng cho</string>
     <string name="manage_module_applies_none">Chưa được bật cho ứng dụng nào</string>
-
     <!-- Action drawer descriptions -->
     <string name="manage_update_loader_desc">Nâng cấp trình nạp LSPatch được nhúng lên phiên bản mới nhất</string>
     <string name="manage_module_scope_desc">Chọn những mô-đun áp dụng cho ứng dụng này</string>
@@ -65,13 +66,27 @@
     <string name="manage_uninstall_desc">Gỡ ứng dụng đã vá khỏi thiết bị này</string>
     <string name="manage_module_settings_desc">Mở màn hình cấu hình riêng của mô-đun</string>
     <string name="manage_app_info_desc">Xem mô-đun này trong cài đặt ứng dụng của hệ thống</string>
-
     <!-- New Patch Screen -->
     <string name="screen_new_patch">Vá mới</string>
     <string name="patch_from_storage">Chọn apk từ bộ nhớ</string>
     <string name="patch_mode">Chế độ vá</string>
+    <string name="patch_source_installed">Ứng dụng đã cài</string>
+    <string name="patch_source_storage">Từ bộ nhớ</string>
+    <string name="patch_source_repatch">Dựng lại từ bản gốc bên trong ứng dụng đã vá</string>
+    <string name="patch_local_modules_later">Chọn sau, ở trang của ứng dụng này</string>
     <string name="patch_local">Cục bộ</string>
+    <string name="patch_aspect_modules">Mô-đun</string>
+    <string name="patch_aspect_scope">Phạm vi</string>
+    <string name="patch_aspect_runs">Chạy trên</string>
+    <string name="patch_aspect_modules_local">Do trình quản lý cung cấp, không nhúng — hỗ trợ tải lại nóng</string>
+    <string name="patch_aspect_modules_integrated">Gắn cứng vào APK đã vá</string>
+    <string name="patch_aspect_scope_local">Đổi được bất cứ lúc nào, không cần vá lại</string>
+    <string name="patch_aspect_scope_integrated">Cố định — muốn đổi thì phải vá lại</string>
+    <string name="patch_aspect_runs_local">Chỉ thiết bị này</string>
+    <string name="patch_aspect_runs_integrated">Mọi thiết bị, có hay không có trình quản lý</string>
+    <string name="patch_local_summary">Trình quản lý cung cấp mô-đun cho ứng dụng này</string>
     <string name="patch_integrated">Tích hợp</string>
+    <string name="patch_integrated_summary">Mô-đun được gắn cứng vào APK</string>
     <string name="patch_embed_modules">Nhúng mô-đun</string>
     <string name="patch_debuggable">Có thể gỡ lỗi</string>
     <string name="patch_sigbypass">Bỏ qua chữ ký</string>
@@ -85,71 +100,6 @@
     <string name="patch_install_hint_shizuku">Sẵn sàng cài đặt ngầm qua Shizuku.</string>
     <string name="patch_install_hint_system">Sẵn sàng cài đặt. Hệ thống sẽ yêu cầu bạn xác nhận.</string>
     <string name="patch_section_options">Tùy chọn</string>
-    <string name="patch_status_patching">Đang vá…</string>
-    <string name="patch_status_error">Vá thất bại</string>
-    <string name="patch_status_error_desc">Đã xảy ra lỗi. Sao chép nhật ký để xem chi tiết.</string>
-
-    <!-- Select Apps Screen -->
-
-    <!-- Signing keystore -->
-    <string name="settings_keystore">Kho khóa chữ ký</string>
-    <string name="settings_keystore_default">Tích hợp sẵn</string>
-    <string name="settings_keystore_custom">Tùy chỉnh</string>
-    <string name="settings_keystore_file">Tệp kho khóa</string>
-    <string name="settings_keystore_password">Mật khẩu</string>
-    <string name="settings_keystore_alias">Bí danh</string>
-    <string name="settings_keystore_alias_password">Mật khẩu bí danh</string>
-    <string name="settings_keystore_wrong_keystore">Loại kho khóa không đúng</string>
-    <string name="settings_keystore_wrong_password">Sai mật khẩu kho khóa</string>
-    <string name="settings_keystore_wrong_alias">Sai tên bí danh</string>
-    <string name="settings_keystore_wrong_alias_password">Sai mật khẩu bí danh</string>
-    <string name="settings_detail_patch_logs">Nhật ký vá chi tiết</string>
-    <string name="patch_inject_dex">Chèn dex trình nạp</string>
-    <string name="patch_inject_dex_desc">Đối với các ứng dụng có dịch vụ tách biệt, chẳng hạn như engine kết xuất của trình duyệt, hãy bật tùy chọn này để đảm bảo chúng hoạt động bình thường.</string>
-
-    <!-- Repo Details Screen -->
-
-    <!-- Logs Screen -->
-    <string name="logs_word_wrap">Ngắt dòng</string>
-    <string name="logs_grant">Cấp quyền Shizuku</string>
-    <string name="logs_state_shizuku_title">Nhật ký cần Shizuku</string>
-    <string name="logs_state_shizuku_body">LSPatch đọc nhật ký thiết bị thông qua shell của Shizuku. Cấp quyền truy cập để xem nhật ký khung và sự cố tại đây.</string>
-    <!-- Appearance -->
-    <string name="appearance_title">Giao diện</string>
-    <string name="appearance_floating_nav">Điều hướng nổi</string>
-    <string name="appearance_floating_nav_summary">Hiển thị điều hướng dưới dạng một quả bóng di chuyển được trên nội dung thay vì một thanh.</string>
-    <!-- Language -->
-    <string name="language_title">Ngôn ngữ</string>
-    <string name="home_status_ready">Sẵn sàng</string>
-    <string name="home_status_limited">Hạn chế</string>
-    <string name="update_up_to_date">Bạn đang dùng bản mới nhất</string>
-    <string name="update_checking">Đang kiểm tra cập nhật…</string>
-    <string name="update_check">Kiểm tra cập nhật</string>
-    <string name="update_install">Tải xuống &amp; cài đặt</string>
-    <string name="update_open_release">Mở trang phát hành</string>
-    <string name="update_downloading">Đang tải xuống…</string>
-    <string name="update_installing">Đang cài đặt…</string>
-    <string name="update_channel_release">Bản phát hành</string>
-    <string name="update_channel_debug">Bản gỡ lỗi</string>
-    <string name="update_no_notes">Không có ghi chú phát hành</string>
-    <string name="update_back">Quay lại</string>
-    <string name="update_retry">Thử lại</string>
-    <string name="home_system">Hệ thống</string>
-    <string name="patch_aspect_modules_local">Do trình quản lý cung cấp, không nhúng — hỗ trợ tải lại nóng</string>
-    <string name="patch_source_installed">Ứng dụng đã cài</string>
-    <string name="patch_source_storage">Từ bộ nhớ</string>
-    <string name="patch_source_repatch">Dựng lại từ bản gốc bên trong ứng dụng đã vá</string>
-    <string name="patch_local_modules_later">Chọn sau, ở trang của ứng dụng này</string>
-    <string name="patch_aspect_modules">Mô-đun</string>
-    <string name="patch_aspect_scope">Phạm vi</string>
-    <string name="patch_aspect_runs">Chạy trên</string>
-    <string name="patch_aspect_modules_integrated">Gắn cứng vào APK đã vá</string>
-    <string name="patch_aspect_scope_local">Đổi được bất cứ lúc nào, không cần vá lại</string>
-    <string name="patch_aspect_scope_integrated">Cố định — muốn đổi thì phải vá lại</string>
-    <string name="patch_aspect_runs_local">Chỉ thiết bị này</string>
-    <string name="patch_aspect_runs_integrated">Mọi thiết bị, có hay không có trình quản lý</string>
-    <string name="patch_local_summary">Trình quản lý cung cấp mô-đun cho ứng dụng này</string>
-    <string name="patch_integrated_summary">Mô-đun được gắn cứng vào APK</string>
     <string name="patch_manifest_version_code">Mã phiên bản</string>
     <string name="patch_manifest_version_code_hint">Để trống để giữ nguyên bản gốc</string>
     <string name="patch_manifest_label">Tên ứng dụng</string>
@@ -166,6 +116,10 @@
     <string name="patch_manifest_permissions_count">Đã thêm %1$d</string>
     <string name="patch_manifest_documents_provider">Hiển thị dữ liệu riêng</string>
     <string name="patch_manifest_documents_provider_desc">Thêm một provider để trình quản lý tệp có thể duyệt thư mục dữ liệu riêng của ứng dụng qua bộ chọn tệp hệ thống, không cần root. Mở rộng những gì có thể tiếp cận dữ liệu ứng dụng — hãy tắt trừ khi bạn cần.</string>
+    <string name="patch_status_patching">Đang vá…</string>
+    <string name="patch_status_error">Vá thất bại</string>
+    <string name="patch_status_error_desc">Đã xảy ra lỗi. Sao chép nhật ký để xem chi tiết.</string>
+    <!-- Choosing what to patch, and which modules to embed -->
     <string name="patch_select_target">Chọn ứng dụng để vá</string>
     <string name="patch_target_loading">Đang tải ứng dụng đã cài…</string>
     <string name="patch_target_already_patched">Đã vá</string>
@@ -185,6 +139,7 @@
     <string name="patch_module_origin_file">Từ bộ nhớ</string>
     <string name="patch_module_unreadable">Không đọc được từ APK</string>
     <string name="patch_local_drop_warning">Chuyển sang Cục bộ sẽ bỏ %1$d mô-đun đã nhúng. Mô-đun nào bạn chưa cài sẽ không thể khôi phục.</string>
+    <!-- Patch progress and outcome -->
     <string name="patch_effect_replace">Cài đè lên ứng dụng hiện có; dữ liệu được giữ lại</string>
     <string name="patch_effect_uninstall">Cần gỡ cài đặt trước; dữ liệu ứng dụng sẽ mất</string>
     <string name="patch_stage_reading">Đang đọc APK</string>
@@ -213,6 +168,7 @@
     <string name="patch_hide_log">Ẩn nhật ký</string>
     <string name="patch_copy_log">Sao chép báo cáo</string>
     <string name="patch_share_log">Chia sẻ báo cáo</string>
+    <string name="logs_word_wrap">Ngắt dòng</string>
     <string name="patch_log_copied">Đã sao chép nhật ký</string>
     <string name="patch_log_empty">Trình vá không tạo ra kết quả nào</string>
     <string name="patch_progress_running">Đang vá %1$s</string>
@@ -223,6 +179,7 @@
     <string name="patch_export_running">Đang xuất…</string>
     <string name="patch_export_done">Đã xuất</string>
     <string name="patch_export_failed">Xuất thất bại</string>
+    <!-- App detail page -->
     <string name="appdetail_modules">Mô-đun</string>
     <string name="appdetail_actions">Thao tác</string>
     <string name="appdetail_info">Chi tiết</string>
@@ -259,28 +216,68 @@
     <string name="manage_restore_running_line">Đang khôi phục %1$s</string>
     <string name="manage_export_desc">Lưu một bản sao của APK đã vá</string>
     <string name="cancel">Huỷ</string>
+    <!-- Signing keystore -->
+    <string name="settings_keystore">Kho khóa chữ ký</string>
+    <string name="settings_keystore_default">Tích hợp sẵn</string>
+    <string name="settings_keystore_custom">Tùy chỉnh</string>
     <string name="settings_keystore_default_desc">Khoá riêng của LSPatch. Là lựa chọn đúng trừ khi bạn cần một chữ ký cụ thể.</string>
     <string name="settings_keystore_custom_desc">Ký bằng kho khoá của riêng bạn (BKS).</string>
-    <string name="update_reinstall">Cài lại bản dựng này</string>
-    <string name="update_check_failed">Không kiểm tra được cập nhật</string>
-    <string name="home_package">Gói</string>
+    <string name="settings_keystore_file">Tệp kho khóa</string>
+    <string name="settings_keystore_password">Mật khẩu</string>
+    <string name="settings_keystore_alias">Bí danh</string>
+    <string name="settings_keystore_alias_password">Mật khẩu bí danh</string>
+    <string name="settings_keystore_wrong_keystore">Loại kho khóa không đúng</string>
+    <string name="settings_keystore_wrong_password">Sai mật khẩu kho khóa</string>
+    <string name="settings_keystore_wrong_alias">Sai tên bí danh</string>
+    <string name="settings_keystore_wrong_alias_password">Sai mật khẩu bí danh</string>
+    <string name="settings_detail_patch_logs">Nhật ký vá chi tiết</string>
     <string name="settings_cloak_dialog_title">Đổi tên gói</string>
     <string name="settings_cloak_package">Tên gói mới</string>
     <string name="settings_cloak_randomize">Ngẫu nhiên</string>
+    <string name="settings_cloak_warning">Thao tác này cài đặt một bản LSPatch Manager mới với tên gói khác, cập nhật các ứng dụng ở chế độ cục bộ, rồi gỡ cài đặt bản hiện tại. Các bản vá tích hợp không bị ảnh hưởng. Shizuku phải luôn khả dụng. Hãy cấp Shizuku cho gói mới sau khi cài đặt.</string>
     <string name="settings_cloak_invalid">Nhập tên gói hợp lệ (ví dụ: org.example.app)</string>
     <string name="settings_cloak_need_shizuku">Cần Shizuku để đổi tên gói</string>
     <string name="settings_cloak_confirm">Tiếp tục</string>
-    <string name="settings_cloak_warning">Thao tác này cài đặt một bản LSPatch Manager mới với tên gói khác, cập nhật các ứng dụng ở chế độ cục bộ, rồi gỡ cài đặt bản hiện tại. Các bản vá tích hợp không bị ảnh hưởng. Shizuku phải luôn khả dụng. Hãy cấp Shizuku cho gói mới sau khi cài đặt.</string>
     <string name="settings_revert_dialog_title">Khôi phục về gói gốc</string>
-    <string name="settings_revert_confirm">Khôi phục</string>
     <string name="settings_revert_warning">Tải manager.apk mới nhất từ các bản phát hành JingMatrix/LSPatch, cài đặt dưới tên org.lsposed.lspatch (khôi phục cài đặt và liên kết ứng dụng cục bộ), rồi gỡ cài đặt ứng dụng này. Yêu cầu Shizuku và mạng.</string>
+    <string name="settings_revert_confirm">Khôi phục</string>
+    <string name="patch_inject_dex">Chèn dex trình nạp</string>
+    <string name="patch_inject_dex_desc">Đối với các ứng dụng có dịch vụ tách biệt, chẳng hạn như engine kết xuất của trình duyệt, hãy bật tùy chọn này để đảm bảo chúng hoạt động bình thường.</string>
+    <!-- Repo Details Screen -->
+    <!-- Logs Screen -->
+    <string name="logs_grant">Cấp quyền Shizuku</string>
+    <string name="logs_state_shizuku_title">Nhật ký cần Shizuku</string>
+    <string name="logs_state_shizuku_body">LSPatch đọc nhật ký thiết bị thông qua shell của Shizuku. Cấp quyền truy cập để xem nhật ký khung và sự cố tại đây.</string>
+    <!-- Appearance -->
+    <string name="appearance_title">Giao diện</string>
+    <string name="appearance_floating_nav">Điều hướng nổi</string>
+    <string name="appearance_floating_nav_summary">Hiển thị điều hướng dưới dạng một quả bóng di chuyển được trên nội dung thay vì một thanh.</string>
+    <!-- Language -->
+    <string name="language_title">Ngôn ngữ</string>
+    <string name="home_status_ready">Sẵn sàng</string>
+    <string name="home_status_limited">Hạn chế</string>
+    <string name="update_checking">Đang kiểm tra cập nhật…</string>
+    <string name="update_check">Kiểm tra cập nhật</string>
+    <string name="update_install">Tải xuống &amp; cài đặt</string>
+    <string name="update_reinstall">Cài lại bản dựng này</string>
+    <string name="update_open_release">Mở trang phát hành</string>
+    <string name="update_downloading">Đang tải xuống…</string>
+    <string name="update_installing">Đang cài đặt…</string>
+    <string name="update_channel_release">Bản phát hành</string>
+    <string name="update_channel_debug">Bản gỡ lỗi</string>
+    <string name="update_up_to_date">Bạn đang dùng bản mới nhất</string>
+    <string name="update_check_failed">Không kiểm tra được cập nhật</string>
+    <string name="update_no_notes">Không có ghi chú phát hành</string>
+    <string name="update_back">Quay lại</string>
+    <string name="update_retry">Thử lại</string>
+    <!-- The resident service, when it is present but not collecting logs -->
     <string name="resident_service_title">LSPatch đang chạy</string>
     <string name="resident_service_text">Đang cung cấp mô-đun cho các ứng dụng đã vá</string>
+    <!-- Background restrictions -->
     <string name="background_reports_title">Thiết bị này đã dừng LSPatch ở nền</string>
     <string name="background_reports_line">%1$s đã khởi động %2$d lần mà không liên hệ được LSPatch</string>
     <string name="background_battery">Bỏ qua tối ưu hoá pin</string>
     <string name="background_battery_done">LSPatch đã được miễn tối ưu hoá pin</string>
-    <string name="background_battery_summary">Doze chính là thứ khiến một trình quản lý mà hôm nay chưa ai mở không thể trả lời</string>
     <string name="shizuku_open_app">Mở Shizuku</string>
     <string name="stay_alive_title">Giữ cho LSPatch luôn liên hệ được</string>
     <string name="stay_alive_body">Một ứng dụng đã vá sẽ hỏi LSPatch về các mô-đun của nó ngay khi khởi động. Nếu lúc đó thiết bị đã dừng LSPatch, ứng dụng phải dùng danh sách mô-đun mà nó nhớ — và mọi thay đổi ở đây kể từ đó sẽ bị bỏ lỡ. Cả hai đều không bắt buộc.</string>
@@ -289,12 +286,14 @@
     <string name="stay_alive_done">Xong</string>
     <string name="background_whitelist_done">Thiết bị này đã gỡ mọi giới hạn được yêu cầu</string>
     <string name="background_whitelist_refused">Bị từ chối: %1$s</string>
+    <string name="background_battery_summary">Doze chính là thứ khiến một trình quản lý mà hôm nay chưa ai mở không thể trả lời</string>
     <string name="background_keep_alive">Khởi động lại khi bị dừng</string>
     <string name="background_keep_alive_summary">Dùng shell của Shizuku để khởi động lại LSPatch mỗi khi thấy nó biến mất. Tiến trình shell sống lâu hơn LSPatch nên vẫn hiệu quả sau khi buộc dừng.</string>
     <string name="background_keep_alive_needs_shizuku">Cần Shizuku</string>
     <string name="background_whitelist">Gỡ giới hạn chạy nền</string>
     <string name="background_whitelist_summary">Yêu cầu shell đưa LSPatch ra khỏi danh sách Doze và các nhóm chờ ứng dụng. Báo lại đúng những gì thiết bị đã từ chối.</string>
     <string name="background_whitelist_running">Đang hỏi shell…</string>
+    <!-- What each background limit is called where a refusal is reported -->
     <string name="background_limit_doze">Danh sách miễn trừ Doze</string>
     <string name="background_limit_background">Chạy nền</string>
     <string name="background_limit_any_background">Mọi hoạt động nền</string>

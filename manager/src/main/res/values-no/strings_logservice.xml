@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="log_service_channel">Logg overvåking</string>
+    <string name="log_service_title">LSPatch er logg for overvåking</string>
+    <string name="log_service_text">Innsamling av rammeverk og patchede app-logger</string>
+</resources>
