@@ -93,7 +93,7 @@
     <string name="patch_sigbypasslv0">オフ</string>
     <string name="patch_sigbypasslv1">+ パッケージマネージャー: 署名情報が元のものとして読まれる</string>
     <string name="patch_sigbypasslv2">+ ファイル読み取り: 自身の apk を読むアプリが元のものを取得 (libc)</string>
-    <string name="patch_sigbypasslv3">+ 生のシステムコール: libc を迂回する apk 読み取りを捕捉</string>
+    <string name="patch_sigbypasslv3">+ 生のシステムコール: libc を迂回する apk 読み取りを捕捉。ネイティブコードを書き換えるため、自身のコードを検証するアプリは改ざんとして検出することがあります — 十分な場合はレベル 2 を推奨。</string>
     <string name="patch_return">戻る</string>
     <string name="patch_uninstall_text">署名が異なるため、パッチ済みアプリをインストールする前に元のアプリをアンインストールする必要があります。\n個人データをバックアップしたことを確認してください。</string>
     <string name="patch_install_successfully">インストールしました</string>
@@ -265,6 +265,11 @@
     <string name="update_installing">インストール中…</string>
     <string name="update_channel_release">正式版</string>
     <string name="update_channel_debug">Debug</string>
+    <string name="update_channel_canary">カナリー</string>
+    <string name="update_versions">バージョン履歴</string>
+    <string name="update_installed">使用中</string>
+    <string name="update_older">より古い</string>
+    <string name="update_install_version">このビルドをインストール</string>
     <string name="update_up_to_date">最新の状態です</string>
     <string name="update_check_failed">更新を確認できませんでした</string>
     <string name="update_no_notes">リリースノートはありません</string>
