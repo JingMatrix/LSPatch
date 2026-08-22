@@ -93,7 +93,7 @@
     <string name="patch_sigbypasslv0">Ανενεργό</string>
     <string name="patch_sigbypasslv1">+ Διαχειριστής πακέτου: οι πληροφορίες υπογραφής διαβάζουν ως το αρχικό</string>
     <string name="patch_sigbypasslv2">+ Το αρχείο διαβάζει: η εφαρμογή διαβάζει το δικό της apk παίρνει το πρωτότυπο (libc)</string>
-    <string name="patch_sigbypasslv3">+ Ακατέργαστα syscalls: αλιεύματα apk διαβάζει ότι παράκαμψη libc</string>
+    <string name="patch_sigbypasslv3">+ Ακατέργαστα syscalls: αλιεύματα apk διαβάζει ότι παράκαμψη libc. Διορθώνει τον τοπικό κώδικα, οπότε μια εφαρμογή που επαληθεύει τον δικό της κώδικα μπορεί να τον επισημάνει ως αλλοιωμένο - προτιμά το επίπεδο 2 εκτός αν δεν είναι αρκετό.</string>
     <string name="patch_return">ΕΠΙΣΤΡΟΦΗ</string>
     <string name="patch_uninstall_text">Η εγκατεστημένη εφαρμογή έχει υπογραφεί διαφορετικά, οπότε πρέπει πρώτα να απεγκατασταθεί. Τα δεδομένα της θα χαθούν - να δημιουργήσετε αντίγραφα ασφαλείας για οτιδήποτε χρειάζεστε πριν συνεχίσετε.</string>
     <string name="patch_install_successfully">Εγκατεστημένο</string>
@@ -265,6 +265,11 @@
     <string name="update_installing">Εγκατάσταση…</string>
     <string name="update_channel_release">Κυκλοφορία</string>
     <string name="update_channel_debug">Debug</string>
+    <string name="update_channel_canary">Κανάρι</string>
+    <string name="update_versions">Ιστορικό εκδόσεων</string>
+    <string name="update_installed">Εγκατεστημένο</string>
+    <string name="update_older">Παλαιότερα</string>
+    <string name="update_install_version">Εγκαταστήστε αυτό το build</string>
     <string name="update_up_to_date">Είστε στην τελευταία έκδοση</string>
     <string name="update_check_failed">Δεν ήταν δυνατός ο έλεγχος για ενημερώσεις</string>
     <string name="update_no_notes">Δεν υπάρχουν σημειώσεις έκδοσης</string>
