@@ -93,7 +93,7 @@
     <string name="patch_sigbypasslv0">關閉</string>
     <string name="patch_sigbypasslv1">+ 套件管理員：簽章資訊讀取為原始值</string>
     <string name="patch_sigbypasslv2">+ 檔案讀取：應用程式讀取自身 apk 時取得原始檔案 (libc)</string>
-    <string name="patch_sigbypasslv3">+ 原始系統呼叫：捕捉繞過 libc 的 apk 讀取</string>
+    <string name="patch_sigbypasslv3">+ 原始系統呼叫：捕捉繞過 libc 的 apk 讀取。會修改原生程式碼，因此會驗證自身程式碼的應用程式可能將其判定為遭竄改 — 夠用時建議使用等級 2。</string>
     <string name="patch_return">返回</string>
     <string name="patch_uninstall_text">由於簽章不同，在安裝修補後的應用程式之前需要先解除安裝原應用程式。\n請確保已備份個人資料。</string>
     <string name="patch_install_successfully">已安裝</string>
@@ -265,6 +265,11 @@
     <string name="update_installing">正在安裝…</string>
     <string name="update_channel_release">正式版</string>
     <string name="update_channel_debug">偵錯版</string>
+    <string name="update_channel_canary">金絲雀</string>
+    <string name="update_versions">版本歷史記錄</string>
+    <string name="update_installed">目前已裝</string>
+    <string name="update_older">較舊</string>
+    <string name="update_install_version">安裝此版本</string>
     <string name="update_up_to_date">已是最新版本</string>
     <string name="update_check_failed">無法檢查更新</string>
     <string name="update_no_notes">沒有發行說明</string>
