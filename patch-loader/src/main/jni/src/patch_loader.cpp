@@ -38,25 +38,19 @@ using namespace vector::native;
 namespace lspd {
 
 void PatchLoader::LoadDex(JNIEnv* env, Context::PreloadedDex&& dex) {
-    auto class_activity_thread = JNI_FindClass(env, "android/app/ActivityThread");
-    auto class_activity_thread_app_bind_data =
-        JNI_FindClass(env, "android/app/ActivityThread$AppBindData");
-    auto class_loaded_apk = JNI_FindClass(env, "android/app/LoadedApk");
-
-    auto mid_current_activity_thread = JNI_GetStaticMethodID(
-        env, class_activity_thread, "currentActivityThread", "()Landroid/app/ActivityThread;");
+    auto class_class = JNI_FindClass(env, "java/lang/Class");
+    auto stub =
+        JNI_FindClass(env, "org/lsposed/lspatch/metaloader/LSPAppComponentFactoryStub");
     auto mid_get_classloader =
-        JNI_GetMethodID(env, class_loaded_apk, "getClassLoader", "()Ljava/lang/ClassLoader;");
-    auto fid_m_bound_application = JNI_GetFieldID(env, class_activity_thread, "mBoundApplication",
-                                                  "Landroid/app/ActivityThread$AppBindData;");
-    auto fid_info =
-        JNI_GetFieldID(env, class_activity_thread_app_bind_data, "info", "Landroid/app/LoadedApk;");
+        JNI_GetMethodID(env, class_class, "getClassLoader", "()Ljava/lang/ClassLoader;");
 
-    auto activity_thread =
-        JNI_CallStaticObjectMethod(env, class_activity_thread, mid_current_activity_thread);
-    auto m_bound_application = JNI_GetObjectField(env, activity_thread, fid_m_bound_application);
-    auto info = JNI_GetObjectField(env, m_bound_application, fid_info);
-    auto stub_classloader = JNI_CallObjectMethod(env, info, mid_get_classloader);
+    // Loading the AppComponentFactory can be re-entrant. In particular, some Android variants call
+    // LoadedApk.getClassLoader() from an early hot-patch hook before ActivityThread has published
+    // mBoundApplication.info. Reading the stub LoadedApk through ActivityThread at that point used a
+    // null receiver in CallObjectMethod and CheckJNI aborted the process. JNI_OnLoad is invoked from
+    // the already-defined factory class, so its defining loader is both available here and the exact
+    // parent the in-memory framework loader needs.
+    auto stub_classloader = JNI_CallObjectMethod(env, stub, mid_get_classloader);
 
     if (!stub_classloader) [[unlikely]] {
         LOGE("getStubClassLoader failed!!!");
