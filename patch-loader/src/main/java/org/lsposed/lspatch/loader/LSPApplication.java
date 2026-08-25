@@ -41,6 +41,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.lang.ref.Reference;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.nio.charset.StandardCharsets;
@@ -283,7 +284,28 @@ public class LSPApplication {
             stubLoadedApk = (LoadedApk) XposedHelpers.getObjectField(mBoundApplication, "info");
             var appInfo = (ApplicationInfo) XposedHelpers.getObjectField(mBoundApplication, "appInfo");
             var compatInfo = (CompatibilityInfo) XposedHelpers.getObjectField(mBoundApplication, "compatInfo");
-            var baseClassLoader = stubLoadedApk.getClassLoader();
+            var stubFactory = Class.forName(
+                    "org.lsposed.lspatch.metaloader.LSPAppComponentFactoryStub",
+                    false,
+                    LSPApplication.class.getClassLoader());
+            var baseClassLoader = stubFactory.getClassLoader();
+
+            // Some Android variants invoke LoadedApk.getClassLoader() from a hot-patch hook before
+            // handleBindApplication publishes AppBindData.info. The LoadedApk being initialized has
+            // already been registered in ActivityThread.mPackages, though, and the factory class was
+            // defined by its loader. Recover that exact object rather than dereferencing a transient
+            // null or recursively calling getClassLoader() while it is still creating the factory.
+            if (stubLoadedApk == null) {
+                var mPackages = (Map<?, ?>) XposedHelpers.getObjectField(activityThread, "mPackages");
+                var holder = mPackages.get(appInfo.packageName);
+                var candidate = holder instanceof Reference<?> reference ? reference.get() : holder;
+                if (!(candidate instanceof LoadedApk)) {
+                    throw new IllegalStateException(
+                            "Stub LoadedApk is not available for " + appInfo.packageName);
+                }
+                stubLoadedApk = (LoadedApk) candidate;
+                Log.i(TAG, "Recovered stub LoadedApk during early class-loader initialization");
+            }
 
             try (var is = baseClassLoader.getResourceAsStream(CONFIG_ASSET_PATH)) {
                 BufferedReader streamReader = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8));
