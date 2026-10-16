@@ -19,6 +19,11 @@ import com.wind.meditor.property.AttributeItem;
 import com.wind.meditor.property.ModificationProperty;
 import com.wind.meditor.utils.NodeValue;
 
+import pxb.android.axml.AxmlReader;
+import pxb.android.axml.AxmlVisitor;
+import pxb.android.axml.AxmlWriter;
+import pxb.android.axml.NodeVisitor;
+
 import org.apache.commons.io.FilenameUtils;
 import org.lsposed.lspatch.share.Constants;
 import org.lsposed.lspatch.share.LSPConfig;
@@ -187,10 +192,12 @@ public final class ApkPatcher {
                     spec.injectDex(),
                     spec.manifestOverrides().addedPermissions.toArray(new String[0]),
                     spec.manifestOverrides().injectDocumentsProvider,
+                    spec.manifestOverrides().useMicroGRe,
+                    spec.manifestOverrides().declareFakeSignature,
                     spec.useManager() ? spec.managerPackageName() : null);
             byte[] configBytes = new Gson().toJson(config).getBytes(StandardCharsets.UTF_8);
 
-            rewriteManifest(srcZFile, dstZFile, configBytes, manifest.packageName, manifest.minSdkVersion, index, total);
+            rewriteManifest(srcZFile, dstZFile, configBytes, manifest.packageName, manifest.minSdkVersion, originalSignature, index, total);
             injectLoader(srcZFile, dstZFile, index, total);
             if (!spec.useManager()) {
                 addLoaderPayload(dstZFile);
@@ -240,11 +247,15 @@ public final class ApkPatcher {
     /**
      * The original app's signature, recorded so the loader can report it back to the app.
      *
-     * Only read when signature bypass is on: a patched apk is signed with LSPatch's key, and an app
-     * that checks its own signature would otherwise notice. Nothing needs it when the bypass is off.
+     * Only read when signature bypass, MicroG RE or the fake signature is on: a patched apk is signed
+     * with LSPatch's key, and an app that checks its own signature -- or MicroG, reporting the app to
+     * Google -- would otherwise notice. Nothing needs it when all are off.
      */
     private String readOriginalSignature(File srcApkFile) throws IOException {
-        if (spec.sigBypassLevel() <= Constants.SIGBYPASS_LV_DISABLE) return null;
+        if (spec.sigBypassLevel() <= Constants.SIGBYPASS_LV_DISABLE
+                && !spec.manifestOverrides().useMicroGRe && !spec.manifestOverrides().declareFakeSignature) {
+            return null;
+        }
         String signature = ApkSignatureHelper.getApkSignInfo(srcApkFile.getAbsolutePath());
         if (signature == null || signature.isEmpty()) {
             throw new PatchException("Could not read the original apk's signature");
@@ -290,13 +301,13 @@ public final class ApkPatcher {
      */
     private void rewriteManifest(
             NestedZip srcZFile, ZFile dstZFile, byte[] configBytes, String packageName, int minSdkVersion,
-            int index, int total)
+            String originalSignature, int index, int total)
             throws IOException {
         logger.stage(Logger.Stage.REWRITING, index, total);
         logger.i("Patching apk...");
         String metadata = Base64.getEncoder().encodeToString(configBytes);
         StoredEntry manifestEntry = Objects.requireNonNull(srcZFile.get(ANDROID_MANIFEST_XML));
-        try (InputStream is = new ByteArrayInputStream(modifyManifestFile(manifestEntry.open(), metadata, packageName, minSdkVersion))) {
+        try (InputStream is = new ByteArrayInputStream(modifyManifestFile(manifestEntry.open(), metadata, packageName, minSdkVersion, originalSignature))) {
             dstZFile.add(ANDROID_MANIFEST_XML, is);
         } catch (IOException e) {
             throw new PatchException("Error when modifying manifest", e);
@@ -427,7 +438,7 @@ public final class ApkPatcher {
                 && (name.endsWith(".SF") || name.endsWith(".MF") || name.endsWith(".RSA"));
     }
 
-    private byte[] modifyManifestFile(InputStream is, String metadata, String packageName, int minSdkVersion)
+    private byte[] modifyManifestFile(InputStream is, String metadata, String packageName, int minSdkVersion, String originalSignature)
             throws IOException {
         ModificationProperty property = new ModificationProperty();
 
@@ -438,7 +449,7 @@ public final class ApkPatcher {
         property.addApplicationAttribute(new AttributeItem(NodeValue.Application.DEBUGGABLE, spec.debuggable()));
         property.addApplicationAttribute(new AttributeItem("appComponentFactory", PROXY_APP_COMPONENT_FACTORY));
         property.addMetaData(new ModificationProperty.MetaData("lspatch", metadata));
-        applyManifestOverrides(property, packageName);
+        applyManifestOverrides(property, packageName, originalSignature);
         // TODO: replace query_all with queries -> manager
         if (spec.useManager()) {
             property.addUsesPermission("android.permission.QUERY_ALL_PACKAGES");
@@ -449,7 +460,7 @@ public final class ApkPatcher {
             new ManifestEditor(in, os, property).processManifest();
         }
         os.flush();
-        return os.toByteArray();
+        return spec.manifestOverrides().useMicroGRe ? renameC2dmForMicroGRe(os.toByteArray()) : os.toByteArray();
     }
 
     /**
@@ -461,7 +472,7 @@ public final class ApkPatcher {
      * override changes the compatibility behaviours the platform applies; the two booleans flip
      * install-time and network policy an app otherwise fixes against a module's needs.
      */
-    private void applyManifestOverrides(ModificationProperty property, String packageName) {
+    private void applyManifestOverrides(ModificationProperty property, String packageName, String originalSignature) {
         ManifestOverrides o = spec.manifestOverrides();
         if (o.isEmpty()) return;
         if (o.versionCode != null) {
@@ -492,6 +503,86 @@ public final class ApkPatcher {
         }
         if (o.injectDocumentsProvider) {
             addDocumentsProvider(property, packageName);
+        }
+        if (o.useMicroGRe) {
+            addMicroGReSupport(property, originalSignature);
+        }
+        if (o.declareFakeSignature) {
+            logger.i("Add fake signature");
+            property.addMetaData(new ModificationProperty.MetaData("fake-signature", originalSignature));
+            property.addUsesPermission("android.permission.FAKE_PACKAGE_SIGNATURE");
+        }
+    }
+
+    /**
+     * Declares the app's original certificate to MicroG RE, which otherwise reports LSPatch's to Google.
+     *
+     * MicroG RE reads {@code app.revanced.android.gms.SPOOFED_PACKAGE_SIGNATURE} from the calling app's
+     * manifest -- the certificate's SHA-1 in lower-case hex -- and needs no ROM support.
+     */
+    private void addMicroGReSupport(ModificationProperty property, String originalSignature) {
+        logger.i("Add MicroG RE support");
+        property.addMetaData(new ModificationProperty.MetaData(
+                Constants.MICROG_RE_PACKAGE_NAME + ".SPOOFED_PACKAGE_SIGNATURE", sha1Hex(originalSignature)));
+    }
+
+    private static final String GOOGLE_C2DM_PREFIX = "com.google.android.c2dm.";
+    private static final String MICROG_RE_C2DM_PREFIX = Constants.MICROG_RE_PACKAGE_NAME.substring(
+            0, Constants.MICROG_RE_PACKAGE_NAME.length() - ".gms".length()) + ".c2dm.";
+
+    /**
+     * Renames every {@code com.google.android.c2dm.*} string in the manifest to ReVanced GmsCore's
+     * {@code app.revanced.android.c2dm.*}, so pushes MicroG delivers reach the app.
+     *
+     * MicroG looks the app's push receiver up by its own RECEIVE action, and the receiver only accepts
+     * a sender holding {@code com.google.android.c2dm.permission.SEND}, a signature permission of Google
+     * Play services that MicroG cannot hold; both the intent-filter action and the permissions have to
+     * be renamed. The manifest editor maps permissions but never descends into intent filters, so this
+     * is a pass of its own over every attribute.
+     */
+    private static byte[] renameC2dmForMicroGRe(byte[] manifest) throws IOException {
+        AxmlWriter writer = new AxmlWriter();
+        new AxmlReader(manifest).accept(new AxmlVisitor(writer) {
+            @Override
+            public NodeVisitor child(String ns, String name) {
+                return new C2dmRenamer(super.child(ns, name));
+            }
+        });
+        return writer.toByteArray();
+    }
+
+    private static final class C2dmRenamer extends NodeVisitor {
+        C2dmRenamer(NodeVisitor nv) {
+            super(nv);
+        }
+
+        @Override
+        public NodeVisitor child(String ns, String name) {
+            return new C2dmRenamer(super.child(ns, name));
+        }
+
+        @Override
+        public void attr(String ns, String name, int resourceId, int type, Object obj) {
+            if (obj instanceof String && ((String) obj).startsWith(GOOGLE_C2DM_PREFIX)) {
+                obj = MICROG_RE_C2DM_PREFIX + ((String) obj).substring(GOOGLE_C2DM_PREFIX.length());
+            }
+            super.attr(ns, name, resourceId, type, obj);
+        }
+    }
+
+    /** SHA-1 of a certificate given as hex, as lower-case hex. */
+    static String sha1Hex(String certificateHex) {
+        byte[] certificate = new byte[certificateHex.length() / 2];
+        for (int i = 0; i < certificate.length; i++) {
+            certificate[i] = (byte) Integer.parseInt(certificateHex.substring(2 * i, 2 * i + 2), 16);
+        }
+        try {
+            byte[] digest = java.security.MessageDigest.getInstance("SHA-1").digest(certificate);
+            StringBuilder hex = new StringBuilder(digest.length * 2);
+            for (byte b : digest) hex.append(String.format(Locale.ROOT, "%02x", b));
+            return hex.toString();
+        } catch (java.security.NoSuchAlgorithmException e) {
+            throw new IllegalStateException(e);
         }
     }
 

@@ -109,6 +109,10 @@ class NewPatchViewModel(private val token: String) : ViewModel() {
 
     fun setInjectDocumentsProvider(value: Boolean) = mutate { it.copy(injectDocumentsProvider = value) }
 
+    fun setUseMicroGRe(value: Boolean) = mutate { it.copy(useMicroGRe = value) }
+
+    fun setDeclareFakeSignature(value: Boolean) = mutate { it.copy(declareFakeSignature = value) }
+
     /**
      * Adds modules to the set, keeping what is already there.
      *
