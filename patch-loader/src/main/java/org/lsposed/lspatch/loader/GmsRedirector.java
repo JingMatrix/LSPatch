@@ -4,9 +4,7 @@ import android.content.ComponentName;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.content.pm.Signature;
 import android.net.Uri;
 import android.util.Log;
 
@@ -45,10 +43,8 @@ public class GmsRedirector {
 
     private static String targetGms = null;
     private static String selfPackage = null;
-    private static String originalSignature;
 
-    public static void activate(Context context, String origSig) {
-        originalSignature = origSig;
+    public static void activate(Context context) {
         selfPackage = context.getPackageName();
 
         targetGms = findInstalledMicroG(context);
@@ -68,7 +64,6 @@ public class GmsRedirector {
         hookIntentResolve();
         hookActivityStart();
         hookContentResolverAcquire();
-        hookPackageManagerGetPackageInfo(context);
 
         Log.i(TAG, "GMS redirect hooks installed");
     }
@@ -430,87 +425,27 @@ public class GmsRedirector {
                 } catch (Throwable ignored) {}
             }
 
-            // A provider call real GMS refuses for the patched signature is retried against MicroG.
-            try {
-                XposedBridge.hookAllMethods(ContentResolver.class, "call", new XC_MethodHook() {
-                    @Override
-                    protected void beforeHookedMethod(MethodHookParam param) {
-                        for (int i = 0; i < param.args.length; i++) {
-                            if (param.args[i] instanceof Uri) {
-                                Uri uri = (Uri) param.args[i];
-                                String newAuth = redirectAuthority(uri.getAuthority());
-                                if (newAuth != null) {
-                                    param.args[i] = uri.buildUpon().authority(newAuth).build();
-                                }
-                            } else if (param.args[i] instanceof String && i == 0) {
-                                String newAuth = redirectAuthority((String) param.args[i]);
-                                if (newAuth != null) {
-                                    param.args[i] = newAuth;
-                                }
+            XposedBridge.hookAllMethods(ContentResolver.class, "call", new XC_MethodHook() {
+                @Override
+                protected void beforeHookedMethod(MethodHookParam param) {
+                    for (int i = 0; i < param.args.length; i++) {
+                        if (param.args[i] instanceof Uri) {
+                            Uri uri = (Uri) param.args[i];
+                            String newAuth = redirectAuthority(uri.getAuthority());
+                            if (newAuth != null) {
+                                param.args[i] = uri.buildUpon().authority(newAuth).build();
+                            }
+                        } else if (param.args[i] instanceof String && i == 0) {
+                            String newAuth = redirectAuthority((String) param.args[i]);
+                            if (newAuth != null) {
+                                param.args[i] = newAuth;
                             }
                         }
                     }
-
-                    @Override
-                    protected void afterHookedMethod(MethodHookParam param) {
-                        if (param.getThrowable() instanceof SecurityException) {
-                            String msg = param.getThrowable().getMessage();
-                            if (msg != null && (msg.contains("GoogleCertificatesRslt") ||
-                                    msg.contains("not allowed") ||
-                                    msg.contains("Access denied"))) {
-                                Log.i(TAG, "GMS rejected call, retrying with MicroG");
-                                for (int i = 0; i < param.args.length; i++) {
-                                    if (param.args[i] instanceof Uri) {
-                                        Uri uri = (Uri) param.args[i];
-                                        String authority = uri.getAuthority();
-                                        if (authority != null && authority.contains(REAL_GMS)) {
-                                            param.args[i] = uri.buildUpon()
-                                                    .authority(authority.replace(REAL_GMS, targetGms))
-                                                    .build();
-                                        }
-                                    } else if (param.args[i] instanceof String && i == 0) {
-                                        String s = (String) param.args[i];
-                                        if (s.contains(REAL_GMS)) {
-                                            param.args[i] = s.replace(REAL_GMS, targetGms);
-                                        }
-                                    }
-                                }
-                                param.setThrowable(null);
-                                param.setResult(null);
-                            }
-                        }
-                    }
-                });
-            } catch (Throwable ignored) {}
+                }
+            });
         } catch (Throwable t) {
             Log.e(TAG, "Failed to hook ContentResolver", t);
-        }
-    }
-
-    private static void hookPackageManagerGetPackageInfo(Context context) {
-        try {
-            XposedHelpers.findAndHookMethod(
-                    context.getPackageManager().getClass(),
-                    "getPackageInfo",
-                    String.class, int.class,
-                    new XC_MethodHook() {
-                        @Override
-                        protected void afterHookedMethod(MethodHookParam param) {
-                            PackageInfo pi = (PackageInfo) param.getResult();
-                            if (pi != null && targetGms != null) {
-                                if (targetGms.equals(pi.packageName) && (((int) param.args[1]) & PackageManager.GET_SIGNATURES) != 0) {
-                                    if (originalSignature != null && !originalSignature.isEmpty()) {
-                                        try {
-                                            pi.signatures = new Signature[]{new Signature(originalSignature)};
-                                        } catch (Throwable ignored) {}
-                                    }
-                                }
-                            }
-                        }
-                    }
-            );
-        } catch (Throwable t) {
-            Log.e(TAG, "Failed to hook PackageManager.getPackageInfo", t);
         }
     }
 }

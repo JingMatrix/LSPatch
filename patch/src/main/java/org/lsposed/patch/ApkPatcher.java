@@ -19,6 +19,11 @@ import com.wind.meditor.property.AttributeItem;
 import com.wind.meditor.property.ModificationProperty;
 import com.wind.meditor.utils.NodeValue;
 
+import pxb.android.axml.AxmlReader;
+import pxb.android.axml.AxmlVisitor;
+import pxb.android.axml.AxmlWriter;
+import pxb.android.axml.NodeVisitor;
+
 import org.apache.commons.io.FilenameUtils;
 import org.lsposed.lspatch.share.Constants;
 import org.lsposed.lspatch.share.LSPConfig;
@@ -451,7 +456,7 @@ public final class ApkPatcher {
             new ManifestEditor(in, os, property).processManifest();
         }
         os.flush();
-        return os.toByteArray();
+        return spec.manifestOverrides().useMicroG ? renameC2dmForMicroG(os.toByteArray()) : os.toByteArray();
     }
 
     /**
@@ -519,6 +524,50 @@ public final class ApkPatcher {
         property.addMetaData(new ModificationProperty.MetaData(
                 Constants.MICROG_RE_PACKAGE_NAME + ".SPOOFED_PACKAGE_SIGNATURE", sha1Hex(originalSignature)));
         property.addUsesPermission("android.permission.QUERY_ALL_PACKAGES");
+    }
+
+    private static final String GOOGLE_C2DM_PREFIX = "com.google.android.c2dm.";
+    private static final String MICROG_RE_C2DM_PREFIX = Constants.MICROG_RE_PACKAGE_NAME.substring(
+            0, Constants.MICROG_RE_PACKAGE_NAME.length() - ".gms".length()) + ".c2dm.";
+
+    /**
+     * Renames every {@code com.google.android.c2dm.*} string in the manifest to ReVanced GmsCore's
+     * {@code app.revanced.android.c2dm.*}, so pushes MicroG delivers reach the app.
+     *
+     * MicroG looks the app's push receiver up by its own RECEIVE action, and the receiver only accepts
+     * a sender holding {@code com.google.android.c2dm.permission.SEND}, a signature permission of Google
+     * Play services that MicroG cannot hold; both the intent-filter action and the permissions have to
+     * be renamed. The manifest editor maps permissions but never descends into intent filters, so this
+     * is a pass of its own over every attribute.
+     */
+    private static byte[] renameC2dmForMicroG(byte[] manifest) throws IOException {
+        AxmlWriter writer = new AxmlWriter();
+        new AxmlReader(manifest).accept(new AxmlVisitor(writer) {
+            @Override
+            public NodeVisitor child(String ns, String name) {
+                return new C2dmRenamer(super.child(ns, name));
+            }
+        });
+        return writer.toByteArray();
+    }
+
+    private static final class C2dmRenamer extends NodeVisitor {
+        C2dmRenamer(NodeVisitor nv) {
+            super(nv);
+        }
+
+        @Override
+        public NodeVisitor child(String ns, String name) {
+            return new C2dmRenamer(super.child(ns, name));
+        }
+
+        @Override
+        public void attr(String ns, String name, int resourceId, int type, Object obj) {
+            if (obj instanceof String && ((String) obj).startsWith(GOOGLE_C2DM_PREFIX)) {
+                obj = MICROG_RE_C2DM_PREFIX + ((String) obj).substring(GOOGLE_C2DM_PREFIX.length());
+            }
+            super.attr(ns, name, resourceId, type, obj);
+        }
     }
 
     /** SHA-1 of a certificate given as hex, as lower-case hex. */

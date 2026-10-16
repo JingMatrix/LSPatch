@@ -136,7 +136,7 @@ public class LSPApplication {
 
         // Armed before the class loader for the same reason: the app's GMS client may already run from that initializer.
         if (config.optBoolean("useMicroG")) {
-            GmsRedirector.activate(context, config.optString("originalSignature"));
+            GmsRedirector.activate(context);
         }
 
         // Realize the target's class loader now that hooks, modules and signature bypass are all armed.
