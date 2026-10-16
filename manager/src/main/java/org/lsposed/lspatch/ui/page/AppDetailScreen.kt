@@ -460,6 +460,14 @@ fun AppDetailScreen(navigator: Navigator, packageName: String) {
                         stringResource(R.string.appdetail_info_inject_dex),
                         yesNo(config?.injectDex == true),
                     )
+                    InfoRow(
+                        stringResource(R.string.patch_manifest_microg_re),
+                        yesNo(config?.useMicroGRe == true),
+                    )
+                    InfoRow(
+                        stringResource(R.string.patch_manifest_fake_signature),
+                        yesNo(config?.declareFakeSignature == true),
+                    )
                     // Manifest attributes, read from the installed manifest rather than the patch
                     // config: they are baked into the manifest at patch time and are not carried in the
                     // runtime config, so this reflects the app's actual manifest. Grouped and ordered to
