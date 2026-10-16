@@ -519,15 +519,11 @@ public final class ApkPatcher {
      *
      * MicroG RE reads {@code app.revanced.android.gms.SPOOFED_PACKAGE_SIGNATURE} from the calling app's
      * manifest -- the certificate's SHA-1 in lower-case hex -- and needs no ROM support.
-     *
-     * {@code QUERY_ALL_PACKAGES} lets the loader find the installed MicroG: the app's own
-     * {@code <queries>} name Google Play services, not MicroG, and the manifest editor cannot add one.
      */
     private void addMicroGReSupport(ModificationProperty property, String originalSignature) {
         logger.i("Add MicroG RE support");
         property.addMetaData(new ModificationProperty.MetaData(
                 Constants.MICROG_RE_PACKAGE_NAME + ".SPOOFED_PACKAGE_SIGNATURE", sha1Hex(originalSignature)));
-        property.addUsesPermission("android.permission.QUERY_ALL_PACKAGES");
     }
 
     private static final String GOOGLE_C2DM_PREFIX = "com.google.android.c2dm.";

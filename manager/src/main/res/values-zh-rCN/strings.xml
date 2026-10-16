@@ -270,7 +270,7 @@
     <string name="patch_manifest_permissions_count">已添加 %1$d 个</string>
     <string name="patch_manifest_documents_provider">暴露私有数据</string>
     <string name="patch_manifest_microg_re">MicroG RE 支持</string>
-    <string name="patch_manifest_microg_re_desc">将 Google Play 服务的调用与推送转向已安装的 MicroG RE（ReVanced GmsCore），并向它声明原始签名，使重新签名后仍能使用 Google 登录与推送。不适用原版 microG。</string>
+    <string name="patch_manifest_microg_re_desc">将 Google Play 服务的调用与推送转向已安装的 MicroG RE（ReVanced GmsCore），并向它声明原始签名，使重新签名后仍能使用 Google 登录与推送。集成模式需另外加入 QUERY_ALL_PACKAGES 权限。不适用原版 microG。</string>
     <string name="patch_manifest_fake_signature">声明伪装签名</string>
     <string name="patch_manifest_fake_signature_desc">以 fake-signature 声明原始签名，让支持签名伪装的 ROM 报告原始签名，供原版 microG 使用。ROM 不支持签名伪装时没有作用。</string>
     <string name="patch_manifest_documents_provider_desc">添加一个提供程序，让文件管理器无需 root 即可通过系统文件选择器浏览应用的私有数据目录。这会扩大可访问应用数据的范围——若无需要请保持关闭。</string>

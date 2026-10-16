@@ -28,9 +28,11 @@ import de.robv.android.xposed.XposedHelpers;
  *
  * MicroG RE renames the package to {@code app.revanced.android.gms} and every action along with it, so actions are
  * rewritten too. Upstream microG is not a target: it installs as Google Play services itself, so nothing needs
- * redirecting, and the patcher's C2DM rename is MicroG RE's. An intent the app addresses to itself is never rewritten: the Google
- * sign-in library opens its own {@code SignInHubActivity} with {@code com.google.android.gms.auth.GOOGLE_SIGN_IN}, and
- * that activity finishes on any other action.
+ * redirecting, and the patcher's C2DM rename is MicroG RE's.
+ *
+ * An intent the app addresses to itself is never rewritten: the Google sign-in library opens its own
+ * {@code SignInHubActivity} with {@code com.google.android.gms.auth.GOOGLE_SIGN_IN}, and that activity finishes on any
+ * other action.
  */
 public class GmsRedirector {
     private static final String TAG = "LSPatch-GmsRedirect";
@@ -43,7 +45,7 @@ public class GmsRedirector {
         selfPackage = context.getPackageName();
 
         if (!isInstalled(context, Constants.MICROG_RE_PACKAGE_NAME)) {
-            Log.w(TAG, "MicroG RE is not installed, GMS redirect disabled");
+            Log.w(TAG, "MicroG RE is not installed or not visible to the app (add QUERY_ALL_PACKAGES), GMS redirect disabled");
             return;
         }
         targetGms = Constants.MICROG_RE_PACKAGE_NAME;

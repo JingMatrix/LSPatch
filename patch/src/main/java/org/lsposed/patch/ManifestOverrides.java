@@ -71,8 +71,11 @@ public final class ManifestOverrides {
      * Whether to redirect the app's Google Play services traffic to an installed MicroG RE (ReVanced GmsCore), so
      * Google sign-in and push keep working for an app re-signed with LSPatch's key. The redirect ships in the loader;
      * this declares the original certificate in the {@code SPOOFED_PACKAGE_SIGNATURE} metadata MicroG RE reads,
-     * renames the app's C2DM actions and permissions to MicroG RE's, and lets the app see MicroG RE. Specific to
-     * MicroG RE: upstream microG installs as Google Play services itself and needs none of this.
+     * and renames the app's C2DM actions and permissions to MicroG RE's. Specific to MicroG RE: upstream microG
+     * installs as Google Play services itself and needs none of this.
+     *
+     * The app must also be able to see MicroG RE, which its own {@code <queries>} do not cover: a local-mode
+     * app already holds {@code QUERY_ALL_PACKAGES}, and an integrated one needs it added as a permission.
      */
     public final boolean useMicroGRe;
 
