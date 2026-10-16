@@ -135,7 +135,7 @@ public class LSPApplication {
         SigBypass.doSigBypass(context, config.optInt("sigBypassLevel"));
 
         // Armed before the class loader for the same reason: the app's GMS client may already run from that initializer.
-        if (config.optBoolean("useMicroG")) {
+        if (config.optBoolean("useMicroGRe")) {
             GmsRedirector.activate(context);
         }
 

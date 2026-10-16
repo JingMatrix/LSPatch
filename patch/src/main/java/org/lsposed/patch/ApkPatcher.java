@@ -192,7 +192,8 @@ public final class ApkPatcher {
                     spec.injectDex(),
                     spec.manifestOverrides().addedPermissions.toArray(new String[0]),
                     spec.manifestOverrides().injectDocumentsProvider,
-                    spec.manifestOverrides().useMicroG,
+                    spec.manifestOverrides().useMicroGRe,
+                    spec.manifestOverrides().declareFakeSignature,
                     spec.useManager() ? spec.managerPackageName() : null);
             byte[] configBytes = new Gson().toJson(config).getBytes(StandardCharsets.UTF_8);
 
@@ -246,12 +247,15 @@ public final class ApkPatcher {
     /**
      * The original app's signature, recorded so the loader can report it back to the app.
      *
-     * Only read when signature bypass or MicroG is on: a patched apk is signed with LSPatch's key, and
-     * an app that checks its own signature -- or MicroG, reporting the app to Google -- would otherwise
-     * notice. Nothing needs it when both are off.
+     * Only read when signature bypass, MicroG RE or the fake signature is on: a patched apk is signed
+     * with LSPatch's key, and an app that checks its own signature -- or MicroG, reporting the app to
+     * Google -- would otherwise notice. Nothing needs it when all are off.
      */
     private String readOriginalSignature(File srcApkFile) throws IOException {
-        if (spec.sigBypassLevel() <= Constants.SIGBYPASS_LV_DISABLE && !spec.manifestOverrides().useMicroG) return null;
+        if (spec.sigBypassLevel() <= Constants.SIGBYPASS_LV_DISABLE
+                && !spec.manifestOverrides().useMicroGRe && !spec.manifestOverrides().declareFakeSignature) {
+            return null;
+        }
         String signature = ApkSignatureHelper.getApkSignInfo(srcApkFile.getAbsolutePath());
         if (signature == null || signature.isEmpty()) {
             throw new PatchException("Could not read the original apk's signature");
@@ -456,7 +460,7 @@ public final class ApkPatcher {
             new ManifestEditor(in, os, property).processManifest();
         }
         os.flush();
-        return spec.manifestOverrides().useMicroG ? renameC2dmForMicroG(os.toByteArray()) : os.toByteArray();
+        return spec.manifestOverrides().useMicroGRe ? renameC2dmForMicroGRe(os.toByteArray()) : os.toByteArray();
     }
 
     /**
@@ -500,27 +504,27 @@ public final class ApkPatcher {
         if (o.injectDocumentsProvider) {
             addDocumentsProvider(property, packageName);
         }
-        if (o.useMicroG) {
-            addMicroGSupport(property, originalSignature);
+        if (o.useMicroGRe) {
+            addMicroGReSupport(property, originalSignature);
+        }
+        if (o.declareFakeSignature) {
+            logger.i("Add fake signature");
+            property.addMetaData(new ModificationProperty.MetaData("fake-signature", originalSignature));
+            property.addUsesPermission("android.permission.FAKE_PACKAGE_SIGNATURE");
         }
     }
 
     /**
-     * Declares the app's original certificate to MicroG, which otherwise reports LSPatch's to Google.
+     * Declares the app's original certificate to MicroG RE, which otherwise reports LSPatch's to Google.
      *
-     * MicroG builds read it two ways. Upstream microG relies on a ROM with signature spoofing, which
-     * reports the {@code fake-signature} metadata to an app holding {@code FAKE_PACKAGE_SIGNATURE};
-     * ReVanced GmsCore instead reads {@code app.revanced.android.gms.SPOOFED_PACKAGE_SIGNATURE} from the
-     * calling app's manifest -- the certificate's SHA-1 in lower-case hex -- and needs no ROM support.
-     * Both are written so either build works.
+     * MicroG RE reads {@code app.revanced.android.gms.SPOOFED_PACKAGE_SIGNATURE} from the calling app's
+     * manifest -- the certificate's SHA-1 in lower-case hex -- and needs no ROM support.
      *
      * {@code QUERY_ALL_PACKAGES} lets the loader find the installed MicroG: the app's own
      * {@code <queries>} name Google Play services, not MicroG, and the manifest editor cannot add one.
      */
-    private void addMicroGSupport(ModificationProperty property, String originalSignature) {
-        logger.i("Add MicroG support");
-        property.addMetaData(new ModificationProperty.MetaData("fake-signature", originalSignature));
-        property.addUsesPermission("android.permission.FAKE_PACKAGE_SIGNATURE");
+    private void addMicroGReSupport(ModificationProperty property, String originalSignature) {
+        logger.i("Add MicroG RE support");
         property.addMetaData(new ModificationProperty.MetaData(
                 Constants.MICROG_RE_PACKAGE_NAME + ".SPOOFED_PACKAGE_SIGNATURE", sha1Hex(originalSignature)));
         property.addUsesPermission("android.permission.QUERY_ALL_PACKAGES");
@@ -540,7 +544,7 @@ public final class ApkPatcher {
      * be renamed. The manifest editor maps permissions but never descends into intent filters, so this
      * is a pass of its own over every attribute.
      */
-    private static byte[] renameC2dmForMicroG(byte[] manifest) throws IOException {
+    private static byte[] renameC2dmForMicroGRe(byte[] manifest) throws IOException {
         AxmlWriter writer = new AxmlWriter();
         new AxmlReader(manifest).accept(new AxmlVisitor(writer) {
             @Override

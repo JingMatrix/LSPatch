@@ -91,8 +91,10 @@ data class PatchRequest(
     // Inject a DocumentsProvider exposing the app's private data. Recorded in the config for the same
     // reason as the permissions above.
     val injectDocumentsProvider: Boolean = false,
-    // Redirect Google Play services to an installed MicroG. Recorded in the config for the same reason.
-    val useMicroG: Boolean = false,
+    // Redirect Google Play services to an installed MicroG RE. Recorded in the config for the same reason.
+    val useMicroGRe: Boolean = false,
+    // Declare the original signature as fake-signature for ROM signature spoofing. Recorded for the same reason.
+    val declareFakeSignature: Boolean = false,
     val origin: PatchOrigin = PatchOrigin.New,
 ) {
     val packageName: String get() = target.packageName

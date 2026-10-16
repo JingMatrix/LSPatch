@@ -83,8 +83,11 @@ public class LSPatch {
     @Parameter(names = {"--documents-provider"}, description = "Inject a DocumentsProvider exposing the app's private data to the system file picker")
     private boolean injectDocumentsProvider = false;
 
-    @Parameter(names = {"--microg"}, description = "Redirect Google Play services calls to an installed MicroG and declare the original signature to it")
-    private boolean useMicroG = false;
+    @Parameter(names = {"--microg-re"}, description = "Redirect Google Play services calls and pushes to an installed MicroG RE (ReVanced GmsCore) and declare the original signature to it")
+    private boolean useMicroGRe = false;
+
+    @Parameter(names = {"--fake-signature"}, description = "Declare the original signature as fake-signature, for a ROM with signature spoofing")
+    private boolean declareFakeSignature = false;
 
     private final JCommander jCommander;
 
@@ -141,7 +144,8 @@ public class LSPatch {
                         .map(ManifestOverrides::normalizePermission)
                         .collect(Collectors.toList()))
                 .injectDocumentsProvider(injectDocumentsProvider)
-                .useMicroG(useMicroG)
+                .useMicroGRe(useMicroGRe)
+                .declareFakeSignature(declareFakeSignature)
                 .build();
         return PatchSpec.builder()
                 .apks(apkPaths.stream().map(File::new).collect(Collectors.toList()))

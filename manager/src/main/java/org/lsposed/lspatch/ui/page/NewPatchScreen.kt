@@ -64,6 +64,7 @@ import androidx.compose.material.icons.rounded.Share
 import androidx.compose.material.icons.rounded.Smartphone
 import androidx.compose.material.icons.rounded.Terminal
 import androidx.compose.material.icons.rounded.Tune
+import androidx.compose.material.icons.rounded.VerifiedUser
 import androidx.compose.material.icons.rounded.WorkOutline
 import androidx.compose.material3.Badge
 import androidx.compose.material3.BadgedBox
@@ -341,7 +342,8 @@ fun NewPatchScreen(navigator: Navigator, token: String) {
                         onAddPermission = viewModel::addPermission,
                         onRemovePermission = viewModel::removePermission,
                         onInjectDocumentsProvider = viewModel::setInjectDocumentsProvider,
-                        onUseMicroG = viewModel::setUseMicroG,
+                        onUseMicroGRe = viewModel::setUseMicroGRe,
+                        onDeclareFakeSignature = viewModel::setDeclareFakeSignature,
                     )
                 else ->
                     Column(
@@ -389,7 +391,8 @@ private fun ConfigureBody(
     onAddPermission: (String) -> Unit,
     onRemovePermission: (String) -> Unit,
     onInjectDocumentsProvider: (Boolean) -> Unit,
-    onUseMicroG: (Boolean) -> Unit,
+    onUseMicroGRe: (Boolean) -> Unit,
+    onDeclareFakeSignature: (Boolean) -> Unit,
 ) {
     val scope = rememberCoroutineScope()
     val snackbarHost = LocalSnackbarHost.current
@@ -599,11 +602,18 @@ private fun ConfigureBody(
                     onCheckedChange = onInjectDocumentsProvider,
                 )
                 ToggleRow(
-                    title = stringResource(R.string.patch_manifest_microg),
+                    title = stringResource(R.string.patch_manifest_microg_re),
                     icon = Icons.Rounded.AccountCircle,
-                    subtitle = stringResource(R.string.patch_manifest_microg_desc),
-                    checked = request.useMicroG,
-                    onCheckedChange = onUseMicroG,
+                    subtitle = stringResource(R.string.patch_manifest_microg_re_desc),
+                    checked = request.useMicroGRe,
+                    onCheckedChange = onUseMicroGRe,
+                )
+                ToggleRow(
+                    title = stringResource(R.string.patch_manifest_fake_signature),
+                    icon = Icons.Rounded.VerifiedUser,
+                    subtitle = stringResource(R.string.patch_manifest_fake_signature_desc),
+                    checked = request.declareFakeSignature,
+                    onCheckedChange = onDeclareFakeSignature,
                 )
                 // Last of the manifest controls: its chip list and field are the tallest thing here,
                 // so it sits below the compact toggles rather than pushing them down the screen.
@@ -789,8 +799,11 @@ private fun advancedChips(request: PatchRequest): List<OptionChipData> = buildLi
     if (request.injectDocumentsProvider) {
         add(OptionChipData(stringResource(R.string.patch_manifest_documents_provider), true, Icons.Rounded.FolderOpen))
     }
-    if (request.useMicroG) {
-        add(OptionChipData(stringResource(R.string.patch_manifest_microg), true, Icons.Rounded.AccountCircle))
+    if (request.useMicroGRe) {
+        add(OptionChipData(stringResource(R.string.patch_manifest_microg_re), true, Icons.Rounded.AccountCircle))
+    }
+    if (request.declareFakeSignature) {
+        add(OptionChipData(stringResource(R.string.patch_manifest_fake_signature), true, Icons.Rounded.VerifiedUser))
     }
     if (!MyKeyStore.useDefault) {
         add(OptionChipData(stringResource(R.string.settings_keystore_custom), true, Icons.Outlined.Ballot))

@@ -19,16 +19,16 @@ import de.robv.android.xposed.XposedBridge;
 import de.robv.android.xposed.XposedHelpers;
 
 /**
- * Points a patched app's Google Play services traffic at an installed MicroG.
+ * Points a patched app's Google Play services traffic at an installed MicroG RE (ReVanced GmsCore).
  *
  * A patched app is signed with LSPatch's key, so Google Play services rejects it wherever it checks the caller's
- * certificate -- most visibly at Google sign-in. MicroG answers the same requests under its own package, so this
- * rewrites the package, component, provider authority and action of every GMS-bound intent or provider call to the
- * MicroG package found on the device. Which certificate MicroG then reports for the app is decided by the manifest
- * metadata the patcher wrote, not here.
+ * certificate -- most visibly at Google sign-in. MicroG RE answers the same requests under its own package, so this
+ * rewrites the package, component, provider authority and action of every GMS-bound intent or provider call to it.
+ * Which certificate MicroG RE then reports for the app is decided by the manifest metadata the patcher wrote, not here.
  *
- * Community MicroG builds such as ReVanced GmsCore rename the package to {@code <vendor>.android.gms} and every action
- * along with it, so actions are rewritten too. An intent the app addresses to itself is never rewritten: the Google
+ * MicroG RE renames the package to {@code app.revanced.android.gms} and every action along with it, so actions are
+ * rewritten too. Upstream microG is not a target: it installs as Google Play services itself, so nothing needs
+ * redirecting, and the patcher's C2DM rename is MicroG RE's. An intent the app addresses to itself is never rewritten: the Google
  * sign-in library opens its own {@code SignInHubActivity} with {@code com.google.android.gms.auth.GOOGLE_SIGN_IN}, and
  * that activity finishes on any other action.
  */
@@ -36,22 +36,17 @@ public class GmsRedirector {
     private static final String TAG = "LSPatch-GmsRedirect";
     private static final String REAL_GMS = Constants.REAL_GMS_PACKAGE_NAME;
 
-    private static final String[] MICROG_PACKAGES = {
-            Constants.MICROG_RE_PACKAGE_NAME,  // ReVanced GmsCore
-            "org.microg.gms",                  // upstream microG
-    };
-
     private static String targetGms = null;
     private static String selfPackage = null;
 
     public static void activate(Context context) {
         selfPackage = context.getPackageName();
 
-        targetGms = findInstalledMicroG(context);
-        if (targetGms == null) {
-            Log.w(TAG, "No MicroG/GmsCore found! GMS redirect disabled.");
+        if (!isInstalled(context, Constants.MICROG_RE_PACKAGE_NAME)) {
+            Log.w(TAG, "MicroG RE is not installed, GMS redirect disabled");
             return;
         }
+        targetGms = Constants.MICROG_RE_PACKAGE_NAME;
 
         Log.i(TAG, "Activating GMS redirect: " + REAL_GMS + " -> " + targetGms);
         setupC2dmRedirects();
@@ -68,15 +63,13 @@ public class GmsRedirector {
         Log.i(TAG, "GMS redirect hooks installed");
     }
 
-    private static String findInstalledMicroG(Context context) {
-        PackageManager pm = context.getPackageManager();
-        for (String pkg : MICROG_PACKAGES) {
-            try {
-                pm.getPackageInfo(pkg, 0);
-                return pkg;
-            } catch (PackageManager.NameNotFoundException ignored) {}
+    private static boolean isInstalled(Context context, String pkg) {
+        try {
+            context.getPackageManager().getPackageInfo(pkg, 0);
+            return true;
+        } catch (PackageManager.NameNotFoundException e) {
+            return false;
         }
-        return null;
     }
 
     static void setTargetGmsForTest(String target, String self) {

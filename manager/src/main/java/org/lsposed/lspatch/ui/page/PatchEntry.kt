@@ -79,7 +79,8 @@ suspend fun rePatchRequestFor(
         // Recovered from the recorded config, not the original apks -- those never carried them.
         addedPermissions = config?.addedPermissions?.toList() ?: emptyList(),
         injectDocumentsProvider = config?.injectDocumentsProvider ?: false,
-        useMicroG = config?.useMicroG ?: false,
+        useMicroGRe = config?.useMicroGRe ?: false,
+        declareFakeSignature = config?.declareFakeSignature ?: false,
         sigBypassLevel = config?.sigBypassLevel ?: 2,
         injectDex = config?.injectDex ?: false,
         modules = modules ?: embedded,

@@ -68,13 +68,20 @@ public final class ManifestOverrides {
     public final boolean injectDocumentsProvider;
 
     /**
-     * Whether to redirect the app's Google Play services traffic to an installed MicroG, so Google sign-in and the
-     * other GMS APIs keep working for an app re-signed with LSPatch's key. The redirect ships in the loader; this
-     * declares the original certificate in the two forms MicroG builds read -- {@code fake-signature} with
-     * {@code FAKE_PACKAGE_SIGNATURE} for a ROM with signature spoofing, and ReVanced GmsCore's
-     * {@code SPOOFED_PACKAGE_SIGNATURE} -- and lets the app see which MicroG is installed.
+     * Whether to redirect the app's Google Play services traffic to an installed MicroG RE (ReVanced GmsCore), so
+     * Google sign-in and push keep working for an app re-signed with LSPatch's key. The redirect ships in the loader;
+     * this declares the original certificate in the {@code SPOOFED_PACKAGE_SIGNATURE} metadata MicroG RE reads,
+     * renames the app's C2DM actions and permissions to MicroG RE's, and lets the app see MicroG RE. Specific to
+     * MicroG RE: upstream microG installs as Google Play services itself and needs none of this.
      */
-    public final boolean useMicroG;
+    public final boolean useMicroGRe;
+
+    /**
+     * Whether to declare the original certificate as {@code fake-signature}, with {@code FAKE_PACKAGE_SIGNATURE}, for a
+     * ROM with signature spoofing to report in place of LSPatch's. Upstream microG has no metadata of its own for this,
+     * so it is how that setup sees the original certificate. Only takes effect on a ROM that implements the spoofing.
+     */
+    public final boolean declareFakeSignature;
 
     private ManifestOverrides(Builder b) {
         this.versionCode = b.versionCode;
@@ -84,14 +91,16 @@ public final class ManifestOverrides {
         this.usesCleartextTraffic = b.usesCleartextTraffic;
         this.addedPermissions = Collections.unmodifiableList(new ArrayList<>(b.addedPermissions));
         this.injectDocumentsProvider = b.injectDocumentsProvider;
-        this.useMicroG = b.useMicroG;
+        this.useMicroGRe = b.useMicroGRe;
+        this.declareFakeSignature = b.declareFakeSignature;
     }
 
     /** True when nothing is overridden, so the patcher can skip the work entirely. */
     public boolean isEmpty() {
         return versionCode == null && label == null && targetSdkVersion == null
                 && extractNativeLibs == null && usesCleartextTraffic == null
-                && addedPermissions.isEmpty() && !injectDocumentsProvider && !useMicroG;
+                && addedPermissions.isEmpty() && !injectDocumentsProvider && !useMicroGRe
+                && !declareFakeSignature;
     }
 
     /**
@@ -131,7 +140,8 @@ public final class ManifestOverrides {
         // order the user added them in is what the report and the re-patch see.
         private final LinkedHashSet<String> addedPermissions = new LinkedHashSet<>();
         private boolean injectDocumentsProvider;
-        private boolean useMicroG;
+        private boolean useMicroGRe;
+        private boolean declareFakeSignature;
 
         public Builder versionCode(Integer versionCode) {
             this.versionCode = versionCode;
@@ -178,8 +188,13 @@ public final class ManifestOverrides {
             return this;
         }
 
-        public Builder useMicroG(boolean useMicroG) {
-            this.useMicroG = useMicroG;
+        public Builder useMicroGRe(boolean useMicroGRe) {
+            this.useMicroGRe = useMicroGRe;
+            return this;
+        }
+
+        public Builder declareFakeSignature(boolean declareFakeSignature) {
+            this.declareFakeSignature = declareFakeSignature;
             return this;
         }
 
