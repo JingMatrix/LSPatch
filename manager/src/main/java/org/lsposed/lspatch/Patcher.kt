@@ -47,6 +47,7 @@ object Patcher {
                     .usesCleartextTraffic(if (usesCleartextTraffic) true else null)
                     .permissions(addedPermissions)
                     .injectDocumentsProvider(injectDocumentsProvider)
+                    .useMicroG(useMicroG)
                     .build()
             )
             .keystore(

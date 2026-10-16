@@ -67,6 +67,15 @@ public final class ManifestOverrides {
      */
     public final boolean injectDocumentsProvider;
 
+    /**
+     * Whether to redirect the app's Google Play services traffic to an installed MicroG, so Google sign-in and the
+     * other GMS APIs keep working for an app re-signed with LSPatch's key. The redirect ships in the loader; this
+     * declares the original certificate in the two forms MicroG builds read -- {@code fake-signature} with
+     * {@code FAKE_PACKAGE_SIGNATURE} for a ROM with signature spoofing, and ReVanced GmsCore's
+     * {@code SPOOFED_PACKAGE_SIGNATURE} -- and lets the app see which MicroG is installed.
+     */
+    public final boolean useMicroG;
+
     private ManifestOverrides(Builder b) {
         this.versionCode = b.versionCode;
         this.label = b.label;
@@ -75,13 +84,14 @@ public final class ManifestOverrides {
         this.usesCleartextTraffic = b.usesCleartextTraffic;
         this.addedPermissions = Collections.unmodifiableList(new ArrayList<>(b.addedPermissions));
         this.injectDocumentsProvider = b.injectDocumentsProvider;
+        this.useMicroG = b.useMicroG;
     }
 
     /** True when nothing is overridden, so the patcher can skip the work entirely. */
     public boolean isEmpty() {
         return versionCode == null && label == null && targetSdkVersion == null
                 && extractNativeLibs == null && usesCleartextTraffic == null
-                && addedPermissions.isEmpty() && !injectDocumentsProvider;
+                && addedPermissions.isEmpty() && !injectDocumentsProvider && !useMicroG;
     }
 
     /**
@@ -121,6 +131,7 @@ public final class ManifestOverrides {
         // order the user added them in is what the report and the re-patch see.
         private final LinkedHashSet<String> addedPermissions = new LinkedHashSet<>();
         private boolean injectDocumentsProvider;
+        private boolean useMicroG;
 
         public Builder versionCode(Integer versionCode) {
             this.versionCode = versionCode;
@@ -164,6 +175,11 @@ public final class ManifestOverrides {
 
         public Builder injectDocumentsProvider(boolean injectDocumentsProvider) {
             this.injectDocumentsProvider = injectDocumentsProvider;
+            return this;
+        }
+
+        public Builder useMicroG(boolean useMicroG) {
+            this.useMicroG = useMicroG;
             return this;
         }
 

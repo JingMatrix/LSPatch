@@ -119,6 +119,8 @@
     <string name="patch_manifest_permissions_remove">Remove</string>
     <string name="patch_manifest_permissions_count">%1$d added</string>
     <string name="patch_manifest_documents_provider">Expose private data</string>
+    <string name="patch_manifest_microg">MicroG support</string>
+    <string name="patch_manifest_microg_desc">Send Google Play services calls to an installed MicroG (ReVanced GmsCore or microG) and declare the original signature to it, so Google sign-in keeps working after re-signing.</string>
     <string name="patch_manifest_documents_provider_desc">Add a provider so a file manager can browse the app\'s private data folder through the system file picker, no root needed. Widens what can reach the app\'s data — leave off unless you need it.</string>
     <string name="patch_status_patching">Patching…</string>
     <string name="patch_status_error">Patch failed</string>

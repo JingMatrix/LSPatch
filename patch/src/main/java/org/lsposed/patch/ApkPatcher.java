@@ -187,10 +187,11 @@ public final class ApkPatcher {
                     spec.injectDex(),
                     spec.manifestOverrides().addedPermissions.toArray(new String[0]),
                     spec.manifestOverrides().injectDocumentsProvider,
+                    spec.manifestOverrides().useMicroG,
                     spec.useManager() ? spec.managerPackageName() : null);
             byte[] configBytes = new Gson().toJson(config).getBytes(StandardCharsets.UTF_8);
 
-            rewriteManifest(srcZFile, dstZFile, configBytes, manifest.packageName, manifest.minSdkVersion, index, total);
+            rewriteManifest(srcZFile, dstZFile, configBytes, manifest.packageName, manifest.minSdkVersion, originalSignature, index, total);
             injectLoader(srcZFile, dstZFile, index, total);
             if (!spec.useManager()) {
                 addLoaderPayload(dstZFile);
@@ -240,11 +241,12 @@ public final class ApkPatcher {
     /**
      * The original app's signature, recorded so the loader can report it back to the app.
      *
-     * Only read when signature bypass is on: a patched apk is signed with LSPatch's key, and an app
-     * that checks its own signature would otherwise notice. Nothing needs it when the bypass is off.
+     * Only read when signature bypass or MicroG is on: a patched apk is signed with LSPatch's key, and
+     * an app that checks its own signature -- or MicroG, reporting the app to Google -- would otherwise
+     * notice. Nothing needs it when both are off.
      */
     private String readOriginalSignature(File srcApkFile) throws IOException {
-        if (spec.sigBypassLevel() <= Constants.SIGBYPASS_LV_DISABLE) return null;
+        if (spec.sigBypassLevel() <= Constants.SIGBYPASS_LV_DISABLE && !spec.manifestOverrides().useMicroG) return null;
         String signature = ApkSignatureHelper.getApkSignInfo(srcApkFile.getAbsolutePath());
         if (signature == null || signature.isEmpty()) {
             throw new PatchException("Could not read the original apk's signature");
@@ -290,13 +292,13 @@ public final class ApkPatcher {
      */
     private void rewriteManifest(
             NestedZip srcZFile, ZFile dstZFile, byte[] configBytes, String packageName, int minSdkVersion,
-            int index, int total)
+            String originalSignature, int index, int total)
             throws IOException {
         logger.stage(Logger.Stage.REWRITING, index, total);
         logger.i("Patching apk...");
         String metadata = Base64.getEncoder().encodeToString(configBytes);
         StoredEntry manifestEntry = Objects.requireNonNull(srcZFile.get(ANDROID_MANIFEST_XML));
-        try (InputStream is = new ByteArrayInputStream(modifyManifestFile(manifestEntry.open(), metadata, packageName, minSdkVersion))) {
+        try (InputStream is = new ByteArrayInputStream(modifyManifestFile(manifestEntry.open(), metadata, packageName, minSdkVersion, originalSignature))) {
             dstZFile.add(ANDROID_MANIFEST_XML, is);
         } catch (IOException e) {
             throw new PatchException("Error when modifying manifest", e);
@@ -427,7 +429,7 @@ public final class ApkPatcher {
                 && (name.endsWith(".SF") || name.endsWith(".MF") || name.endsWith(".RSA"));
     }
 
-    private byte[] modifyManifestFile(InputStream is, String metadata, String packageName, int minSdkVersion)
+    private byte[] modifyManifestFile(InputStream is, String metadata, String packageName, int minSdkVersion, String originalSignature)
             throws IOException {
         ModificationProperty property = new ModificationProperty();
 
@@ -438,7 +440,7 @@ public final class ApkPatcher {
         property.addApplicationAttribute(new AttributeItem(NodeValue.Application.DEBUGGABLE, spec.debuggable()));
         property.addApplicationAttribute(new AttributeItem("appComponentFactory", PROXY_APP_COMPONENT_FACTORY));
         property.addMetaData(new ModificationProperty.MetaData("lspatch", metadata));
-        applyManifestOverrides(property, packageName);
+        applyManifestOverrides(property, packageName, originalSignature);
         // TODO: replace query_all with queries -> manager
         if (spec.useManager()) {
             property.addUsesPermission("android.permission.QUERY_ALL_PACKAGES");
@@ -461,7 +463,7 @@ public final class ApkPatcher {
      * override changes the compatibility behaviours the platform applies; the two booleans flip
      * install-time and network policy an app otherwise fixes against a module's needs.
      */
-    private void applyManifestOverrides(ModificationProperty property, String packageName) {
+    private void applyManifestOverrides(ModificationProperty property, String packageName, String originalSignature) {
         ManifestOverrides o = spec.manifestOverrides();
         if (o.isEmpty()) return;
         if (o.versionCode != null) {
@@ -492,6 +494,46 @@ public final class ApkPatcher {
         }
         if (o.injectDocumentsProvider) {
             addDocumentsProvider(property, packageName);
+        }
+        if (o.useMicroG) {
+            addMicroGSupport(property, originalSignature);
+        }
+    }
+
+    /**
+     * Declares the app's original certificate to MicroG, which otherwise reports LSPatch's to Google.
+     *
+     * MicroG builds read it two ways. Upstream microG relies on a ROM with signature spoofing, which
+     * reports the {@code fake-signature} metadata to an app holding {@code FAKE_PACKAGE_SIGNATURE};
+     * ReVanced GmsCore instead reads {@code app.revanced.android.gms.SPOOFED_PACKAGE_SIGNATURE} from the
+     * calling app's manifest -- the certificate's SHA-1 in lower-case hex -- and needs no ROM support.
+     * Both are written so either build works.
+     *
+     * {@code QUERY_ALL_PACKAGES} lets the loader find the installed MicroG: the app's own
+     * {@code <queries>} name Google Play services, not MicroG, and the manifest editor cannot add one.
+     */
+    private void addMicroGSupport(ModificationProperty property, String originalSignature) {
+        logger.i("Add MicroG support");
+        property.addMetaData(new ModificationProperty.MetaData("fake-signature", originalSignature));
+        property.addUsesPermission("android.permission.FAKE_PACKAGE_SIGNATURE");
+        property.addMetaData(new ModificationProperty.MetaData(
+                Constants.MICROG_RE_PACKAGE_NAME + ".SPOOFED_PACKAGE_SIGNATURE", sha1Hex(originalSignature)));
+        property.addUsesPermission("android.permission.QUERY_ALL_PACKAGES");
+    }
+
+    /** SHA-1 of a certificate given as hex, as lower-case hex. */
+    static String sha1Hex(String certificateHex) {
+        byte[] certificate = new byte[certificateHex.length() / 2];
+        for (int i = 0; i < certificate.length; i++) {
+            certificate[i] = (byte) Integer.parseInt(certificateHex.substring(2 * i, 2 * i + 2), 16);
+        }
+        try {
+            byte[] digest = java.security.MessageDigest.getInstance("SHA-1").digest(certificate);
+            StringBuilder hex = new StringBuilder(digest.length * 2);
+            for (byte b : digest) hex.append(String.format(Locale.ROOT, "%02x", b));
+            return hex.toString();
+        } catch (java.security.NoSuchAlgorithmException e) {
+            throw new IllegalStateException(e);
         }
     }
 

@@ -22,6 +22,13 @@ public class Constants {
     final static public String MIGRATE_ASSET_PATH = "assets/lspatch/migrate.zip";
     final static public int MIN_ROLLING_VERSION_CODE = 348;
 
+    final static public String REAL_GMS_PACKAGE_NAME = "com.google.android.gms";
+    /**
+     * ReVanced GmsCore, the MicroG build that reads a calling app's certificate from the app's manifest metadata
+     * {@code <this package>.SPOOFED_PACKAGE_SIGNATURE} rather than relying on a ROM's signature spoofing.
+     */
+    final static public String MICROG_RE_PACKAGE_NAME = "app.revanced.android.gms";
+
     final static public int SIGBYPASS_LV_DISABLE = 0;
     final static public int SIGBYPASS_LV_PM = 1;
     final static public int SIGBYPASS_LV_PM_OPENAT = 2;

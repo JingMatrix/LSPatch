@@ -134,6 +134,11 @@ public class LSPApplication {
         // realized, so a signature/APK read performed from that initializer already sees the spoof.
         SigBypass.doSigBypass(context, config.optInt("sigBypassLevel"));
 
+        // Armed before the class loader for the same reason: the app's GMS client may already run from that initializer.
+        if (config.optBoolean("useMicroG")) {
+            GmsRedirector.activate(context, config.optString("originalSignature"));
+        }
+
         // Realize the target's class loader now that hooks, modules and signature bypass are all armed.
         // getClassLoader() -> createOrUpdateClassLoaderLocked -> createAppFactory triggers
         // onPackageLoaded (pre-<clinit>) then, on return, onPackageReady and legacy handleLoadPackage.

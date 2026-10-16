@@ -34,6 +34,12 @@ public class PatchConfig {
     public final boolean injectDocumentsProvider;
 
     /**
+     * Whether the app's Google Play services traffic is redirected to an installed MicroG. Read by the loader, and
+     * recorded for the same reason as {@link #addedPermissions}: a re-patch would otherwise silently drop it.
+     */
+    public final boolean useMicroG;
+
+    /**
      * The manager package a manager-mode app should bind to for module loading, or null for an
      * apk patched before this was recorded (and for integrated apps, which never bind a manager).
      * Recorded so the manager can be reinstalled under a different package name without orphaning
@@ -53,6 +59,7 @@ public class PatchConfig {
             boolean injectDex,
             String[] addedPermissions,
             boolean injectDocumentsProvider,
+            boolean useMicroG,
             String managerPackageName
     ) {
         this.useManager = useManager;
@@ -64,6 +71,7 @@ public class PatchConfig {
         this.injectDex = injectDex;
         this.addedPermissions = addedPermissions;
         this.injectDocumentsProvider = injectDocumentsProvider;
+        this.useMicroG = useMicroG;
         if (useManager) {
             this.managerPackageName = (managerPackageName != null && !managerPackageName.isEmpty())
                     ? managerPackageName

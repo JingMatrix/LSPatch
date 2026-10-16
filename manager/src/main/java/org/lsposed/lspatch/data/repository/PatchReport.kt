@@ -60,6 +60,7 @@ object PatchReport {
             "Added perms  ${if (request.addedPermissions.isEmpty()) "none" else request.addedPermissions.joinToString(", ")}"
         )
         add("Docs provider ${request.injectDocumentsProvider}")
+        add("MicroG       ${request.useMicroG}")
         add("Keystore     ${if (MyKeyStore.useDefault) "built-in" else "custom (${MyKeyStore.file.name})"}")
         add("Verbose      ${Configs.detailPatchLogs}")
         add("")

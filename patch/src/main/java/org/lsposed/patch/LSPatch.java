@@ -83,6 +83,9 @@ public class LSPatch {
     @Parameter(names = {"--documents-provider"}, description = "Inject a DocumentsProvider exposing the app's private data to the system file picker")
     private boolean injectDocumentsProvider = false;
 
+    @Parameter(names = {"--microg"}, description = "Redirect Google Play services calls to an installed MicroG and declare the original signature to it")
+    private boolean useMicroG = false;
+
     private final JCommander jCommander;
 
     public LSPatch(String... args) {
@@ -138,6 +141,7 @@ public class LSPatch {
                         .map(ManifestOverrides::normalizePermission)
                         .collect(Collectors.toList()))
                 .injectDocumentsProvider(injectDocumentsProvider)
+                .useMicroG(useMicroG)
                 .build();
         return PatchSpec.builder()
                 .apks(apkPaths.stream().map(File::new).collect(Collectors.toList()))

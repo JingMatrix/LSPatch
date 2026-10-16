@@ -109,6 +109,8 @@ class NewPatchViewModel(private val token: String) : ViewModel() {
 
     fun setInjectDocumentsProvider(value: Boolean) = mutate { it.copy(injectDocumentsProvider = value) }
 
+    fun setUseMicroG(value: Boolean) = mutate { it.copy(useMicroG = value) }
+
     /**
      * Adds modules to the set, keeping what is already there.
      *

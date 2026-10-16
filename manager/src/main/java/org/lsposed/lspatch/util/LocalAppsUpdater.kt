@@ -127,6 +127,7 @@ object LocalAppsUpdater {
                     .versionCode(config.versionCode)
                     .permissions(config.addedPermissions?.toList() ?: emptyList())
                     .injectDocumentsProvider(config.injectDocumentsProvider)
+                    .useMicroG(config.useMicroG)
                     .build()
             )
             .keystore(

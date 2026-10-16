@@ -38,6 +38,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.Notes
 import androidx.compose.material.icons.outlined.Ballot
+import androidx.compose.material.icons.rounded.AccountCircle
 import androidx.compose.material.icons.rounded.Add
 import androidx.compose.material.icons.rounded.Android
 import androidx.compose.material.icons.rounded.Api
@@ -340,6 +341,7 @@ fun NewPatchScreen(navigator: Navigator, token: String) {
                         onAddPermission = viewModel::addPermission,
                         onRemovePermission = viewModel::removePermission,
                         onInjectDocumentsProvider = viewModel::setInjectDocumentsProvider,
+                        onUseMicroG = viewModel::setUseMicroG,
                     )
                 else ->
                     Column(
@@ -387,6 +389,7 @@ private fun ConfigureBody(
     onAddPermission: (String) -> Unit,
     onRemovePermission: (String) -> Unit,
     onInjectDocumentsProvider: (Boolean) -> Unit,
+    onUseMicroG: (Boolean) -> Unit,
 ) {
     val scope = rememberCoroutineScope()
     val snackbarHost = LocalSnackbarHost.current
@@ -595,6 +598,13 @@ private fun ConfigureBody(
                     checked = request.injectDocumentsProvider,
                     onCheckedChange = onInjectDocumentsProvider,
                 )
+                ToggleRow(
+                    title = stringResource(R.string.patch_manifest_microg),
+                    icon = Icons.Rounded.AccountCircle,
+                    subtitle = stringResource(R.string.patch_manifest_microg_desc),
+                    checked = request.useMicroG,
+                    onCheckedChange = onUseMicroG,
+                )
                 // Last of the manifest controls: its chip list and field are the tallest thing here,
                 // so it sits below the compact toggles rather than pushing them down the screen.
                 PermissionEditor(
@@ -778,6 +788,9 @@ private fun advancedChips(request: PatchRequest): List<OptionChipData> = buildLi
     }
     if (request.injectDocumentsProvider) {
         add(OptionChipData(stringResource(R.string.patch_manifest_documents_provider), true, Icons.Rounded.FolderOpen))
+    }
+    if (request.useMicroG) {
+        add(OptionChipData(stringResource(R.string.patch_manifest_microg), true, Icons.Rounded.AccountCircle))
     }
     if (!MyKeyStore.useDefault) {
         add(OptionChipData(stringResource(R.string.settings_keystore_custom), true, Icons.Outlined.Ballot))
