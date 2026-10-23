@@ -8,10 +8,10 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -63,7 +63,7 @@ import kotlinx.coroutines.withContext
 import org.lsposed.lspatch.R
 import org.lsposed.lspatch.config.Configs
 import org.lsposed.lspatch.config.MyKeyStore
-import org.matrix.vector.ui.LocalDialogLocalizer
+import org.lsposed.lspatch.ui.component.SheetBody
 import org.matrix.vector.ui.sheetRowColors
 import java.io.IOException
 import java.security.GeneralSecurityException
@@ -122,10 +122,14 @@ private fun KeystoreSheet(onDismiss: () -> Unit) {
     // changes nothing.
     var custom by rememberSaveable { mutableStateOf(!MyKeyStore.useDefault) }
 
-    ModalBottomSheet(onDismissRequest = onDismiss, sheetState = sheetState) {
-        // A sheet is its own window and drops the in-app language override; re-applied so it speaks
-        // the reader's language, the way every shared sheet does.
-        LocalDialogLocalizer.current {
+    // The sheet consumes the window insets by default, so the body's imePadding would see nothing left to
+    // apply; the inset is passed through for SheetBody to act on instead.
+    ModalBottomSheet(
+        onDismissRequest = onDismiss,
+        sheetState = sheetState,
+        contentWindowInsets = { WindowInsets(0) },
+    ) {
+        SheetBody {
             Column(Modifier.padding(bottom = 12.dp)) {
                 Row(
                     modifier = Modifier.padding(start = 24.dp, end = 24.dp, top = 4.dp, bottom = 12.dp),
@@ -184,63 +188,11 @@ private fun KeystoreSheet(onDismiss: () -> Unit) {
                     )
                 }
 
-                Spacer(Modifier.navigationBarsPadding())
             }
         }
     }
 }
 
-/** One of the two keystore choices, as a selectable card that carries its own explanation. */
-@Composable
-private fun ChoiceCard(
-    selected: Boolean,
-    icon: ImageVector,
-    title: String,
-    subtitle: String,
-    onClick: () -> Unit,
-) {
-    val colors = MaterialTheme.colorScheme
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .clip(RoundedCornerShape(18.dp))
-            .background(if (selected) colors.primaryContainer else colors.surfaceContainerHigh)
-            .selectable(selected = selected, role = Role.RadioButton, onClick = onClick)
-            .padding(horizontal = 16.dp, vertical = 14.dp),
-        verticalAlignment = Alignment.CenterVertically,
-    ) {
-        Icon(
-            icon,
-            contentDescription = null,
-            tint = if (selected) colors.primary else colors.onSurfaceVariant,
-            modifier = Modifier.size(24.dp),
-        )
-        Spacer(Modifier.width(14.dp))
-        Column(Modifier.weight(1f)) {
-            Text(
-                text = title,
-                style = MaterialTheme.typography.titleSmall,
-                fontWeight = FontWeight.SemiBold,
-                color = if (selected) colors.onPrimaryContainer else colors.onSurface,
-            )
-            Text(
-                text = subtitle,
-                style = MaterialTheme.typography.bodySmall,
-                color = if (selected) colors.onPrimaryContainer.copy(alpha = 0.8f)
-                else colors.onSurfaceVariant,
-            )
-        }
-        if (selected) {
-            Spacer(Modifier.width(10.dp))
-            Icon(
-                Icons.Rounded.CheckCircle,
-                contentDescription = null,
-                tint = colors.primary,
-                modifier = Modifier.size(20.dp),
-            )
-        }
-    }
-}
 
 /**
  * The custom-keystore form, inline in the sheet.
