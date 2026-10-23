@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="log_service_channel">Monitorització de registres</string>
+    <string name="log_service_title">LSPatch està monitoritzant els registres</string>
+    <string name="log_service_text">Recopilació de registres de framework i d\'aplicacions amb pegats</string>
+</resources>

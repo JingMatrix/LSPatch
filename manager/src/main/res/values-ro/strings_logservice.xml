@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="log_service_channel">Monitorizare jurnal</string>
+    <string name="log_service_title">LSPatch este jurnale de monitorizare</string>
+    <string name="log_service_text">Colectează framework și jurnale modificabile</string>
+</resources>

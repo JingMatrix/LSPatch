@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="log_service_channel">Logmonitering</string>
+    <string name="log_service_title">LSPatch monitor logs</string>
+    <string name="log_service_text">Versamel raamwerk- en opgedateerde toepassing-logboeke</string>
+</resources>
