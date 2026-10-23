@@ -300,4 +300,19 @@
     <string name="background_limit_any_background">Segala kerja di latar belakang</string>
     <string name="background_limit_standby">Bucket siaga aplikasi</string>
     <string name="background_limit_autostart">Mulai otomatis dari vendor</string>
+    <string name="patch_gms">Layanan Google Play</string>
+    <string name="patch_gms_why">Aplikasi yang dipatch ditandatangani ulang, sehingga Layanan Google Play menolaknya di mana pun sertifikat pemanggil diperiksa, paling terlihat saat masuk. Kedua pilihan sama-sama mendeklarasikan sertifikat asli aplikasi; bedanya hanya siapa yang membacanya. Tidak memilih keduanya tidak mengubah apa pun.</string>
+    <string name="patch_gms_unchanged">Biarkan apa adanya</string>
+    <string name="patch_gms_redirect">Arahkan ke pengganti</string>
+    <string name="patch_gms_redirect_desc">Menulis ulang panggilan Google saat berjalan, mengganti nama push di manifes secara permanen, dan mendeklarasikan sertifikat asli kepada pengganti.</string>
+    <string name="patch_gms_redirect_to">Diarahkan ke %1$s</string>
+    <string name="patch_gms_declare_only">Hanya deklarasikan sertifikat</string>
+    <string name="patch_gms_declare_only_desc">Tanpa pengalihan dan tanpa penggantian nama push — untuk pengganti yang dipasang sebagai Layanan Google Play itu sendiri, yang sertifikatnya dilaporkan ROM dengan pemalsuan tanda tangan.</string>
+    <string name="patch_gms_pick">Pengganti tujuan</string>
+    <string name="patch_gms_not_installed">belum terpasang</string>
+    <string name="patch_gms_needs_visibility">Mode terintegrasi tidak dapat melihat paket lain, jadi aplikasi tidak akan menemukannya. Ketuk untuk menambahkan QUERY_ALL_PACKAGES.</string>
+    <string name="patch_gms_custom_hint">vendor.android.gms</string>
+    <string name="patch_gms_custom_invalid">Harus paket milik pengganti sendiri, berakhiran .gms.</string>
+    <string name="patch_gms_installed">terpasang di perangkat ini</string>
+    <string name="patch_gms_version_code">build %1$d</string>
 </resources>

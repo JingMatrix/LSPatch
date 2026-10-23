@@ -460,6 +460,15 @@ fun AppDetailScreen(navigator: Navigator, packageName: String) {
                         stringResource(R.string.appdetail_info_inject_dex),
                         yesNo(config?.injectDex == true),
                     )
+                    InfoRow(
+                        stringResource(R.string.patch_gms),
+                        config?.gmsReplacementPackage
+                            ?: if (config?.declareFakeSignature == true) {
+                                stringResource(R.string.patch_gms_declare_only)
+                            } else {
+                                stringResource(R.string.patch_gms_unchanged)
+                            },
+                    )
                     // Manifest attributes, read from the installed manifest rather than the patch
                     // config: they are baked into the manifest at patch time and are not carried in the
                     // runtime config, so this reflects the app's actual manifest. Grouped and ordered to

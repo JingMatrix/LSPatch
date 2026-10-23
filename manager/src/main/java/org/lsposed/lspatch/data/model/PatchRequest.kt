@@ -91,6 +91,11 @@ data class PatchRequest(
     // Inject a DocumentsProvider exposing the app's private data. Recorded in the config for the same
     // reason as the permissions above.
     val injectDocumentsProvider: Boolean = false,
+    // The replacement to redirect Google Play services to, or null to leave it alone. A package name
+    // rather than a flag because the patch bakes that name into the manifest. Recorded for the same reason.
+    val gmsReplacementPackage: String? = null,
+    // Declare the original signature as fake-signature for ROM signature spoofing. Recorded for the same reason.
+    val declareFakeSignature: Boolean = false,
     val origin: PatchOrigin = PatchOrigin.New,
 ) {
     val packageName: String get() = target.packageName

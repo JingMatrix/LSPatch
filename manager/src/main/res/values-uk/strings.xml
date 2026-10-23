@@ -300,4 +300,19 @@
     <string name="background_limit_any_background">Будь-яка робота у фоні</string>
     <string name="background_limit_standby">Група очікування застосунків</string>
     <string name="background_limit_autostart">Автозапуск виробника</string>
+    <string name="patch_gms">Сервіси Google Play</string>
+    <string name="patch_gms_why">Пропатчений застосунок перепідписано, тож сервіси Google Play відхиляють його всюди, де перевіряють сертифікат викликача, найпомітніше під час входу. Обидві відповіді оголошують початковий сертифікат застосунку й різняться лише тим, хто його читає. Якщо не обрати жодної, нічого не зміниться.</string>
+    <string name="patch_gms_unchanged">Не змінювати</string>
+    <string name="patch_gms_redirect">Спрямувати на заміну</string>
+    <string name="patch_gms_redirect_desc">Переписує звернення застосунку до Google під час роботи, назавжди перейменовує push-імена в маніфесті й оголошує заміні початковий сертифікат.</string>
+    <string name="patch_gms_redirect_to">Спрямовано до %1$s</string>
+    <string name="patch_gms_declare_only">Лише оголосити сертифікат</string>
+    <string name="patch_gms_declare_only_desc">Без перенаправлення й без перейменування push — для заміни, встановленої під іменем самих сервісів Google Play, чий сертифікат повідомляє прошивка з підміною підпису.</string>
+    <string name="patch_gms_pick">Заміна-отримувач</string>
+    <string name="patch_gms_not_installed">не встановлено</string>
+    <string name="patch_gms_needs_visibility">Інтегрований режим не бачить інших пакетів, тож застосунок її не знайде. Торкніться, щоб додати QUERY_ALL_PACKAGES.</string>
+    <string name="patch_gms_custom_hint">vendor.android.gms</string>
+    <string name="patch_gms_custom_invalid">Має бути власним пакетом заміни й закінчуватися на .gms.</string>
+    <string name="patch_gms_installed">встановлено на цьому пристрої</string>
+    <string name="patch_gms_version_code">збірка %1$d</string>
 </resources>

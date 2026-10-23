@@ -83,6 +83,12 @@ public class LSPatch {
     @Parameter(names = {"--documents-provider"}, description = "Inject a DocumentsProvider exposing the app's private data to the system file picker")
     private boolean injectDocumentsProvider = false;
 
+    @Parameter(names = {"--gms-replacement"}, description = "Redirect Google Play services calls and pushes to this replacement package (e.g. vendor.android.gms) and declare the original signature to it")
+    private String gmsReplacementPackage = null;
+
+    @Parameter(names = {"--fake-signature"}, description = "Declare the original signature as fake-signature, for a ROM with signature spoofing")
+    private boolean declareFakeSignature = false;
+
     private final JCommander jCommander;
 
     public LSPatch(String... args) {
@@ -138,6 +144,8 @@ public class LSPatch {
                         .map(ManifestOverrides::normalizePermission)
                         .collect(Collectors.toList()))
                 .injectDocumentsProvider(injectDocumentsProvider)
+                .gmsReplacementPackage(gmsReplacementPackage)
+                .declareFakeSignature(declareFakeSignature)
                 .build();
         return PatchSpec.builder()
                 .apks(apkPaths.stream().map(File::new).collect(Collectors.toList()))

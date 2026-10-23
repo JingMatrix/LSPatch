@@ -300,4 +300,19 @@
     <string name="background_limit_any_background">任意背景執行</string>
     <string name="background_limit_standby">應用待機分組</string>
     <string name="background_limit_autostart">廠商自動啟動</string>
+    <string name="patch_gms">Google Play 服務</string>
+    <string name="patch_gms_why">修補後的應用已重新簽名，凡是驗證呼叫方憑證的地方 Google Play 服務都會拒絕它 —— 最明顯的是登入。兩種做法都會宣告應用的原始憑證，差別只在於由誰讀取。兩個都不選即不做變更。</string>
+    <string name="patch_gms_unchanged">不變更</string>
+    <string name="patch_gms_redirect">轉向替代實作</string>
+    <string name="patch_gms_redirect_desc">執行時改寫應用對 Google 的呼叫，永久改寫清單中的推播名稱，並向替代實作宣告原始憑證。</string>
+    <string name="patch_gms_redirect_to">轉向 %1$s</string>
+    <string name="patch_gms_declare_only">僅宣告憑證</string>
+    <string name="patch_gms_declare_only_desc">不轉向，也不改推播名稱 —— 適用於以 Google Play 服務自身套件名安裝的替代實作，由支援簽章偽裝的 ROM 回報憑證。</string>
+    <string name="patch_gms_pick">轉向到哪個替代實作</string>
+    <string name="patch_gms_not_installed">未安裝</string>
+    <string name="patch_gms_needs_visibility">整合模式看不到其他應用，應用將找不到它。點擊加入 QUERY_ALL_PACKAGES。</string>
+    <string name="patch_gms_custom_hint">vendor.android.gms</string>
+    <string name="patch_gms_custom_invalid">必須是替代實作自身的套件名，以 .gms 結尾。</string>
+    <string name="patch_gms_installed">本機已安裝</string>
+    <string name="patch_gms_version_code">版本號 %1$d</string>
 </resources>

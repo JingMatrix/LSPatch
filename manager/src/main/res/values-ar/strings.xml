@@ -300,4 +300,19 @@
     <string name="background_limit_any_background">أي عمل في الخلفية</string>
     <string name="background_limit_standby">مجموعة انتظار التطبيقات</string>
     <string name="background_limit_autostart">التشغيل التلقائي من المصنّع</string>
+    <string name="patch_gms">خدمات Google Play</string>
+    <string name="patch_gms_why">يُعاد توقيع التطبيق المُرقَّع، لذا ترفضه خدمات Google Play في كل موضع تتحقق فيه من شهادة المتصل، وأوضح ذلك عند تسجيل الدخول. كلا الخيارين يُعلن شهادة التطبيق الأصلية، ويختلفان فقط في من يقرؤها. عدم اختيار أي منهما لا يغيّر شيئًا.</string>
+    <string name="patch_gms_unchanged">اتركه دون تغيير</string>
+    <string name="patch_gms_redirect">التوجيه إلى بديل</string>
+    <string name="patch_gms_redirect_desc">يعيد كتابة نداءات التطبيق إلى Google أثناء التشغيل، ويغيّر أسماء الإشعارات في البيان بشكل دائم، ويُعلن الشهادة الأصلية للبديل.</string>
+    <string name="patch_gms_redirect_to">موجَّه إلى %1$s</string>
+    <string name="patch_gms_declare_only">إعلان الشهادة فقط</string>
+    <string name="patch_gms_declare_only_desc">بلا توجيه وبلا تغيير أسماء الإشعارات — لبديل مثبَّت باسم خدمات Google Play نفسها، تُبلِّغ عن شهادته نسخة نظام تدعم انتحال التوقيع.</string>
+    <string name="patch_gms_pick">البديل الوجهة</string>
+    <string name="patch_gms_not_installed">غير مثبَّت</string>
+    <string name="patch_gms_needs_visibility">لا يرى الوضع المدمج الحزم الأخرى، لذا لن يعثر عليه التطبيق. اضغط لإضافة QUERY_ALL_PACKAGES.</string>
+    <string name="patch_gms_custom_hint">vendor.android.gms</string>
+    <string name="patch_gms_custom_invalid">يجب أن تكون حزمة البديل نفسه، وتنتهي بـ ‎.gms.</string>
+    <string name="patch_gms_installed">مثبَّت على هذا الجهاز</string>
+    <string name="patch_gms_version_code">إصدار %1$d</string>
 </resources>

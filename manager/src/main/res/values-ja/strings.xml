@@ -300,4 +300,19 @@
     <string name="background_limit_any_background">あらゆるバックグラウンド動作</string>
     <string name="background_limit_standby">アプリスタンバイバケット</string>
     <string name="background_limit_autostart">メーカーの自動起動</string>
+    <string name="patch_gms">Google Play 開発者サービス</string>
+    <string name="patch_gms_why">パッチ適用後のアプリは署名し直されるため、呼び出し元の証明書を確認する箇所では Google Play 開発者サービスに拒否されます。もっとも目に見えるのはログインです。どちらの選択肢もアプリ本来の証明書を宣言し、違うのはそれを読む相手だけです。どちらも選ばなければ何も変わりません。</string>
+    <string name="patch_gms_unchanged">変更しない</string>
+    <string name="patch_gms_redirect">代替実装へ転送</string>
+    <string name="patch_gms_redirect_desc">実行時に Google への呼び出しを書き換え、マニフェストの push 名を恒久的に変更し、本来の証明書を代替実装へ宣言します。</string>
+    <string name="patch_gms_redirect_to">%1$s へ転送</string>
+    <string name="patch_gms_declare_only">証明書の宣言のみ</string>
+    <string name="patch_gms_declare_only_desc">転送も push 名の変更も行いません。Google Play 開発者サービス自身として導入され、署名偽装に対応した ROM が証明書を報告する代替実装向けです。</string>
+    <string name="patch_gms_pick">転送先の代替実装</string>
+    <string name="patch_gms_not_installed">未インストール</string>
+    <string name="patch_gms_needs_visibility">統合モードでは他のパッケージが見えないため、アプリが見つけられません。タップして QUERY_ALL_PACKAGES を追加します。</string>
+    <string name="patch_gms_custom_hint">vendor.android.gms</string>
+    <string name="patch_gms_custom_invalid">代替実装自身のパッケージ名で、.gms で終わる必要があります。</string>
+    <string name="patch_gms_installed">この端末にインストール済み</string>
+    <string name="patch_gms_version_code">ビルド %1$d</string>
 </resources>

@@ -143,6 +143,11 @@ public class LSPApplication {
 
         switchAllClassLoader();
 
+        // Only once the app's class loader exists: GoogleApiAvailability belongs to the client library the app
+        // ships, not to the framework, so there is nothing to hook before this point. Unconditional because it
+        // does nothing unless the redirect armed, which keeps the choice read in one place.
+        GmsRedirector.answerAvailabilityChecks(appLoadedApk.getClassLoader());
+
         // Only after the app class loader exists, and before installContentProviders runs on return
         // from makeApplication, so the injected DocumentsProvider is resolvable when the platform
         // instantiates it.
@@ -253,6 +258,13 @@ public class LSPApplication {
                     Log.w(TAG, "XposedService delivery failed for " + modulePkg, t);
                 }
             }
+        }
+
+        // Armed before the class loader for the same reason: the app's GMS client may already run from that
+        // initializer.
+        var gmsReplacementPackage = config.optString("gmsReplacementPackage", null);
+        if (gmsReplacementPackage != null && !gmsReplacementPackage.isEmpty()) {
+            GmsRedirector.activate(context, gmsReplacementPackage);
         }
 
         // Register the resource directory for legacy resource hooking. The LoadedApk constructor hook

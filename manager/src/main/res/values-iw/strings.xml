@@ -300,4 +300,19 @@
     <string name="background_limit_any_background">כל עבודה ברקע</string>
     <string name="background_limit_standby">קבוצת המתנה של אפליקציות</string>
     <string name="background_limit_autostart">הפעלה אוטומטית של היצרן</string>
+    <string name="patch_gms">שירותי Google Play</string>
+    <string name="patch_gms_why">אפליקציה מתוקנת נחתמת מחדש, ולכן שירותי Google Play דוחים אותה בכל מקום שבו הם בודקים את האישור של הקורא, בעיקר בהתחברות. שתי האפשרויות מצהירות על האישור המקורי של האפליקציה, והן נבדלות רק במי שקורא אותו. אם לא תבחר באף אחת, דבר לא ישתנה.</string>
+    <string name="patch_gms_unchanged">להשאיר ללא שינוי</string>
+    <string name="patch_gms_redirect">להפנות לתחליף</string>
+    <string name="patch_gms_redirect_desc">משכתב את הקריאות ל‑Google בזמן ריצה, משנה לצמיתות את שמות ההתראות במניפסט, ומצהיר על האישור המקורי בפני התחליף.</string>
+    <string name="patch_gms_redirect_to">מופנה אל %1$s</string>
+    <string name="patch_gms_declare_only">להצהיר על האישור בלבד</string>
+    <string name="patch_gms_declare_only_desc">ללא הפניה וללא שינוי שמות התראות — עבור תחליף שמותקן בשם שירותי Google Play עצמם, שעל האישור שלו מדווחת גרסת מערכת עם זיוף חתימה.</string>
+    <string name="patch_gms_pick">תחליף היעד</string>
+    <string name="patch_gms_not_installed">לא מותקן</string>
+    <string name="patch_gms_needs_visibility">מצב משולב אינו רואה חבילות אחרות, ולכן האפליקציה לא תמצא אותו. הקש כדי להוסיף QUERY_ALL_PACKAGES.</string>
+    <string name="patch_gms_custom_hint">vendor.android.gms</string>
+    <string name="patch_gms_custom_invalid">חייבת להיות החבילה של התחליף עצמו, המסתיימת ב‑.gms.</string>
+    <string name="patch_gms_installed">מותקן במכשיר הזה</string>
+    <string name="patch_gms_version_code">בנייה %1$d</string>
 </resources>
