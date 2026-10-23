@@ -39,6 +39,9 @@ object ConfigManager {
 
     suspend fun updateModules(newModules: Map<String, String>) =
         withContext(dispatcher) {
+            // Apps that silently lost a module to a cascade below, so the reach they show can be
+            // corrected once the deletes are done.
+            val descoped = mutableSetOf<String>()
             for (module in moduleDao.getAll()) {
                 if (newModules.containsKey(module.pkgName)) continue
                 // Absent from the scan does not mean uninstalled: isModuleApk returns false on any
@@ -48,7 +51,13 @@ object ConfigManager {
                     lspApp.packageManager.getApplicationInfo(module.pkgName, 0)
                 }
                     .isSuccess
-                if (!stillInstalled) moduleDao.delete(module)
+                if (!stillInstalled) {
+                    // The cascade takes the scope rows with the module row, so the apps that carried
+                    // it have to be read off before the delete, not after -- afterwards there is
+                    // nothing left to point back at them.
+                    descoped += scopeDao.getAppsForModule(module.pkgName)
+                    moduleDao.delete(module)
+                }
             }
             for ((pkgName, apkPath) in newModules) {
                 // insert-if-absent then update the path in place. A REPLACE-based upsert would
@@ -56,6 +65,14 @@ object ConfigManager {
                 // which is exactly how enabled modules were being lost on restart.
                 moduleDao.insert(Module(pkgName, apkPath))
                 moduleDao.updatePath(pkgName, apkPath)
+            }
+            if (descoped.isNotEmpty()) {
+                // An uninstall shrinks an app's scope without going through any scope editor, so the
+                // signal those editors raise has to be raised here too. Without it the cached reach
+                // icons keep the vanished module on screen -- and a module reinstalled afterwards is
+                // not back in scope, so the stale thumbnail tells the user it is enabled when it is not.
+                descoped.forEach { LSPPackageManager.invalidateModuleIcons(it) }
+                _scopeRevision.value++
             }
         }
 
