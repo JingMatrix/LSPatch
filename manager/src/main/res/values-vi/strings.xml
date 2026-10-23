@@ -300,4 +300,19 @@
     <string name="background_limit_any_background">Mọi hoạt động nền</string>
     <string name="background_limit_standby">Nhóm chờ ứng dụng</string>
     <string name="background_limit_autostart">Tự khởi động của nhà sản xuất</string>
+    <string name="patch_gms">Dịch vụ Google Play</string>
+    <string name="patch_gms_why">Ứng dụng đã vá được ký lại, nên Dịch vụ Google Play từ chối nó ở mọi nơi có kiểm tra chứng chỉ của bên gọi, rõ nhất là khi đăng nhập. Cả hai lựa chọn đều khai báo chứng chỉ gốc của ứng dụng; chúng chỉ khác nhau ở người đọc nó. Không chọn gì thì không thay đổi gì.</string>
+    <string name="patch_gms_unchanged">Giữ nguyên</string>
+    <string name="patch_gms_redirect">Chuyển tới bản thay thế</string>
+    <string name="patch_gms_redirect_desc">Viết lại các lệnh gọi Google khi chạy, đổi vĩnh viễn tên push trong manifest, và khai báo chứng chỉ gốc cho bản thay thế.</string>
+    <string name="patch_gms_redirect_to">Chuyển tới %1$s</string>
+    <string name="patch_gms_declare_only">Chỉ khai báo chứng chỉ</string>
+    <string name="patch_gms_declare_only_desc">Không chuyển hướng và không đổi tên push — dành cho bản thay thế được cài dưới chính tên Dịch vụ Google Play, với chứng chỉ do ROM có giả mạo chữ ký báo cáo.</string>
+    <string name="patch_gms_pick">Bản thay thế đích</string>
+    <string name="patch_gms_not_installed">chưa cài đặt</string>
+    <string name="patch_gms_needs_visibility">Chế độ tích hợp không thấy các gói khác nên ứng dụng sẽ không tìm ra nó. Chạm để thêm QUERY_ALL_PACKAGES.</string>
+    <string name="patch_gms_custom_hint">vendor.android.gms</string>
+    <string name="patch_gms_custom_invalid">Phải là gói của chính bản thay thế, kết thúc bằng .gms.</string>
+    <string name="patch_gms_installed">đã cài trên thiết bị này</string>
+    <string name="patch_gms_version_code">bản dựng %1$d</string>
 </resources>

@@ -300,4 +300,19 @@
     <string name="background_limit_any_background">Cualquier trabajo en segundo plano</string>
     <string name="background_limit_standby">Grupo de espera de aplicaciones</string>
     <string name="background_limit_autostart">Inicio automático del fabricante</string>
+    <string name="patch_gms">Servicios de Google Play</string>
+    <string name="patch_gms_why">Una app parcheada se vuelve a firmar, así que los servicios de Google Play la rechazan allí donde comprueban el certificado de quien llama, sobre todo al iniciar sesión. Ambas respuestas declaran el certificado original de la app; se diferencian en quién lo lee. No elegir ninguna no cambia nada.</string>
+    <string name="patch_gms_unchanged">Dejar como está</string>
+    <string name="patch_gms_redirect">Enviar a un sustituto</string>
+    <string name="patch_gms_redirect_desc">Reescribe las llamadas a Google en tiempo de ejecución, renombra de forma permanente los nombres de push en el manifiesto y declara el certificado original al sustituto.</string>
+    <string name="patch_gms_redirect_to">Enviado a %1$s</string>
+    <string name="patch_gms_declare_only">Solo declarar el certificado</string>
+    <string name="patch_gms_declare_only_desc">Sin redirección ni renombrado de push: para un sustituto instalado como los propios servicios de Google Play, cuyo certificado informa una ROM con suplantación de firma.</string>
+    <string name="patch_gms_pick">Sustituto de destino</string>
+    <string name="patch_gms_not_installed">no instalado</string>
+    <string name="patch_gms_needs_visibility">El modo integrado no ve otros paquetes, así que la app no lo encontrará. Toca para añadir QUERY_ALL_PACKAGES.</string>
+    <string name="patch_gms_custom_hint">vendor.android.gms</string>
+    <string name="patch_gms_custom_invalid">Debe ser el paquete propio de un sustituto, terminado en .gms.</string>
+    <string name="patch_gms_installed">instalado en este dispositivo</string>
+    <string name="patch_gms_version_code">compilación %1$d</string>
 </resources>

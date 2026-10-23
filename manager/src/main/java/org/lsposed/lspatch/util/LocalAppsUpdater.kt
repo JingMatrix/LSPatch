@@ -127,6 +127,8 @@ object LocalAppsUpdater {
                     .versionCode(config.versionCode)
                     .permissions(config.addedPermissions?.toList() ?: emptyList())
                     .injectDocumentsProvider(config.injectDocumentsProvider)
+                    .gmsReplacementPackage(config.gmsReplacementPackage)
+                    .declareFakeSignature(config.declareFakeSignature)
                     .build()
             )
             .keystore(

@@ -18,3 +18,5 @@ libxposed
 .cxx
 /out
 /.idea
+# Output of the Eclipse/JDT language server, which several modules trigger
+bin/

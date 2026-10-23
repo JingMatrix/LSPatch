@@ -300,4 +300,19 @@
     <string name="background_limit_any_background">هر کاری در پس‌زمینه</string>
     <string name="background_limit_standby">گروه آماده‌باش برنامه‌ها</string>
     <string name="background_limit_autostart">اجرای خودکار سازنده</string>
+    <string name="patch_gms">سرویس‌های Google Play</string>
+    <string name="patch_gms_why">برنامهٔ وصله‌شده دوباره امضا می‌شود، بنابراین سرویس‌های Google Play آن را هرجا گواهی فراخوان را بررسی کنند رد می‌کنند؛ آشکارتر از همه هنگام ورود. هر دو گزینه گواهی اصلی برنامه را اعلام می‌کنند و تنها در خوانندهٔ آن تفاوت دارند. انتخاب نکردن هیچ‌کدام چیزی را تغییر نمی‌دهد.</string>
+    <string name="patch_gms_unchanged">بدون تغییر</string>
+    <string name="patch_gms_redirect">هدایت به جایگزین</string>
+    <string name="patch_gms_redirect_desc">فراخوانی‌های برنامه به Google را هنگام اجرا بازنویسی می‌کند، نام‌های اعلان را در مانیفست برای همیشه تغییر می‌دهد و گواهی اصلی را به جایگزین اعلام می‌کند.</string>
+    <string name="patch_gms_redirect_to">هدایت‌شده به %1$s</string>
+    <string name="patch_gms_declare_only">فقط اعلام گواهی</string>
+    <string name="patch_gms_declare_only_desc">بدون هدایت و بدون تغییر نام اعلان‌ها — برای جایگزینی که با نام خود سرویس‌های Google Play نصب شده و رامی با جعل امضا گواهی‌اش را گزارش می‌کند.</string>
+    <string name="patch_gms_pick">جایگزین مقصد</string>
+    <string name="patch_gms_not_installed">نصب‌نشده</string>
+    <string name="patch_gms_needs_visibility">حالت یکپارچه بسته‌های دیگر را نمی‌بیند، پس برنامه آن را پیدا نمی‌کند. برای افزودن QUERY_ALL_PACKAGES بزنید.</string>
+    <string name="patch_gms_custom_hint">vendor.android.gms</string>
+    <string name="patch_gms_custom_invalid">باید بستهٔ خودِ جایگزین باشد و به ‎.gms ختم شود.</string>
+    <string name="patch_gms_installed">روی این دستگاه نصب است</string>
+    <string name="patch_gms_version_code">ساخت %1$d</string>
 </resources>

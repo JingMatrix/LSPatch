@@ -61,8 +61,10 @@ import androidx.compose.material.icons.rounded.MoreVert
 import androidx.compose.material.icons.rounded.RemoveModerator
 import androidx.compose.material.icons.rounded.Share
 import androidx.compose.material.icons.rounded.Smartphone
+import androidx.compose.material.icons.rounded.SwapHoriz
 import androidx.compose.material.icons.rounded.Terminal
 import androidx.compose.material.icons.rounded.Tune
+import androidx.compose.material.icons.rounded.VerifiedUser
 import androidx.compose.material.icons.rounded.WorkOutline
 import androidx.compose.material3.Badge
 import androidx.compose.material3.BadgedBox
@@ -132,10 +134,12 @@ import org.lsposed.lspatch.ui.component.DetailTopBar
 import org.lsposed.lspatch.ui.component.PatchLog
 import org.lsposed.lspatch.ui.component.PatchStepList
 import org.lsposed.lspatch.ui.component.rememberExportApk
+import org.lsposed.lspatch.ui.component.settings.GmsSetting
 import org.lsposed.lspatch.ui.component.settings.KeystoreSetting
 import org.lsposed.lspatch.ui.navigation.ModuleSelection
 import org.lsposed.lspatch.ui.navigation.SelectModules
 import org.lsposed.lspatch.ui.util.LocalSnackbarHost
+import org.lsposed.lspatch.util.GmsReplacements
 import org.lsposed.lspatch.util.LSPPackageManager
 import org.lsposed.lspatch.util.ShizukuApi
 import org.matrix.vector.ui.PackageRow
@@ -340,6 +344,8 @@ fun NewPatchScreen(navigator: Navigator, token: String) {
                         onAddPermission = viewModel::addPermission,
                         onRemovePermission = viewModel::removePermission,
                         onInjectDocumentsProvider = viewModel::setInjectDocumentsProvider,
+                        onSelectGmsReplacement = viewModel::setGmsReplacementPackage,
+                        onDeclareFakeSignature = viewModel::setDeclareFakeSignature,
                     )
                 else ->
                     Column(
@@ -387,6 +393,8 @@ private fun ConfigureBody(
     onAddPermission: (String) -> Unit,
     onRemovePermission: (String) -> Unit,
     onInjectDocumentsProvider: (Boolean) -> Unit,
+    onSelectGmsReplacement: (String?) -> Unit,
+    onDeclareFakeSignature: (Boolean) -> Unit,
 ) {
     val scope = rememberCoroutineScope()
     val snackbarHost = LocalSnackbarHost.current
@@ -520,6 +528,17 @@ private fun ConfigureBody(
                 // Neither writes the app's manifest, so they are kept apart from the overrides below.
                 GroupDivider()
                 SigBypassRow(level = request.sigBypassLevel, onSelect = onSigBypass)
+                GmsSetting(
+                    replacement = request.gmsReplacementPackage,
+                    declareFakeSignature = request.declareFakeSignature,
+                    needsPackageVisibility =
+                        !request.mode.useManager && QUERY_ALL_PACKAGES !in request.addedPermissions,
+                    onChange = { replacement, fake ->
+                        onSelectGmsReplacement(replacement)
+                        onDeclareFakeSignature(fake)
+                    },
+                    onAddPackageVisibility = { onAddPermission(QUERY_ALL_PACKAGES) },
+                )
                 ToggleRow(
                     title = stringResource(R.string.patch_inject_dex),
                     icon = Icons.Rounded.Code,
@@ -778,6 +797,18 @@ private fun advancedChips(request: PatchRequest): List<OptionChipData> = buildLi
     }
     if (request.injectDocumentsProvider) {
         add(OptionChipData(stringResource(R.string.patch_manifest_documents_provider), true, Icons.Rounded.FolderOpen))
+    }
+    request.gmsReplacementPackage?.let {
+        add(
+            OptionChipData(
+                stringResource(R.string.patch_gms_redirect_to, GmsReplacements.shortName(it)),
+                true,
+                Icons.Rounded.SwapHoriz,
+            )
+        )
+    }
+    if (request.declareFakeSignature) {
+        add(OptionChipData(stringResource(R.string.patch_gms_declare_only), true, Icons.Rounded.VerifiedUser))
     }
     if (!MyKeyStore.useDefault) {
         add(OptionChipData(stringResource(R.string.settings_keystore_custom), true, Icons.Outlined.Ballot))
@@ -1543,3 +1574,5 @@ private fun UninstallConfirm(label: String, onConfirm: () -> Unit, onCancel: () 
         },
     )
 }
+
+private const val QUERY_ALL_PACKAGES = "android.permission.QUERY_ALL_PACKAGES"

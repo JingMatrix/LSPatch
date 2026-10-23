@@ -300,4 +300,19 @@
     <string name="background_limit_any_background">Dowolna praca w tle</string>
     <string name="background_limit_standby">Grupa uśpienia aplikacji</string>
     <string name="background_limit_autostart">Autostart producenta</string>
+    <string name="patch_gms">Usługi Google Play</string>
+    <string name="patch_gms_why">Spatchowana aplikacja jest podpisana na nowo, więc Usługi Google Play odrzucają ją wszędzie tam, gdzie sprawdzają certyfikat wywołującego – najbardziej widocznie przy logowaniu. Obie odpowiedzi deklarują pierwotny certyfikat aplikacji; różnią się tym, kto go odczytuje. Niewybranie żadnej nic nie zmienia.</string>
+    <string name="patch_gms_unchanged">Pozostaw bez zmian</string>
+    <string name="patch_gms_redirect">Kieruj do zamiennika</string>
+    <string name="patch_gms_redirect_desc">Przepisuje wywołania do Google w czasie działania, trwale zmienia nazwy push w manifeście i deklaruje zamiennikowi pierwotny certyfikat.</string>
+    <string name="patch_gms_redirect_to">Kierowane do %1$s</string>
+    <string name="patch_gms_declare_only">Tylko zadeklaruj certyfikat</string>
+    <string name="patch_gms_declare_only_desc">Bez przekierowania i bez zmiany nazw push – dla zamiennika zainstalowanego jako same Usługi Google Play, którego certyfikat zgłasza ROM z podszywaniem się pod podpis.</string>
+    <string name="patch_gms_pick">Zamiennik docelowy</string>
+    <string name="patch_gms_not_installed">niezainstalowany</string>
+    <string name="patch_gms_needs_visibility">Tryb zintegrowany nie widzi innych pakietów, więc aplikacja go nie znajdzie. Dotknij, aby dodać QUERY_ALL_PACKAGES.</string>
+    <string name="patch_gms_custom_hint">vendor.android.gms</string>
+    <string name="patch_gms_custom_invalid">Musi być własnym pakietem zamiennika i kończyć się na .gms.</string>
+    <string name="patch_gms_installed">zainstalowany na tym urządzeniu</string>
+    <string name="patch_gms_version_code">kompilacja %1$d</string>
 </resources>

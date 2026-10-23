@@ -47,6 +47,8 @@ object Patcher {
                     .usesCleartextTraffic(if (usesCleartextTraffic) true else null)
                     .permissions(addedPermissions)
                     .injectDocumentsProvider(injectDocumentsProvider)
+                    .gmsReplacementPackage(gmsReplacementPackage)
+                    .declareFakeSignature(declareFakeSignature)
                     .build()
             )
             .keystore(

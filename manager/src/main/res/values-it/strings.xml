@@ -300,4 +300,19 @@
     <string name="background_limit_any_background">Qualsiasi lavoro in background</string>
     <string name="background_limit_standby">Bucket di standby delle app</string>
     <string name="background_limit_autostart">Avvio automatico del produttore</string>
+    <string name="patch_gms">Google Play Services</string>
+    <string name="patch_gms_why">Un\'app patchata viene firmata di nuovo, quindi Google Play Services la rifiuta ovunque controlli il certificato del chiamante, soprattutto all\'accesso. Entrambe le risposte dichiarano il certificato originale dell\'app; cambiano solo per chi lo legge. Non sceglierne nessuna non cambia nulla.</string>
+    <string name="patch_gms_unchanged">Lascia invariato</string>
+    <string name="patch_gms_redirect">Inoltra a un sostituto</string>
+    <string name="patch_gms_redirect_desc">Riscrive le chiamate a Google in esecuzione, rinomina in modo permanente i nomi push nel manifest e dichiara il certificato originale al sostituto.</string>
+    <string name="patch_gms_redirect_to">Inoltrato a %1$s</string>
+    <string name="patch_gms_declare_only">Dichiara solo il certificato</string>
+    <string name="patch_gms_declare_only_desc">Nessuna redirezione né rinomina dei push: per un sostituto installato come Google Play Services stesso, il cui certificato viene riportato da una ROM con spoofing della firma.</string>
+    <string name="patch_gms_pick">Sostituto di destinazione</string>
+    <string name="patch_gms_not_installed">non installato</string>
+    <string name="patch_gms_needs_visibility">La modalità integrata non vede altri pacchetti, quindi l\'app non lo troverà. Tocca per aggiungere QUERY_ALL_PACKAGES.</string>
+    <string name="patch_gms_custom_hint">vendor.android.gms</string>
+    <string name="patch_gms_custom_invalid">Deve essere il pacchetto di un sostituto e terminare con .gms.</string>
+    <string name="patch_gms_installed">installato su questo dispositivo</string>
+    <string name="patch_gms_version_code">build %1$d</string>
 </resources>

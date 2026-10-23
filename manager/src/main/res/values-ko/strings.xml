@@ -300,4 +300,19 @@
     <string name="background_limit_any_background">모든 백그라운드 작업</string>
     <string name="background_limit_standby">앱 대기 버킷</string>
     <string name="background_limit_autostart">제조사 자동 실행</string>
+    <string name="patch_gms">Google Play 서비스</string>
+    <string name="patch_gms_why">패치된 앱은 다시 서명되므로 호출자의 인증서를 확인하는 곳마다 Google Play 서비스가 거부합니다. 로그인에서 가장 뚜렷하게 나타납니다. 두 선택지 모두 앱의 원래 인증서를 선언하며, 그것을 읽는 쪽만 다릅니다. 둘 다 고르지 않으면 아무것도 바뀌지 않습니다.</string>
+    <string name="patch_gms_unchanged">그대로 두기</string>
+    <string name="patch_gms_redirect">대체 구현으로 보내기</string>
+    <string name="patch_gms_redirect_desc">실행 중 Google 호출을 다시 쓰고, 매니페스트의 push 이름을 영구히 바꾸며, 원래 인증서를 대체 구현에 선언합니다.</string>
+    <string name="patch_gms_redirect_to">%1$s(으)로 전달</string>
+    <string name="patch_gms_declare_only">인증서만 선언</string>
+    <string name="patch_gms_declare_only_desc">전달도 push 이름 변경도 하지 않습니다. Google Play 서비스 자체로 설치되어, 서명 위장을 지원하는 ROM이 인증서를 알려주는 대체 구현용입니다.</string>
+    <string name="patch_gms_pick">보낼 대체 구현</string>
+    <string name="patch_gms_not_installed">설치되지 않음</string>
+    <string name="patch_gms_needs_visibility">통합 모드에서는 다른 패키지를 볼 수 없어 앱이 찾지 못합니다. 눌러서 QUERY_ALL_PACKAGES를 추가하세요.</string>
+    <string name="patch_gms_custom_hint">vendor.android.gms</string>
+    <string name="patch_gms_custom_invalid">대체 구현 자신의 패키지여야 하며 .gms로 끝나야 합니다.</string>
+    <string name="patch_gms_installed">이 기기에 설치됨</string>
+    <string name="patch_gms_version_code">빌드 %1$d</string>
 </resources>

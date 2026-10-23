@@ -307,4 +307,19 @@
     <string name="background_limit_any_background">任意后台运行</string>
     <string name="background_limit_standby">应用待机分组</string>
     <string name="background_limit_autostart">厂商自启动</string>
+    <string name="patch_gms">Google Play 服务</string>
+    <string name="patch_gms_why">修补后的应用已重新签名，凡是校验调用方证书的地方 Google Play 服务都会拒绝它 —— 最明显的是登录。两种做法都会声明应用的原始证书，区别只在于由谁读取。两个都不选即不作改动。</string>
+    <string name="patch_gms_unchanged">不改动</string>
+    <string name="patch_gms_redirect">转向替代实现</string>
+    <string name="patch_gms_redirect_desc">运行时改写应用对 Google 的调用，永久改写清单中的推送名称，并向替代实现声明原始证书。</string>
+    <string name="patch_gms_redirect_to">转向 %1$s</string>
+    <string name="patch_gms_declare_only">仅声明证书</string>
+    <string name="patch_gms_declare_only_desc">不转向，也不改推送名称 —— 适用于以 Google Play 服务自身包名安装的替代实现，由支持签名伪装的 ROM 上报证书。</string>
+    <string name="patch_gms_pick">转向到哪个替代实现</string>
+    <string name="patch_gms_not_installed">未安装</string>
+    <string name="patch_gms_needs_visibility">集成模式看不到其他应用，应用将找不到它。点击添加 QUERY_ALL_PACKAGES。</string>
+    <string name="patch_gms_custom_hint">vendor.android.gms</string>
+    <string name="patch_gms_custom_invalid">必须是替代实现自身的包名，以 .gms 结尾。</string>
+    <string name="patch_gms_installed">本机已安装</string>
+    <string name="patch_gms_version_code">版本号 %1$d</string>
 </resources>

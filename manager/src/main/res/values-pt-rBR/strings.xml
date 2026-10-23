@@ -300,4 +300,19 @@
     <string name="background_limit_any_background">Qualquer trabalho em segundo plano</string>
     <string name="background_limit_standby">Grupo de espera de aplicativos</string>
     <string name="background_limit_autostart">Início automático do fabricante</string>
+    <string name="patch_gms">Google Play Services</string>
+    <string name="patch_gms_why">Um app corrigido é assinado de novo, então o Google Play Services o recusa onde quer que verifique o certificado de quem chama — mais visivelmente no login. As duas respostas declaram o certificado original do app; diferem em quem o lê. Não escolher nenhuma não muda nada.</string>
+    <string name="patch_gms_unchanged">Deixar como está</string>
+    <string name="patch_gms_redirect">Enviar a um substituto</string>
+    <string name="patch_gms_redirect_desc">Reescreve as chamadas ao Google em tempo de execução, renomeia permanentemente os nomes de push no manifesto e declara o certificado original ao substituto.</string>
+    <string name="patch_gms_redirect_to">Enviado a %1$s</string>
+    <string name="patch_gms_declare_only">Apenas declarar o certificado</string>
+    <string name="patch_gms_declare_only_desc">Sem redirecionamento nem renomeação de push — para um substituto instalado como o próprio Google Play Services, cujo certificado é informado por uma ROM com falsificação de assinatura.</string>
+    <string name="patch_gms_pick">Substituto de destino</string>
+    <string name="patch_gms_not_installed">não instalado</string>
+    <string name="patch_gms_needs_visibility">O modo integrado não enxerga outros pacotes, então o app não o encontrará. Toque para adicionar QUERY_ALL_PACKAGES.</string>
+    <string name="patch_gms_custom_hint">vendor.android.gms</string>
+    <string name="patch_gms_custom_invalid">Deve ser o pacote do próprio substituto, terminando em .gms.</string>
+    <string name="patch_gms_installed">instalado neste dispositivo</string>
+    <string name="patch_gms_version_code">build %1$d</string>
 </resources>

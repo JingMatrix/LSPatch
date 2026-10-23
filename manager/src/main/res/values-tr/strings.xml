@@ -300,4 +300,19 @@
     <string name="background_limit_any_background">Her türlü arka plan çalışması</string>
     <string name="background_limit_standby">Uygulama bekleme grubu</string>
     <string name="background_limit_autostart">Üretici otomatik başlatma</string>
+    <string name="patch_gms">Google Play Hizmetleri</string>
+    <string name="patch_gms_why">Yamalanan uygulama yeniden imzalanır; bu yüzden Google Play Hizmetleri, çağıranın sertifikasını denetlediği her yerde onu reddeder, en görünür biçimde oturum açarken. İki seçenek de uygulamanın özgün sertifikasını bildirir; yalnızca onu kimin okuduğu değişir. Hiçbirini seçmemek hiçbir şeyi değiştirmez.</string>
+    <string name="patch_gms_unchanged">Olduğu gibi bırak</string>
+    <string name="patch_gms_redirect">Bir yedeğe yönlendir</string>
+    <string name="patch_gms_redirect_desc">Uygulamanın Google çağrılarını çalışma zamanında yeniden yazar, manifestteki push adlarını kalıcı olarak değiştirir ve özgün sertifikayı yedeğe bildirir.</string>
+    <string name="patch_gms_redirect_to">%1$s adresine yönlendirildi</string>
+    <string name="patch_gms_declare_only">Yalnızca sertifikayı bildir</string>
+    <string name="patch_gms_declare_only_desc">Yönlendirme ve push yeniden adlandırma yok — Google Play Hizmetleri\'nin kendi adıyla kurulmuş, sertifikasını imza taklidi yapan bir ROM\'un bildirdiği bir yedek için.</string>
+    <string name="patch_gms_pick">Hedef yedek</string>
+    <string name="patch_gms_not_installed">kurulu değil</string>
+    <string name="patch_gms_needs_visibility">Tümleşik mod diğer paketleri göremez, bu yüzden uygulama onu bulamaz. QUERY_ALL_PACKAGES eklemek için dokunun.</string>
+    <string name="patch_gms_custom_hint">vendor.android.gms</string>
+    <string name="patch_gms_custom_invalid">Bir yedeğin kendi paketi olmalı ve .gms ile bitmelidir.</string>
+    <string name="patch_gms_installed">bu cihazda kurulu</string>
+    <string name="patch_gms_version_code">yapı %1$d</string>
 </resources>

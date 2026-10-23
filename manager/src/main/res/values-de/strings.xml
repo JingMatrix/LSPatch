@@ -300,4 +300,19 @@
     <string name="background_limit_any_background">Jede Hintergrundausführung</string>
     <string name="background_limit_standby">App-Standby-Bucket</string>
     <string name="background_limit_autostart">Hersteller-Autostart</string>
+    <string name="patch_gms">Google Play-Dienste</string>
+    <string name="patch_gms_why">Eine gepatchte App wird neu signiert, daher weisen die Google Play-Dienste sie überall dort ab, wo das Zertifikat des Aufrufers geprüft wird – am sichtbarsten bei der Anmeldung. Beide Antworten geben das ursprüngliche Zertifikat der App an; sie unterscheiden sich darin, wer es liest. Keine von beiden zu wählen ändert nichts.</string>
+    <string name="patch_gms_unchanged">Unverändert lassen</string>
+    <string name="patch_gms_redirect">An einen Ersatz senden</string>
+    <string name="patch_gms_redirect_desc">Schreibt die Google-Aufrufe der App zur Laufzeit um, benennt ihre Push-Namen im Manifest dauerhaft um und gibt dem Ersatz das ursprüngliche Zertifikat an.</string>
+    <string name="patch_gms_redirect_to">An %1$s gesendet</string>
+    <string name="patch_gms_declare_only">Nur Zertifikat angeben</string>
+    <string name="patch_gms_declare_only_desc">Keine Umleitung und keine Push-Umbenennung – für einen Ersatz, der selbst als Google Play-Dienste installiert ist und dessen Zertifikat eine ROM mit Signaturfälschung meldet.</string>
+    <string name="patch_gms_pick">Ziel-Ersatz</string>
+    <string name="patch_gms_not_installed">nicht installiert</string>
+    <string name="patch_gms_needs_visibility">Der integrierte Modus sieht keine anderen Pakete, die App findet ihn also nicht. Tippen, um QUERY_ALL_PACKAGES hinzuzufügen.</string>
+    <string name="patch_gms_custom_hint">vendor.android.gms</string>
+    <string name="patch_gms_custom_invalid">Muss das eigene Paket eines Ersatzes sein und auf .gms enden.</string>
+    <string name="patch_gms_installed">auf diesem Gerät installiert</string>
+    <string name="patch_gms_version_code">Build %1$d</string>
 </resources>
