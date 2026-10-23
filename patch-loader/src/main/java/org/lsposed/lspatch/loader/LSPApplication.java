@@ -14,6 +14,8 @@ import android.os.RemoteException;
 import android.system.Os;
 import android.util.Log;
 
+import dalvik.system.PathClassLoader;
+
 import org.lsposed.lspatch.loader.util.FileUtils;
 import org.lsposed.lspatch.loader.util.XLog;
 import org.lsposed.lspatch.service.EmbeddedRemoteServices;
@@ -303,14 +305,6 @@ public class LSPApplication {
 
             appInfo.sourceDir = cacheApkPath.toString();
             appInfo.publicSourceDir = cacheApkPath.toString();
-            if (config.has("appComponentFactory")) {
-                appInfo.appComponentFactory = config.optString("appComponentFactory");
-            } else {
-                // The original app declared no AppComponentFactory. The patched manifest points it
-                // at the metaloader stub, which the original apk does not contain, so clearing it
-                // keeps the class loader from being built against a class that cannot be found.
-                appInfo.appComponentFactory = null;
-            }
 
             if (!Files.exists(cacheApkPath)) {
                 Log.i(TAG, "Extract original apk");
@@ -322,6 +316,17 @@ public class LSPApplication {
             }
             cacheApkPath.toFile().setWritable(false);
 
+            // The patched manifest names the metaloader stub as the AppComponentFactory, so appInfo has
+            // to be pointed back at whatever the original declared -- and at nothing when it declared
+            // none, since the stub class is absent from the original apk. A packed app may in turn name
+            // a factory it does not actually ship, which is dropped the same way.
+            var originalFactory = config.has("appComponentFactory") ? config.optString("appComponentFactory") : null;
+            if (originalFactory != null && !originalApkHasClass(cacheApkPath, originalFactory)) {
+                Log.w(TAG, "Original AppComponentFactory not found: " + originalFactory);
+                originalFactory = null;
+            }
+            appInfo.appComponentFactory = originalFactory;
+
             var mPackages = (Map<?, ?>) XposedHelpers.getObjectField(activityThread, "mPackages");
             mPackages.remove(appInfo.packageName);
             appLoadedApk = activityThread.getPackageInfoNoCheck(appInfo, compatInfo);
@@ -332,19 +337,36 @@ public class LSPApplication {
             // arms them and then calls realizeLoadedApk().
             Log.i(TAG, "hooked app initialized: " + appLoadedApk);
 
-            var context = (Context) XposedHelpers.callStaticMethod(Class.forName("android.app.ContextImpl"), "createAppContext", activityThread, stubLoadedApk);
-            if (config.has("appComponentFactory")) {
-                try {
-                    context.getClassLoader().loadClass(appInfo.appComponentFactory);
-                } catch (ClassNotFoundException e) { // This will happen on some strange shells like 360
-                    Log.w(TAG, "Original AppComponentFactory not found: " + appInfo.appComponentFactory);
-                    appInfo.appComponentFactory = null;
-                }
-            }
-            return context;
+            return (Context) XposedHelpers.callStaticMethod(Class.forName("android.app.ContextImpl"), "createAppContext", activityThread, stubLoadedApk);
         } catch (Throwable e) {
             Log.e(TAG, "createLoadedApk", e);
             return null;
+        }
+    }
+
+    /**
+     * Whether the original apk contains a class its manifest declares.
+     *
+     * The probe has to run against the original apk rather than the outer one: unless the patch injected
+     * the dex, the outer apk carries only the metaloader stub, so its class loader can never resolve a
+     * class belonging to the app itself and would report every declaration as missing.
+     *
+     * A throwaway loader is used so that the app's own stays unbuilt. {@code loadClass} resolves a class
+     * without running its static initializer, so a factory whose {@code <clinit>} is an anti-tamper gate
+     * still runs no earlier than {@link #realizeLoadedApk()}.
+     */
+    private static boolean originalApkHasClass(Path apkPath, String className) {
+        try {
+            new PathClassLoader(apkPath.toString(), ClassLoader.getSystemClassLoader()).loadClass(className);
+            return true;
+        } catch (ClassNotFoundException e) {
+            return false;
+        } catch (Throwable t) {
+            // The probe could not answer -- a linkage failure inside the throwaway loader, say. Keep the
+            // declaration and leave the decision to the framework, which falls back to the default
+            // factory on its own when the class turns out to be unusable.
+            Log.w(TAG, "AppComponentFactory probe failed: " + className, t);
+            return true;
         }
     }
 
