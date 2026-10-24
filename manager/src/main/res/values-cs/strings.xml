@@ -304,4 +304,19 @@
     <string name="background_limit_any_background">Jakákoli práce na pozadí</string>
     <string name="background_limit_standby">Pohotovostní bloky aplikací</string>
     <string name="background_limit_autostart">Automatický start dodavatele</string>
+    <string name="patch_gms">Služby Google Play</string>
+    <string name="patch_gms_why">Upravená aplikace se znovu podepisuje, takže služby Google Play ji odmítají všude tam, kde kontroluje certifikát volajícího – nejviditelněji při přihlášení. Obě odpovědi deklarují původní certifikát aplikace; liší se v tom, kdo jej čte. Nezvolte ani nic.</string>
+    <string name="patch_gms_unchanged">Ponechat samostatně</string>
+    <string name="patch_gms_redirect">Poslat na náhradu</string>
+    <string name="patch_gms_redirect_desc">Přepíše volání aplikace Google v průběhu času, přejmenuje její názvy v manifestu pro dobro a prohlásí originál osvědčení za nahrazený.</string>
+    <string name="patch_gms_redirect_to">Odesláno do %1$s</string>
+    <string name="patch_gms_declare_only">Vyhlásit pouze certifikát</string>
+    <string name="patch_gms_declare_only_desc">Žádné přesměrování a žádné přejmenování push – pro výměnu nainstalovanou jako služby Google Play, kde ROM s podpisem hlásí certifikát.</string>
+    <string name="patch_gms_pick">Nahrazení pro odeslání do</string>
+    <string name="patch_gms_not_installed">není nainstalováno</string>
+    <string name="patch_gms_needs_visibility">Integrovaný režim nemůže vidět další balíčky, takže je aplikace nenalezena. Klepnutím přidáte QUERY_ALL_PACKAGES.</string>
+    <string name="patch_gms_custom_hint">vendor.android</string>
+    <string name="patch_gms_custom_invalid">Musí být vlastní balíček náhrady, končící .gms.</string>
+    <string name="patch_gms_installed">nainstalováno na tomto zařízení</string>
+    <string name="patch_gms_version_code">postavit %1$d</string>
 </resources>
