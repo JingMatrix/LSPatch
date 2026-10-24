@@ -304,4 +304,19 @@
     <string name="background_limit_any_background">Valfritt bakgrundsarbete</string>
     <string name="background_limit_standby">Appens standby-skopa</string>
     <string name="background_limit_autostart">Leverantörens auto-start</string>
+    <string name="patch_gms">Google Play-tjänster</string>
+    <string name="patch_gms_why">En lappad app är åter signerad, så Google Play-tjänster vägrar det där den kontrollerar den uppringarens certifikat — mest synligt vid inloggning. Båda svaren deklarerar appens ursprungliga certifikat, de skiljer sig åt i vem som läser det. Välj inte att ändra ingenting.</string>
+    <string name="patch_gms_unchanged">Lämna ensam</string>
+    <string name="patch_gms_redirect">Skicka till ersättare</string>
+    <string name="patch_gms_redirect_desc">Skriver om appens Google-samtal vid körning, byter namn på sina push-namn i manifestet för gott, och förklarar det ursprungliga certifikatet till ersättare.</string>
+    <string name="patch_gms_redirect_to">Skickat till %1$s</string>
+    <string name="patch_gms_declare_only">Endast deklarera certifikat</string>
+    <string name="patch_gms_declare_only_desc">Ingen omdirigering och ingen push byta namn — för en ersättning installerad som Google Play-tjänster själv, där en ROM med signatur förfalskning rapporterar certifikatet.</string>
+    <string name="patch_gms_pick">Ersättning att skicka till</string>
+    <string name="patch_gms_not_installed">inte installerad</string>
+    <string name="patch_gms_needs_visibility">Integrerat läge kan inte se andra paket, så appen hittar den inte. Tryck för att lägga till QUERY_ALL_PACKAGES.</string>
+    <string name="patch_gms_custom_hint">vendor.android.gms</string>
+    <string name="patch_gms_custom_invalid">Måste vara en ersättares eget paket, slutar i .gms.</string>
+    <string name="patch_gms_installed">installerad på denna enhet</string>
+    <string name="patch_gms_version_code">bygg %1$d</string>
 </resources>
