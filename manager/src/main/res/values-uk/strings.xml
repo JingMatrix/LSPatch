@@ -315,7 +315,7 @@
     <string name="patch_gms_pick">Заміна-отримувач</string>
     <string name="patch_gms_not_installed">не встановлено</string>
     <string name="patch_gms_needs_visibility">Інтегрований режим не бачить інших пакетів, тож застосунок її не знайде. Торкніться, щоб додати QUERY_ALL_PACKAGES.</string>
-    <string name="patch_gms_custom_hint">vendor.android.gms</string>
+    <string name="patch_gms_custom_hint">виконавці android-gms</string>
     <string name="patch_gms_custom_invalid">Має бути власним пакетом заміни й закінчуватися на .gms.</string>
     <string name="patch_gms_installed">встановлено на цьому пристрої</string>
     <string name="patch_gms_version_code">збірка %1$d</string>
