@@ -315,7 +315,7 @@
     <string name="patch_gms_pick">البديل الوجهة</string>
     <string name="patch_gms_not_installed">غير مثبَّت</string>
     <string name="patch_gms_needs_visibility">لا يرى الوضع المدمج الحزم الأخرى، لذا لن يعثر عليه التطبيق. اضغط لإضافة QUERY_ALL_PACKAGES.</string>
-    <string name="patch_gms_custom_hint">vendor.android.gms</string>
+    <string name="patch_gms_custom_hint">البائع.android.gms</string>
     <string name="patch_gms_custom_invalid">يجب أن تكون حزمة البديل نفسه، وتنتهي بـ ‎.gms.</string>
     <string name="patch_gms_installed">مثبَّت على هذا الجهاز</string>
     <string name="patch_gms_version_code">إصدار %1$d</string>

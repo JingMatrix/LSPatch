@@ -315,7 +315,7 @@
     <string name="patch_gms_pick">转向到哪个替代实现</string>
     <string name="patch_gms_not_installed">未安装</string>
     <string name="patch_gms_needs_visibility">集成模式看不到其他应用，应用将找不到它。点击添加 QUERY_ALL_PACKAGES。</string>
-    <string name="patch_gms_custom_hint">vendor.android.gms</string>
+    <string name="patch_gms_custom_hint">android.gms</string>
     <string name="patch_gms_custom_invalid">必须是替代实现自身的包名，以 .gms 结尾。</string>
     <string name="patch_gms_installed">本机已安装</string>
     <string name="patch_gms_version_code">版本号 %1$d</string>

@@ -74,7 +74,7 @@
     <string name="patch_source_storage">Do armazenamento</string>
     <string name="patch_source_repatch">Reconstruído a partir do original dentro do app com patch</string>
     <string name="patch_local_modules_later">Escolhidos depois, na página deste app</string>
-    <string name="patch_local">Local</string>
+    <string name="patch_local">Localização</string>
     <string name="patch_aspect_modules">Módulos</string>
     <string name="patch_aspect_scope">Escopo</string>
     <string name="patch_aspect_runs">Executa em</string>
@@ -224,7 +224,7 @@
     <string name="settings_keystore_custom_desc">Assine com o seu próprio keystore (BKS).</string>
     <string name="settings_keystore_file">Arquivo de keystore</string>
     <string name="settings_keystore_password">Senha</string>
-    <string name="settings_keystore_alias">Alias</string>
+    <string name="settings_keystore_alias">Apelido</string>
     <string name="settings_keystore_alias_password">Senha do alias</string>
     <string name="settings_keystore_wrong_keystore">Tipo de keystore incorreto</string>
     <string name="settings_keystore_wrong_password">Senha do keystore incorreta</string>
@@ -318,5 +318,5 @@
     <string name="patch_gms_custom_hint">vendor.android.gms</string>
     <string name="patch_gms_custom_invalid">Deve ser o pacote do próprio substituto, terminando em .gms.</string>
     <string name="patch_gms_installed">instalado neste dispositivo</string>
-    <string name="patch_gms_version_code">build %1$d</string>
+    <string name="patch_gms_version_code">construir %1$d</string>
 </resources>
