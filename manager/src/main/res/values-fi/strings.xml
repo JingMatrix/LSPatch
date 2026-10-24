@@ -304,4 +304,19 @@
     <string name="background_limit_any_background">Kaikki taustatyöt</string>
     <string name="background_limit_standby">Sovelluksen valmiustila</string>
     <string name="background_limit_autostart">Valmistajan automaattinen käynnistys</string>
+    <string name="patch_gms">Google Play-palvelut</string>
+    <string name="patch_gms_why">Paikannettu sovellus allekirjoitetaan uudelleen, joten Google Play -palvelut kieltäytyvät siitä riippumatta missä se tarkistaa soittajan varmenteen – näkyvin sisäänkirjautumisen yhteydessä. Molemmat vastaukset julistavat sovelluksen alkuperäisen varmenteen; ne eroavat toisistaan siinä, kuka sitä lukee.</string>
+    <string name="patch_gms_unchanged">Jätä rauhaan</string>
+    <string name="patch_gms_redirect">Lähetä korvaajalle</string>
+    <string name="patch_gms_redirect_desc">Uudelleenkirjoittaa sovelluksen Google-puhelut ajohetkellä, nimeää sen push-nimet uudelleen manifestissa hyviksi ja julistaa alkuperäisen varmenteen korvaavaksi.</string>
+    <string name="patch_gms_redirect_to">Lähetetty %1$s</string>
+    <string name="patch_gms_declare_only">Vain valtuutettu varmenne</string>
+    <string name="patch_gms_declare_only_desc">Ei uudelleenohjausta eikä push-uudelleennimeä — korvataan Google Play -palveluina itse, jossa ROM allekirjoituksella pilotoi sertifikaatin raporteista.</string>
+    <string name="patch_gms_pick">Korvaus lähetettäväksi osoitteeseen</string>
+    <string name="patch_gms_not_installed">ei asennettu</string>
+    <string name="patch_gms_needs_visibility">Integroitu tila ei näe muita paketteja, joten sovellus ei löydä sitä. Lisää QUERY_ALL_PACKAGES.</string>
+    <string name="patch_gms_custom_hint">vendor.android.gms</string>
+    <string name="patch_gms_custom_invalid">On oltava korvaavan tuotteen oma paketti, joka päättyy .gms.</string>
+    <string name="patch_gms_installed">asennettu tälle laitteelle</string>
+    <string name="patch_gms_version_code">luo %1$d</string>
 </resources>
