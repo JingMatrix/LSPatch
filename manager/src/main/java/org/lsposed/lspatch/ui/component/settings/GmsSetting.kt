@@ -16,6 +16,7 @@ import androidx.compose.material.icons.automirrored.rounded.KeyboardArrowRight
 import androidx.compose.material.icons.rounded.ArrowDropDown
 import androidx.compose.material.icons.rounded.ArrowDropUp
 import androidx.compose.material.icons.rounded.CloudSync
+import androidx.compose.material.icons.rounded.NotificationsActive
 import androidx.compose.material.icons.rounded.SwapHoriz
 import androidx.compose.material.icons.rounded.VerifiedUser
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -45,6 +46,7 @@ import org.lsposed.lspatch.share.Constants
 import org.lsposed.lspatch.util.GmsReplacements
 import org.matrix.vector.ui.AppIcon
 import org.matrix.vector.ui.PackageRow
+import org.matrix.vector.ui.ToggleRow
 import org.lsposed.lspatch.ui.component.SheetBody
 import org.matrix.vector.ui.sheetRowColors
 
@@ -66,8 +68,10 @@ import org.matrix.vector.ui.sheetRowColors
 fun GmsSetting(
     replacement: String?,
     declareFakeSignature: Boolean,
+    keepPushWithGms: Boolean,
     needsPackageVisibility: Boolean,
     onChange: (replacement: String?, fake: Boolean) -> Unit,
+    onKeepPushWithGms: (Boolean) -> Unit,
     onAddPackageVisibility: () -> Unit,
 ) {
     var showSheet by remember { mutableStateOf(false) }
@@ -98,8 +102,10 @@ fun GmsSetting(
         GmsSheet(
             replacement = replacement,
             declareFakeSignature = declareFakeSignature,
+            keepPushWithGms = keepPushWithGms,
             needsPackageVisibility = needsPackageVisibility,
             onChange = onChange,
+            onKeepPushWithGms = onKeepPushWithGms,
             onAddPackageVisibility = onAddPackageVisibility,
             onDismiss = { showSheet = false },
         )
@@ -111,8 +117,10 @@ fun GmsSetting(
 private fun GmsSheet(
     replacement: String?,
     declareFakeSignature: Boolean,
+    keepPushWithGms: Boolean,
     needsPackageVisibility: Boolean,
     onChange: (replacement: String?, fake: Boolean) -> Unit,
+    onKeepPushWithGms: (Boolean) -> Unit,
     onAddPackageVisibility: () -> Unit,
     onDismiss: () -> Unit,
 ) {
@@ -209,6 +217,16 @@ private fun GmsSheet(
                     }
                 }
 
+                // Only once there is a replacement: with none, every push already stays with Google Play services.
+                AnimatedVisibility(visible = redirecting && replacement != null) {
+                    ToggleRow(
+                        title = stringResource(R.string.patch_gms_keep_push),
+                        icon = Icons.Rounded.NotificationsActive,
+                        subtitle = stringResource(R.string.patch_gms_keep_push_desc),
+                        checked = keepPushWithGms,
+                        onCheckedChange = onKeepPushWithGms,
+                    )
+                }
             }
         }
     }

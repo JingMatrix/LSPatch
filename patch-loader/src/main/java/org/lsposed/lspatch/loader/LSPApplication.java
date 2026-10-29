@@ -264,7 +264,7 @@ public class LSPApplication {
         // initializer.
         var gmsReplacementPackage = config.optString("gmsReplacementPackage", null);
         if (gmsReplacementPackage != null && !gmsReplacementPackage.isEmpty()) {
-            GmsRedirector.activate(context, gmsReplacementPackage);
+            GmsRedirector.activate(context, gmsReplacementPackage, config.optBoolean("keepPushWithGms"));
         }
 
         // Register the resource directory for legacy resource hooking. The LoadedApk constructor hook

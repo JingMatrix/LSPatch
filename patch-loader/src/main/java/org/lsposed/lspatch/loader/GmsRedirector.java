@@ -40,6 +40,11 @@ import de.robv.android.xposed.XposedHelpers;
  * outright -- and only the first needs its authorities and push names rewritten. That question is answered from the
  * package name alone, by {@link Constants#renamesGoogleNamespaces}, so no vendor is named here.
  *
+ * Pushes can be kept with Google Play services while everything else goes to the replacement. FCM does not check the
+ * caller's certificate, so Google Play services registers and delivers pushes for a re-signed app as it would for the
+ * original; the patcher then leaves the app's C2DM names alone, and push intents are pointed back at Google Play
+ * services wherever a rewrite sent them to the replacement.
+ *
  * An intent the app addresses to itself keeps Google's action names: the sign-in library opens its own
  * {@code SignInHubActivity} with Google's {@code GOOGLE_SIGN_IN} action, and that activity finishes on any other
  * action. Only Google's own package and {@code gsf} are matched for packages, so its package is never touched either.
@@ -50,6 +55,7 @@ public class GmsRedirector {
 
     private static String targetGms = null;
     private static String selfPackage = null;
+    private static boolean keepPush = false;
     private static PackageManager packageManager = null;
 
     /**
@@ -59,7 +65,7 @@ public class GmsRedirector {
      * and so whether its authorities and push names have to be rewritten to reach it, follows from the name alone;
      * nothing else about the build is assumed and no vendor is named here.
      */
-    public static void activate(Context context, String gmsReplacementPackage) {
+    public static void activate(Context context, String gmsReplacementPackage, boolean keepPushWithGms) {
         if (!Constants.isGmsReplacement(gmsReplacementPackage)) {
             Log.w(TAG, "Not a usable replacement package, GMS redirect disabled: " + gmsReplacementPackage);
             return;
@@ -72,6 +78,10 @@ public class GmsRedirector {
         targetGms = gmsReplacementPackage;
         selfPackage = context.getPackageName();
         packageManager = context.getPackageManager();
+        keepPush = keepPushWithGms;
+        if (keepPush && !isInstalled(context, REAL_GMS)) {
+            Log.w(TAG, "Pushes are kept with " + REAL_GMS + ", which is not installed or not visible to the app");
+        }
 
         Log.i(TAG, "Activating GMS redirect: " + REAL_GMS + " -> " + targetGms);
         setupC2dmRedirects();
@@ -227,8 +237,10 @@ public class GmsRedirector {
     private static String c2dmPrefix = null;
 
     private static void setupC2dmRedirects() {
-        c2dmPrefix = Constants.gmsReplacementC2dmPrefix(targetGms);
-        if (c2dmPrefix != null) {
+        c2dmPrefix = keepPush ? null : Constants.gmsReplacementC2dmPrefix(targetGms);
+        if (keepPush) {
+            Log.i(TAG, "Pushes kept with " + REAL_GMS);
+        } else if (c2dmPrefix != null) {
             Log.i(TAG, "C2DM names rewritten to " + c2dmPrefix + "*");
         } else {
             Log.i(TAG, "C2DM names left alone: " + targetGms + " keeps Google's C2DM namespace");
@@ -305,7 +317,8 @@ public class GmsRedirector {
         if (c2dmPrefix != null && action.startsWith(Constants.GOOGLE_C2DM_PREFIX)) {
             return c2dmPrefix + action.substring(Constants.GOOGLE_C2DM_PREFIX.length());
         }
-        if (renamedActionPrefix == null || !isGoogleServiceAction(action) || isChooseAccountAction(action)) {
+        if (renamedActionPrefix == null || !isGoogleServiceAction(action) || isChooseAccountAction(action)
+                || isKeptPushAction(action)) {
             return null;
         }
         String renamed = renamedActionPrefix + action.substring(GOOGLE_NAMESPACE.length());
@@ -375,6 +388,35 @@ public class GmsRedirector {
         return found;
     }
 
+    private static final String[] PUSH_ACTION_PREFIXES = {
+            Constants.GOOGLE_C2DM_PREFIX, "com.google.iid.", GMS_ACTION_PREFIX + "cloudmessaging."};
+
+    /** Whether [action] is a push action this keeps with Google Play services. */
+    private static boolean isKeptPushAction(String action) {
+        if (!keepPush || action == null) return false;
+        for (String prefix : PUSH_ACTION_PREFIXES) {
+            if (action.startsWith(prefix)) return true;
+        }
+        return false;
+    }
+
+    /**
+     * Points a push intent that a rewrite sent to the replacement back at Google Play services.
+     *
+     * The package or component is often set before the action, so whichever setter completes the intent undoes
+     * the redirect. Written to the fields because the setters are hooked and would redirect again.
+     */
+    private static void keepPushWithGms(Intent intent) {
+        if (!isKeptPushAction((String) XposedHelpers.getObjectField(intent, "mAction"))) return;
+        if (targetGms.equals(intent.getPackage())) {
+            XposedHelpers.setObjectField(intent, "mPackage", REAL_GMS);
+        }
+        ComponentName cn = intent.getComponent();
+        if (cn != null && targetGms.equals(cn.getPackageName())) {
+            XposedHelpers.setObjectField(intent, "mComponent", new ComponentName(REAL_GMS, cn.getClassName()));
+        }
+    }
+
     /**
      * Whether [intent] is addressed to the app itself, by package or by component.
      *
@@ -424,6 +466,7 @@ public class GmsRedirector {
                     Intent intent = (Intent) param.thisObject;
                     routeChooseAccountToSystem(intent);
                     keepSelfAction(intent);
+                    keepPushWithGms(intent);
                 }
             });
         } catch (Throwable t) {
@@ -450,6 +493,7 @@ public class GmsRedirector {
                     Intent intent = (Intent) param.thisObject;
                     routeChooseAccountToSystem(intent);
                     keepSelfAction(intent);
+                    keepPushWithGms(intent);
                 }
             });
         } catch (Throwable t) {
@@ -492,6 +536,7 @@ public class GmsRedirector {
                     Intent intent = (Intent) param.thisObject;
                     routeChooseAccountToSystem(intent);
                     keepSelfAction(intent);
+                    keepPushWithGms(intent);
                 }
             });
         } catch (Throwable t) {
@@ -513,7 +558,10 @@ public class GmsRedirector {
                     @Override
                     protected void afterHookedMethod(MethodHookParam param) {
                         Intent intent = (Intent) param.thisObject;
-                        if (outgoing) keepSelfAction(intent);
+                        if (outgoing) {
+                            keepSelfAction(intent);
+                            keepPushWithGms(intent);
+                        }
                         ComponentName cn = intent.getComponent();
                         if (cn == null) return;
                         String redirected = redirectPackage(cn.getPackageName());
@@ -559,6 +607,7 @@ public class GmsRedirector {
                     }
                     routeChooseAccountToSystem(intent);
                     keepSelfAction(intent);
+                    keepPushWithGms(intent);
                 }
             });
         } catch (Throwable t) {
@@ -654,7 +703,7 @@ public class GmsRedirector {
     }
 
     private static void redirectOnEgress(Intent intent) {
-        unwrapChimera(intent);
+        if (unwrapChimera(intent)) return;
         ComponentName cn = intent.getComponent();
         if (cn != null) {
             String redirected = redirectPackage(cn.getPackageName());
@@ -675,22 +724,33 @@ public class GmsRedirector {
         } else {
             keepSelfAction(intent);
         }
+        keepPushWithGms(intent);
         routeChooseAccountToSystem(intent);
     }
 
-    private static void unwrapChimera(Intent intent) {
-        if (!CHIMERA_BOUND_SERVICE.equals(XposedHelpers.getObjectField(intent, "mAction"))) return;
+    /**
+     * Turns a chimera binding into the API's own action, addressed to the replacement. Returns true for one that
+     * stays with Google Play services, which is then left exactly as the client built it.
+     */
+    private static boolean unwrapChimera(Intent intent) {
+        if (!CHIMERA_BOUND_SERVICE.equals(XposedHelpers.getObjectField(intent, "mAction"))) return false;
         ComponentName cn = intent.getComponent();
-        if (cn == null || !(REAL_GMS.equals(cn.getPackageName()) || targetGms.equals(cn.getPackageName()))) return;
+        if (cn == null || !(REAL_GMS.equals(cn.getPackageName()) || targetGms.equals(cn.getPackageName()))) return false;
         Uri data = intent.getData();
-        if (data == null || !CHIMERA_SCHEME.equals(data.getScheme())) return;
+        if (data == null || !CHIMERA_SCHEME.equals(data.getScheme())) return false;
         String action = data.getSchemeSpecificPart();
-        if (action == null || action.isEmpty()) return;
+        if (action == null || action.isEmpty()) return false;
+        if (isKeptPushAction(action)) {
+            // Google Play services serves this from its own chimera component, so the binding goes back to it.
+            XposedHelpers.setObjectField(intent, "mComponent", new ComponentName(REAL_GMS, cn.getClassName()));
+            return true;
+        }
         XLog.d(TAG, "Unwrapping chimera binding of " + cn.getClassName() + " to " + action);
         XposedHelpers.setObjectField(intent, "mAction", action);
         XposedHelpers.setObjectField(intent, "mData", null);
         XposedHelpers.setObjectField(intent, "mComponent", null);
         XposedHelpers.setObjectField(intent, "mPackage", targetGms);
+        return false;
     }
 
     private static final String GOOGLE_ACCOUNT_TYPE = "com.google";

@@ -48,6 +48,7 @@ object Patcher {
                     .permissions(addedPermissions)
                     .injectDocumentsProvider(injectDocumentsProvider)
                     .gmsReplacementPackage(gmsReplacementPackage)
+                    .keepPushWithGms(gmsReplacementPackage != null && keepPushWithGms)
                     .declareFakeSignature(declareFakeSignature)
                     .build()
             )

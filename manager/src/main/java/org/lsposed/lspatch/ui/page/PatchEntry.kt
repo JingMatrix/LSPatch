@@ -80,6 +80,7 @@ suspend fun rePatchRequestFor(
         addedPermissions = config?.addedPermissions?.toList() ?: emptyList(),
         injectDocumentsProvider = config?.injectDocumentsProvider ?: false,
         gmsReplacementPackage = config?.gmsReplacementPackage,
+        keepPushWithGms = config?.keepPushWithGms ?: false,
         declareFakeSignature = config?.declareFakeSignature ?: false,
         sigBypassLevel = config?.sigBypassLevel ?: 2,
         injectDex = config?.injectDex ?: false,

@@ -193,6 +193,7 @@ public final class ApkPatcher {
                     spec.manifestOverrides().addedPermissions.toArray(new String[0]),
                     spec.manifestOverrides().injectDocumentsProvider,
                     spec.manifestOverrides().gmsReplacementPackage,
+                    spec.manifestOverrides().keepPushWithGms,
                     spec.manifestOverrides().declareFakeSignature,
                     spec.useManager() ? spec.managerPackageName() : null);
             byte[] configBytes = new Gson().toJson(config).getBytes(StandardCharsets.UTF_8);
@@ -461,6 +462,10 @@ public final class ApkPatcher {
             new ManifestEditor(in, os, property).processManifest();
         }
         os.flush();
+        if (spec.manifestOverrides().keepPushWithGms) {
+            logger.i("Push names left alone: pushes stay with " + Constants.REAL_GMS_PACKAGE_NAME);
+            return os.toByteArray();
+        }
         return renameC2dmForGmsReplacement(os.toByteArray(), spec.manifestOverrides().gmsReplacementPackage);
     }
 
@@ -512,6 +517,9 @@ public final class ApkPatcher {
                         + Constants.REAL_GMS_PACKAGE_NAME + "; give the package of an installed replacement");
             }
             addGmsReplacementSupport(property, o.gmsReplacementPackage, originalSignature);
+        } else if (o.keepPushWithGms) {
+            throw new PatchException("Keeping pushes with " + Constants.REAL_GMS_PACKAGE_NAME
+                    + " only applies when the rest goes to a replacement; give one too");
         }
         if (o.declareFakeSignature) {
             logger.i("Add fake signature");

@@ -94,6 +94,8 @@ data class PatchRequest(
     // The replacement to redirect Google Play services to, or null to leave it alone. A package name
     // rather than a flag because the patch bakes that name into the manifest. Recorded for the same reason.
     val gmsReplacementPackage: String? = null,
+    // Keep pushes with Google Play services while the rest goes to the replacement. Recorded for the same reason.
+    val keepPushWithGms: Boolean = false,
     // Declare the original signature as fake-signature for ROM signature spoofing. Recorded for the same reason.
     val declareFakeSignature: Boolean = false,
     val origin: PatchOrigin = PatchOrigin.New,
