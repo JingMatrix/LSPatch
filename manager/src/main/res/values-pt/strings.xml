@@ -304,4 +304,19 @@
     <string name="background_limit_any_background">Qualquer trabalho em segundo plano</string>
     <string name="background_limit_standby">Bilhete em espera de app</string>
     <string name="background_limit_autostart">Início automático do fornecedor</string>
+    <string name="patch_gms">Google Play Services</string>
+    <string name="patch_gms_why">Um aplicativo corrigido foi reassinado, por isso os serviços do Google Play recusam-no onde quer que verifique o certificado do remetente — mais visivelmente ao iniciar a sessão. Ambas as respostas declaram o certificado original do aplicativo; elas diferem em quem lê ele. Escolha nem para não alterar nada.</string>
+    <string name="patch_gms_unchanged">Sair sozinho</string>
+    <string name="patch_gms_redirect">Enviar para substituição</string>
+    <string name="patch_gms_redirect_desc">Reescreve as chamadas do Google no tempo de execução do aplicativo, renomeia os seus nomes push no manifesto para o bem e declara o certificado original para a substituição.</string>
+    <string name="patch_gms_redirect_to">Enviado para %1$s</string>
+    <string name="patch_gms_declare_only">Declarar apenas certificado</string>
+    <string name="patch_gms_declare_only_desc">Nenhum redirecionamento ou renomeação de push — para uma substituição instalada como Google Play Services, onde uma ROM com relatórios de falsificação de assinatura o certificado.</string>
+    <string name="patch_gms_pick">Substituição para enviar para</string>
+    <string name="patch_gms_not_installed">Não instalado</string>
+    <string name="patch_gms_needs_visibility">O modo integrado não consegue ver outros pacotes, então o aplicativo não o encontrará. Toque para adicionar QUERY_ALL_PACKAGES.</string>
+    <string name="patch_gms_custom_hint">vendor.android.gms</string>
+    <string name="patch_gms_custom_invalid">Deve ser um próprio pacote de substituição, terminando em .gms.</string>
+    <string name="patch_gms_installed">instalado neste dispositivo</string>
+    <string name="patch_gms_version_code">construir %1$d</string>
 </resources>

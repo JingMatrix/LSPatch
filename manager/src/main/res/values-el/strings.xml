@@ -304,4 +304,19 @@
     <string name="background_limit_any_background">Οποιαδήποτε εργασία στο παρασκήνιο</string>
     <string name="background_limit_standby">Κουβάς αναμονής εφαρμογής</string>
     <string name="background_limit_autostart">Αυτόματη εκκίνηση προμηθευτή</string>
+    <string name="patch_gms">Υπηρεσίες Google Play</string>
+    <string name="patch_gms_why">Μια patched εφαρμογή επανυπογράφεται, έτσι ώστε οι υπηρεσίες Google Play να το αρνείται όπου και αν ελέγχει το πιστοποιητικό του καλούντος - πιο ορατά κατά τη σύνδεση. Και οι δύο απαντήσεις δηλώνουν το πρωτότυπο πιστοποιητικό της εφαρμογής, διαφέρουν ως προς το ποιος το διαβάζει.</string>
+    <string name="patch_gms_unchanged">Αφήστε μόνο του</string>
+    <string name="patch_gms_redirect">Αποστολή σε αντικατάσταση</string>
+    <string name="patch_gms_redirect_desc">Ξαναγράπτει τις κλήσεις Google της εφαρμογής κατά την εκτέλεση του χρόνου, μετονομάζει τα ονόματα ώθησης της στο δηλωτικό για πάντα, και δηλώνει το πρωτότυπο πιστοποιητικό στην αντικατάσταση.</string>
+    <string name="patch_gms_redirect_to">Στάλθηκε στο %1$s</string>
+    <string name="patch_gms_declare_only">Δηλώστε πιστοποιητικό μόνο</string>
+    <string name="patch_gms_declare_only_desc">Χωρίς ανακατεύθυνση και χωρίς μετονομασία ώθησης—για αντικατάσταση εγκατεστημένη ως υπηρεσίες Google Play, όπου ένα ROM με υπογραφή που αναφέρει το πιστοποιητικό.</string>
+    <string name="patch_gms_pick">Αντικατάσταση για αποστολή σε</string>
+    <string name="patch_gms_not_installed">μη εγκατεστημένο</string>
+    <string name="patch_gms_needs_visibility">Η ενσωματωμένη λειτουργία δεν μπορεί να δει άλλα πακέτα, οπότε η εφαρμογή δεν θα το βρει. Πατήστε για να προσθέσετε QUERY_ALL_PACKAGES.</string>
+    <string name="patch_gms_custom_hint">vendor.android.gms</string>
+    <string name="patch_gms_custom_invalid">Πρέπει να είναι το πακέτο του αντικαταστάτη, καταλήγοντας σε .gms.</string>
+    <string name="patch_gms_installed">εγκατεστημένο σε αυτήν τη συσκευή</string>
+    <string name="patch_gms_version_code">χτίσε το %1$d</string>
 </resources>

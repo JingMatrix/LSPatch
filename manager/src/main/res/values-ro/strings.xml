@@ -304,4 +304,19 @@
     <string name="background_limit_any_background">Orice activitate de fundal</string>
     <string name="background_limit_standby">Costum în standby al aplicației</string>
     <string name="background_limit_autostart">Auto-pornire a vânzătorului</string>
+    <string name="patch_gms">Servicii Google Play</string>
+    <string name="patch_gms_why">O aplicație modificată este resemnată, astfel încât serviciile Google Play o refuză oriunde verifică certificatul apelantului — cel mai vizibil la conectare. Ambele răspunsuri declară certificatul original al aplicației; diferă în cine îl citește. Alegeți nici să nu schimbați nimic.</string>
+    <string name="patch_gms_unchanged">Lăsați singur</string>
+    <string name="patch_gms_redirect">Trimite la un înlocuitor</string>
+    <string name="patch_gms_redirect_desc">Rescrie apelurile Google ale aplicației la timpul de execuție, își redenumește numele de push în manifest pentru bine și declară certificatul original înlocuitorului.</string>
+    <string name="patch_gms_redirect_to">Trimis la %1$s</string>
+    <string name="patch_gms_declare_only">Numai certificat de declarare</string>
+    <string name="patch_gms_declare_only_desc">Fără redirecționare și fără redenumire push - pentru înlocuirea instalată ca servicii Google Play, în care un ROM cu falsificarea semnăturii raportează certificatul.</string>
+    <string name="patch_gms_pick">Înlocuirea de trimis la</string>
+    <string name="patch_gms_not_installed">nu este instalat</string>
+    <string name="patch_gms_needs_visibility">Modul integrat nu poate vedea alte pachete, așa că aplicația nu le va găsi. Atingeți pentru a adăuga QUERY_ALL_PACKAGES.</string>
+    <string name="patch_gms_custom_hint">vendor.android.gms</string>
+    <string name="patch_gms_custom_invalid">Trebuie să fie un pachet propriu de înlocuire, care se termină în .gms.</string>
+    <string name="patch_gms_installed">instalat pe acest dispozitiv</string>
+    <string name="patch_gms_version_code">construiește %1$d</string>
 </resources>

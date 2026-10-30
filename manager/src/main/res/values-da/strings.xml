@@ -304,4 +304,19 @@
     <string name="background_limit_any_background">Ethvert baggrundsarbejde</string>
     <string name="background_limit_standby">App standby spand</string>
     <string name="background_limit_autostart">Sælger auto-start</string>
+    <string name="patch_gms">Google Play-tjenester</string>
+    <string name="patch_gms_why">En lappet app er gensigneret, så Google Play-tjenester nægter den, uanset hvor den tjekker opkalderens certifikat — mest synligt ved login. Begge svar erklærer app\'ens oprindelige certifikat; de adskiller sig i hvem der læser det. Vælg hverken for at ændre noget.</string>
+    <string name="patch_gms_unchanged">Lad være alene</string>
+    <string name="patch_gms_redirect">Send til en erstatning</string>
+    <string name="patch_gms_redirect_desc">Omskriver den app ‘ s Google-opkald på run tid, omdøber sine push navne i manifestet for god, og erklærer det oprindelige certifikat til udskiftning.</string>
+    <string name="patch_gms_redirect_to">Sendt til %1$s</string>
+    <string name="patch_gms_declare_only">Erklær kun certifikat</string>
+    <string name="patch_gms_declare_only_desc">Ingen omdirigering og ingen push-omdøbning — for en erstatning installeret som Google Play-tjenester selv, hvor en ROM med signatur spoofing rapporterer certifikatet.</string>
+    <string name="patch_gms_pick">Udskiftning at sende til</string>
+    <string name="patch_gms_not_installed">ikke installeret</string>
+    <string name="patch_gms_needs_visibility">Integreret tilstand kan ikke se andre pakker, så app\'en vil ikke finde den. Tryk for at tilføje QUERY_ALL_Business.</string>
+    <string name="patch_gms_custom_hint">vendor.android.gms</string>
+    <string name="patch_gms_custom_invalid">Skal være en udskiftnings egen pakke, slutter i .gms.</string>
+    <string name="patch_gms_installed">installeret på denne enhed</string>
+    <string name="patch_gms_version_code">byg %1$d</string>
 </resources>

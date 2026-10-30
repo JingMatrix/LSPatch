@@ -160,7 +160,7 @@
     <string name="patch_action_other_installer">Autre installateur</string>
     <string name="patch_action_retry">Réessayer</string>
     <string name="patch_patched">Patché</string>
-    <string name="patch_patched_splits">base + %1$d splits</string>
+    <string name="patch_patched_splits">base + %1$d divise</string>
     <string name="patch_installing">Installation…</string>
     <string name="patch_confirming">En attente de confirmation…</string>
     <string name="patch_restoring">Restauration…</string>
@@ -318,5 +318,5 @@
     <string name="patch_gms_custom_hint">vendor.android.gms</string>
     <string name="patch_gms_custom_invalid">Doit être le paquet d’un remplaçant, se terminant par .gms.</string>
     <string name="patch_gms_installed">installé sur cet appareil</string>
-    <string name="patch_gms_version_code">build %1$d</string>
+    <string name="patch_gms_version_code">construire %1$d</string>
 </resources>

@@ -304,4 +304,19 @@
     <string name="background_limit_any_background">Qualsevol treball de fons</string>
     <string name="background_limit_standby">Cub d\'espera d\'aplicació</string>
     <string name="background_limit_autostart">Inici automàtic del proveïdor</string>
+    <string name="patch_gms">Google Play services</string>
+    <string name="patch_gms_why">A patched app is re-signed, so Google Play services refuses it wherever it checks the caller’s certificate — most visibly at sign-in. Both answers declare the app’s original certificate; they differ in who reads it. Choose neither to change nothing.</string>
+    <string name="patch_gms_unchanged">Leave alone</string>
+    <string name="patch_gms_redirect">Send to a replacement</string>
+    <string name="patch_gms_redirect_desc">Rewrites the app’s Google calls at run time, renames its push names in the manifest for good, and declares the original certificate to the replacement.</string>
+    <string name="patch_gms_redirect_to">Sent to %1$s</string>
+    <string name="patch_gms_declare_only">Declare certificate only</string>
+    <string name="patch_gms_declare_only_desc">No redirect and no push rename — for a replacement installed as Google Play services itself, where a ROM with signature spoofing reports the certificate.</string>
+    <string name="patch_gms_pick">Replacement to send to</string>
+    <string name="patch_gms_not_installed">not installed</string>
+    <string name="patch_gms_needs_visibility">Integrated mode cannot see other packages, so the app will not find it. Tap to add QUERY_ALL_PACKAGES.</string>
+    <string name="patch_gms_custom_hint">vendor.android.gms</string>
+    <string name="patch_gms_custom_invalid">Must be a replacement’s own package, ending in .gms.</string>
+    <string name="patch_gms_installed">installed on this device</string>
+    <string name="patch_gms_version_code">build %1$d</string>
 </resources>

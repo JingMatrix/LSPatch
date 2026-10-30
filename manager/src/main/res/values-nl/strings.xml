@@ -304,4 +304,19 @@
     <string name="background_limit_any_background">Elk achtergrondwerk</string>
     <string name="background_limit_standby">App stand-by emmer</string>
     <string name="background_limit_autostart">Leverancier auto-start</string>
+    <string name="patch_gms">Google Play services</string>
+    <string name="patch_gms_why">Een gepatenteerde app wordt hertekend, dus Google Play-diensten weigeren het overal waar het het certificaat van de beller controleert - meest zichtbaar bij het inloggen. Beide antwoorden verklaren het oorspronkelijke certificaat van de app; ze verschillen in wie de app leest. Keuze ook niet om niets te veranderen.</string>
+    <string name="patch_gms_unchanged">Laat met rust</string>
+    <string name="patch_gms_redirect">Verzend naar vervanging</string>
+    <string name="patch_gms_redirect_desc">Herschrijft de Google-oproepen van de app op run en noemt de push-namen definitief in het manifest en verklaart het oorspronkelijke certificaat in de vervanging.</string>
+    <string name="patch_gms_redirect_to">Verzonden naar %1$s</string>
+    <string name="patch_gms_declare_only">Alleen certificaat opgeven</string>
+    <string name="patch_gms_declare_only_desc">Geen redirect en geen push-hernoem - voor een vervanging geïnstalleerd als Google Play services zelf, waar een ROM met handtekening het certificaat rapporteert.</string>
+    <string name="patch_gms_pick">Vervanging om naar te verzenden</string>
+    <string name="patch_gms_not_installed">niet geïnstalleerd</string>
+    <string name="patch_gms_needs_visibility">Geïntegreerde modus kan geen andere pakketten zien, dus de app zal het niet vinden. Tik om QUERY_ALL_PACKAGES toe te voegen.</string>
+    <string name="patch_gms_custom_hint">android.gms</string>
+    <string name="patch_gms_custom_invalid">Moet een vervangingspakket zijn dat eindigt in .gms zelf.</string>
+    <string name="patch_gms_installed">geïnstalleerd op dit apparaat</string>
+    <string name="patch_gms_version_code">bouw %1$d</string>
 </resources>

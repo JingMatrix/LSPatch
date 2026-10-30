@@ -201,7 +201,7 @@
     <string name="appdetail_info_debuggable">Debugowalna</string>
     <string name="appdetail_info_inject_dex">Wstrzyknięto dex loadera</string>
     <string name="appdetail_info_app_version">Wersja aplikacji</string>
-    <string name="appdetail_info_loader">Loader</string>
+    <string name="appdetail_info_loader">Ładowarka</string>
     <string name="appdetail_info_target_sdk">Docelowy SDK</string>
     <string name="appdetail_info_package">Pakiet</string>
     <string name="appdetail_yes">Tak</string>

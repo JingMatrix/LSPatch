@@ -205,7 +205,7 @@
     <string name="appdetail_info_target_sdk">SDK objetivo</string>
     <string name="appdetail_info_package">Paquete</string>
     <string name="appdetail_yes">Sí</string>
-    <string name="appdetail_no">No</string>
+    <string name="appdetail_no">Nu</string>
     <string name="manage_repatch">Volver a parchear</string>
     <string name="manage_repatch_desc">Cambia las opciones de parcheo y reconstruye. Siempre vuelve a incorporar el cargador actual de este gestor.</string>
     <string name="manage_restore_original">Restaurar el original</string>
