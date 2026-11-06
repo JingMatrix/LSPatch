@@ -101,6 +101,7 @@ public class GmsRedirector {
         hookIntentSetClass();
         hookIntentResolve();
         hookActivityStart();
+        hookActivityResult();
         hookEgress();
         hookProviderCalls();
         hookAuthTokens();
@@ -353,6 +354,24 @@ public class GmsRedirector {
             retyped.add(GOOGLE_ACCOUNT_TYPE.equals(account.type) ? new Account(account.name, type) : account);
         }
         intent.putExtra(EXTRA_ALLOWABLE_ACCOUNTS, retyped);
+    }
+
+    /**
+     * Answers the app with Google's account type, in place of the replacement's.
+     *
+     * The picker was asked for the replacement's accounts, so it answers with one of them, and an app that
+     * reads the type back -- to build an account of its own from the answer, or to check it against the type
+     * it asked for -- is handed a name it never named. This is the return half of
+     * {@link #offerReplacementAccounts}: only the type that one offers is put back, so an account the app
+     * chose of any other type reaches it exactly as the picker returned it.
+     */
+    private static void restoreAccountType(Intent result) {
+        if (result == null) return;
+        String offered = targetAccountType;
+        if (offered == null || NO_ACCOUNT_TYPE.equals(offered)) return;
+        if (!offered.equals(result.getStringExtra(AccountManager.KEY_ACCOUNT_TYPE))) return;
+        XLog.d(TAG, "Answering with a " + GOOGLE_ACCOUNT_TYPE + " account in place of " + offered);
+        result.putExtra(AccountManager.KEY_ACCOUNT_TYPE, GOOGLE_ACCOUNT_TYPE);
     }
 
     /** The account manager, or null before {@link #activate} or where the app cannot have one. */
@@ -740,6 +759,33 @@ public class GmsRedirector {
             XposedBridge.hookAllMethods(android.app.Activity.class, "startActivityForResult", egressHook);
         } catch (Throwable t) {
             Log.e(TAG, "Failed to hook startActivity/startActivityForResult", t);
+        }
+    }
+
+    /**
+     * Puts Google's account type back on a picker's answer, wherever the app receives it.
+     *
+     * {@code dispatchActivityResult} is where every activity result arrives -- the fragment and
+     * {@code ActivityResultLauncher} paths included, since both are delivered through the activity that
+     * started the picker -- before the app's own callback is called with it.
+     */
+    private static void hookActivityResult() {
+        try {
+            XposedBridge.hookAllMethods(android.app.Activity.class, "dispatchActivityResult",
+                    new XC_MethodHook() {
+                        @Override
+                        protected void beforeHookedMethod(MethodHookParam param) {
+                            if (param.args == null) return;
+                            for (Object arg : param.args) {
+                                if (arg instanceof Intent) {
+                                    restoreAccountType((Intent) arg);
+                                    break;
+                                }
+                            }
+                        }
+                    });
+        } catch (Throwable t) {
+            Log.e(TAG, "Failed to hook Activity.dispatchActivityResult", t);
         }
     }
 
