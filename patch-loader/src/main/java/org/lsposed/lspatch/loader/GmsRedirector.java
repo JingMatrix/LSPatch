@@ -11,6 +11,9 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.util.Log;
 
+import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
+
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -98,7 +101,7 @@ public class GmsRedirector {
         hookIntentResolve();
         hookActivityStart();
         hookEgress();
-        hookContentResolverAcquire();
+        hookProviderCalls();
         hookAuthTokens();
 
         Log.i(TAG, "GMS redirect hooks installed");
@@ -965,54 +968,88 @@ public class GmsRedirector {
         }
     }
 
-    private static void hookContentResolverAcquire() {
-        try {
-            for (String method : new String[]{
-                    "acquireProvider", "acquireContentProviderClient",
-                    "acquireUnstableProvider", "acquireUnstableContentProviderClient"
-            }) {
-                try {
-                    XposedBridge.hookAllMethods(ContentResolver.class, method, new XC_MethodHook() {
-                        @Override
-                        protected void beforeHookedMethod(MethodHookParam param) {
-                            if (param.args[0] instanceof Uri) {
-                                Uri uri = (Uri) param.args[0];
-                                String newAuth = redirectAuthority(uri.getAuthority());
-                                if (newAuth != null) {
-                                    param.args[0] = uri.buildUpon().authority(newAuth).build();
-                                }
-                            } else if (param.args[0] instanceof String) {
-                                String newAuth = redirectAuthority((String) param.args[0]);
-                                if (newAuth != null) {
-                                    param.args[0] = newAuth;
-                                }
-                            }
-                        }
-                    });
-                } catch (Throwable ignored) {}
-            }
+    /**
+     * The Uri to use in place of [uri], or null to leave it alone.
+     */
+    private static Uri redirectUri(Uri uri) {
+        if (uri == null) return null;
+        String authority = redirectAuthority(uri.getAuthority());
+        return authority == null ? null : uri.buildUpon().authority(authority).build();
+    }
 
-            XposedBridge.hookAllMethods(ContentResolver.class, "call", new XC_MethodHook() {
-                @Override
-                protected void beforeHookedMethod(MethodHookParam param) {
-                    for (int i = 0; i < param.args.length; i++) {
-                        if (param.args[i] instanceof Uri) {
-                            Uri uri = (Uri) param.args[i];
-                            String newAuth = redirectAuthority(uri.getAuthority());
-                            if (newAuth != null) {
-                                param.args[i] = uri.buildUpon().authority(newAuth).build();
-                            }
-                        } else if (param.args[i] instanceof String && i == 0) {
-                            String newAuth = redirectAuthority((String) param.args[i]);
-                            if (newAuth != null) {
-                                param.args[i] = newAuth;
-                            }
-                        }
+    /**
+     * The calls that name a provider, by Uri or by authority.
+     *
+     * {@code call}, {@code applyBatch} and the {@code acquire} family take a bare authority in their first
+     * argument; everything else names the provider in a Uri. Both forms are rewritten by the same hook, which
+     * is why the list is flat. {@code ContentResolver} and {@code ContentProviderClient} share it: the second
+     * is the one a client holds after acquiring a provider itself, and its calls never pass through the first.
+     */
+    private static final String[] PROVIDER_CALLS = {
+            "query", "insert", "bulkInsert", "update", "delete", "call", "applyBatch",
+            "getType", "getTypeAnonymous", "getStreamTypes", "canonicalize", "uncanonicalize", "refresh",
+            "openInputStream", "openOutputStream", "openFile", "openFileDescriptor",
+            "openAssetFile", "openAssetFileDescriptor", "openTypedAssetFile", "openTypedAssetFileDescriptor",
+            "loadThumbnail", "registerContentObserver", "notifyChange",
+            "acquireProvider", "acquireContentProviderClient",
+            "acquireUnstableProvider", "acquireUnstableContentProviderClient"};
+
+    /**
+     * Points every provider call at the replacement, in the call as well as in the lookup.
+     *
+     * A provider refuses a Uri whose authority is not one of its own: {@code ContentProvider} checks that
+     * before the call reaches any of its methods. So rewriting the lookup alone resolves the replacement's
+     * provider and then hands it Google's Uri, and the call fails inside the replacement with a
+     * {@code SecurityException} instead of being answered. The client libraries log that and carry on without
+     * the answer, which is how it stayed invisible.
+     *
+     * Both classes are hooked because a client that acquires a provider itself calls it through a
+     * {@code ContentProviderClient}, and those calls reach no {@code ContentResolver} method at all -- which is
+     * how the phenotype and chimera lookups are made.
+     */
+    private static void hookProviderCalls() {
+        XC_MethodHook hook = new XC_MethodHook() {
+            @Override
+            protected void beforeHookedMethod(MethodHookParam param) {
+                if (param.args == null) return;
+                for (int i = 0; i < param.args.length; i++) {
+                    Object arg = param.args[i];
+                    if (arg instanceof Uri) {
+                        Uri redirected = redirectUri((Uri) arg);
+                        if (redirected != null) param.args[i] = redirected;
+                    } else if (i == 0 && arg instanceof String) {
+                        // Only the first argument: it is the authority in the calls that name one as a string,
+                        // and no other string these take names a provider.
+                        String redirected = redirectAuthority((String) arg);
+                        if (redirected != null) param.args[i] = redirected;
                     }
                 }
-            });
-        } catch (Throwable t) {
-            Log.e(TAG, "Failed to hook ContentResolver", t);
+            }
+        };
+        hookProviderCalls(ContentResolver.class, hook);
+        hookProviderCalls(android.content.ContentProviderClient.class, hook);
+    }
+
+    /**
+     * Hooks each of {@link #PROVIDER_CALLS} that [clazz] declares with a body.
+     *
+     * Declared methods rather than {@code hookAllMethods}, which stops at the first overload it cannot hook:
+     * {@code acquireProvider} is abstract on {@code ContentResolver}, and the concrete {@code acquireProvider(Uri)}
+     * beside it was left unhooked depending on the order the two came back in.
+     */
+    private static void hookProviderCalls(Class<?> clazz, XC_MethodHook hook) {
+        for (Method method : clazz.getDeclaredMethods()) {
+            if (Modifier.isAbstract(method.getModifiers())) continue;
+            boolean named = false;
+            for (String name : PROVIDER_CALLS) {
+                named |= name.equals(method.getName());
+            }
+            if (!named) continue;
+            try {
+                XposedBridge.hookMethod(method, hook);
+            } catch (Throwable t) {
+                XLog.d(TAG, "Cannot hook " + clazz.getSimpleName() + "." + method.getName() + ": " + t);
+            }
         }
     }
 }
