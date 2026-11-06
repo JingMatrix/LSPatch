@@ -11,6 +11,7 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.util.Log;
 
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -55,6 +56,7 @@ public class GmsRedirector {
 
     private static String targetGms = null;
     private static String selfPackage = null;
+    private static Context appContext = null;
     private static boolean keepPush = false;
     private static PackageManager packageManager = null;
 
@@ -77,6 +79,7 @@ public class GmsRedirector {
         }
         targetGms = gmsReplacementPackage;
         selfPackage = context.getPackageName();
+        appContext = context;
         packageManager = context.getPackageManager();
         keepPush = keepPushWithGms;
         if (keepPush && !isInstalled(context, REAL_GMS)) {
@@ -252,14 +255,82 @@ public class GmsRedirector {
                 || (targetGms != null && (targetGms + ".common.account.CHOOSE_ACCOUNT").equals(action));
     }
 
-    private static void routeChooseAccountToSystem(Intent intent) {
-        if (intent == null || SYSTEM_ACCOUNT_PICKER == null || !isChooseAccountAction(intent.getAction())) {
-            return;
-        }
+    /**
+     * Sends CHOOSE_ACCOUNT to a picker, having told it which accounts to offer.
+     *
+     * Which accounts a picker offers is decided by the intent and not by the picker: the client lists the
+     * account types it will accept in {@code allowableAccountTypes}, and the system picker shows accounts of
+     * those types alone. The client asks for {@code com.google}. A replacement that renamed its namespaces
+     * registers its accounts under a type of its own -- {@code app.revanced}, for one, which is neither its
+     * package nor anything derivable from it -- so it is passed over, and a user who has both builds installed
+     * is offered exactly the accounts that cannot sign in: Google's.
+     *
+     * So the types the intent names are rewritten to the replacement's before any picker reads them, and the
+     * intent still goes to the system picker. Sending it to the replacement's own picker instead would change
+     * nothing: that one wraps the system picker and answers the same extra the same way.
+     */
+    private static void routeChooseAccount(Intent intent) {
+        if (intent == null || !isChooseAccountAction(intent.getAction())) return;
+        offerReplacementAccounts(intent);
+        if (SYSTEM_ACCOUNT_PICKER == null) return;
         if (!SYSTEM_ACCOUNT_PICKER.equals(intent.getComponent()) || intent.getPackage() != null) {
             XLog.d(TAG, "Routing CHOOSE_ACCOUNT directly to the system account picker");
             intent.setComponent(SYSTEM_ACCOUNT_PICKER);
             intent.setPackage(null);
+        }
+    }
+
+    private static final String EXTRA_ALLOWABLE_ACCOUNT_TYPES = "allowableAccountTypes";
+    private static final String EXTRA_ALLOWABLE_ACCOUNTS = "allowableAccounts";
+    private static final String EXTRA_SELECTED_ACCOUNT = "selectedAccount";
+
+    /**
+     * Names the replacement's account type, in place of Google's, wherever the intent names an account type.
+     *
+     * The accounts the intent allows and preselects are retyped with it, so that one the client named stays the
+     * same account to the picker rather than becoming one it filters out. A replacement that registers no
+     * authenticator leaves all of it alone, as does a second pass over an intent already rewritten.
+     */
+    @SuppressWarnings("deprecation") // The typed getParcelableExtra overloads are API 33 and up.
+    private static void offerReplacementAccounts(Intent intent) {
+        AccountManager accountManager = accounts();
+        if (accountManager == null) return;
+        String type = targetAccountType(accountManager);
+        if (type == null) return;
+        String[] types = intent.getStringArrayExtra(EXTRA_ALLOWABLE_ACCOUNT_TYPES);
+        if (types == null) return;
+        boolean named = false;
+        String[] offered = new String[types.length];
+        for (int i = 0; i < types.length; i++) {
+            named |= GOOGLE_ACCOUNT_TYPE.equals(types[i]);
+            offered[i] = GOOGLE_ACCOUNT_TYPE.equals(types[i]) ? type : types[i];
+        }
+        if (!named) return;
+        XLog.d(TAG, "Offering the picker " + targetGms + "'s " + type + " accounts in place of Google's");
+        intent.putExtra(EXTRA_ALLOWABLE_ACCOUNT_TYPES, offered);
+        Object selected = intent.getParcelableExtra(EXTRA_SELECTED_ACCOUNT);
+        if (selected instanceof Account) {
+            Account account = (Account) selected;
+            if (GOOGLE_ACCOUNT_TYPE.equals(account.type)) {
+                intent.putExtra(EXTRA_SELECTED_ACCOUNT, new Account(account.name, type));
+            }
+        }
+        ArrayList<Account> allowable = intent.getParcelableArrayListExtra(EXTRA_ALLOWABLE_ACCOUNTS);
+        if (allowable == null) return;
+        ArrayList<Account> retyped = new ArrayList<>(allowable.size());
+        for (Account account : allowable) {
+            retyped.add(GOOGLE_ACCOUNT_TYPE.equals(account.type) ? new Account(account.name, type) : account);
+        }
+        intent.putExtra(EXTRA_ALLOWABLE_ACCOUNTS, retyped);
+    }
+
+    /** The account manager, or null before {@link #activate} or where the app cannot have one. */
+    private static AccountManager accounts() {
+        try {
+            return appContext == null ? null : AccountManager.get(appContext);
+        } catch (Throwable t) {
+            Log.e(TAG, "No account manager for " + selfPackage, t);
+            return null;
         }
     }
 
@@ -448,14 +519,9 @@ public class GmsRedirector {
             XposedBridge.hookAllMethods(Intent.class, "setPackage", new XC_MethodHook() {
                 @Override
                 protected void beforeHookedMethod(MethodHookParam param) {
-                    Intent intent = (Intent) param.thisObject;
-                    // Defense for the specific ordering of "setAction(CHOOSE_ACCOUNT)" before "setPackage(...)".
-                    // The reverse sequence ("setPackage" before "setAction") is guarded by hookIntentSetAction's
-                    // afterHookedMethod and final egress in hookActivityStart.
-                    if (isChooseAccountAction(intent.getAction())) {
-                        param.args[0] = null;
-                        return;
-                    }
+                    // CHOOSE_ACCOUNT needs no special case here: whichever order the action and the package are
+                    // set in, routeChooseAccount runs in the afterHookedMethod of both setters and addresses the
+                    // intent itself. Blanking the package here only decided that question twice.
                     String pkg = (String) param.args[0];
                     String redirected = redirectPackage(pkg);
                     if (redirected != null) param.args[0] = redirected;
@@ -464,7 +530,7 @@ public class GmsRedirector {
                 @Override
                 protected void afterHookedMethod(MethodHookParam param) {
                     Intent intent = (Intent) param.thisObject;
-                    routeChooseAccountToSystem(intent);
+                    routeChooseAccount(intent);
                     keepSelfAction(intent);
                     keepPushWithGms(intent);
                 }
@@ -491,7 +557,7 @@ public class GmsRedirector {
                 @Override
                 protected void afterHookedMethod(MethodHookParam param) {
                     Intent intent = (Intent) param.thisObject;
-                    routeChooseAccountToSystem(intent);
+                    routeChooseAccount(intent);
                     keepSelfAction(intent);
                     keepPushWithGms(intent);
                 }
@@ -534,7 +600,7 @@ public class GmsRedirector {
                 @Override
                 protected void afterHookedMethod(MethodHookParam param) {
                     Intent intent = (Intent) param.thisObject;
-                    routeChooseAccountToSystem(intent);
+                    routeChooseAccount(intent);
                     keepSelfAction(intent);
                     keepPushWithGms(intent);
                 }
@@ -605,7 +671,7 @@ public class GmsRedirector {
                             intent.setAction(redirectedAction);
                         }
                     }
-                    routeChooseAccountToSystem(intent);
+                    routeChooseAccount(intent);
                     keepSelfAction(intent);
                     keepPushWithGms(intent);
                 }
@@ -623,7 +689,7 @@ public class GmsRedirector {
      * {@link #hookEgress} reaches the same calls through {@code Instrumentation}, which is where both of these
      * end up in AOSP, and does more there. This stays because it does not depend on that being where they end
      * up: routing CHOOSE_ACCOUNT is what keeps the account picker from being asked of a build that cannot show
-     * it, and {@code routeChooseAccountToSystem} is unchanged by being applied twice.
+     * it, and {@code routeChooseAccount} is unchanged by being applied twice.
      */
     private static void hookActivityStart() {
         try {
@@ -633,7 +699,7 @@ public class GmsRedirector {
                     if (param.args == null) return;
                     for (Object arg : param.args) {
                         if (arg instanceof Intent) {
-                            routeChooseAccountToSystem((Intent) arg);
+                            routeChooseAccount((Intent) arg);
                             break;
                         }
                     }
@@ -725,7 +791,7 @@ public class GmsRedirector {
             keepSelfAction(intent);
         }
         keepPushWithGms(intent);
-        routeChooseAccountToSystem(intent);
+        routeChooseAccount(intent);
     }
 
     /**
@@ -735,7 +801,8 @@ public class GmsRedirector {
     private static boolean unwrapChimera(Intent intent) {
         if (!CHIMERA_BOUND_SERVICE.equals(XposedHelpers.getObjectField(intent, "mAction"))) return false;
         ComponentName cn = intent.getComponent();
-        if (cn == null || !(REAL_GMS.equals(cn.getPackageName()) || targetGms.equals(cn.getPackageName()))) return false;
+        if (cn == null) return false;
+        if (!REAL_GMS.equals(cn.getPackageName()) && !targetGms.equals(cn.getPackageName())) return false;
         Uri data = intent.getData();
         if (data == null || !CHIMERA_SCHEME.equals(data.getScheme())) return false;
         String action = data.getSchemeSpecificPart();
@@ -745,12 +812,34 @@ public class GmsRedirector {
             XposedHelpers.setObjectField(intent, "mComponent", new ComponentName(REAL_GMS, cn.getClassName()));
             return true;
         }
+        if (!servesChimeraAction(action)) {
+            // The replacement answers this API under neither name. Safebrowsing is the shape of it: nothing
+            // declares it by action at all, because Google Play services serves it from the very chimera
+            // component the client asked for. Unwrapping that addresses the replacement with an action it does
+            // not answer, so the binding is left as built -- Google's build answers it where it is installed,
+            // and where it is not, the binding fails exactly as the unwrapped one would have.
+            XLog.d(TAG, "Leaving chimera binding of " + action + " with " + REAL_GMS + ": " + targetGms
+                    + " does not serve it");
+            XposedHelpers.setObjectField(intent, "mComponent", new ComponentName(REAL_GMS, cn.getClassName()));
+            return true;
+        }
         XLog.d(TAG, "Unwrapping chimera binding of " + cn.getClassName() + " to " + action);
         XposedHelpers.setObjectField(intent, "mAction", action);
         XposedHelpers.setObjectField(intent, "mData", null);
         XposedHelpers.setObjectField(intent, "mComponent", null);
         XposedHelpers.setObjectField(intent, "mPackage", targetGms);
         return false;
+    }
+
+    /**
+     * Whether the replacement answers [action], under Google's name or under its own.
+     *
+     * Both are asked because a replacement does not rename consistently: it declares the sign-in services under
+     * Google's names and its phenotype service under its own, and a chimera binding is worth unwrapping if
+     * either of them lands.
+     */
+    private static boolean servesChimeraAction(String action) {
+        return declares(action) || redirectAction(action) != null;
     }
 
     private static final String GOOGLE_ACCOUNT_TYPE = "com.google";
