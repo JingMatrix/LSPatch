@@ -8,6 +8,7 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.pm.ProviderInfo;
 import android.net.Uri;
 import android.util.Log;
 
@@ -194,32 +195,59 @@ public class GmsRedirector {
     }
 
     private static final String GSF_PACKAGE = "com.google.android.gsf";
-    private static final String CHIMERA_AUTHORITY = REAL_GMS + ".chimera";
 
     /**
      * The authority to use in place of [authority], or null to leave it alone.
      *
      * Only a replacement that renamed its own namespaces serves these under its vendor; one that kept Google's
      * names registers them exactly as Google does, and rewriting them would address something nothing serves.
-     * Chimera is left to Google in either case: no replacement provides Dynamite modules, so a rewrite there
-     * only breaks a lookup that would otherwise be answered.
+     *
+     * Which of them a renamed build serves is asked of it, exactly as {@link #redirectAction} asks about
+     * actions, and for the same reason: builds disagree, and a list written here is a list that goes stale.
+     * An authority it does not register is left with Google -- where Google Play services is installed
+     * alongside it, as keeping pushes requires, that lookup is answered rather than failing.
      */
     static String redirectAuthority(String authority) {
         if (authority == null) return null;
-        if (CHIMERA_AUTHORITY.equals(authority)) return null;
         String vendor = Constants.gmsReplacementVendor(targetGms);
         if (vendor == null) return null;
+        String renamed;
         if (authority.equals(REAL_GMS)) {
-            return targetGms;
+            renamed = targetGms;
+        } else if (authority.startsWith(REAL_GMS + ".")) {
+            renamed = targetGms + authority.substring(REAL_GMS.length());
+        } else if (authority.startsWith(GSF_PACKAGE)) {
+            // The gsf authorities keep their own segment under the replacement's vendor.
+            renamed = vendor + authority.substring("com.google".length());
+        } else {
+            return null;
         }
-        if (authority.startsWith(REAL_GMS + ".")) {
-            return targetGms + authority.substring(REAL_GMS.length());
+        return declaresAuthority(renamed) ? renamed : null;
+    }
+
+    /** Whether the replacement registers each renamed authority, asked once per authority. */
+    private static final Map<String, Boolean> declaredAuthorities = new ConcurrentHashMap<>();
+
+    /**
+     * Whether [authority] is registered by a provider of the replacement.
+     *
+     * A failed or unanswered query counts as not registered, which leaves Google's authority in place: the
+     * same reading {@link #declares} gives an action it cannot confirm.
+     */
+    private static boolean declaresAuthority(String authority) {
+        Boolean known = declaredAuthorities.get(authority);
+        if (known != null) return known;
+        boolean found;
+        try {
+            ProviderInfo provider = packageManager.resolveContentProvider(authority, 0);
+            found = provider != null && targetGms.equals(provider.packageName);
+        } catch (Throwable t) {
+            Log.e(TAG, "Failed to ask " + targetGms + " for " + authority, t);
+            found = false;
         }
-        // The gsf authorities keep their own segment under the replacement's vendor.
-        if (authority.startsWith(GSF_PACKAGE)) {
-            return vendor + authority.substring("com.google".length());
-        }
-        return null;
+        declaredAuthorities.put(authority, found);
+        XLog.d(TAG, authority + (found ? " is" : " is not") + " registered by " + targetGms);
+        return found;
     }
 
     private static final String CHOOSE_ACCOUNT_ACTION =
@@ -727,11 +755,12 @@ public class GmsRedirector {
      * which is every way an app hands an intent to the framework short of a {@code PendingIntent} -- one the
      * framework sends on the app's behalf later, and whose intent the setter hooks have already seen.
      *
-     * This is also the only place a chimera binding can be seen whole. A recent client library asks Google Play
-     * services' chimera provider for the component implementing an API, then binds that component directly with
-     * {@code BoundService.START} and the API's own action carried as {@code chimera-action:<action>}. A replacement
-     * has no such components, so the binding is turned back into the API's own action, addressed to the
-     * replacement's package.
+     * This is also the only place a chimera binding can be seen whole. A recent client library asks the chimera
+     * provider for the component implementing an API, then binds that component directly with
+     * {@code BoundService.START} and the API's own action carried as {@code chimera-action:<action>}. Where the
+     * replacement registers a chimera provider of its own, {@link #redirectAuthority} sends that lookup to it and
+     * the component it answers with is bound as it stands. Where it registers none, the lookup is Google's to
+     * answer and comes back with Google's own components, which have to be turned back into the API's own action.
      */
     private static void hookEgress() {
         XC_MethodHook hook = new XC_MethodHook() {
@@ -798,14 +827,24 @@ public class GmsRedirector {
     }
 
     /**
-     * Turns a chimera binding into the API's own action, addressed to the replacement. Returns true for one that
-     * stays with Google Play services, which is then left exactly as the client built it.
+     * Turns a chimera binding Google Play services' own provider answered with into the API's own action,
+     * addressed to the replacement. Returns true for one that stays with Google Play services, which is then
+     * left exactly as the client built it.
+     *
+     * Only reached by a replacement that registers no chimera provider: where it registers one,
+     * {@link #redirectAuthority} sends the lookup there and the client is handed a component of the
+     * replacement's own, which is bound directly and never comes through here.
      */
     private static boolean unwrapChimera(Intent intent) {
         if (!CHIMERA_BOUND_SERVICE.equals(XposedHelpers.getObjectField(intent, "mAction"))) return false;
         ComponentName cn = intent.getComponent();
         if (cn == null) return false;
         if (!REAL_GMS.equals(cn.getPackageName()) && !targetGms.equals(cn.getPackageName())) return false;
+        // Google's component, wherever its package field now points: a component redirect moves the package and
+        // leaves the class name alone, so Google's class name is what tells the two apart. A component the
+        // replacement's own chimera provider answered with carries the replacement's class name and is left to
+        // be bound as the client built it.
+        if (!cn.getClassName().startsWith(GOOGLE_NAMESPACE)) return false;
         Uri data = intent.getData();
         if (data == null || !CHIMERA_SCHEME.equals(data.getScheme())) return false;
         String action = data.getSchemeSpecificPart();
