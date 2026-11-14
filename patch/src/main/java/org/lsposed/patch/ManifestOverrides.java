@@ -83,6 +83,15 @@ public final class ManifestOverrides {
     public final String gmsReplacementPackage;
 
     /**
+     * Whether pushes stay with Google Play services while everything else goes to {@link #gmsReplacementPackage}.
+     *
+     * FCM does not check the caller's certificate, so Google Play services registers and delivers pushes for a
+     * re-signed app as it would for the original; on a device that has it, only what does check needs the
+     * replacement. The manifest then keeps its C2DM names, through which Google Play services delivers.
+     */
+    public final boolean keepPushWithGms;
+
+    /**
      * Whether to declare the original certificate as {@code fake-signature}, with {@code FAKE_PACKAGE_SIGNATURE}, for a
      * ROM with signature spoofing to report in place of LSPatch's. A replacement installed as Google Play services
      * itself reads no metadata of its own, so this is how that setup sees the original certificate. Only takes
@@ -99,6 +108,7 @@ public final class ManifestOverrides {
         this.addedPermissions = Collections.unmodifiableList(new ArrayList<>(b.addedPermissions));
         this.injectDocumentsProvider = b.injectDocumentsProvider;
         this.gmsReplacementPackage = b.gmsReplacementPackage;
+        this.keepPushWithGms = b.keepPushWithGms;
         this.declareFakeSignature = b.declareFakeSignature;
     }
 
@@ -107,7 +117,7 @@ public final class ManifestOverrides {
         return versionCode == null && label == null && targetSdkVersion == null
                 && extractNativeLibs == null && usesCleartextTraffic == null
                 && addedPermissions.isEmpty() && !injectDocumentsProvider && gmsReplacementPackage == null
-                && !declareFakeSignature;
+                && !keepPushWithGms && !declareFakeSignature;
     }
 
     /**
@@ -148,6 +158,7 @@ public final class ManifestOverrides {
         private final LinkedHashSet<String> addedPermissions = new LinkedHashSet<>();
         private boolean injectDocumentsProvider;
         private String gmsReplacementPackage;
+        private boolean keepPushWithGms;
         private boolean declareFakeSignature;
 
         public Builder versionCode(Integer versionCode) {
@@ -199,6 +210,11 @@ public final class ManifestOverrides {
             this.gmsReplacementPackage = (gmsReplacementPackage != null && !gmsReplacementPackage.isEmpty())
                     ? gmsReplacementPackage
                     : null;
+            return this;
+        }
+
+        public Builder keepPushWithGms(boolean keepPushWithGms) {
+            this.keepPushWithGms = keepPushWithGms;
             return this;
         }
 

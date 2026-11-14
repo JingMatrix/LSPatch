@@ -86,6 +86,9 @@ public class LSPatch {
     @Parameter(names = {"--gms-replacement"}, description = "Redirect Google Play services calls and pushes to this replacement package (e.g. vendor.android.gms) and declare the original signature to it")
     private String gmsReplacementPackage = null;
 
+    @Parameter(names = {"--gms-keep-push"}, description = "With --gms-replacement, keep pushes with Google Play services and leave the manifest's C2DM names alone")
+    private boolean keepPushWithGms = false;
+
     @Parameter(names = {"--fake-signature"}, description = "Declare the original signature as fake-signature, for a ROM with signature spoofing")
     private boolean declareFakeSignature = false;
 
@@ -145,6 +148,7 @@ public class LSPatch {
                         .collect(Collectors.toList()))
                 .injectDocumentsProvider(injectDocumentsProvider)
                 .gmsReplacementPackage(gmsReplacementPackage)
+                .keepPushWithGms(keepPushWithGms)
                 .declareFakeSignature(declareFakeSignature)
                 .build();
         return PatchSpec.builder()

@@ -109,7 +109,12 @@ class NewPatchViewModel(private val token: String) : ViewModel() {
 
     fun setInjectDocumentsProvider(value: Boolean) = mutate { it.copy(injectDocumentsProvider = value) }
 
-    fun setGmsReplacementPackage(value: String?) = mutate { it.copy(gmsReplacementPackage = value) }
+    // Keeping pushes with Google Play services only means something while the rest goes to a replacement.
+    fun setGmsReplacementPackage(value: String?) = mutate {
+        it.copy(gmsReplacementPackage = value, keepPushWithGms = value != null && it.keepPushWithGms)
+    }
+
+    fun setKeepPushWithGms(value: Boolean) = mutate { it.copy(keepPushWithGms = value) }
 
     fun setDeclareFakeSignature(value: Boolean) = mutate { it.copy(declareFakeSignature = value) }
 

@@ -310,6 +310,8 @@
     <string name="patch_gms_redirect">转向替代实现</string>
     <string name="patch_gms_redirect_desc">运行时改写应用对 Google 的调用，永久改写清单中的推送名称，并向替代实现声明原始证书。</string>
     <string name="patch_gms_redirect_to">转向 %1$s</string>
+    <string name="patch_gms_keep_push">推送留给 Google Play 服务</string>
+    <string name="patch_gms_keep_push_desc">不改写清单中的推送名称，推送交给 Google Play 服务而不是替代实现。设备上须安装 Google Play 服务。</string>
     <string name="patch_gms_declare_only">仅声明证书</string>
     <string name="patch_gms_declare_only_desc">不转向，也不改推送名称 —— 适用于以 Google Play 服务自身包名安装的替代实现，由支持签名伪装的 ROM 上报证书。</string>
     <string name="patch_gms_pick">转向到哪个替代实现</string>

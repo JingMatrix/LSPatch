@@ -321,6 +321,8 @@
     <string name="patch_gms_redirect">Send to a replacement</string>
     <string name="patch_gms_redirect_desc">Rewrites the app’s Google calls at run time, renames its push names in the manifest for good, and declares the original certificate to the replacement.</string>
     <string name="patch_gms_redirect_to">Sent to %1$s</string>
+    <string name="patch_gms_keep_push">Keep pushes with Google Play services</string>
+    <string name="patch_gms_keep_push_desc">Leaves the push names in the manifest and sends pushes to Google Play services instead of the replacement. Google Play services must be installed.</string>
     <string name="patch_gms_declare_only">Declare certificate only</string>
     <string name="patch_gms_declare_only_desc">No redirect and no push rename — for a replacement installed as Google Play services itself, where a ROM with signature spoofing reports the certificate.</string>
     <string name="patch_gms_pick">Replacement to send to</string>

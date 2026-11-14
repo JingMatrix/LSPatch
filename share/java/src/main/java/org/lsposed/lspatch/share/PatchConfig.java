@@ -42,6 +42,12 @@ public class PatchConfig {
      */
     public final String gmsReplacementPackage;
 
+    /**
+     * Whether pushes stay with Google Play services while everything else goes to {@link #gmsReplacementPackage}.
+     * Read by the loader, and recorded for the same reason as {@link #addedPermissions}.
+     */
+    public final boolean keepPushWithGms;
+
     /** Whether {@code fake-signature} was declared. Recorded for the same reason as {@link #addedPermissions}. */
     public final boolean declareFakeSignature;
 
@@ -66,6 +72,7 @@ public class PatchConfig {
             String[] addedPermissions,
             boolean injectDocumentsProvider,
             String gmsReplacementPackage,
+            boolean keepPushWithGms,
             boolean declareFakeSignature,
             String managerPackageName
     ) {
@@ -81,6 +88,7 @@ public class PatchConfig {
         this.gmsReplacementPackage = (gmsReplacementPackage != null && !gmsReplacementPackage.isEmpty())
                 ? gmsReplacementPackage
                 : null;
+        this.keepPushWithGms = keepPushWithGms;
         this.declareFakeSignature = declareFakeSignature;
         if (useManager) {
             this.managerPackageName = (managerPackageName != null && !managerPackageName.isEmpty())

@@ -61,6 +61,7 @@ import androidx.compose.material.icons.rounded.MoreVert
 import androidx.compose.material.icons.rounded.RemoveModerator
 import androidx.compose.material.icons.rounded.Share
 import androidx.compose.material.icons.rounded.Smartphone
+import androidx.compose.material.icons.rounded.NotificationsActive
 import androidx.compose.material.icons.rounded.SwapHoriz
 import androidx.compose.material.icons.rounded.Terminal
 import androidx.compose.material.icons.rounded.Tune
@@ -346,6 +347,7 @@ fun NewPatchScreen(navigator: Navigator, token: String) {
                         onInjectDocumentsProvider = viewModel::setInjectDocumentsProvider,
                         onSelectGmsReplacement = viewModel::setGmsReplacementPackage,
                         onDeclareFakeSignature = viewModel::setDeclareFakeSignature,
+                        onKeepPushWithGms = viewModel::setKeepPushWithGms,
                     )
                 else ->
                     Column(
@@ -395,6 +397,7 @@ private fun ConfigureBody(
     onInjectDocumentsProvider: (Boolean) -> Unit,
     onSelectGmsReplacement: (String?) -> Unit,
     onDeclareFakeSignature: (Boolean) -> Unit,
+    onKeepPushWithGms: (Boolean) -> Unit,
 ) {
     val scope = rememberCoroutineScope()
     val snackbarHost = LocalSnackbarHost.current
@@ -531,12 +534,14 @@ private fun ConfigureBody(
                 GmsSetting(
                     replacement = request.gmsReplacementPackage,
                     declareFakeSignature = request.declareFakeSignature,
+                    keepPushWithGms = request.keepPushWithGms,
                     needsPackageVisibility =
                         !request.mode.useManager && QUERY_ALL_PACKAGES !in request.addedPermissions,
                     onChange = { replacement, fake ->
                         onSelectGmsReplacement(replacement)
                         onDeclareFakeSignature(fake)
                     },
+                    onKeepPushWithGms = onKeepPushWithGms,
                     onAddPackageVisibility = { onAddPermission(QUERY_ALL_PACKAGES) },
                 )
                 ToggleRow(
@@ -806,6 +811,9 @@ private fun advancedChips(request: PatchRequest): List<OptionChipData> = buildLi
                 Icons.Rounded.SwapHoriz,
             )
         )
+    }
+    if (request.gmsReplacementPackage != null && request.keepPushWithGms) {
+        add(OptionChipData(stringResource(R.string.patch_gms_keep_push), true, Icons.Rounded.NotificationsActive))
     }
     if (request.declareFakeSignature) {
         add(OptionChipData(stringResource(R.string.patch_gms_declare_only), true, Icons.Rounded.VerifiedUser))

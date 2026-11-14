@@ -469,6 +469,12 @@ fun AppDetailScreen(navigator: Navigator, packageName: String) {
                                 stringResource(R.string.patch_gms_unchanged)
                             },
                     )
+                    if (config?.gmsReplacementPackage != null) {
+                        InfoRow(
+                            stringResource(R.string.patch_gms_keep_push),
+                            yesNo(config.keepPushWithGms),
+                        )
+                    }
                     // Manifest attributes, read from the installed manifest rather than the patch
                     // config: they are baked into the manifest at patch time and are not carried in the
                     // runtime config, so this reflects the app's actual manifest. Grouped and ordered to

@@ -310,6 +310,8 @@
     <string name="patch_gms_redirect">轉向替代實作</string>
     <string name="patch_gms_redirect_desc">執行時改寫應用對 Google 的呼叫，永久改寫清單中的推播名稱，並向替代實作宣告原始憑證。</string>
     <string name="patch_gms_redirect_to">轉向 %1$s</string>
+    <string name="patch_gms_keep_push">推播留給 Google Play 服務</string>
+    <string name="patch_gms_keep_push_desc">不改寫清單中的推播名稱，推播交給 Google Play 服務而不是替代實作。裝置上須安裝 Google Play 服務。</string>
     <string name="patch_gms_declare_only">僅宣告憑證</string>
     <string name="patch_gms_declare_only_desc">不轉向，也不改推播名稱 —— 適用於以 Google Play 服務自身套件名安裝的替代實作，由支援簽章偽裝的 ROM 回報憑證。</string>
     <string name="patch_gms_pick">轉向到哪個替代實作</string>

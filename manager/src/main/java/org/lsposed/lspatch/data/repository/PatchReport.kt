@@ -61,6 +61,7 @@ object PatchReport {
         )
         add("Docs provider ${request.injectDocumentsProvider}")
         add("GMS target   ${request.gmsReplacementPackage ?: "none"}")
+        add("Push to GMS  ${request.keepPushWithGms}")
         add("Fake sig     ${request.declareFakeSignature}")
         add("Keystore     ${if (MyKeyStore.useDefault) "built-in" else "custom (${MyKeyStore.file.name})"}")
         add("Verbose      ${Configs.detailPatchLogs}")

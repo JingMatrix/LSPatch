@@ -128,6 +128,7 @@ object LocalAppsUpdater {
                     .permissions(config.addedPermissions?.toList() ?: emptyList())
                     .injectDocumentsProvider(config.injectDocumentsProvider)
                     .gmsReplacementPackage(config.gmsReplacementPackage)
+                    .keepPushWithGms(config.gmsReplacementPackage != null && config.keepPushWithGms)
                     .declareFakeSignature(config.declareFakeSignature)
                     .build()
             )
