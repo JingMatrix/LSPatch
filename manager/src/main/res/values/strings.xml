@@ -100,6 +100,7 @@
     <string name="patch_sigbypasslv3">+ Raw syscalls: catches apk reads that bypass libc. Patches native code, so an app that verifies its own code may flag it as tampered — prefer level 2 unless it is not enough.</string>
     <string name="patch_return">Return</string>
     <string name="patch_uninstall_text">The installed app is signed differently, so it must be uninstalled first — for every user that has it, because one app carries one signature for the whole device. Its data will be lost in each of them — back up anything you need before continuing.</string>
+    <string name="patch_uninstall_other_users">%1$s was removed for this user but is still on record: another user has it, or its data was kept. One app carries one signature for the whole device, so a patched build cannot replace it while that record stands. Removing it everywhere needs Shizuku, or adb: pm uninstall %1$s</string>
     <string name="patch_install_successfully">Installed</string>
     <string name="patch_install_hint_shizuku">Ready to install silently through Shizuku.</string>
     <string name="patch_install_hint_system">Ready to install. Your system will ask you to confirm.</string>

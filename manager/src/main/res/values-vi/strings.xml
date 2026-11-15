@@ -96,6 +96,7 @@
     <string name="patch_sigbypasslv3">+ Lời gọi hệ thống thô: bắt các lần đọc apk vượt qua libc. Vá mã native, nên ứng dụng tự kiểm tra mã của mình có thể coi đó là bị can thiệp — ưu tiên cấp 2 khi vẫn đủ dùng.</string>
     <string name="patch_return">Quay lại</string>
     <string name="patch_uninstall_text">Ứng dụng đã cài có chữ ký khác, nên phải gỡ trước — ở mọi người dùng đang có nó, vì một ứng dụng chỉ mang một chữ ký trên toàn thiết bị. Dữ liệu của nó sẽ mất ở từng người dùng — hãy sao lưu những gì bạn cần trước khi tiếp tục.</string>
+    <string name="patch_uninstall_other_users">%1$s đã được gỡ cho người dùng này nhưng vẫn còn trong hồ sơ: người dùng khác đang có nó, hoặc dữ liệu của nó được giữ lại. Một ứng dụng chỉ mang một chữ ký trên toàn thiết bị, nên bản đã vá không thể thay thế nó khi hồ sơ đó còn. Gỡ nó ở mọi nơi cần Shizuku, hoặc adb: pm uninstall %1$s</string>
     <string name="patch_install_successfully">Đã cài đặt</string>
     <string name="patch_install_hint_shizuku">Sẵn sàng cài đặt ngầm qua Shizuku.</string>
     <string name="patch_install_hint_system">Sẵn sàng cài đặt. Hệ thống sẽ yêu cầu bạn xác nhận.</string>

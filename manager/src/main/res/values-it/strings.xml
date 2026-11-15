@@ -96,6 +96,7 @@
     <string name="patch_sigbypasslv3">+ Syscall grezze: intercetta le letture dell\'apk che aggirano libc. Modifica il codice nativo, quindi le app che verificano il proprio codice possono rilevarlo come manomesso — preferisci il livello 2 salvo quando non basta.</string>
     <string name="patch_return">Torna</string>
     <string name="patch_uninstall_text">L\'app installata è firmata in modo diverso, quindi va prima disinstallata — per ogni utente che la possiede, perché un\'app porta una sola firma sull\'intero dispositivo. I suoi dati andranno persi per ciascuno di essi: esegui il backup di ciò che ti serve prima di continuare.</string>
+    <string name="patch_uninstall_other_users">%1$s è stata disinstallata per questo utente ma risulta ancora registrata: ce l\'ha un altro utente, oppure i suoi dati sono stati conservati. Un\'app porta una sola firma sull\'intero dispositivo, quindi una versione con patch non può sostituirla finché quella registrazione resta. Per rimuoverla ovunque serve Shizuku, o adb: pm uninstall %1$s</string>
     <string name="patch_install_successfully">Installato</string>
     <string name="patch_install_hint_shizuku">Pronto per l\'installazione silenziosa tramite Shizuku.</string>
     <string name="patch_install_hint_system">Pronto per l\'installazione. Il sistema ti chiederà conferma.</string>

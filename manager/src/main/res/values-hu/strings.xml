@@ -96,6 +96,7 @@
     <string name="patch_sigbypasslv3">+ Nyers rendszerhívások: elkapja a libc-t megkerülő apk-olvasásokat. Javítja a natív kódot, így egy alkalmazás, amely a saját kódját ellenőrzi, megjelölheti azt manipuláltként — a 2. szint a megfelelő, kivéve, ha az nem elég.</string>
     <string name="patch_return">Visszatérés</string>
     <string name="patch_uninstall_text">A telepített alkalmazás másképp van aláírva, ezért először el kell távolítani – minden felhasználónál, akinél megvan, mert egy alkalmazás az egész eszközön egyetlen aláírást visel. Az adatai mindegyiküknél elvesznek – a folytatás előtt készítsen biztonsági másolatot mindenről, amire szüksége van.</string>
+    <string name="patch_uninstall_other_users">A(z) %1$s el lett távolítva ennél a felhasználónál, de még szerepel a nyilvántartásban: megvan egy másik felhasználónál, vagy megmaradtak az adatai. Egy alkalmazás az egész eszközön egyetlen aláírást visel, így a módosított változat nem léphet a helyébe, amíg ez a bejegyzés fennáll. A mindenhonnan való eltávolításhoz Shizuku kell, vagy adb: pm uninstall %1$s</string>
     <string name="patch_install_successfully">Telepítve</string>
     <string name="patch_install_hint_shizuku">Készen áll a csendes telepítésre Shizuku-n keresztül.</string>
     <string name="patch_install_hint_system">Telepítésre kész. A rendszer megerősítést kér majd.</string>

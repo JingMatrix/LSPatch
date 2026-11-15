@@ -96,6 +96,7 @@
     <string name="patch_sigbypasslv3">+ Rohe Syscalls: erfasst APK-Zugriffe, die libc umgehen. Patcht nativen Code, daher kann eine App, die ihren eigenen Code prüft, dies als Manipulation erkennen — bevorzuge Stufe 2, sofern sie ausreicht.</string>
     <string name="patch_return">Zurück</string>
     <string name="patch_uninstall_text">Die installierte App ist anders signiert und muss daher zuerst deinstalliert werden – für jeden Benutzer, der sie hat, denn eine App trägt geräteweit nur eine Signatur. Ihre Daten gehen bei jedem davon verloren – sichere alles, was du brauchst, bevor du fortfährst.</string>
+    <string name="patch_uninstall_other_users">%1$s wurde für diesen Benutzer entfernt, ist aber weiterhin registriert: ein anderer Benutzer hat die App, oder ihre Daten wurden behalten. Eine App trägt geräteweit nur eine Signatur, daher kann eine gepatchte Version sie nicht ersetzen, solange dieser Eintrag besteht. Sie überall zu entfernen erfordert Shizuku oder adb: pm uninstall %1$s</string>
     <string name="patch_install_successfully">Installiert</string>
     <string name="patch_install_hint_shizuku">Bereit zur stillen Installation über Shizuku.</string>
     <string name="patch_install_hint_system">Bereit zur Installation. Dein System wird eine Bestätigung anfordern.</string>

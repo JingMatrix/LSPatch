@@ -784,7 +784,7 @@ object ShizukuApi {
      * view, and leaves the install it was performed for impossible.
      *
      * The flagged overload is hidden rather than absent, so it is called reflectively; a platform without it falls
-     * back to the single-user call, which is what this did before. Throws like the session above, and for the reason.
+     * back to the single-user call, which clears it here only. Throws like the session above, and for the reason.
      */
     fun uninstallPackage(packageName: String, intentSender: IntentSender) {
         try {

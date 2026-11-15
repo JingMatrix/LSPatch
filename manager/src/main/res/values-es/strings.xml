@@ -96,6 +96,7 @@
     <string name="patch_sigbypasslv3">+ Syscalls sin procesar: detecta lecturas del apk que evitan libc. Modifica el código nativo, por lo que una app que verifica su propio código puede detectarlo como manipulado — prefiere el nivel 2 mientras baste.</string>
     <string name="patch_return">Volver</string>
     <string name="patch_uninstall_text">La aplicación instalada está firmada de otra forma, así que primero debes desinstalarla, y en todos los usuarios que la tengan, porque una aplicación lleva una sola firma en todo el dispositivo. Sus datos se perderán en cada uno de ellos; haz una copia de seguridad de lo que necesites antes de continuar.</string>
+    <string name="patch_uninstall_other_users">%1$s se desinstaló para este usuario, pero sigue registrada: la tiene otro usuario o se conservaron sus datos. Una aplicación lleva una sola firma en todo el dispositivo, así que una versión parcheada no puede sustituirla mientras ese registro exista. Quitarla de todos los usuarios requiere Shizuku o adb: pm uninstall %1$s</string>
     <string name="patch_install_successfully">Instalada</string>
     <string name="patch_install_hint_shizuku">Listo para instalar silenciosamente a través de Shizuku.</string>
     <string name="patch_install_hint_system">Listo para instalar. Tu sistema te pedirá confirmación.</string>

@@ -42,6 +42,7 @@ import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
 import kotlinx.coroutines.withTimeoutOrNull
 import kotlinx.parcelize.Parcelize
+import org.lsposed.lspatch.R
 import org.lsposed.lspatch.config.ConfigManager
 import org.lsposed.lspatch.config.Configs
 import org.lsposed.lspatch.config.MyKeyStore
@@ -772,15 +773,17 @@ object LSPPackageManager {
         // The platform installer acts for the user that called it and has no flag for the others: an app
         // this user shares with a secondary user or a work profile is still on record afterwards, keeping
         // its certificate, and the install this uninstall was performed for would be refused with a bare
-        // INSTALL_FAILED_UPDATE_INCOMPATIBLE. Said here instead, where the reader can act on it.
-        val leftOver = knownPackage(packageName, 0) != null || signersOfSurvivingApk(recordedApks) != null
-        if (status == PackageInstaller.STATUS_SUCCESS && leftOver) {
+        // INSTALL_FAILED_UPDATE_INCOMPATIBLE. Said here instead, where the reader can act on it. Asked only
+        // of an uninstall that reported success: on any other outcome there is nothing to add, and the apk
+        // read below would name a survivor for a package nothing has removed.
+        val leftOver =
+            status == PackageInstaller.STATUS_SUCCESS &&
+                (knownPackage(packageName, 0) != null || signersOfSurvivingApk(recordedApks) != null)
+        if (leftOver) {
             status = PackageInstaller.STATUS_FAILURE
-            message =
-                "$packageName was removed for this user but is still on record: another user has it, or its " +
-                    "data was kept. One apk and one certificate serve every user, so a patched build cannot " +
-                    "replace it while that record stands. Removing it for all users needs Shizuku, or adb: " +
-                    "pm uninstall $packageName"
+            // Localised, unlike the platform's own status text above it: this one is the app speaking, and it
+            // is what the failure screen puts in front of the reader.
+            message = lspApp.getString(R.string.patch_uninstall_other_users, packageName)
         }
         Log.i(TAG, "System uninstall result: status=$status message=$message")
         return Pair(status, message)
@@ -809,7 +812,7 @@ object LSPPackageManager {
      *
      * [PackageManager.MATCH_UNINSTALLED_PACKAGES] covers one case the plain read does not: a package removed here
      * with its data kept, whose certificate is still on record. It does NOT reach a package that is installed in
-     * another user and not in this one -- measured on Android 16, where it answers nothing for exactly that state.
+     * another user and not in this one, for which it answers nothing.
      * Seeing another user's install needs MATCH_ANY_USER and INTERACT_ACROSS_USERS, which an app does not hold, so
      * that case is decided by [signersOfSurvivingApk] from the apk still on disk instead.
      */
@@ -832,7 +835,11 @@ object LSPPackageManager {
      * on either side does it fall back to [isInstalledWithoutPatch], so an undetermined case still errs toward asking
      * rather than firing an install Android will refuse.
      */
-    fun signatureBlocksUpdate(packageName: String, patchedApk: File, recordedApks: List<String> = emptyList()): Boolean {
+    fun signatureBlocksUpdate(
+        packageName: String,
+        patchedApk: File,
+        recordedApks: List<String> = emptyList(),
+    ): Boolean {
         val installed =
             installedSigners(packageName) ?: signersOfSurvivingApk(recordedApks) ?: return false
         val patched = archiveSigners(patchedApk)

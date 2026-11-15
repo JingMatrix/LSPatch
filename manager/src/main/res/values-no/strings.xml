@@ -96,6 +96,7 @@
     <string name="patch_sigbypasslv3">+ Rå syskalaer: Fangster leser det som omgår libc. Patches innebygd kode, så en app som bekrefter sin egen kode kan flagge den som endret — foretrekker nivå 2, med mindre den ikke er nok.</string>
     <string name="patch_return">Komme tilbake</string>
     <string name="patch_uninstall_text">Den installerte appen er signert annerledes, så den må avinstalleres først – for hver bruker som har den, fordi én app bærer én signatur for hele enheten. Dataene går tapt hos hver av dem – sikkerhetskopier det du trenger før du fortsetter.</string>
+    <string name="patch_uninstall_other_users">%1$s ble fjernet for denne brukeren, men står fortsatt registrert: en annen bruker har den, eller dataene ble beholdt. Én app bærer én signatur for hele enheten, så en patchet versjon kan ikke erstatte den så lenge registreringen står. Å fjerne den overalt krever Shizuku, eller adb: pm uninstall %1$s</string>
     <string name="patch_install_successfully">Installert</string>
     <string name="patch_install_hint_shizuku">Klar til å installere stille gjennom Shizuku.</string>
     <string name="patch_install_hint_system">Klar for installasjon. Systemet ditt vil be deg om å bekrefte.</string>

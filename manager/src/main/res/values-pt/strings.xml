@@ -96,6 +96,7 @@
     <string name="patch_sigbypasslv3">+ Raw syscalls: catches apk lê que ignora a libc. Corrige o código nativo, então um aplicativo que verifica seu próprio código pode sinalizar ele como adulterado — prefira o nível 2, a menos que ele não seja suficiente.</string>
     <string name="patch_return">Retornar</string>
     <string name="patch_uninstall_text">O aplicativo instalado está assinado de forma diferente, por isso precisa ser desinstalado primeiro — em todos os usuários que o têm, porque um aplicativo carrega uma única assinatura no dispositivo inteiro. Os dados dele serão perdidos em cada um deles — faça backup do que precisar antes de continuar.</string>
+    <string name="patch_uninstall_other_users">%1$s foi removido para este usuário, mas ainda consta no registro: outro usuário o tem, ou seus dados foram mantidos. Um aplicativo carrega uma única assinatura no dispositivo inteiro, então uma versão com patch não pode substituí-lo enquanto esse registro existir. Removê-lo de todos os usuários exige Shizuku, ou adb: pm uninstall %1$s</string>
     <string name="patch_install_successfully">Instalado</string>
     <string name="patch_install_hint_shizuku">Pronto para instalar silenciosamente através do Shizuku.</string>
     <string name="patch_install_hint_system">Pronto para instalar. Seu sistema pedirá que você confirme.</string>

@@ -96,6 +96,7 @@
     <string name="patch_sigbypasslv3">+ Rou stelseloproepe: vang apk-lesings wat libc omseil. Herstel oorspronklike kode, sodat \'n toepassing wat sy eie kode verifieer, dit as gepeuter kan merk — verkies vlak 2 tensy dit nie genoeg is nie.</string>
     <string name="patch_return">Keer terug</string>
     <string name="patch_uninstall_text">Die geïnstalleerde toepassing is anders geteken, so dit moet eers gedeïnstalleer word – vir elke gebruiker wat dit het, want een toepassing dra een handtekening vir die hele toestel. Die data daarvan sal by elkeen verlore gaan – rugsteun enigiets wat jy nodig het voordat jy voortgaan.</string>
+    <string name="patch_uninstall_other_users">%1$s is vir hierdie gebruiker verwyder, maar staan steeds op rekord: \'n ander gebruiker het dit, of sy data is behou. Een toepassing dra een handtekening vir die hele toestel, so \'n gelapte weergawe kan dit nie vervang solank daardie rekord staan nie. Om dit oral te verwyder verg Shizuku, of adb: pm uninstall %1$s</string>
     <string name="patch_install_successfully">Geïnstalleer</string>
     <string name="patch_install_hint_shizuku">Gereed om stilweg deur Shizuku te installeer.</string>
     <string name="patch_install_hint_system">Gereed om te installeer. Jou stelsel sal jou vra om te bevestig.</string>

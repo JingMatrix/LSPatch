@@ -96,6 +96,7 @@
     <string name="patch_sigbypasslv3">+ Crides de sistema en brut: detecta lectures d\'apk que ignoren libc. Aplica pegats al codi natiu, de manera que una aplicació que verifica el seu propi codi el pot marcar com a manipulat; preferiblement el nivell 2 tret que no sigui suficient.</string>
     <string name="patch_return">Tornar</string>
     <string name="patch_uninstall_text">L\'aplicació instal·lada té una signatura diferent, per la qual cosa primer s\'ha de desinstal·lar, i per a cada usuari que la tingui, perquè una aplicació porta una sola signatura per a tot el dispositiu. Les seves dades es perdran a cadascun; fes una còpia de seguretat de tot el que necessitis abans de continuar.</string>
+    <string name="patch_uninstall_other_users">%1$s s\'ha desinstal·lat per a aquest usuari, però encara hi consta: el té un altre usuari, o se n\'han conservat les dades. Una aplicació porta una sola signatura per a tot el dispositiu, de manera que una versió modificada no la pot substituir mentre hi consti. Per treure-la de tot arreu cal Shizuku, o adb: pm uninstall %1$s</string>
     <string name="patch_install_successfully">Instal·lat</string>
     <string name="patch_install_hint_shizuku">Llest per instal·lar-se silenciosament a través de Shizuku.</string>
     <string name="patch_install_hint_system">Llest per instal·lar. El sistema us demanarà que confirmeu.</string>

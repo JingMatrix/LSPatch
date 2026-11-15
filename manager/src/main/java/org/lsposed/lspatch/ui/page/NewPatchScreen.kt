@@ -1484,7 +1484,7 @@ private fun PatchBar(
                             // installed in another user and not in this one, which no query shows.
                             LSPPackageManager.keystoreConflictsWith(
                                 request.packageName,
-                                (request.target as? PatchTarget.InstalledApp)?.apkPaths.orEmpty(),
+                                request.target.systemOwnedApks,
                             )
                         }
                     Text(

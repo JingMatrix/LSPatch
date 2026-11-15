@@ -96,6 +96,7 @@
     <string name="patch_sigbypasslv3">+ 原始系統呼叫：捕捉繞過 libc 的 apk 讀取。會修改原生程式碼，因此會驗證自身程式碼的應用程式可能將其判定為遭竄改 — 夠用時建議使用等級 2。</string>
     <string name="patch_return">返回</string>
     <string name="patch_uninstall_text">已安裝的應用程式簽章不同，必須先解除安裝；一個應用程式在整部裝置上只有一個簽章，因此每個擁有它的使用者都要解除安裝。各使用者的資料都會遺失 — 繼續前請備份需要保留的內容。</string>
+    <string name="patch_uninstall_other_users">%1$s 已為目前使用者解除安裝，但記錄仍在：另一個使用者裝有它，或其資料被保留。一個應用程式在整部裝置上只有一個簽章，只要該記錄還在，修補後的版本就無法取代它。要完全移除需要 Shizuku，或使用 adb：pm uninstall %1$s</string>
     <string name="patch_install_successfully">已安裝</string>
     <string name="patch_install_hint_shizuku">可透過 Shizuku 靜默安裝。</string>
     <string name="patch_install_hint_system">準備安裝。系統將要求你確認。</string>

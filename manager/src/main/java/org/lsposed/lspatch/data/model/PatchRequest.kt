@@ -9,6 +9,16 @@ sealed interface PatchTarget {
     /** Every apk of the target, base first. */
     val apkPaths: List<String>
 
+    /**
+     * The apks the package manager itself named, or nothing when they are not its.
+     *
+     * Only an installed app's paths say anything about what is installed: the other targets' paths are copies this
+     * manager made, which exist whatever the device has. Being the system's, they are what recognises an app
+     * installed in another user and not in this one, a state no query an ordinary app may make reports.
+     */
+    val systemOwnedApks: List<String>
+        get() = (this as? InstalledApp)?.apkPaths.orEmpty()
+
     /** An app already on the device, patched from its installed apks. */
     data class InstalledApp(
         override val packageName: String,

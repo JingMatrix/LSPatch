@@ -215,7 +215,7 @@ object PatchJobHost {
                     android.util.Log.INFO,
                     "Install: ${files.size} apk(s) via ${if (useShizuku) "Shizuku shell" else "platform installer"}",
                 )
-                val recordedApks = systemOwnedApks(request)
+                val recordedApks = request.target.systemOwnedApks
                 if (!uninstallFirst && needsUninstall(pkg, files, recordedApks)) {
                     // Worth recording even though it is not a failure: it is the moment the flow stops
                     // and waits, and a report that skips it looks like one that simply ended.
@@ -281,7 +281,10 @@ object PatchJobHost {
                     ConfigManager.clearScopeForApp(pkg)
 
                     _step.value = PatchStep.Uninstalling(pkg)
-                    val (uninstallStatus, uninstallMessage) = uninstall(pkg, useShizuku)
+                    // Read while the app is still here: restoring the original installs a differently signed
+                    // build over it, so this path needs the same evidence a fresh patch does.
+                    val recordedApks = LSPPackageManager.installedApkPaths(pkg).orEmpty()
+                    val (uninstallStatus, uninstallMessage) = uninstall(pkg, useShizuku, recordedApks)
                     append(statusLevel(uninstallStatus), "Uninstall: ${describe(uninstallStatus, uninstallMessage)}")
                     if (uninstallStatus != PackageInstaller.STATUS_SUCCESS) {
                         throw java.io.IOException(uninstallMessage ?: "Uninstall failed")
@@ -355,20 +358,10 @@ object PatchJobHost {
     private fun needsUninstall(packageName: String, files: List<File>, recordedApks: List<String>): Boolean =
         files.firstOrNull()?.let { LSPPackageManager.signatureBlocksUpdate(packageName, it, recordedApks) } ?: false
 
-    /**
-     * The target's apks as the PACKAGE MANAGER named them, or nothing when they are not its.
-     *
-     * Only an installed app's paths say anything about what is installed: the other targets' paths are copies this
-     * manager made, which exist whatever the device has. They are passed on so that an app installed in another user
-     * and not in this one -- invisible to every query an app may make -- is still recognised.
-     */
-    private fun systemOwnedApks(request: PatchRequest): List<String> =
-        (request.target as? PatchTarget.InstalledApp)?.apkPaths.orEmpty()
-
     private suspend fun uninstall(
         packageName: String,
         useShizuku: Boolean,
-        recordedApks: List<String> = emptyList(),
+        recordedApks: List<String>,
     ): Pair<Int, String?> =
         if (useShizuku) {
             LSPPackageManager.uninstall(packageName)

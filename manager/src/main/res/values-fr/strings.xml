@@ -96,6 +96,7 @@
     <string name="patch_sigbypasslv3">+ Appels système bruts : capte les lectures d\'apk qui contournent libc. Modifie le code natif, donc une app qui vérifie son propre code peut le détecter comme falsifié — préférez le niveau 2 sauf lorsque cela ne suffit pas.</string>
     <string name="patch_return">Retour</string>
     <string name="patch_uninstall_text">L\'application installée est signée différemment : elle doit d\'abord être désinstallée, et pour chaque utilisateur qui la possède, car une application ne porte qu\'une seule signature sur tout l\'appareil. Ses données seront perdues chez chacun d\'eux — sauvegardez ce dont vous avez besoin avant de continuer.</string>
+    <string name="patch_uninstall_other_users">%1$s a été désinstallée pour cet utilisateur mais reste enregistrée : un autre utilisateur la possède, ou ses données ont été conservées. Une application ne porte qu\'une seule signature sur tout l\'appareil, donc une version patchée ne peut pas la remplacer tant que cet enregistrement subsiste. La retirer partout nécessite Shizuku, ou adb : pm uninstall %1$s</string>
     <string name="patch_install_successfully">Installée</string>
     <string name="patch_install_hint_shizuku">Prêt à installer silencieusement via Shizuku.</string>
     <string name="patch_install_hint_system">Prêt à installer. Votre système vous demandera de confirmer.</string>

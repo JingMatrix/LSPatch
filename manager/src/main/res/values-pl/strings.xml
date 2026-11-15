@@ -96,6 +96,7 @@
     <string name="patch_sigbypasslv3">+ Surowe wywołania systemowe: wykrywa odczyty apk omijające libc. Modyfikuje kod natywny, więc aplikacja sprawdzająca własny kod może uznać to za naruszenie — preferuj poziom 2, o ile wystarcza.</string>
     <string name="patch_return">Wróć</string>
     <string name="patch_uninstall_text">Zainstalowana aplikacja jest podpisana inaczej, więc trzeba ją najpierw odinstalować — u każdego użytkownika, który ją ma, ponieważ jedna aplikacja ma jeden podpis na całym urządzeniu. Jej dane zostaną utracone u każdego z nich — przed kontynuowaniem wykonaj kopię zapasową tego, czego potrzebujesz.</string>
+    <string name="patch_uninstall_other_users">%1$s została odinstalowana dla tego użytkownika, ale nadal figuruje w rejestrze: ma ją inny użytkownik albo zachowano jej dane. Jedna aplikacja ma jeden podpis na całym urządzeniu, więc spatchowana wersja nie może jej zastąpić, dopóki ten wpis istnieje. Usunięcie jej wszędzie wymaga Shizuku lub adb: pm uninstall %1$s</string>
     <string name="patch_install_successfully">Zainstalowano</string>
     <string name="patch_install_hint_shizuku">Gotowe do cichej instalacji przez Shizuku.</string>
     <string name="patch_install_hint_system">Gotowe do instalacji. System poprosi o potwierdzenie.</string>

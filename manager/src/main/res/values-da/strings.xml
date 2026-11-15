@@ -96,6 +96,7 @@
     <string name="patch_sigbypasslv3">+ Rå syscalls: fangster apk læser, der omgår libc. Rettelser native kode, så en app, der verificerer sin egen kode kan markere det som manipuleret — foretrækker niveau 2, medmindre det ikke er nok.</string>
     <string name="patch_return">Vend tilbage</string>
     <string name="patch_uninstall_text">Den installerede app er signeret anderledes, så den skal afinstalleres først – for hver bruger, der har den, fordi én app bærer én signatur for hele enheden. Dens data går tabt hos hver af dem – sikkerhedskopiér det, du har brug for, før du fortsætter.</string>
+    <string name="patch_uninstall_other_users">%1$s blev fjernet for denne bruger, men står stadig registreret: en anden bruger har den, eller dens data blev beholdt. Én app bærer én signatur for hele enheden, så en patchet version kan ikke erstatte den, så længe registreringen står. At fjerne den overalt kræver Shizuku eller adb: pm uninstall %1$s</string>
     <string name="patch_install_successfully">Installeret</string>
     <string name="patch_install_hint_shizuku">Klar til at installere lydløst gennem Shizuku.</string>
     <string name="patch_install_hint_system">Klar til installation. Dit system vil bede dig om at bekræfte.</string>

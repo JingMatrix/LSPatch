@@ -96,6 +96,7 @@
     <string name="patch_sigbypasslv3">+ Raaka syscalls: saaliit apk lukee, että ohittaa libc. Paikkaa natiivi koodi, joten sovellus, joka vahvistaa oman koodin, voi merkitä sen peukaloksi – mieluummin taso 2, ellei se riitä.</string>
     <string name="patch_return">Palata</string>
     <string name="patch_uninstall_text">Asennettu sovellus on allekirjoitettu eri tavalla, joten se täytyy poistaa ensin – jokaiselta käyttäjältä, jolla se on, koska yhdellä sovelluksella on koko laitteessa vain yksi allekirjoitus. Sen tiedot katoavat jokaiselta heistä – varmuuskopioi tarvitsemasi ennen jatkamista.</string>
+    <string name="patch_uninstall_other_users">%1$s poistettiin tältä käyttäjältä, mutta se on yhä kirjoissa: se on toisella käyttäjällä, tai sen tiedot säilytettiin. Yhdellä sovelluksella on koko laitteessa yksi allekirjoitus, joten paikattu versio ei voi korvata sitä niin kauan kuin merkintä on voimassa. Poistaminen kaikilta vaatii Shizukun tai adb:n: pm uninstall %1$s</string>
     <string name="patch_install_successfully">Asennettu</string>
     <string name="patch_install_hint_shizuku">Valmis asentamaan äänettömästi Shizukun kautta.</string>
     <string name="patch_install_hint_system">Valmis asentamaan. Järjestelmäsi pyytää sinua vahvistamaan.</string>

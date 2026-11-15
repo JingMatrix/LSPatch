@@ -96,6 +96,7 @@
     <string name="patch_sigbypasslv3">+ Syrové syscally: úlovky apk přečtené, které obejdou libc. Patches native code, takže aplikace, která ověřuje svůj vlastní kód, může označit jako nedovolené - dávejte přednost úrovni 2, pokud to nestačí.</string>
     <string name="patch_return">Vrátit se</string>
     <string name="patch_uninstall_text">Nainstalovaná aplikace je podepsána odlišně, takže musí být nejprve odinstalována — u každého uživatele, který ji má, protože jedna aplikace nese v celém zařízení jediný podpis. Její data budou u každého z nich ztracena — před pokračováním si zálohujte, co potřebujete.</string>
+    <string name="patch_uninstall_other_users">%1$s byl odinstalován pro tohoto uživatele, ale stále je v záznamu: má jej jiný uživatel, nebo byla ponechána jeho data. Jedna aplikace nese v celém zařízení jediný podpis, takže upravené sestavení ji nemůže nahradit, dokud ten záznam trvá. Odstranění u všech uživatelů vyžaduje Shizuku, nebo adb: pm uninstall %1$s</string>
     <string name="patch_install_successfully">Nainstalováno</string>
     <string name="patch_install_hint_shizuku">Připraven k tiché instalaci přes Shizuku.</string>
     <string name="patch_install_hint_system">Připraveno k instalaci. Váš systém vás požádá o potvrzení.</string>
