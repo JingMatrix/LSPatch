@@ -95,7 +95,8 @@
     <string name="patch_sigbypasslv2">+ Bestand leest: de app die zijn eigen apk leest, krijgt het origineel (libc)</string>
     <string name="patch_sigbypasslv3">+ Raw syscalls: vangt apk reads die libc omzeilen. Patcheert de oorspronkelijke code, zodat een app zijn eigen code kan markeren als geknoeid — geef de voorkeur aan niveau 2 tenzij het niet genoeg is.</string>
     <string name="patch_return">Opbrengst</string>
-    <string name="patch_uninstall_text">De geïnstalleerde app is anders aangemeld, dus deze moet eerst worden verwijderd. Zijn gegevens gaan verloren - maak een backup van alles wat je nodig hebt om verder te gaan.</string>
+    <string name="patch_uninstall_text">De geïnstalleerde app is anders ondertekend en moet daarom eerst worden verwijderd – bij elke gebruiker die hem heeft, want één app draagt één handtekening voor het hele apparaat. De gegevens gaan bij elk van hen verloren – maak een back-up van alles wat je nodig hebt voordat je verdergaat.</string>
+    <string name="patch_uninstall_other_users">%1$s is voor deze gebruiker verwijderd maar staat nog geregistreerd: een andere gebruiker heeft de app, of de gegevens zijn bewaard. Eén app draagt één handtekening voor het hele apparaat, dus een gepatchte versie kan hem niet vervangen zolang die registratie bestaat. Overal verwijderen vereist Shizuku, of adb: pm uninstall %1$s</string>
     <string name="patch_install_successfully">Geinstalleerd</string>
     <string name="patch_install_hint_shizuku">Klaar om stilletjes te installeren via Shizuku.</string>
     <string name="patch_install_hint_system">Klaar voor installatie. Uw systeem zal u om bevestiging vragen.</string>
@@ -141,7 +142,7 @@
     <string name="patch_local_drop_warning">Overschakelen naar Lokaal zal %1$d ingesloten module(en). Elke module die u niet heeft geïnstalleerd kan niet hersteld worden.</string>
     <!-- Patch progress and outcome -->
     <string name="patch_effect_replace">Installeren via de bestaande app; de gegevens worden bewaard</string>
-    <string name="patch_effect_uninstall">Vereist het verwijderen van eerst; app gegevens gaan verloren</string>
+    <string name="patch_effect_uninstall">Moet eerst worden verwijderd, bij elke gebruiker; app-gegevens gaan verloren</string>
     <string name="patch_stage_reading">Lezen van APK</string>
     <string name="patch_stage_signing">Instellingen ondertekenen</string>
     <string name="patch_stage_rewriting">Herschrijven manifest</string>

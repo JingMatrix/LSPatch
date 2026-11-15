@@ -95,7 +95,8 @@
     <string name="patch_sigbypasslv2">+ 檔案讀取：應用程式讀取自身 apk 時取得原始檔案 (libc)</string>
     <string name="patch_sigbypasslv3">+ 原始系統呼叫：捕捉繞過 libc 的 apk 讀取。會修改原生程式碼，因此會驗證自身程式碼的應用程式可能將其判定為遭竄改 — 夠用時建議使用等級 2。</string>
     <string name="patch_return">返回</string>
-    <string name="patch_uninstall_text">由於簽章不同，在安裝修補後的應用程式之前需要先解除安裝原應用程式。\n請確保已備份個人資料。</string>
+    <string name="patch_uninstall_text">已安裝的應用程式簽章不同，必須先解除安裝；一個應用程式在整部裝置上只有一個簽章，因此每個擁有它的使用者都要解除安裝。各使用者的資料都會遺失 — 繼續前請備份需要保留的內容。</string>
+    <string name="patch_uninstall_other_users">%1$s 已為目前使用者解除安裝，但記錄仍在：另一個使用者裝有它，或其資料被保留。一個應用程式在整部裝置上只有一個簽章，只要該記錄還在，修補後的版本就無法取代它。要完全移除需要 Shizuku，或使用 adb：pm uninstall %1$s</string>
     <string name="patch_install_successfully">已安裝</string>
     <string name="patch_install_hint_shizuku">可透過 Shizuku 靜默安裝。</string>
     <string name="patch_install_hint_system">準備安裝。系統將要求你確認。</string>
@@ -141,7 +142,7 @@
     <string name="patch_local_drop_warning">切換至本機模式會捨棄 %1$d 個嵌入的模組。任何你未安裝的模組將無法復原。</string>
     <!-- Patch progress and outcome -->
     <string name="patch_effect_replace">覆蓋安裝於現有的應用程式；其資料會保留</string>
-    <string name="patch_effect_uninstall">需要先解除安裝；應用程式資料將遺失</string>
+    <string name="patch_effect_uninstall">需要在每個使用者中先解除安裝；應用程式資料將遺失</string>
     <string name="patch_stage_reading">讀取 APK</string>
     <string name="patch_stage_signing">簽署準備</string>
     <string name="patch_stage_rewriting">重寫資訊清單</string>

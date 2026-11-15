@@ -95,7 +95,8 @@
     <string name="patch_sigbypasslv2">+ Dosya okumaları: kendi apk\'sını okuyan uygulama orijinali alır (libc)</string>
     <string name="patch_sigbypasslv3">+ Ham sistem çağrıları: libc\'yi atlayan apk okumalarını yakalar. Yerel kodu yamalar, bu yüzden kendi kodunu doğrulayan bir uygulama bunu kurcalanmış olarak algılayabilir — yeterli olduğu sürece 2. seviyeyi tercih edin.</string>
     <string name="patch_return">Geri dön</string>
-    <string name="patch_uninstall_text">Farklı imzalar nedeniyle, yamalıyı yüklemeden önce orijinal uygulamayı kaldırmanız gerekir.\nKişisel verilerinizi yedeklediğinizden emin olun.</string>
+    <string name="patch_uninstall_text">Yüklü uygulama farklı imzalanmış, bu yüzden önce kaldırılmalı — uygulamaya sahip her kullanıcıdan, çünkü bir uygulama cihazın tamamında tek bir imza taşır. Verileri her kullanıcıda kaybolur — devam etmeden önce ihtiyacınız olanı yedekleyin.</string>
+    <string name="patch_uninstall_other_users">%1$s bu kullanıcıdan kaldırıldı ama kayıtta duruyor: başka bir kullanıcıda var ya da verileri saklandı. Bir uygulama cihazın tamamında tek bir imza taşır, bu yüzden bu kayıt dururken yamalı sürüm onun yerini alamaz. Her kullanıcıdan kaldırmak için Shizuku ya da adb gerekir: pm uninstall %1$s</string>
     <string name="patch_install_successfully">Yüklendi</string>
     <string name="patch_install_hint_shizuku">Shizuku aracılığıyla sessizce yüklemeye hazır.</string>
     <string name="patch_install_hint_system">Yüklemeye hazır. Sisteminiz onay isteyecek.</string>
@@ -141,7 +142,7 @@
     <string name="patch_local_drop_warning">Yerel\'e geçmek gömülü %1$d modülü atar. Kurulu olmayan hiçbir modül kurtarılamaz.</string>
     <!-- Patch progress and outcome -->
     <string name="patch_effect_replace">Mevcut uygulamanın üzerine kurar; verileri korunur</string>
-    <string name="patch_effect_uninstall">Önce kaldırmayı gerektirir; uygulama verileri kaybolur</string>
+    <string name="patch_effect_uninstall">Önce her kullanıcıdan kaldırmayı gerektirir; uygulama verileri kaybolur</string>
     <string name="patch_stage_reading">APK okunuyor</string>
     <string name="patch_stage_signing">İmzalama hazırlığı</string>
     <string name="patch_stage_rewriting">Manifest yeniden yazılıyor</string>

@@ -95,7 +95,8 @@
     <string name="patch_sigbypasslv2">+ قراءة الملفات: يحصل التطبيق عند قراءة حزمته على الأصلية (libc)</string>
     <string name="patch_sigbypasslv3">+ استدعاءات نظام خام: تلتقط قراءات الحزمة التي تتجاوز libc. يعدّل الشيفرة الأصلية، لذا قد يكتشفه تطبيق يتحقق من شيفرته كأنه تلاعب — يُفضّل المستوى 2 ما دام كافيًا.</string>
     <string name="patch_return">رجوع</string>
-    <string name="patch_uninstall_text">بسبب اختلاف التواقيع، عليك إلغاء تثبيت التطبيق الأصلي قبل تثبيت التطبيق المُرقّع.\nتأكد من عمل نسخة احتياطية لبياناتك الشخصية.</string>
+    <string name="patch_uninstall_text">التطبيق المثبَّت موقَّع بتوقيع مختلف، لذا يجب إلغاء تثبيته أولًا، ولدى كل مستخدم لديه التطبيق، لأن التطبيق الواحد يحمل توقيعًا واحدًا على الجهاز كله. ستُفقد بياناته لدى كل واحد منهم — انسخ احتياطيًا ما تحتاجه قبل المتابعة.</string>
+    <string name="patch_uninstall_other_users">تمت إزالة %1$s لهذا المستخدم لكنه ما زال مسجّلًا: مستخدم آخر لديه التطبيق، أو أن بياناته محفوظة. التطبيق الواحد يحمل توقيعًا واحدًا على الجهاز كله، لذا لا يمكن لنسخة مُرقّعة أن تحل محله ما دام هذا السجل قائمًا. إزالته من كل المستخدمين تتطلّب Shizuku أو adb: pm uninstall %1$s</string>
     <string name="patch_install_successfully">تم التثبيت</string>
     <string name="patch_install_hint_shizuku">جاهز للتثبيت الصامت عبر Shizuku.</string>
     <string name="patch_install_hint_system">جاهز للتثبيت. سيطلب منك نظامك التأكيد.</string>
@@ -141,7 +142,7 @@
     <string name="patch_local_drop_warning">التبديل إلى الوضع المحلي سيُسقط %1$d وحدة مضمَّنة. وأي وحدة غير مثبَّتة لديك لا يمكن استعادتها.</string>
     <!-- Patch progress and outcome -->
     <string name="patch_effect_replace">يُثبَّت فوق التطبيق الحالي؛ وتبقى بياناته</string>
-    <string name="patch_effect_uninstall">يتطلّب إلغاء التثبيت أولًا؛ وستُفقد بيانات التطبيق</string>
+    <string name="patch_effect_uninstall">يتطلّب إلغاء التثبيت أولًا لدى كل مستخدم؛ وستُفقد بيانات التطبيق</string>
     <string name="patch_stage_reading">قراءة الـ APK</string>
     <string name="patch_stage_signing">تجهيز التوقيع</string>
     <string name="patch_stage_rewriting">إعادة كتابة البيان</string>

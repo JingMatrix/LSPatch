@@ -95,7 +95,8 @@
     <string name="patch_sigbypasslv2">+ Filen läser: appen som läser sin egen apk får originalet (libc)</string>
     <string name="patch_sigbypasslv3">+ Rå syscalls: fångar apk läser att kringgå libc. Patchar infödda kod, så en app som verifierar sin egen kod kan flagga det som manipulerad — föredra nivå 2 om det inte är tillräckligt.</string>
     <string name="patch_return">Återgå</string>
-    <string name="patch_uninstall_text">Den installerade appen är signerad annorlunda, så den måste avinstalleras först. Dess data kommer att förloras — säkerhetskopiera allt du behöver innan du fortsätter.</string>
+    <string name="patch_uninstall_text">Den installerade appen är signerad annorlunda, så den måste avinstalleras först — för varje användare som har den, eftersom en app bär en enda signatur för hela enheten. Dess data går förlorade hos var och en av dem — säkerhetskopiera det du behöver innan du fortsätter.</string>
+    <string name="patch_uninstall_other_users">%1$s togs bort för den här användaren men finns fortfarande registrerad: en annan användare har den, eller så behölls dess data. En app bär en enda signatur för hela enheten, så en patchad version kan inte ersätta den så länge registreringen står kvar. Att ta bort den överallt kräver Shizuku eller adb: pm uninstall %1$s</string>
     <string name="patch_install_successfully">Installerad</string>
     <string name="patch_install_hint_shizuku">Redo att installera tyst genom Shizuku.</string>
     <string name="patch_install_hint_system">Redo att installera. Ditt system kommer att be dig att bekräfta.</string>
@@ -141,7 +142,7 @@
     <string name="patch_local_drop_warning">Byte till Lokal kommer att släppa %1$d inbäddade modul(er). Alla moduler som du inte har installerat kan inte återställas.</string>
     <!-- Patch progress and outcome -->
     <string name="patch_effect_replace">Installerar över den befintliga appen; dess data sparas</string>
-    <string name="patch_effect_uninstall">Kräver avinstallation först; appdata kommer att förloras</string>
+    <string name="patch_effect_uninstall">Kräver avinstallation först, för varje användare; appdata kommer att förloras</string>
     <string name="patch_stage_reading">Läser APK</string>
     <string name="patch_stage_signing">Konfiguration av signering</string>
     <string name="patch_stage_rewriting">Omskrivning av manifest</string>

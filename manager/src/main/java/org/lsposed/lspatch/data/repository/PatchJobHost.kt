@@ -215,7 +215,8 @@ object PatchJobHost {
                     android.util.Log.INFO,
                     "Install: ${files.size} apk(s) via ${if (useShizuku) "Shizuku shell" else "platform installer"}",
                 )
-                if (!uninstallFirst && needsUninstall(pkg, files)) {
+                val recordedApks = request.target.systemOwnedApks
+                if (!uninstallFirst && needsUninstall(pkg, files, recordedApks)) {
                     // Worth recording even though it is not a failure: it is the moment the flow stops
                     // and waits, and a report that skips it looks like one that simply ended.
                     append(android.util.Log.WARN, "A differently-signed $pkg is installed; asking to uninstall first")
@@ -225,7 +226,7 @@ object PatchJobHost {
                 if (uninstallFirst) {
                     _step.value = PatchStep.Uninstalling(pkg)
                     append(android.util.Log.INFO, "Uninstalling $pkg")
-                    val (status, message) = uninstall(pkg, useShizuku)
+                    val (status, message) = uninstall(pkg, useShizuku, recordedApks)
                     append(statusLevel(status), "Uninstall: ${describe(status, message)}")
                     if (status != PackageInstaller.STATUS_SUCCESS) {
                         archive(pkg)
@@ -280,7 +281,10 @@ object PatchJobHost {
                     ConfigManager.clearScopeForApp(pkg)
 
                     _step.value = PatchStep.Uninstalling(pkg)
-                    val (uninstallStatus, uninstallMessage) = uninstall(pkg, useShizuku)
+                    // Read while the app is still here: restoring the original installs a differently signed
+                    // build over it, so this path needs the same evidence a fresh patch does.
+                    val recordedApks = LSPPackageManager.installedApkPaths(pkg).orEmpty()
+                    val (uninstallStatus, uninstallMessage) = uninstall(pkg, useShizuku, recordedApks)
                     append(statusLevel(uninstallStatus), "Uninstall: ${describe(uninstallStatus, uninstallMessage)}")
                     if (uninstallStatus != PackageInstaller.STATUS_SUCCESS) {
                         throw java.io.IOException(uninstallMessage ?: "Uninstall failed")
@@ -351,9 +355,17 @@ object PatchJobHost {
     // every non-LSPatch build clashes. A custom keystore that matches the installed app updates in
     // place, and that case must not be sent to the uninstall prompt. Signers are readable without
     // Shizuku, so the check is the same on either install path.
-    private fun needsUninstall(packageName: String, files: List<File>): Boolean =
-        files.firstOrNull()?.let { LSPPackageManager.signatureBlocksUpdate(packageName, it) } ?: false
+    private fun needsUninstall(packageName: String, files: List<File>, recordedApks: List<String>): Boolean =
+        files.firstOrNull()?.let { LSPPackageManager.signatureBlocksUpdate(packageName, it, recordedApks) } ?: false
 
-    private suspend fun uninstall(packageName: String, useShizuku: Boolean): Pair<Int, String?> =
-        if (useShizuku) LSPPackageManager.uninstall(packageName) else LSPPackageManager.uninstallBySystem(packageName)
+    private suspend fun uninstall(
+        packageName: String,
+        useShizuku: Boolean,
+        recordedApks: List<String>,
+    ): Pair<Int, String?> =
+        if (useShizuku) {
+            LSPPackageManager.uninstall(packageName)
+        } else {
+            LSPPackageManager.uninstallBySystem(packageName, recordedApks)
+        }
 }

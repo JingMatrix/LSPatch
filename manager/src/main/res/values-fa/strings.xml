@@ -80,7 +80,8 @@
     <string name="patch_sigbypasslv2">+ خواندن فایل: برنامه هنگام خواندن apk خودش نسخهٔ اصلی را می‌گیرد (libc)</string>
     <string name="patch_sigbypasslv3">+ فراخوانی‌های سیستمی خام: خواندن‌های apk را که libc را دور می‌زنند می‌گیرد. کد بومی را وصله می‌کند، پس برنامه‌ای که کد خودش را بررسی می‌کند ممکن است آن را دستکاری‌شده تشخیص دهد — تا کافی نباشد سطح ۲ را ترجیح دهید.</string>
     <string name="patch_return">بازگشت</string>
-    <string name="patch_uninstall_text">به دلیل تفاوت در امضاها، باید قبل از نصب نسخه پچ‌شده، برنامه اصلی را حذف نصب کنید.\nمطمئن شوید که از داده‌های شخصی خود نسخه پشتیبان تهیه کرده‌اید.</string>
+    <string name="patch_uninstall_text">برنامهٔ نصب‌شده امضای متفاوتی دارد، بنابراین نخست باید حذف نصب شود، و برای هر کاربری که آن را دارد، چون هر برنامه در کل دستگاه تنها یک امضا دارد. داده‌های آن نزد هر کاربر از دست می‌رود — پیش از ادامه از آنچه نیاز دارید پشتیبان بگیرید.</string>
+    <string name="patch_uninstall_other_users">%1$s برای این کاربر حذف شد اما هنوز ثبت است: کاربر دیگری آن را دارد یا داده‌هایش نگه داشته شده است. هر برنامه در کل دستگاه یک امضا دارد، بنابراین تا زمانی که این ثبت باقی باشد نسخهٔ پچ‌شده نمی‌تواند جای آن را بگیرد. حذف آن برای همهٔ کاربران به Shizuku یا adb نیاز دارد: pm uninstall %1$s</string>
     <string name="patch_install_successfully">نصب شد</string>
     <string name="patch_install_hint_shizuku">آماده نصب بی‌صدا از طریق Shizuku.</string>
     <string name="patch_install_hint_system">آماده نصب. سیستم شما از شما تأیید می‌خواهد.</string>
@@ -186,7 +187,7 @@
     <string name="patch_module_unreadable">خواندنش از APK ممکن نشد</string>
     <string name="patch_local_drop_warning">تغییر به حالت محلی %1$d ماژول تعبیه‌شده را حذف می‌کند. هر ماژولی که نصب نداشته باشید قابل بازیابی نیست.</string>
     <string name="patch_effect_replace">روی برنامهٔ موجود نصب می‌شود؛ داده‌هایش حفظ می‌شود</string>
-    <string name="patch_effect_uninstall">نخست باید حذف نصب شود؛ داده‌های برنامه از دست می‌رود</string>
+    <string name="patch_effect_uninstall">نخست باید برای هر کاربر حذف نصب شود؛ داده‌های برنامه از دست می‌رود</string>
     <string name="patch_stage_reading">خواندن APK</string>
     <string name="patch_stage_signing">آماده‌سازی امضا</string>
     <string name="patch_stage_rewriting">بازنویسی مانیفست</string>

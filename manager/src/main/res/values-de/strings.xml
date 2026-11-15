@@ -95,7 +95,8 @@
     <string name="patch_sigbypasslv2">+ Dateizugriffe: Die App liest ihr eigenes APK als Original (libc)</string>
     <string name="patch_sigbypasslv3">+ Rohe Syscalls: erfasst APK-Zugriffe, die libc umgehen. Patcht nativen Code, daher kann eine App, die ihren eigenen Code prüft, dies als Manipulation erkennen — bevorzuge Stufe 2, sofern sie ausreicht.</string>
     <string name="patch_return">Zurück</string>
-    <string name="patch_uninstall_text">Aufgrund unterschiedlicher Signaturen musst du die Original-App deinstallieren, bevor du die gepatchte installierst.\nStelle sicher, dass du persönliche Daten gesichert hast.</string>
+    <string name="patch_uninstall_text">Die installierte App ist anders signiert und muss daher zuerst deinstalliert werden – für jeden Benutzer, der sie hat, denn eine App trägt geräteweit nur eine Signatur. Ihre Daten gehen bei jedem davon verloren – sichere alles, was du brauchst, bevor du fortfährst.</string>
+    <string name="patch_uninstall_other_users">%1$s wurde für diesen Benutzer entfernt, ist aber weiterhin registriert: ein anderer Benutzer hat die App, oder ihre Daten wurden behalten. Eine App trägt geräteweit nur eine Signatur, daher kann eine gepatchte Version sie nicht ersetzen, solange dieser Eintrag besteht. Sie überall zu entfernen erfordert Shizuku oder adb: pm uninstall %1$s</string>
     <string name="patch_install_successfully">Installiert</string>
     <string name="patch_install_hint_shizuku">Bereit zur stillen Installation über Shizuku.</string>
     <string name="patch_install_hint_system">Bereit zur Installation. Dein System wird eine Bestätigung anfordern.</string>
@@ -141,7 +142,7 @@
     <string name="patch_local_drop_warning">Der Wechsel zu Lokal verwirft %1$d eingebettete(s) Modul(e). Jedes Modul, das du nicht installiert hast, kann nicht wiederhergestellt werden.</string>
     <!-- Patch progress and outcome -->
     <string name="patch_effect_replace">Wird über die bestehende App installiert; ihre Daten bleiben erhalten</string>
-    <string name="patch_effect_uninstall">Erfordert vorheriges Deinstallieren; App-Daten gehen verloren</string>
+    <string name="patch_effect_uninstall">Erfordert vorheriges Deinstallieren bei jedem Benutzer; App-Daten gehen verloren</string>
     <string name="patch_stage_reading">APK wird gelesen</string>
     <string name="patch_stage_signing">Signierung wird vorbereitet</string>
     <string name="patch_stage_rewriting">Manifest wird umgeschrieben</string>

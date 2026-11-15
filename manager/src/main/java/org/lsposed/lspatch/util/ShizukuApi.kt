@@ -766,14 +766,67 @@ object ShizukuApi {
             }
         }
 
-    /** Uninstalls through the shell installer. Throws like the session above, and for the reason. */
+    /**
+     * Delete flag asking the package manager to remove a package for EVERY user, not only the caller's.
+     *
+     * Declared here because the hidden-api stubs do not carry it. It claims nothing the shell does not already hold:
+     * it is what `pm uninstall` sets for itself, which is why an uninstall over adb clears every user at once.
+     */
+    private const val DELETE_ALL_USERS = 0x00000002
+
+    /**
+     * Uninstalls through the shell installer, for every user that has the package.
+     *
+     * All users rather than this one, because a package has one apk and one certificate device-wide while the
+     * installed bit is per user. An app left behind in a secondary user or a work profile therefore keeps its
+     * signature on record, and the next install of a differently signed build -- which is every patched build -- is
+     * refused with INSTALL_FAILED_UPDATE_INCOMPATIBLE. A single-user uninstall reports success, removes the app from
+     * view, and leaves the install it was performed for impossible.
+     *
+     * The flagged overload is hidden rather than absent, so it is called reflectively; a platform without it falls
+     * back to the single-user call, which clears it here only. Throws like the session above, and for the reason.
+     */
     fun uninstallPackage(packageName: String, intentSender: IntentSender) {
         try {
-            packageInstaller.uninstall(packageName, intentSender)
+            if (!uninstallForAllUsers(packageName, intentSender)) {
+                Log.w(TAG, "Uninstalling $packageName for this user only: the all-users call is not on this platform")
+                packageInstaller.uninstall(packageName, intentSender)
+            }
         } catch (t: Throwable) {
             record(ShizukuOp.Uninstall, ShizukuReason.CallFailed, t.toString(), t)
             throw t
         }
+    }
+
+    /**
+     * The all-users uninstall; false when the platform does not offer it, having done nothing.
+     *
+     * False is returned for a missing method only. Whatever the call itself throws is its answer and is passed on:
+     * retrying that as a single-user uninstall would half-do the job and report it as done.
+     */
+    private fun uninstallForAllUsers(packageName: String, intentSender: IntentSender): Boolean {
+        val uninstall =
+            runCatching {
+                PackageInstaller::class.java.getMethod(
+                    "uninstall",
+                    VersionedPackage::class.java,
+                    Int::class.javaPrimitiveType,
+                    IntentSender::class.java,
+                )
+            }
+                .getOrNull() ?: return false
+        try {
+            uninstall.invoke(
+                packageInstaller,
+                VersionedPackage(packageName, PackageManager.VERSION_CODE_HIGHEST),
+                DELETE_ALL_USERS,
+                intentSender,
+            )
+        } catch (t: java.lang.reflect.InvocationTargetException) {
+            // The reflection is an implementation detail; what the package manager said is not.
+            throw t.targetException ?: t
+        }
+        return true
     }
 
     /** Runs a shell command through the Shizuku user service (shell UID); null if unavailable. */
