@@ -6,8 +6,8 @@ import androidx.core.content.pm.PackageInfoCompat
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.withContext
 import org.lsposed.lspatch.util.LSPNetwork
-import org.lsposed.lspatch.util.LSPPackageManager
 import org.matrix.vector.ui.store.RepoVersion
 import org.matrix.vector.ui.store.StoreLog
 import org.matrix.vector.ui.store.StoreRepository
@@ -15,10 +15,10 @@ import org.matrix.vector.ui.store.StoreRepository
 /**
  * The Store's data for LSPatch: [StoreRepository], with the platform as what knows the device.
  *
- * Only the two things that are LSPatch's own live here. Installed versions come from the package manager, through the
- * scan [LSPPackageManager] already keeps, and log lines go to logcat under one tag. Which hosts are read, how one
- * catalogue is made of them and when the cache answers instead belong to the shared repository, so this manager and
- * Vector read the module repository the same way rather than each its own way.
+ * Only the two things that are LSPatch's own live here: installed versions come from the platform, and log lines go to
+ * logcat under one tag. Which hosts are read, how one catalogue is made of them and when the cache answers instead
+ * belong to the shared repository, so this manager and Vector read the module repository the same way rather than each
+ * its own way.
  */
 class RepoRepository private constructor(context: Context) :
     StoreRepository(
@@ -54,22 +54,21 @@ private val LSPStoreLog = StoreLog { priority, message, cause ->
 /**
  * What each installed package is at, keyed by package name, or null when the device could not be asked.
  *
- * Read from [LSPPackageManager]'s scan, which is the manager's one enumeration of installed packages, with the version
- * resolved per package: the scan carries an `ApplicationInfo`, which states no version. Null rather than an empty map
- * when the scan found nothing, because the shared repository keeps its last map in that case, and what is installed did
- * not stop being installed.
+ * One `getInstalledPackages` call, which already carries the version of each: asking per package would be a binder
+ * round trip apiece over every app on the device, and this is re-read whenever a package arrives or leaves. Null rather
+ * than an empty map when the platform refuses, because the shared repository then keeps its last map, and what is
+ * installed did not stop being installed.
  */
-private suspend fun installedVersions(context: Context): Map<String, RepoVersion>? {
-    runCatching { LSPPackageManager.ensureAppList() }
-        .onFailure { Log.w(TAG, "store: installed versions unavailable", it) }
-    val apps = LSPPackageManager.appList
-    if (apps.isEmpty()) return null
-    val pm = context.packageManager
-    val versions = HashMap<String, RepoVersion>(apps.size)
-    for (appInfo in apps) {
-        val pkg = appInfo.app.packageName
-        val info = runCatching { pm.getPackageInfo(pkg, 0) }.getOrNull() ?: continue
-        versions[pkg] = RepoVersion(PackageInfoCompat.getLongVersionCode(info), info.versionName.orEmpty())
+private suspend fun installedVersions(context: Context): Map<String, RepoVersion>? =
+    withContext(Dispatchers.IO) {
+        val packages =
+            runCatching { context.packageManager.getInstalledPackages(0) }
+                .onFailure { Log.w(TAG, "store: installed versions unavailable", it) }
+                .getOrNull() ?: return@withContext null
+        val versions = HashMap<String, RepoVersion>(packages.size)
+        for (info in packages) {
+            versions[info.packageName] =
+                RepoVersion(PackageInfoCompat.getLongVersionCode(info), info.versionName.orEmpty())
+        }
+        versions
     }
-    return versions
-}
