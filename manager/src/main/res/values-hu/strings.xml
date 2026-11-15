@@ -95,7 +95,7 @@
     <string name="patch_sigbypasslv2">+ Fájlolvasás: az alkalmazás a saját apk-ját olvasva lekéri az eredetit (libc)</string>
     <string name="patch_sigbypasslv3">+ Nyers rendszerhívások: elkapja a libc-t megkerülő apk-olvasásokat. Javítja a natív kódot, így egy alkalmazás, amely a saját kódját ellenőrzi, megjelölheti azt manipuláltként — a 2. szint a megfelelő, kivéve, ha az nem elég.</string>
     <string name="patch_return">Visszatérés</string>
-    <string name="patch_uninstall_text">A telepített alkalmazás másképp van aláírva, ezért először el kell távolítani. Az adatai elvesznek – a folytatás előtt készítsen biztonsági másolatot mindenről, amire szüksége van.</string>
+    <string name="patch_uninstall_text">A telepített alkalmazás másképp van aláírva, ezért először el kell távolítani – minden felhasználónál, akinél megvan, mert egy alkalmazás az egész eszközön egyetlen aláírást visel. Az adatai mindegyiküknél elvesznek – a folytatás előtt készítsen biztonsági másolatot mindenről, amire szüksége van.</string>
     <string name="patch_install_successfully">Telepítve</string>
     <string name="patch_install_hint_shizuku">Készen áll a csendes telepítésre Shizuku-n keresztül.</string>
     <string name="patch_install_hint_system">Telepítésre kész. A rendszer megerősítést kér majd.</string>
@@ -141,7 +141,7 @@
     <string name="patch_local_drop_warning">A Helyi nézetre váltás %1$d beágyazott modult töröl. A nem telepített modulokat nem lehet helyreállítani.</string>
     <!-- Patch progress and outcome -->
     <string name="patch_effect_replace">Telepíti a meglévő alkalmazást; az adatai megmaradnak</string>
-    <string name="patch_effect_uninstall">Előzetesen el kell távolítani; az alkalmazásadatok elvesznek</string>
+    <string name="patch_effect_uninstall">Előbb el kell távolítani, minden felhasználónál; az alkalmazásadatok elvesznek</string>
     <string name="patch_stage_reading">APK olvasása</string>
     <string name="patch_stage_signing">Aláírás beállítása</string>
     <string name="patch_stage_rewriting">Manifeszt átírása</string>

@@ -95,7 +95,7 @@
     <string name="patch_sigbypasslv2">+ Fișier citește: aplicația care citește propria aplicație primește originalul (libc)</string>
     <string name="patch_sigbypasslv3">+ syscall-uri brute: capturează apk citind care ocolește libc. Patcheaza codul nativ, astfel încât o aplicație care verifică propriul cod îl poate semnala ca modificata - preferă nivelul 2 dacă nu este suficient.</string>
     <string name="patch_return">Întoarcere</string>
-    <string name="patch_uninstall_text">Aplicația instalată este semnată diferit, deci trebuie dezinstalată prima. Datele sale vor fi pierdute - faceți un backup pentru orice aveți nevoie înainte de a continua.</string>
+    <string name="patch_uninstall_text">Aplicația instalată este semnată diferit, deci trebuie dezinstalată mai întâi — pentru fiecare utilizator care o are, pentru că o aplicație poartă o singură semnătură pe întregul dispozitiv. Datele ei se vor pierde la fiecare dintre aceștia — faceți o copie de rezervă a ceea ce aveți nevoie înainte de a continua.</string>
     <string name="patch_install_successfully">Instalat</string>
     <string name="patch_install_hint_shizuku">Gata de instalare silențioasă prin Shizuku.</string>
     <string name="patch_install_hint_system">Gata de instalare. Sistemul dvs. vă va cere să confirmați.</string>
@@ -141,7 +141,7 @@
     <string name="patch_local_drop_warning">Comutarea la local va plasa modulul (modulele) încorporat(e) %1$d . Orice modul care nu este instalat nu poate fi recuperat.</string>
     <!-- Patch progress and outcome -->
     <string name="patch_effect_replace">Instalează aplicația existentă; datele sale sunt păstrate</string>
-    <string name="patch_effect_uninstall">Necesită dezinstalarea primul; datele aplicației vor fi pierdute</string>
+    <string name="patch_effect_uninstall">Necesită dezinstalarea mai întâi, la fiecare utilizator; datele aplicației se vor pierde</string>
     <string name="patch_stage_reading">Citire APK</string>
     <string name="patch_stage_signing">Se semnează configurarea</string>
     <string name="patch_stage_rewriting">Rescriere manifest</string>

@@ -95,7 +95,7 @@
     <string name="patch_sigbypasslv2">+ Đọc tệp: ứng dụng đọc apk của chính nó nhận được bản gốc (libc)</string>
     <string name="patch_sigbypasslv3">+ Lời gọi hệ thống thô: bắt các lần đọc apk vượt qua libc. Vá mã native, nên ứng dụng tự kiểm tra mã của mình có thể coi đó là bị can thiệp — ưu tiên cấp 2 khi vẫn đủ dùng.</string>
     <string name="patch_return">Quay lại</string>
-    <string name="patch_uninstall_text">Do chữ ký khác nhau, bạn cần gỡ ứng dụng gốc trước khi cài bản đã vá.\nHãy đảm bảo bạn đã sao lưu dữ liệu cá nhân.</string>
+    <string name="patch_uninstall_text">Ứng dụng đã cài có chữ ký khác, nên phải gỡ trước — ở mọi người dùng đang có nó, vì một ứng dụng chỉ mang một chữ ký trên toàn thiết bị. Dữ liệu của nó sẽ mất ở từng người dùng — hãy sao lưu những gì bạn cần trước khi tiếp tục.</string>
     <string name="patch_install_successfully">Đã cài đặt</string>
     <string name="patch_install_hint_shizuku">Sẵn sàng cài đặt ngầm qua Shizuku.</string>
     <string name="patch_install_hint_system">Sẵn sàng cài đặt. Hệ thống sẽ yêu cầu bạn xác nhận.</string>
@@ -141,7 +141,7 @@
     <string name="patch_local_drop_warning">Chuyển sang Cục bộ sẽ bỏ %1$d mô-đun đã nhúng. Mô-đun nào bạn chưa cài sẽ không thể khôi phục.</string>
     <!-- Patch progress and outcome -->
     <string name="patch_effect_replace">Cài đè lên ứng dụng hiện có; dữ liệu được giữ lại</string>
-    <string name="patch_effect_uninstall">Cần gỡ cài đặt trước; dữ liệu ứng dụng sẽ mất</string>
+    <string name="patch_effect_uninstall">Cần gỡ cài đặt trước, ở mọi người dùng; dữ liệu ứng dụng sẽ mất</string>
     <string name="patch_stage_reading">Đang đọc APK</string>
     <string name="patch_stage_signing">Chuẩn bị ký</string>
     <string name="patch_stage_rewriting">Đang viết lại manifest</string>

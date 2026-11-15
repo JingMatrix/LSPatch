@@ -95,7 +95,7 @@
     <string name="patch_sigbypasslv2">+ Lectures de fichier : l\'app lisant son propre apk obtient l\'original (libc)</string>
     <string name="patch_sigbypasslv3">+ Appels système bruts : capte les lectures d\'apk qui contournent libc. Modifie le code natif, donc une app qui vérifie son propre code peut le détecter comme falsifié — préférez le niveau 2 sauf lorsque cela ne suffit pas.</string>
     <string name="patch_return">Retour</string>
-    <string name="patch_uninstall_text">En raison de signatures différentes, vous devez désinstaller l\'application d\'origine avant d\'installer la version patchée.\nAssurez-vous d\'avoir sauvegardé vos données personnelles.</string>
+    <string name="patch_uninstall_text">L\'application installée est signée différemment : elle doit d\'abord être désinstallée, et pour chaque utilisateur qui la possède, car une application ne porte qu\'une seule signature sur tout l\'appareil. Ses données seront perdues chez chacun d\'eux — sauvegardez ce dont vous avez besoin avant de continuer.</string>
     <string name="patch_install_successfully">Installée</string>
     <string name="patch_install_hint_shizuku">Prêt à installer silencieusement via Shizuku.</string>
     <string name="patch_install_hint_system">Prêt à installer. Votre système vous demandera de confirmer.</string>
@@ -141,7 +141,7 @@
     <string name="patch_local_drop_warning">Passer en mode local supprimera %1$d module(s) intégré(s). Tout module que vous n\'avez pas installé ne pourra pas être récupéré.</string>
     <!-- Patch progress and outcome -->
     <string name="patch_effect_replace">S\'installe par-dessus l\'application existante ; ses données sont conservées</string>
-    <string name="patch_effect_uninstall">Nécessite de désinstaller d\'abord ; les données de l\'application seront perdues</string>
+    <string name="patch_effect_uninstall">Nécessite de désinstaller d\'abord, pour chaque utilisateur ; les données de l\'application seront perdues</string>
     <string name="patch_stage_reading">Lecture de l\'APK</string>
     <string name="patch_stage_signing">Préparation de la signature</string>
     <string name="patch_stage_rewriting">Réécriture du manifeste</string>

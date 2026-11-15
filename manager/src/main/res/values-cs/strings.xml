@@ -95,7 +95,7 @@
     <string name="patch_sigbypasslv2">+ Soubor přečten: aplikace čte svůj vlastní apk získá originální (libc)</string>
     <string name="patch_sigbypasslv3">+ Syrové syscally: úlovky apk přečtené, které obejdou libc. Patches native code, takže aplikace, která ověřuje svůj vlastní kód, může označit jako nedovolené - dávejte přednost úrovni 2, pokud to nestačí.</string>
     <string name="patch_return">Vrátit se</string>
-    <string name="patch_uninstall_text">Nainstalovaná aplikace je podepsána odlišně, takže musí být nejprve odinstalována. Její data budou ztracena — před pokračováním si zálohujete, co potřebujete.</string>
+    <string name="patch_uninstall_text">Nainstalovaná aplikace je podepsána odlišně, takže musí být nejprve odinstalována — u každého uživatele, který ji má, protože jedna aplikace nese v celém zařízení jediný podpis. Její data budou u každého z nich ztracena — před pokračováním si zálohujte, co potřebujete.</string>
     <string name="patch_install_successfully">Nainstalováno</string>
     <string name="patch_install_hint_shizuku">Připraven k tiché instalaci přes Shizuku.</string>
     <string name="patch_install_hint_system">Připraveno k instalaci. Váš systém vás požádá o potvrzení.</string>
@@ -141,7 +141,7 @@
     <string name="patch_local_drop_warning">Přepnutím do lokality se odstraní vestavěné %1$d moduly. Žádný modul, který nemáte nainstalován, nelze obnovit.</string>
     <!-- Patch progress and outcome -->
     <string name="patch_effect_replace">Instaluje se přes existující aplikaci; její data jsou uchována</string>
-    <string name="patch_effect_uninstall">Vyžaduje nejprve odinstalaci; data aplikace budou ztracena</string>
+    <string name="patch_effect_uninstall">Vyžaduje nejprve odinstalaci u každého uživatele; data aplikace budou ztracena</string>
     <string name="patch_stage_reading">Čtení APK</string>
     <string name="patch_stage_signing">Nastavení registrace</string>
     <string name="patch_stage_rewriting">Přepisovací manifest</string>

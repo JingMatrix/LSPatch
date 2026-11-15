@@ -95,7 +95,7 @@
     <string name="patch_sigbypasslv2">+ Чтение файлов: приложение, читающее свой apk, получает оригинал (libc)</string>
     <string name="patch_sigbypasslv3">+ Сырые системные вызовы: перехватывает чтения apk в обход libc. Патчит нативный код, поэтому приложение, проверяющее собственный код, может счесть это подделкой — предпочитайте уровень 2, пока его хватает.</string>
     <string name="patch_return">Назад</string>
-    <string name="patch_uninstall_text">Из-за разных подписей необходимо удалить оригинальное приложение перед установкой пропатченного.\nУбедитесь, что вы сохранили личные данные.</string>
+    <string name="patch_uninstall_text">Установленное приложение подписано иначе, поэтому его нужно сначала удалить — у каждого пользователя, у которого оно есть, так как у приложения одна подпись на всё устройство. Данные будут потеряны у каждого из них — сохраните всё нужное перед продолжением.</string>
     <string name="patch_install_successfully">Установлено</string>
     <string name="patch_install_hint_shizuku">Готово к тихой установке через Shizuku.</string>
     <string name="patch_install_hint_system">Готово к установке. Система попросит подтверждение.</string>
@@ -141,7 +141,7 @@
     <string name="patch_local_drop_warning">Переключение на локальный режим отбросит встроенные модули (%1$d). Любой модуль, который не установлен у вас, восстановить не удастся.</string>
     <!-- Patch progress and outcome -->
     <string name="patch_effect_replace">Устанавливается поверх существующего приложения; его данные сохраняются</string>
-    <string name="patch_effect_uninstall">Требует сначала удалить приложение; данные приложения будут потеряны</string>
+    <string name="patch_effect_uninstall">Требует сначала удалить у каждого пользователя; данные приложения будут потеряны</string>
     <string name="patch_stage_reading">Чтение APK</string>
     <string name="patch_stage_signing">Подготовка подписи</string>
     <string name="patch_stage_rewriting">Перезапись манифеста</string>

@@ -87,6 +87,17 @@ object LSPPackageManager {
      */
     private const val INSTALL_DISABLE_VERIFICATION = 0x00080000
 
+    /**
+     * Asks the package manager to install for every user rather than only the installer's own.
+     *
+     * Declared here because the hidden-api stubs do not carry it. It is what `pm install` sets for itself by default,
+     * and it is the other half of the all-users uninstall: an app that was present in several users is replaced by the
+     * patched build in all of them, instead of landing in the primary one and leaving the other users without the app
+     * they had -- and, for a secondary user, with no way to get it back short of patching again. Set only for the
+     * shell session, which holds the cross-user permission it needs; an app does not.
+     */
+    private const val INSTALL_ALL_USERS = 0x00000040
+
     private const val INSTALL_ACTION = "org.lsposed.lspatch.action.INSTALL_RESULT"
 
     @Parcelize
@@ -510,6 +521,7 @@ object LSPPackageManager {
             // report. Asking to skip it costs nothing and helps where the service allows it.
             flags =
                 flags or
+                    INSTALL_ALL_USERS or
                     PackageManagerHidden.INSTALL_ALLOW_TEST or
                     PackageManagerHidden.INSTALL_REPLACE_EXISTING or
                     INSTALL_DISABLE_VERIFICATION
@@ -738,7 +750,7 @@ object LSPPackageManager {
      * Uninstalls [packageName] through the platform installer (OS confirmation UI). Used, without Shizuku, to clear a
      * differently-signed original before a system install can replace it.
      */
-    suspend fun uninstallBySystem(packageName: String): Pair<Int, String?> {
+    suspend fun uninstallBySystem(packageName: String, recordedApks: List<String> = emptyList()): Pair<Int, String?> {
         Log.i(TAG, "Perform system uninstall of $packageName")
         val context = lspApp
         var status = PackageInstaller.STATUS_FAILURE
@@ -756,6 +768,19 @@ object LSPPackageManager {
                     status = PackageInstaller.STATUS_FAILURE
                     message = it.message + "\n" + it.stackTraceToString()
                 }
+        }
+        // The platform installer acts for the user that called it and has no flag for the others: an app
+        // this user shares with a secondary user or a work profile is still on record afterwards, keeping
+        // its certificate, and the install this uninstall was performed for would be refused with a bare
+        // INSTALL_FAILED_UPDATE_INCOMPATIBLE. Said here instead, where the reader can act on it.
+        val leftOver = knownPackage(packageName, 0) != null || signersOfSurvivingApk(recordedApks) != null
+        if (status == PackageInstaller.STATUS_SUCCESS && leftOver) {
+            status = PackageInstaller.STATUS_FAILURE
+            message =
+                "$packageName was removed for this user but is still on record: another user has it, or its " +
+                    "data was kept. One apk and one certificate serve every user, so a patched build cannot " +
+                    "replace it while that record stands. Removing it for all users needs Shizuku, or adb: " +
+                    "pm uninstall $packageName"
         }
         Log.i(TAG, "System uninstall result: status=$status message=$message")
         return Pair(status, message)
@@ -775,13 +800,25 @@ object LSPPackageManager {
      * PackageManager (no Shizuku), so it is usable on the system-install fallback path.
      */
     fun isInstalledWithoutPatch(packageName: String): Boolean {
-        return try {
-            val info = lspApp.packageManager.getPackageInfo(packageName, PackageManager.GET_META_DATA)
-            info.applicationInfo?.metaData?.containsKey("lspatch") != true
-        } catch (e: PackageManager.NameNotFoundException) {
-            false
-        }
+        val info = knownPackage(packageName, PackageManager.GET_META_DATA) ?: return false
+        return info.applicationInfo?.metaData?.containsKey("lspatch") != true
     }
+
+    /**
+     * What the package manager will tell THIS user about [packageName], or null when it says nothing.
+     *
+     * [PackageManager.MATCH_UNINSTALLED_PACKAGES] covers one case the plain read does not: a package removed here
+     * with its data kept, whose certificate is still on record. It does NOT reach a package that is installed in
+     * another user and not in this one -- measured on Android 16, where it answers nothing for exactly that state.
+     * Seeing another user's install needs MATCH_ANY_USER and INTERACT_ACROSS_USERS, which an app does not hold, so
+     * that case is decided by [signersOfSurvivingApk] from the apk still on disk instead.
+     */
+    private fun knownPackage(packageName: String, flags: Int): android.content.pm.PackageInfo? =
+        runCatching { lspApp.packageManager.getPackageInfo(packageName, flags) }.getOrNull()
+            ?: runCatching {
+                lspApp.packageManager.getPackageInfo(packageName, flags or PackageManager.MATCH_UNINSTALLED_PACKAGES)
+            }
+                .getOrNull()
 
     /**
      * Whether an already-installed [packageName] would have to be uninstalled before [patchedApk] can replace it — i.e.
@@ -795,23 +832,40 @@ object LSPPackageManager {
      * on either side does it fall back to [isInstalledWithoutPatch], so an undetermined case still errs toward asking
      * rather than firing an install Android will refuse.
      */
-    fun signatureBlocksUpdate(packageName: String, patchedApk: File): Boolean {
-        val installed = installedSigners(packageName) ?: return false
+    fun signatureBlocksUpdate(packageName: String, patchedApk: File, recordedApks: List<String> = emptyList()): Boolean {
+        val installed =
+            installedSigners(packageName) ?: signersOfSurvivingApk(recordedApks) ?: return false
         val patched = archiveSigners(patchedApk)
         if (installed.isEmpty() || patched.isEmpty()) return isInstalledWithoutPatch(packageName)
         return installed != patched
     }
 
-    /** Current signers of an installed package; null when it is not installed, empty when unreadable. */
-    private fun installedSigners(packageName: String): Set<Signature>? {
-        val info =
-            try {
-                lspApp.packageManager.getPackageInfo(packageName, PackageManager.GET_SIGNING_CERTIFICATES)
-            } catch (e: PackageManager.NameNotFoundException) {
-                return null
+    /**
+     * Signers read from a recorded apk of the package that is still on disk, or null when none is.
+     *
+     * The one piece of evidence an unprivileged app has about a package installed in another user and not in this
+     * one. These paths come from the package manager at a moment the app WAS visible here, they point into
+     * `/data/app`, and that directory is deleted when the last user's install goes -- so a file still there means
+     * the package is still installed somewhere, and its certificate is still what an install has to match. The apk
+     * itself is world-readable, as every installed apk is, so nothing is needed to read it.
+     *
+     * Only ever called with paths the system owns ([PatchTarget.InstalledApp]); an apk the manager extracted itself
+     * would exist regardless of what is installed and would prove nothing.
+     */
+    private fun signersOfSurvivingApk(recordedApks: List<String>): Set<Signature>? =
+        recordedApks
+            .asSequence()
+            .map { File(it) }
+            .firstOrNull { it.isFile }
+            ?.let { apk ->
+                archiveSigners(apk).takeIf { it.isNotEmpty() }?.also {
+                    Log.i(TAG, "Read signers from ${apk.path}: still installed for another user")
+                }
             }
-        return signersOf(info)
-    }
+
+    /** Signers on record for a package under any user; null when none is, empty when unreadable. */
+    private fun installedSigners(packageName: String): Set<Signature>? =
+        knownPackage(packageName, PackageManager.GET_SIGNING_CERTIFICATES)?.let { signersOf(it) }
 
     /** Signers of an apk on disk; empty when the archive cannot be read. */
     private fun archiveSigners(apk: File): Set<Signature> {
@@ -831,8 +885,9 @@ object LSPPackageManager {
      * -- the same certificate the patched apk will carry -- so a custom keystore that matches the app is not
      * mislabelled as a conflict. Falls back to [isInstalledWithoutPatch] only when a signature cannot be read.
      */
-    fun keystoreConflictsWith(packageName: String): Boolean {
-        val installed = installedSigners(packageName) ?: return false
+    fun keystoreConflictsWith(packageName: String, recordedApks: List<String> = emptyList()): Boolean {
+        val installed =
+            installedSigners(packageName) ?: signersOfSurvivingApk(recordedApks) ?: return false
         val signer = selectedKeystoreSigner()
         if (installed.isEmpty() || signer == null) return isInstalledWithoutPatch(packageName)
         return installed != setOf(signer)

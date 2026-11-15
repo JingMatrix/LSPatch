@@ -80,7 +80,7 @@
     <string name="patch_sigbypasslv2">+ Pembacaan berkas: aplikasi yang membaca apk-nya sendiri mendapat yang asli (libc)</string>
     <string name="patch_sigbypasslv3">+ Syscall mentah: menangkap pembacaan apk yang melewati libc. Menambal kode native, sehingga aplikasi yang memverifikasi kodenya sendiri dapat menandainya sebagai dirusak — utamakan level 2 selama mencukupi.</string>
     <string name="patch_return">Kembali</string>
-    <string name="patch_uninstall_text">Karena tanda tangan yang berbeda, Anda perlu mencopot aplikasi asli sebelum memasang versi yang ditambal.\nPastikan Anda telah mencadangkan data pribadi.</string>
+    <string name="patch_uninstall_text">Aplikasi yang terpasang ditandatangani secara berbeda, jadi harus dicopot lebih dulu — untuk setiap pengguna yang memilikinya, karena satu aplikasi membawa satu tanda tangan untuk seluruh perangkat. Datanya akan hilang pada masing-masing pengguna — cadangkan apa pun yang Anda perlukan sebelum melanjutkan.</string>
     <string name="patch_install_successfully">Terpasang</string>
     <string name="patch_install_hint_shizuku">Siap dipasang secara diam-diam melalui Shizuku.</string>
     <string name="patch_install_hint_system">Siap dipasang. Sistem Anda akan meminta konfirmasi.</string>
@@ -186,7 +186,7 @@
     <string name="patch_module_unreadable">Tidak dapat dibaca dari APK</string>
     <string name="patch_local_drop_warning">Beralih ke Lokal akan membuang %1$d modul yang disematkan. Modul apa pun yang tidak terpasang tidak dapat dipulihkan.</string>
     <string name="patch_effect_replace">Memasang menimpa aplikasi yang ada; datanya dipertahankan</string>
-    <string name="patch_effect_uninstall">Perlu dicopot terlebih dahulu; data aplikasi akan hilang</string>
+    <string name="patch_effect_uninstall">Perlu dicopot terlebih dahulu, pada setiap pengguna; data aplikasi akan hilang</string>
     <string name="patch_stage_reading">Membaca APK</string>
     <string name="patch_stage_signing">Menyiapkan penandatanganan</string>
     <string name="patch_stage_rewriting">Menulis ulang manifest</string>

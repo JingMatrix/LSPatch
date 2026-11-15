@@ -95,7 +95,7 @@
     <string name="patch_sigbypasslv2">+ Filleser: appen som leser sitt eget apk får originalen (libc)</string>
     <string name="patch_sigbypasslv3">+ Rå syskalaer: Fangster leser det som omgår libc. Patches innebygd kode, så en app som bekrefter sin egen kode kan flagge den som endret — foretrekker nivå 2, med mindre den ikke er nok.</string>
     <string name="patch_return">Komme tilbake</string>
-    <string name="patch_uninstall_text">Den installerte appen er signert annerledes, så den må avinstalleres først. Dataene vil gå tapt - sikkerhetskopiering alt du trenger før du fortsetter.</string>
+    <string name="patch_uninstall_text">Den installerte appen er signert annerledes, så den må avinstalleres først – for hver bruker som har den, fordi én app bærer én signatur for hele enheten. Dataene går tapt hos hver av dem – sikkerhetskopier det du trenger før du fortsetter.</string>
     <string name="patch_install_successfully">Installert</string>
     <string name="patch_install_hint_shizuku">Klar til å installere stille gjennom Shizuku.</string>
     <string name="patch_install_hint_system">Klar for installasjon. Systemet ditt vil be deg om å bekrefte.</string>
@@ -141,7 +141,7 @@
     <string name="patch_local_drop_warning">Bytte til lokal slipper %1$d innebygd modul(er). Ingen modul du ikke har installert kan ikke gjenopprettes.</string>
     <!-- Patch progress and outcome -->
     <string name="patch_effect_replace">Installerer i den eksisterende appen; dataene holdes</string>
-    <string name="patch_effect_uninstall">Krever avinstallering først; appdata vil gå tapt</string>
+    <string name="patch_effect_uninstall">Krever avinstallering først, for hver bruker; appdata vil gå tapt</string>
     <string name="patch_stage_reading">Leser APK</string>
     <string name="patch_stage_signing">Registrerer oppsett</string>
     <string name="patch_stage_rewriting">Skriver manifestet</string>

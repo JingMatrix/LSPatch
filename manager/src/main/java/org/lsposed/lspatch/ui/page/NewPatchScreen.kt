@@ -1480,7 +1480,12 @@ private fun PatchBar(
                 PatchStep.Idle -> {
                     val needsUninstall =
                         remember(request.packageName, MyKeyStore.useDefault) {
-                            LSPPackageManager.keystoreConflictsWith(request.packageName)
+                            // The installed app's own apks, so the warning is right for an app
+                            // installed in another user and not in this one, which no query shows.
+                            LSPPackageManager.keystoreConflictsWith(
+                                request.packageName,
+                                (request.target as? PatchTarget.InstalledApp)?.apkPaths.orEmpty(),
+                            )
                         }
                     Text(
                         text =

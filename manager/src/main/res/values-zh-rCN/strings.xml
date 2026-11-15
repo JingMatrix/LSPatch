@@ -95,7 +95,7 @@
     <string name="patch_sigbypasslv2">+ 文件读取：应用读取自身 apk 时得到原始文件 (libc)</string>
     <string name="patch_sigbypasslv3">+ 原始系统调用：捕获绕过 libc 的 apk 读取。会修改原生代码，因此校验自身代码的应用可能判定为被篡改 — 够用时建议使用等级 2。</string>
     <string name="patch_return">返回</string>
-    <string name="patch_uninstall_text">已安装的应用签名不同，必须先卸载。其数据将丢失 — 继续前请备份需要保留的内容。</string>
+    <string name="patch_uninstall_text">已安装的应用签名不同，必须先卸载；一个应用在整台设备上只有一个签名，因此每个装有它的用户都要卸载。各用户中的数据都将丢失 — 继续前请备份需要保留的内容。</string>
     <string name="patch_install_successfully">已安装</string>
     <string name="patch_install_hint_shizuku">可通过 Shizuku 静默安装。</string>
     <string name="patch_install_hint_system">准备安装。系统将要求你确认。</string>
@@ -141,7 +141,7 @@
     <string name="patch_local_drop_warning">切换到本地模式将丢弃 %1$d 个已嵌入的模块。未安装的模块将无法恢复。</string>
     <!-- Patch progress and outcome -->
     <string name="patch_effect_replace">覆盖安装到现有应用，数据保留</string>
-    <string name="patch_effect_uninstall">需要先卸载，应用数据将丢失</string>
+    <string name="patch_effect_uninstall">需要在每个用户中先卸载，应用数据将丢失</string>
     <string name="patch_stage_reading">读取 APK</string>
     <string name="patch_stage_signing">签名准备</string>
     <string name="patch_stage_rewriting">重写清单</string>

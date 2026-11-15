@@ -95,7 +95,7 @@
     <string name="patch_sigbypasslv2">+ Το αρχείο διαβάζει: η εφαρμογή διαβάζει το δικό της apk παίρνει το πρωτότυπο (libc)</string>
     <string name="patch_sigbypasslv3">+ Ακατέργαστα syscalls: αλιεύματα apk διαβάζει ότι παράκαμψη libc. Διορθώνει τον τοπικό κώδικα, οπότε μια εφαρμογή που επαληθεύει τον δικό της κώδικα μπορεί να τον επισημάνει ως αλλοιωμένο - προτιμά το επίπεδο 2 εκτός αν δεν είναι αρκετό.</string>
     <string name="patch_return">ΕΠΙΣΤΡΟΦΗ</string>
-    <string name="patch_uninstall_text">Η εγκατεστημένη εφαρμογή έχει υπογραφεί διαφορετικά, οπότε πρέπει πρώτα να απεγκατασταθεί. Τα δεδομένα της θα χαθούν - να δημιουργήσετε αντίγραφα ασφαλείας για οτιδήποτε χρειάζεστε πριν συνεχίσετε.</string>
+    <string name="patch_uninstall_text">Η εγκατεστημένη εφαρμογή έχει υπογραφεί διαφορετικά, οπότε πρέπει πρώτα να απεγκατασταθεί — για κάθε χρήστη που την έχει, επειδή μία εφαρμογή φέρει μία υπογραφή για όλη τη συσκευή. Τα δεδομένα της θα χαθούν σε καθέναν από αυτούς — δημιουργήστε αντίγραφα ασφαλείας για ό,τι χρειάζεστε πριν συνεχίσετε.</string>
     <string name="patch_install_successfully">Εγκατεστημένο</string>
     <string name="patch_install_hint_shizuku">Έτοιμο για σιωπηλή εγκατάσταση μέσω Shizuku.</string>
     <string name="patch_install_hint_system">Έτοιμο για εγκατάσταση. Το σύστημά σας θα σας ζητήσει να επιβεβαιώσετε.</string>
@@ -141,7 +141,7 @@
     <string name="patch_local_drop_warning">Η εναλλαγή σε τοπικό θα αποβάλει το ενσωματωμένο αρθρώμα(ες) %1$d . Οποιοδήποτε πρόσθετο που δεν έχετε εγκαταστήσει δεν μπορεί να ανακτηθεί.</string>
     <!-- Patch progress and outcome -->
     <string name="patch_effect_replace">Εγκαθιστά πάνω από την υπάρχουσα εφαρμογή. Τα δεδομένα της διατηρούνται</string>
-    <string name="patch_effect_uninstall">Απαιτεί την απεγκατάσταση πρώτα. Τα δεδομένα εφαρμογών θα χαθούν</string>
+    <string name="patch_effect_uninstall">Απαιτεί πρώτα απεγκατάσταση, σε κάθε χρήστη. Τα δεδομένα εφαρμογών θα χαθούν</string>
     <string name="patch_stage_reading">Ανάγνωση APK</string>
     <string name="patch_stage_signing">Ρύθμιση εγγραφής</string>
     <string name="patch_stage_rewriting">Επανεγγραφή δηλωτικού</string>

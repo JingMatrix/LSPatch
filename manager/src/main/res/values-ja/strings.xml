@@ -95,7 +95,7 @@
     <string name="patch_sigbypasslv2">+ ファイル読み取り: 自身の apk を読むアプリが元のものを取得 (libc)</string>
     <string name="patch_sigbypasslv3">+ 生のシステムコール: libc を迂回する apk 読み取りを捕捉。ネイティブコードを書き換えるため、自身のコードを検証するアプリは改ざんとして検出することがあります — 十分な場合はレベル 2 を推奨。</string>
     <string name="patch_return">戻る</string>
-    <string name="patch_uninstall_text">署名が異なるため、パッチ済みアプリをインストールする前に元のアプリをアンインストールする必要があります。\n個人データをバックアップしたことを確認してください。</string>
+    <string name="patch_uninstall_text">インストール済みのアプリは署名が異なるため、先にアンインストールする必要があります。アプリの署名は端末全体で 1 つなので、そのアプリを持つすべてのユーザーから削除されます。それぞれのユーザーのデータは失われます。続行する前に必要なものをバックアップしてください。</string>
     <string name="patch_install_successfully">インストールしました</string>
     <string name="patch_install_hint_shizuku">Shizuku を通じてサイレントインストールする準備ができました。</string>
     <string name="patch_install_hint_system">インストールの準備ができました。システムが確認を求めます。</string>
@@ -141,7 +141,7 @@
     <string name="patch_local_drop_warning">ローカルモードに切り替えると、埋め込まれた %1$d 個のモジュールが破棄されます。インストールしていないモジュールは復元できません。</string>
     <!-- Patch progress and outcome -->
     <string name="patch_effect_replace">既存のアプリに上書きインストールし、データは保持されます</string>
-    <string name="patch_effect_uninstall">先にアンインストールが必要で、アプリのデータは失われます</string>
+    <string name="patch_effect_uninstall">すべてのユーザーで先にアンインストールが必要で、アプリのデータは失われます</string>
     <string name="patch_stage_reading">APK を読み取り中</string>
     <string name="patch_stage_signing">署名の準備</string>
     <string name="patch_stage_rewriting">マニフェストを書き換え中</string>

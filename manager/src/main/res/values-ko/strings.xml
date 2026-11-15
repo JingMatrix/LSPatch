@@ -95,7 +95,7 @@
     <string name="patch_sigbypasslv2">+ 파일 읽기: 자신의 apk를 읽는 앱이 원본을 얻음 (libc)</string>
     <string name="patch_sigbypasslv3">+ 원시 시스템 호출: libc를 우회하는 apk 읽기를 포착. 네이티브 코드를 패치하므로 자체 코드를 검증하는 앱은 변조로 감지할 수 있습니다 — 충분하다면 레벨 2를 권장.</string>
     <string name="patch_return">돌아가기</string>
-    <string name="patch_uninstall_text">서명이 다르기 때문에 패치된 앱을 설치하기 전에 원본 앱을 제거해야 합니다.\n개인 데이터를 백업했는지 확인하세요.</string>
+    <string name="patch_uninstall_text">설치된 앱은 서명이 달라서 먼저 제거해야 합니다. 앱 하나는 기기 전체에서 서명 하나를 가지므로, 그 앱을 가진 모든 사용자에서 제거됩니다. 각 사용자의 데이터가 사라지니 계속하기 전에 필요한 것을 백업하세요.</string>
     <string name="patch_install_successfully">설치됨</string>
     <string name="patch_install_hint_shizuku">Shizuku를 통해 자동으로 설치할 준비가 되었습니다.</string>
     <string name="patch_install_hint_system">설치할 준비가 되었습니다. 시스템에서 확인을 요청합니다.</string>
@@ -141,7 +141,7 @@
     <string name="patch_local_drop_warning">로컬로 전환하면 내장된 모듈 %1$d개가 사라집니다. 설치되어 있지 않은 모듈은 복구할 수 없습니다.</string>
     <!-- Patch progress and outcome -->
     <string name="patch_effect_replace">기존 앱에 덮어써 설치하며, 데이터는 유지됩니다</string>
-    <string name="patch_effect_uninstall">먼저 제거해야 하며, 앱 데이터가 사라집니다</string>
+    <string name="patch_effect_uninstall">모든 사용자에서 먼저 제거해야 하며, 앱 데이터가 사라집니다</string>
     <string name="patch_stage_reading">APK 읽는 중</string>
     <string name="patch_stage_signing">서명 준비 중</string>
     <string name="patch_stage_rewriting">매니페스트 다시 쓰는 중</string>

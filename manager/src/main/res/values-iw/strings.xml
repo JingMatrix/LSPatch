@@ -80,7 +80,7 @@
     <string name="patch_sigbypasslv2">+ קריאות קובץ: אפליקציה שקוראת את ה-apk שלה מקבלת את המקורי (libc)</string>
     <string name="patch_sigbypasslv3">+ קריאות מערכת גולמיות: תופס קריאות apk שעוקפות את libc. מתקן קוד מקורי, כך שאפליקציה שבודקת את הקוד שלה עלולה לזהות זאת כשיבוש — העדיפו רמה 2 כל עוד היא מספיקה.</string>
     <string name="patch_return">חזור</string>
-    <string name="patch_uninstall_text">בשל חתימות שונות, עליך להסיר את התקנת האפליקציה המקורית לפני התקנת זו עם הטלאי.\nודא שגיבית את הנתונים האישיים.</string>
+    <string name="patch_uninstall_text">האפליקציה המותקנת חתומה אחרת, ולכן יש להסיר אותה תחילה, ואצל כל משתמש שיש לו אותה, מפני שלאפליקציה אחת יש חתימה אחת בכל המכשיר. הנתונים שלה יאבדו אצל כל אחד מהם — גבה את מה שדרוש לך לפני שתמשיך.</string>
     <string name="patch_install_successfully">הותקן</string>
     <string name="patch_install_hint_shizuku">מוכן להתקנה שקטה באמצעות Shizuku.</string>
     <string name="patch_install_hint_system">מוכן להתקנה. המערכת תבקש ממך אישור.</string>
@@ -186,7 +186,7 @@
     <string name="patch_module_unreadable">לא ניתן היה לקרוא מה-APK</string>
     <string name="patch_local_drop_warning">מעבר למצב מקומי יסיר %1$d מודולים מוטמעים. כל מודול שאינו מותקן אצלכם לא ניתן יהיה לשחזר.</string>
     <string name="patch_effect_replace">מתקין מעל האפליקציה הקיימת; הנתונים שלה נשמרים</string>
-    <string name="patch_effect_uninstall">מחייב הסרת התקנה תחילה; נתוני האפליקציה יאבדו</string>
+    <string name="patch_effect_uninstall">מחייב הסרת התקנה תחילה, אצל כל משתמש; נתוני האפליקציה יאבדו</string>
     <string name="patch_stage_reading">קורא APK</string>
     <string name="patch_stage_signing">הכנת חתימה</string>
     <string name="patch_stage_rewriting">כותב מחדש את המניפסט</string>
