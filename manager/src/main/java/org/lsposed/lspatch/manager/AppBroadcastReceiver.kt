@@ -6,6 +6,7 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.util.Log
 import kotlinx.coroutines.launch
+import org.lsposed.lspatch.data.repository.RepoRepository
 import org.lsposed.lspatch.lspApp
 import org.lsposed.lspatch.util.LSPPackageManager
 
@@ -36,6 +37,10 @@ class AppBroadcastReceiver : BroadcastReceiver() {
             lspApp.globalScope.launch {
                 Log.i(TAG, "Received intent: $intent")
                 LSPPackageManager.fetchAppList()
+                // The Store keeps its own map of what each package is at -- it is what the "Installed" badge and
+                // every update offer are read from -- and nothing else refreshes it. Only when the Store has been
+                // opened: see RepoRepository.existing.
+                RepoRepository.existing()?.refreshInstalled()
                 // A module app that was just installed or replaced has a fresh process with no service
                 // in it -- the push it would normally get rides on a patched app's module query, which
                 // may not happen for hours. The package event is the one moment the manager knows the
