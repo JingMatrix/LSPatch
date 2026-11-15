@@ -3,7 +3,6 @@ package org.lsposed.lspatch.data.repository
 import android.content.pm.PackageInstaller
 import java.io.File
 import java.io.IOException
-import okhttp3.Request
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -11,6 +10,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import okhttp3.Request
 import org.lsposed.lspatch.lspApp
 import org.lsposed.lspatch.util.LSPNetwork
 import org.lsposed.lspatch.util.LSPPackageManager
@@ -18,18 +18,18 @@ import org.lsposed.lspatch.util.ShizukuApi
 import org.matrix.vector.ui.store.InstallStep
 import org.matrix.vector.ui.store.ReleaseAsset
 import org.matrix.vector.ui.store.RepoVersion
+import org.matrix.vector.ui.store.StoreInstall
 import org.matrix.vector.ui.store.StoreInstallHost
 
 /**
- * LSPatch's store install capability, injected into the shared Details screen so a module can be
- * installed straight from its page — the same install bar Vector shows.
+ * LSPatch's store install capability, injected into the shared Details screen so a module can be installed straight
+ * from its page — the same install bar Vector shows.
  *
- * A store module is an ordinary APK, so this downloads the chosen asset and hands it to the platform
- * installer through [LSPPackageManager.installApk] — the same session driver the manager uses for
- * patched apps — which shows the OS confirmation dialog. Created per opened module (it needs the
- * package name). LSPatch keeps no device-side module scope (that is the daemon's job in Vector), so
- * [installedScope]/[installedIsLegacy] stay empty and the Information tab falls back to the
- * catalogue's declared scope.
+ * A store module is an ordinary APK, so this downloads the chosen asset and hands it to the platform installer through
+ * [LSPPackageManager.installApk] — the same session driver the manager uses for patched apps — which shows the OS
+ * confirmation dialog. Created per opened module (it needs the package name). LSPatch keeps no device-side module scope
+ * (that is the daemon's job in Vector), so [installedScope]/[installedIsLegacy] stay empty and the Information tab
+ * falls back to the catalogue's declared scope.
  */
 class LSPStoreInstallHost(private val packageName: String) : StoreInstallHost {
 
@@ -57,14 +57,18 @@ class LSPStoreInstallHost(private val packageName: String) : StoreInstallHost {
         scope.launch {
             try {
                 _installState.value = InstallStep.Downloading(packageName, 0, asset.size)
-                val apk = download(url) { read, total ->
-                    _installState.value = InstallStep.Downloading(packageName, read, total)
-                }
+                val apk =
+                    download(url) { read, total ->
+                        _installState.value = InstallStep.Downloading(packageName, read, total)
+                    }
                 _installState.value = InstallStep.Installing(packageName)
                 val (status, message) = LSPPackageManager.installApk(apk)
-                _installState.value =
-                    if (status == PackageInstaller.STATUS_SUCCESS) InstallStep.Done(packageName)
-                    else InstallStep.Failed(packageName, message)
+                if (status == PackageInstaller.STATUS_SUCCESS) {
+                    _installState.value = InstallStep.Done(packageName)
+                    note(releaseVersion)
+                } else {
+                    _installState.value = InstallStep.Failed(packageName, message)
+                }
             } catch (e: Exception) {
                 _installState.value = InstallStep.Failed(packageName, e.message)
             }
@@ -73,6 +77,23 @@ class LSPStoreInstallHost(private val packageName: String) : StoreInstallHost {
 
     override fun acknowledge() {
         _installState.value = InstallStep.Idle
+    }
+
+    /**
+     * Records what landed, so the Store stops offering a release it has just installed. See [StoreInstall].
+     *
+     * After the bar has settled rather than before it, because this asks the device what it now holds and a reader
+     * waiting on the install has no reason to wait on bookkeeping as well. Written from the repository's own reading
+     * rather than a `getPackageInfo` here, because the note is compared against that map and two readings of the device
+     * need not agree.
+     *
+     * A release the details screen could not name is not recorded. The note's whole job is to say which offer was
+     * taken, and one that cannot say that is better absent — the offer simply stays.
+     */
+    private suspend fun note(release: RepoVersion?) {
+        if (release == null) return
+        val installed = RepoRepository.getInstance(lspApp).readInstalled()[packageName] ?: return
+        LSPStoreSettings.noteStoreInstall(packageName, StoreInstall(release, installed))
     }
 
     // Through the shared client ([LSPNetwork]) so the download resolves the same way as the rest of
