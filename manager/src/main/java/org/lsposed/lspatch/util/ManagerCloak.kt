@@ -32,7 +32,7 @@ object ManagerCloak {
     // Android R+ requires resources.arsc STORED and 4-byte aligned.
     private val zFileOptions = ZFileOptions().setAlignmentRule(
         AlignmentRules.compose(
-            AlignmentRules.constantForSuffix(".so", 4096),
+            AlignmentRules.constantForSuffix(".so", 16384),   // 16 KiB page devices; also fine on 4 KiB
             AlignmentRules.constantForSuffix(RESOURCES_ARSC, 4)
         )
     )

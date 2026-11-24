@@ -87,11 +87,15 @@ public final class ApkPatcher {
      * Page-aligned entries.
      *
      * The native library and the nested original both have to be mappable straight out of the apk,
-     * which requires them to start on a 4 KiB boundary.
+     * which requires them to start on a page boundary. 16 KiB covers devices with 16 KiB pages
+     * (where the loader's dlopen of liblspatch.so from the apk otherwise fails) and, being a
+     * multiple of 4 KiB, still satisfies 4 KiB devices.
      */
+    private static final int PAGE_ALIGNMENT = 16384;
+
     private static final ZFileOptions Z_FILE_OPTIONS = new ZFileOptions().setAlignmentRule(AlignmentRules.compose(
-            AlignmentRules.constantForSuffix(".so", 4096),
-            AlignmentRules.constantForSuffix(ORIGINAL_APK_ASSET_PATH, 4096)
+            AlignmentRules.constantForSuffix(".so", PAGE_ALIGNMENT),
+            AlignmentRules.constantForSuffix(ORIGINAL_APK_ASSET_PATH, PAGE_ALIGNMENT)
     ));
 
     private final Logger logger;
